@@ -150,3 +150,9 @@ config.status
 .vs/CCBC/v15/ipch/AutoPCH/7b7311dfb0c553fa/TRANSACTIONRECORD.ipch
 .vs/CCBC/v15/ipch/AutoPCH/d6fbcfae9fa9feb4/PAYMENTSERVER.ipch
 .vs/CCBC/v15/ipch/AutoPCH/aee126f7c87e321c/MASTERNODEMAN.ipch
+.vs/CCBC/v15/ipch/AutoPCH/40dadb20cea31fa0/BITCOINCONSENSUS.ipch
+.vs/CCBC/v15/ipch/AutoPCH/713ff23d09b32455/RPCDUMP.ipch
+.vs/CCBC/v15/ipch/AutoPCH/78d5b3ed1536249e/BITCOINGUI.ipch
+.vs/CCBC/v15/ipch/AutoPCH/cf13db34be1232da/INIT.ipch
+.vs/CCBC/v15/ipch/AutoPCH/fb4db16ec65083b9/OVERVIEWPAGE.ipch
+.vs/config/applicationhost.config
