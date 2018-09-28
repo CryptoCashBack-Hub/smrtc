@@ -1182,16 +1182,19 @@ bool AppInit2(boost::thread_group& threadGroup)
         SetProxy(NET_IPV6, addrProxy);
         SetProxy(NET_TOR, addrProxy);
         SetNameProxy(addrProxy);
-        SetReachable(NET_TOR); // by default, -proxy sets onion as reachable, unless -noonion later
+        //SetReachable(NET_TOR); // by default, -proxy sets onion as reachable, unless -noonion later
+        SetLimited(NET_TOR, false);
     }
 
     // -onion can be used to set only a proxy for .onion, or override normal proxy for .onion addresses
     // -noonion (or -onion=0) disables connecting to .onion entirely
     // An empty string is used to not override the onion proxy (in which case it defaults to -proxy set above, or none)
+	// Credit to blademaster for this
     std::string onionArg = GetArg("-onion", "");
     if (onionArg != "") {
         if (onionArg == "0") { // Handle -noonion/-onion=0
-            SetReachable(NET_TOR, false); // set onions as unreachable
+            //SetReachable(NET_TOR, false); // set onions as unreachable
+            SetLimited(NET_TOR);
         } else {
             CService onionProxy;
             if (!Lookup(onionArg.c_str(), onionProxy, 9050, fNameLookup)) {
@@ -1201,7 +1204,8 @@ bool AppInit2(boost::thread_group& threadGroup)
             if (!addrOnion.IsValid())
                 return InitError(strprintf(_("Invalid -onion address or hostname: '%s'"), onionArg));
             SetProxy(NET_TOR, addrOnion);
-            SetReachable(NET_TOR);
+            //SetReachable(NET_TOR);
+            SetLimited(NET_TOR, false);
         }
     }
 
