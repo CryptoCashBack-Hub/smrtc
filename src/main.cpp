@@ -2162,7 +2162,7 @@ int64_t GetBlockValue(int nHeight)
                 nSubsidy = Params().MaxMoneyOut() - nMoneySupply;
 
             if (nMoneySupply >= Params().MaxMoneyOut())
-                nSubsidy = 5; //Needs to be 0 at the end
+                nSubsidy = 0; //Needs to be 0 at the end
         }
         return nSubsidy;
     }
@@ -2180,7 +2180,7 @@ CAmount GetSeeSaw(const CAmount& blockValue, int nMasternodeCount, int nHeight)
     }
 
     int64_t nMoneySupply = chainActive.Tip()->nMoneySupply;
-    int64_t mNodeCoins = nMasternodeCount * 5000 * COIN; //5k coins required
+    int64_t mNodeCoins = nMasternodeCount * 25000 * COIN; //25k coins required
 
     // Use this log to compare the masternode count for different clients
     //LogPrintf("Adjusting seesaw at height %d with %d masternodes (without drift: %d) at %ld\n", nHeight, nMasternodeCount, nMasternodeCount - Params().MasternodeCountDrift(), GetTime());
@@ -6578,15 +6578,16 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 //       it was the one which was commented out
 int ActiveProtocol()
 {
-    // SPORK_14 was used for 70910. Leave it 'ON' so they don't see > 70910 nodes. They won't react to SPORK_15
-    // messages because it's not in their code
 
-    /*    if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
+	// SPORK_14 will remove early wallet adopters of protocol 70002 where max supply didnt have cap and 
+	// seesaw masternode amount was set to 5k instead of 25k collateral
+
+        if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
             return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-*/
+        return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 
-    // SPORK_15 is used for 70911. Nodes < 70911 don't see it and still get their protocol version via SPORK_14 and their
-    // own ModifierUpgradeBlock()
+
+    // SPORK_15 will be used after SPORK_14 is used and commented out from being turned off.
 
     if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
         return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
