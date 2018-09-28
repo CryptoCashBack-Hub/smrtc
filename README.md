@@ -11,6 +11,8 @@
 <tr><td>Difficulty Retargeting</td><td>Every Block</td></tr>
 <tr><td>Max Coin Supply </td><td>100,000,000 CCBC</td></tr>
 <tr><td>Premine</td><td>8,000,000 CCBC</td></tr>
+<tr><td>MN Port</td><td>5520</td></tr>
+<tr><td>RPC Port</td><td>15520</td></tr>
 </table>
 
 
@@ -19,9 +21,9 @@
 <table>
 <th colspan=4>PoW Phase</th>
 <tr><th>Block Height</th><th>Reward Amount</th><th>Notes</th><th>Duration (Days)</th></tr>
-<tr><td>0</td><td>250 CCBC</td><td>Genesis Block</td><td>0 Days</td></tr>
+<tr><td>0</td><td>50 CCBC</td><td>Genesis Block</td><td>0 Days</td></tr>
 <tr><td>1</td><td>8,000,000 CCBC</td><td>Initial Premine</td><td>0 Days</td></tr>
-<tr><td>2-200</td><td>1 CCBC</td><td rowspan=1>Closed Mining</td><td>1 Days</td></tr>
+<tr><td>2-200</td><td>0 CCBC</td><td rowspan=1>Closed Mining</td><td>1 Days</td></tr>
 <tr><th colspan=4>PoS / MN Phase</th></tr>
 <tr><td>200-25000</td><td>1 CCBC</td><td rowspan=1>Coin Swap</td><td>17.22 Days</td></tr>
 <tr><td>25000-50000</td><td>25 CCBC</td><td rowspan=1>First Increase </td><td>17.36 Days</td></tr>
@@ -39,21 +41,21 @@
 
 <table>
 <tr><th>Block Height</th><th>MN Reward Amount</th><th>PoS Reward Amount</th><th>Duration (Days)</th><th>Development Fee</th></tr>
-<tr><td>201-25000</td><td>80%</td><td>20%</td><td>17.2 Days</td><td>0%</td></tr>
-<tr><td>25000-60000 </td><td>40%</td><td>60%</td><td>17.22 Days</td><td>0%</td></tr>
-<tr><td>60000-65000 </td><td>42%</td><td>58%</td><td>3.47 Days</td><td>10%</td></tr>
-<tr><td>65000-70000 </td><td>44%</td><td>56%</td><td>3.47 Days</td><td>10%</td></tr>
-<tr><td>70000-75000 </td><td>46%</td><td>54%</td><td>3.47 Days</td><td>10%</td></tr>
-<tr><td>75000-80000 </td><td>48%</td><td>52%</td><td>3.47 Days</td><td>10%</td></tr>
-<tr><td>80000-85000 </td><td>50%</td><td>50%</td><td>2.08 Days</td><td>10%</td></tr>
-<tr><td>85000-88000 </td><td>53%</td><td>47%</td><td>2.08 Days</td><td>10%</td></tr>
-<tr><td>88000-91000 </td><td>56%</td><td>44%</td><td>2.08 Days</td><td>10%</td></tr>
-<tr><td>91000-94000 </td><td>59%</td><td>41%</td><td>2.08 Days</td><td>10%</td></tr>
-<tr><td>94000-97000 </td><td>62%</td><td>38%</td><td>2.08 Days</td><td>10%</td></tr>
-<tr><td>97000-100000 </td><td>65%</td><td>35%</td><td>2.08 Days</td><td>10%</td></tr>
-<tr><td>100000-125000 </td><td>70%</td><td>30%</td><td>17.36 Days</td><td>10%</td></tr>
-<tr><td>125000-150000 </td><td>75%</td><td>25%</td><td>17.36 Days</td><td>10%</td></tr>
-<tr><td>150000-175000 </td><td>80%</td><td>20%</td><td>17.36 Days</td><td>10%</td></tr>
+<tr><td>201-25000</td><td>60%</td><td>40%</td><td>17.2 Days</td><td>0%</td></tr>
+<tr><td>25000-60000 </td><td>60%</td><td>40%</td><td>17.22 Days</td><td>0%</td></tr>
+<tr><td>60000-65000 </td><td>65%</td><td>35%</td><td>3.47 Days</td><td>10%</td></tr>
+<tr><td>65000-70000 </td><td>66%</td><td>34%</td><td>3.47 Days</td><td>10%</td></tr>
+<tr><td>70000-75000 </td><td>67%</td><td>33%</td><td>3.47 Days</td><td>10%</td></tr>
+<tr><td>75000-80000 </td><td>68%</td><td>32%</td><td>3.47 Days</td><td>10%</td></tr>
+<tr><td>80000-85000 </td><td>69%</td><td>31%</td><td>2.08 Days</td><td>10%</td></tr>
+<tr><td>85000-88000 </td><td>70%</td><td>30%</td><td>2.08 Days</td><td>10%</td></tr>
+<tr><td>88000-91000 </td><td>72%</td><td>28%</td><td>2.08 Days</td><td>10%</td></tr>
+<tr><td>91000-94000 </td><td>74%</td><td>26%</td><td>2.08 Days</td><td>10%</td></tr>
+<tr><td>94000-97000 </td><td>76%</td><td>24%</td><td>2.08 Days</td><td>10%</td></tr>
+<tr><td>97000-100000 </td><td>78%</td><td>22%</td><td>2.08 Days</td><td>10%</td></tr>
+<tr><td>100000-125000 </td><td>80%</td><td>20%</td><td>17.36 Days</td><td>10%</td></tr>
+<tr><td>125000-150000 </td><td>85%</td><td>15%</td><td>17.36 Days</td><td>10%</td></tr>
+<tr><td>150000-175000 </td><td>90%</td><td>10%</td><td>17.36 Days</td><td>10%</td></tr>
 <tr><td>SeeSaw Rewards from this point on</td></tr>
 </table>
 
