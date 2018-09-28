@@ -6581,11 +6581,11 @@ int ActiveProtocol()
 
 	// SPORK_14 will remove early wallet adopters of protocol 70002 where max supply didnt have cap and 
 	// seesaw masternode amount was set to 5k instead of 25k collateral
-
+    /*
         if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
             return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
         return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
-
+*/
 
     // SPORK_15 will be used after SPORK_14 is used and commented out from being turned off.
 
