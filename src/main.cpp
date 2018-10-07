@@ -2119,21 +2119,19 @@ int64_t GetBlockValue(int nHeight)
 				if (nHeight <= 200 && nHeight > 0)
 				return 250000 * COIN;
 			}
-
 			if (IsTreasuryBlock(nHeight)) {
 				LogPrintf("GetBlockValue(): this is a treasury block\n");
 				nSubsidy = GetTreasuryAward(nHeight);
 			}
-				else if (IsReviveBlock(nHeight)) {
-					LogPrintf("GetBlockValue(): this is a revive block\n");
-					nSubsidy = GetReviveAward(nHeight);
-				
+			else if (IsReviveBlock(nHeight)) {
+				LogPrintf("GetBlockValue(): this is a revive block\n");
+				nSubsidy = GetReviveAward(nHeight);
+			}
 
-				}
 		else {
             if (nHeight == 0) {
                 nSubsidy = 1600000 * COIN;
-	    } else if (nHeight <= 5 && nHeight > 1) { //First POW phase 
+			} else if (nHeight <= 5 && nHeight > 1) { //First POW phase 
                 nSubsidy = 1600000 * COIN;
             } else if (nHeight <= 200 && nHeight > 1) { //First POW phase 
                 nSubsidy = 0 * COIN;
@@ -2156,18 +2154,15 @@ int64_t GetBlockValue(int nHeight)
             } else if (nHeight <= 556800) { //Till max supply           Total coins used 17,882,000
                 nSubsidy = 5 * COIN;       //57,026.38 days will max supply is reached
             }
+
             int64_t nMoneySupply = chainActive.Tip()->nMoneySupply;
-
-            if (nMoneySupply + nSubsidy >= Params().MaxMoneyOut())
+			if (nMoneySupply + nSubsidy >= Params().MaxMoneyOut())
                 nSubsidy = Params().MaxMoneyOut() - nMoneySupply;
-
             if (nMoneySupply >= Params().MaxMoneyOut())
-                nSubsidy = 0; //Needs to be 0 at the end
+                nSubsidy = 0; //Amount each block pays after max supply is reached
         }
         return nSubsidy;
     }
-
-
 
 CAmount GetSeeSaw(const CAmount& blockValue, int nMasternodeCount, int nHeight)
 {
