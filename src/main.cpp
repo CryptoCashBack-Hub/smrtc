@@ -2113,56 +2113,55 @@ double ConvertBitsToDouble(unsigned int nBits)
 
 int64_t GetBlockValue(int nHeight)
 {
-			int64_t nSubsidy = 0;
+    int64_t nSubsidy = 0;
 
-			if (Params().NetworkID() == CBaseChainParams::TESTNET) {
-				if (nHeight <= 200 && nHeight > 0)
-				return 250000 * COIN;
-			}
-			if (IsTreasuryBlock(nHeight)) {
-				LogPrintf("GetBlockValue(): this is a treasury block\n");
-				nSubsidy = GetTreasuryAward(nHeight);
-			}
-			else if (IsReviveBlock(nHeight)) {
-				LogPrintf("GetBlockValue(): this is a revive block\n");
-				nSubsidy = GetReviveAward(nHeight);
-			}
-
-		else {
-            if (nHeight == 0) {
-                nSubsidy = 1600000 * COIN;
-			} else if (nHeight <= 5 && nHeight > 1) { //First POW phase 
-                nSubsidy = 1600000 * COIN;
-            } else if (nHeight <= 200 && nHeight > 1) { //First POW phase 
-                nSubsidy = 0 * COIN;
-            } else if (nHeight <= 25000 && nHeight > 200) { //Public phase 17.22 days 24,800 coins
-                nSubsidy = 1 * COIN;
-            } else if (nHeight <= 50000 && nHeight > 25000) { //17.36 days            625,000 coins
-                nSubsidy = 25 * COIN;
-            } else if (nHeight <= 75000 && nHeight > 50000) { //17.36 days            1,250,000 coins 
-                nSubsidy = 50 * COIN;
-            } else if (nHeight <= 100000 && nHeight > 75000) { //17.36 days           2,125,000 coins
-                nSubsidy = 85 * COIN;
-            } else if (nHeight <= 125000 && nHeight > 100000) { //17.36 days          1,875,000 coins
-                nSubsidy = 75 * COIN;
-            } else if (nHeight <= 168000 && nHeight > 125000) { //30 days             2,150,000 coins
-                nSubsidy = 50 * COIN;
-            } else if (nHeight <= 297600 && nHeight > 168000) { //90 days             3,240,000 coins
-                nSubsidy = 25 * COIN;
-            } else if (nHeight <= 556800 && nHeight > 297600) { //180 days            2,592,000 coins
-                nSubsidy = 10 * COIN;
-            } else if (nHeight <= 556800) { //Till max supply           Total coins used 17,882,000
-                nSubsidy = 5 * COIN;       //57,026.38 days will max supply is reached
-            }
-
-            int64_t nMoneySupply = chainActive.Tip()->nMoneySupply;
-			if (nMoneySupply + nSubsidy >= Params().MaxMoneyOut())
-                nSubsidy = Params().MaxMoneyOut() - nMoneySupply;
-            if (nMoneySupply >= Params().MaxMoneyOut())
-                nSubsidy = 0; //Amount each block pays after max supply is reached
-        }
-        return nSubsidy;
+    if (Params().NetworkID() == CBaseChainParams::TESTNET) {
+        if (nHeight <= 200 && nHeight > 0)
+            return 250000 * COIN;
     }
+    if (IsTreasuryBlock(nHeight)) {
+        LogPrintf("GetBlockValue(): this is a treasury block\n");
+        nSubsidy = GetTreasuryAward(nHeight);
+    } else if (IsReviveBlock(nHeight)) {
+        LogPrintf("GetBlockValue(): this is a revive block\n");
+        nSubsidy = GetReviveAward(nHeight);
+    }
+
+    else {
+        if (nHeight == 0) {
+            nSubsidy = 1600000 * COIN;
+        } else if (nHeight <= 5 && nHeight > 1) { //First POW phase
+            nSubsidy = 1600000 * COIN;
+        } else if (nHeight <= 200 && nHeight > 1) { //First POW phase
+            nSubsidy = 0 * COIN;
+        } else if (nHeight <= 25000 && nHeight > 200) { //Public phase 17.22 days 24,800 coins
+            nSubsidy = 1 * COIN;
+        } else if (nHeight <= 50000 && nHeight > 25000) { //17.36 days            625,000 coins
+            nSubsidy = 25 * COIN;
+        } else if (nHeight <= 75000 && nHeight > 50000) { //17.36 days            1,250,000 coins
+            nSubsidy = 50 * COIN;
+        } else if (nHeight <= 100000 && nHeight > 75000) { //17.36 days           2,125,000 coins
+            nSubsidy = 85 * COIN;
+        } else if (nHeight <= 125000 && nHeight > 100000) { //17.36 days          1,875,000 coins
+            nSubsidy = 75 * COIN;
+        } else if (nHeight <= 168000 && nHeight > 125000) { //30 days             2,150,000 coins
+            nSubsidy = 50 * COIN;
+        } else if (nHeight <= 297600 && nHeight > 168000) { //90 days             3,240,000 coins
+            nSubsidy = 25 * COIN;
+        } else if (nHeight <= 556800 && nHeight > 297600) { //180 days            2,592,000 coins
+            nSubsidy = 10 * COIN;
+        } else if (nHeight <= 556800) { //Till max supply           Total coins used 17,882,000
+            nSubsidy = 5 * COIN;        //57,026.38 days will max supply is reached
+        }
+
+        int64_t nMoneySupply = chainActive.Tip()->nMoneySupply;
+        if (nMoneySupply + nSubsidy >= Params().MaxMoneyOut())
+            nSubsidy = Params().MaxMoneyOut() - nMoneySupply;
+        if (nMoneySupply >= Params().MaxMoneyOut())
+            nSubsidy = 0; //Amount each block pays after max supply is reached
+    }
+    return nSubsidy;
+}
 
 CAmount GetSeeSaw(const CAmount& blockValue, int nMasternodeCount, int nHeight)
 {
@@ -2481,9 +2480,9 @@ int64_t GetTreasuryAward(int nHeight)
     } else if (nHeight < 556800) {
         return 360 * COIN; //720 aday at 5% 2.5 coins per block
     } else {
-    }
-    return 0;
-}
+        return 3600;
+	}
+}else return 0;
 
 //Revive blocks start from 60,001 and then each block after
 int nStartReviveBlock = 60001;
@@ -2518,9 +2517,9 @@ int64_t GetReviveAward(int nHeight)
     } else if (nHeight < 556800) {
         return 360 * COIN; //720 aday at 5% 2.5 coins per block
     } else {
+        return 3600;
     }
-    return 0;
-}
+}else return 0;
 
 bool IsInitialBlockDownload()
 {
@@ -6573,9 +6572,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 //       it was the one which was commented out
 int ActiveProtocol()
 {
-
-	// SPORK_14 will remove early wallet adopters of protocol 70002 where max supply didnt have cap and 
-	// seesaw masternode amount was set to 5k instead of 25k collateral
+    // SPORK_14 will remove early wallet adopters of protocol 70002 where max supply didnt have cap and
+    // seesaw masternode amount was set to 5k instead of 25k collateral
     /*
         if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
             return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
