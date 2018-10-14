@@ -14,7 +14,7 @@
 #include "sendcoinsentry.h"
 #include "walletmodel.h"
 #include "coincontrol.h"
-#include "zxxxcontroldialog.h"
+#include "zccbccontroldialog.h"
 #include "spork.h"
 
 #include <QClipboard>
@@ -281,16 +281,16 @@ void PrivacyDialog::on_pushButtonSpendzCCBC_clicked()
     sendzCCBC();
 }
 
-void PrivacyDialog::on_pushButtonZXxxControl_clicked()
+void PrivacyDialog::on_pushButtonZCcbcControl_clicked()
 {
-    ZXxxControlDialog* zXxxControl = new ZXxxControlDialog(this);
-    zXxxControl->setModel(walletModel);
-    zXxxControl->exec();
+    ZCcbcControlDialog* zCcbcControl = new ZCcbcControlDialog(this);
+    zCcbcControl->setModel(walletModel);
+    zCcbcControl->exec();
 }
 
-void PrivacyDialog::setZXxxControlLabels(int64_t nAmount, int nQuantity)
+void PrivacyDialog::setZCcbcControlLabels(int64_t nAmount, int nQuantity)
 {
-    ui->labelzXxxSelected_int->setText(QString::number(nAmount));
+    ui->labelzCcbcSelected_int->setText(QString::number(nAmount));
     ui->labelQuantitySelected_int->setText(QString::number(nQuantity));
 }
 
@@ -398,8 +398,8 @@ void PrivacyDialog::sendzCCBC()
 
     // use mints from zCcbc selector if applicable
     vector<CZerocoinMint> vMintsSelected;
-    if (!ZXxxControlDialog::listSelectedMints.empty()) {
-        vMintsSelected = ZXxxControlDialog::GetSelectedMints();
+    if (!ZCcbcControlDialog::listSelectedMints.empty()) {
+        vMintsSelected = ZCcbcControlDialog::GetSelectedMints();
     }
 
     // Spend zCCBC
@@ -434,8 +434,8 @@ void PrivacyDialog::sendzCCBC()
         return;
     }
 
-    // Clear zxxx selector in case it was used
-    ZXxxControlDialog::listSelectedMints.clear();
+    // Clear zccbc selector in case it was used
+    ZCcbcControlDialog::listSelectedMints.clear();
 
     // Some statistics for entertainment
     QString strStats = "";

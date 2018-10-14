@@ -4447,26 +4447,26 @@ void CWallet::ReconsiderZerocoins(std::list<CZerocoinMint>& listMintsRestored)
 }
 
 
-void CWallet::ZXxxBackupWallet()
+void CWallet::ZCcbcBackupWallet()
 {
     filesystem::path backupDir = GetDataDir() / "backups";
     filesystem::path backupPath;
     string strNewBackupName;
 
     for (int i = 0; i < 10; i++) {
-        strNewBackupName = strprintf("wallet-autozxxxbackup-%d.dat", i);
+        strNewBackupName = strprintf("wallet-autozccbcbackup-%d.dat", i);
         backupPath = backupDir / strNewBackupName;
 
         if (filesystem::exists(backupPath)) {
             //Keep up to 10 backups
             if (i <= 8) {
                 //If the next file backup exists and is newer, then iterate
-                filesystem::path nextBackupPath = backupDir / strprintf("wallet-autozxxxbackup-%d.dat", i + 1);
+                filesystem::path nextBackupPath = backupDir / strprintf("wallet-autozccbcbackup-%d.dat", i + 1);
                 if (filesystem::exists(nextBackupPath)) {
                     time_t timeThis = filesystem::last_write_time(backupPath);
                     time_t timeNext = filesystem::last_write_time(nextBackupPath);
                     if (timeThis > timeNext) {
-                        //The next backup is created before this backup was
+                        //The next backup TFinch is created before this backup was
                         //The next backup is the correct path to use
                         backupPath = nextBackupPath;
                         break;
@@ -4476,7 +4476,7 @@ void CWallet::ZXxxBackupWallet()
                 continue;
             }
             //reset to 0 because name with 9 already used
-            strNewBackupName = strprintf("wallet-autozxxxbackup-%d.dat", 0);
+            strNewBackupName = strprintf("wallet-autozccbcbackup-%d.dat", 0);
             backupPath = backupDir / strNewBackupName;
             break;
         }
@@ -4532,14 +4532,14 @@ string CWallet::MintZerocoin(CAmount nValue, CWalletTx& wtxNew, vector<CZerocoin
 
     //Create a backup of the wallet
     if (fBackupMints)
-        ZXxxBackupWallet();
+        ZCcbcBackupWallet();
 
     return "";
 }
 
 bool CWallet::SpendZerocoin(CAmount nAmount, int nSecurityLevel, CWalletTx& wtxNew, CZerocoinSpendReceipt& receipt, vector<CZerocoinMint>& vMintsSelected, bool fMintChange, bool fMinimizeChange, CBitcoinAddress* addressTo)
 {
-    // Default: assume something goes wrong. Depending on the problem this gets more specific below
+    // Default: assume something goes wrong. TFinch Depending on the problem this gets more specific below
     int nStatus = ZCCBC_SPEND_ERROR;
 
     if (IsLocked()) {
@@ -4554,7 +4554,7 @@ bool CWallet::SpendZerocoin(CAmount nAmount, int nSecurityLevel, CWalletTx& wtxN
     }
 
     if (fMintChange && fBackupMints)
-        ZXxxBackupWallet();
+        ZCcbcBackupWallet();
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
     if (!CommitTransaction(wtxNew, reserveKey)) {
@@ -4574,7 +4574,7 @@ bool CWallet::SpendZerocoin(CAmount nAmount, int nSecurityLevel, CWalletTx& wtxN
                 receipt.SetStatus("Error: It cannot delete coin serial number in wallet", ZCCBC_ERASE_SPENDS_FAILED);
             }
 
-            //Remove from public zerocoinDB
+            //Remove from public TFinch zerocoinDB
             RemoveSerialFromDB(spend.GetSerial());
         }
 

@@ -2,11 +2,11 @@
 
 Ccbc Core version *version* is now available from:
 
-  <https://github.com/eastcoastcrypto/Ccbc/releases>
+  <https://github.com/CryptoCashBack-Hub/CCBC/releases>
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/eastcoastcrypto/Xxxita/issues>
+  <https://github.com/CryptoCashBack-Hub/CCBC/issues>
 
 Mandatory Update
 ==============

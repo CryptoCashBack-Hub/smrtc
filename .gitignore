@@ -161,3 +161,12 @@ config.status
 .vs/CCBC/v15/ipch/AutoPCH/61ec4997d723899f/PRIVACYDIALOG.ipch
 .vs/CCBC/v15/ipch/AutoPCH/ca6d783b7809f7b3/CLIENTVERSION.ipch
 .vs/CCBC/v15/ipch/AutoPCH/c333b2e447d7c3f9/ZEROCOIN_TRANSACTIONS_TESTS.ipch
+.vs/CCBC/v15/ipch/AutoPCH/39e800a96980bfb0/TRANSACTIONRECORD.ipch
+.vs/CCBC/v15/ipch/AutoPCH/5c45b18c2677adbd/RPCBLOCKCHAIN.ipch
+.vs/CCBC/v15/ipch/AutoPCH/63b13b8b930a30d5/RPCMASTERNODE.ipch
+.vs/CCBC/v15/ipch/AutoPCH/7b8ccf850bb7f73/RPCMINING.ipch
+.vs/CCBC/v15/ipch/AutoPCH/86eb00b0a74bffc8/LOG_TEST.ipch
+.vs/CCBC/v15/ipch/AutoPCH/9fbaf3cb299d0de7/ISSUE178_TEST.ipch
+.vs/CCBC/v15/ipch/AutoPCH/a1ae22289450acd8/SCRYPT.ipch
+.vs/CCBC/v15/ipch/AutoPCH/bac51a75c75f068e/RPCNET.ipch
+.vs/CCBC/v15/ipch/AutoPCH/f4151df30ccf8e05/RPCMASTERNODE-BUDGET.ipch

@@ -474,21 +474,21 @@
                 <number>0</number>
                </property>
                <item>
-                <widget class="QPushButton" name="pushButtonZXxxControl">
+                <widget class="QPushButton" name="pushButtonZCcbcControl">
                  <property name="text">
                   <string>zCcbc Control</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzXxxSelected">
+                <widget class="QLabel" name="labelzCcbcSelected">
                  <property name="text">
                   <string>zCcbc Selected:</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzXxxSelected_int">
+                <widget class="QLabel" name="labelzCcbcSelected_int">
                  <property name="text">
                   <string>0</string>
                  </property>
