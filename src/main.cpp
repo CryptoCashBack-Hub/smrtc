@@ -2187,7 +2187,7 @@ CAmount GetSeeSaw(const CAmount& blockValue, int nMasternodeCount, int nHeight)
     CAmount ret = 0;
     if (mNodeCoins == 0) {
         ret = 0;
-    } else if (nHeight <= 175000) {
+    } else if (nHeight > 175000) {
         if (mNodeCoins <= (nMoneySupply * .05) && mNodeCoins > 0) {
             ret = blockValue * .85;
         } else if (mNodeCoins <= (nMoneySupply * .1) && mNodeCoins > (nMoneySupply * .05)) {
@@ -2437,9 +2437,9 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
         ret = blockValue / 10 * 7.8; //78%
     } else if (nHeight <= 125000 && nHeight > 100000) {
         ret = blockValue / 10 * 8; //80%
-    } else if (nHeight < 150000 && nHeight > 125000) {
+    } else if (nHeight <= 150000 && nHeight > 125000) {
         ret = blockValue / 10 * 8.5; //85%
-    } else if (nHeight > 175000 && nHeight <= 150000) {
+    } else if (nHeight <= 175000 && nHeight > 150000) {
         ret = blockValue / 10 * 9; //90%
     } else {
         return GetSeeSaw(blockValue, nMasternodeCount, nHeight); // Start of seesaw rewards
