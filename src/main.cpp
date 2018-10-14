@@ -2464,25 +2464,26 @@ bool IsTreasuryBlock(int nHeight)
 int64_t GetTreasuryAward(int nHeight)
 {
     if (IsTreasuryBlock(nHeight)) {
-        return 3600 * COIN; //3,600 on very first block
-    } else if (nHeight < 75000 && nHeight > 60000) {
-        return 3600 * COIN; //3,600 aday at 5% 25 coins per block
-    } else if (nHeight < 100000 && nHeight > 75000) {
-        return 6120 * COIN; //6,120 aday at 5% 42.5 coins per block
-    } else if (nHeight < 125000 && nHeight > 100000) {
-        return 5400 * COIN; //5,400 aday at 5% 37.5 coins per block
-    } else if (nHeight < 168000 && nHeight > 125000) {
-        return 3600 * COIN; //3,600 aday at 5% 25 coins per block
-    } else if (nHeight < 297600 && nHeight > 168000) {
-        return 1800 * COIN; //1,800 aday at 5% 12.5 coins per block
-    } else if (nHeight < 556800 && nHeight > 297600) {
-        return 720 * COIN; //720 aday at 5% 5 coins per block
-    } else if (nHeight < 556800) {
-        return 360 * COIN; //720 aday at 5% 2.5 coins per block
-    } else {
-        return 3600;
-	}
-}else return 0;
+        if (nHeight < 75000 && nHeight > 60000) {
+            return 3600 * COIN; //3,600 aday at 5% 25 coins per block
+        } else if (nHeight < 100000 && nHeight > 75000) {
+            return 6120 * COIN; //6,120 aday at 5% 42.5 coins per block
+        } else if (nHeight < 125000 && nHeight > 100000) {
+            return 5400 * COIN; //5,400 aday at 5% 37.5 coins per block
+        } else if (nHeight < 168000 && nHeight > 125000) {
+            return 3600 * COIN; //3,600 aday at 5% 25 coins per block
+        } else if (nHeight < 297600 && nHeight > 168000) {
+            return 1800 * COIN; //1,800 aday at 5% 12.5 coins per block
+        } else if (nHeight < 556800 && nHeight > 297600) {
+            return 720 * COIN; //720 aday at 5% 5 coins per block
+        } else if (nHeight < 556800) {
+            return 360 * COIN; //720 aday at 5% 2.5 coins per block
+        } else {
+            return 3600;
+        }
+    } else
+        return 0;
+}
 
 //Revive blocks start from 60,001 and then each block after
 int nStartReviveBlock = 60001;
@@ -2518,8 +2519,9 @@ int64_t GetReviveAward(int nHeight)
         return 360 * COIN; //720 aday at 5% 2.5 coins per block
     } else {
         return 3600;
-    }
-}else return 0;
+    } else 
+		return 0;
+}
 
 bool IsInitialBlockDownload()
 {
