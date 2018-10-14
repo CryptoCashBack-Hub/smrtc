@@ -87,21 +87,21 @@ enum AvailableCoinsType {
 
 // Possible states for zCCBC send
 enum ZerocoinSpendStatus {
-    ZXXX_SPEND_OKAY = 0,                            // No error
-    ZXXX_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
-    ZXXX_WALLET_LOCKED = 2,                         // Wallet was locked
-    ZXXX_COMMIT_FAILED = 3,                         // Commit failed, reset status
-    ZXXX_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
-    ZXXX_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
-    ZXXX_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
-    ZXXX_TRX_CREATE = 7,                            // Everything related to create the transaction
-    ZXXX_TRX_CHANGE = 8,                            // Everything related to transaction change
-    ZXXX_TXMINT_GENERAL = 9,                        // General errors in MintToTxIn
-    ZXXX_INVALID_COIN = 10,                         // Selected mint coin is not valid
-    ZXXX_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
-    ZXXX_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
-    ZXXX_BAD_SERIALIZATION = 13,                    // Transaction verification failed
-    ZXXX_SPENT_USED_ZXXX = 14                       // Coin has already been spend
+    ZCCBC_SPEND_OKAY = 0,                            // No error
+    ZCCBC_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
+    ZCCBC_WALLET_LOCKED = 2,                         // Wallet was locked
+    ZCCBC_COMMIT_FAILED = 3,                         // Commit failed, reset status
+    ZCCBC_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
+    ZCCBC_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
+    ZCCBC_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
+    ZCCBC_TRX_CREATE = 7,                            // Everything related to create the transaction
+    ZCCBC_TRX_CHANGE = 8,                            // Everything related to transaction change
+    ZCCBC_TXMINT_GENERAL = 9,                        // General errors in MintToTxIn
+    ZCCBC_INVALID_COIN = 10,                         // Selected mint coin is not valid
+    ZCCBC_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
+    ZCCBC_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
+    ZCCBC_BAD_SERIALIZATION = 13,                    // Transaction verification failed
+    ZCCBC_SPENT_USED_ZCCBC = 14                       // Coin has already been spend
 };
 
 struct CompactTallyItem {

@@ -271,7 +271,7 @@ private:
 
     int64_t lastTimeChanged; // last time the 'state' changed, in UTC milliseconds
 
-    unsigned int state; // should be one of the POOL_STATUS_XXX values
+    unsigned int state; // should be one of the POOL_STATUS_CCBC values
     unsigned int entriesCount;
     unsigned int lastEntryAccepted;
     unsigned int countEntriesAccepted;

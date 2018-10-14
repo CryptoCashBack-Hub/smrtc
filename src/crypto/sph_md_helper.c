@@ -31,7 +31,7 @@
  * improperly hashed (this is unlikely to happen soon: 2 Exabytes is about
  * 2 millions Terabytes, which is huge).
  *
- * If CLOSE_ONLY is defined, then this file defines only the sph_XXX_close()
+ * If CLOSE_ONLY is defined, then this file defines only the sph_CCBC_close()
  * function. This is used for Tiger2, which is identical to Tiger except
  * when it comes to the padding (Tiger2 uses the standard 0x80 byte instead
  * of the 0x01 from original Tiger).

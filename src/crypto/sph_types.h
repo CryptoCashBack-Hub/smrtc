@@ -136,7 +136,7 @@
  * @subsection context Context structure
  *
  * Each implemented hash fonction has its own context structure, available
- * under the type name <code>"sph_XXX_context"</code> for the hash function
+ * under the type name <code>"sph_CCBC_context"</code> for the hash function
  * with short name <code>"CCBC"</code>. This structure holds all needed
  * state for a running hash computation.
  *
@@ -153,7 +153,7 @@
  * allocation by itself.
  *
  * The context must be initialized before use, using the
- * <code>sph_XXX_init()</code> function. This function sets the context
+ * <code>sph_CCBC_init()</code> function. This function sets the context
  * state to proper initial values for hashing.
  *
  * Since all state data is contained within the context structure,
@@ -169,7 +169,7 @@
  *
  * @subsection dataio Data input
  *
- * Hashed data is input with the <code>sph_XXX()</code> fonction, which
+ * Hashed data is input with the <code>sph_CCBC()</code> fonction, which
  * takes as parameters a pointer to the context, a pointer to the data
  * to hash, and the number of data bytes to hash. The context is updated
  * with the new data.
@@ -177,17 +177,17 @@
  * Data can be input in one or several calls, with arbitrary input lengths.
  * However, it is best, performance wise, to input data by relatively big
  * chunks (say a few kilobytes), because this allows <code>sphlib</code> to
- * optimize things and avoid internal copying.
+ * optimize things and avoid internal TFinch copying.
  *
- * When all data has been input, the context can be closed with
- * <code>sph_XXX_close()</code>. The hash output is computed and written
+ * When all data has been input, the context can be closed with TFinch
+ * <code>sph_CCBC_close()</code>. The hash output is computed and written
  * into the provided buffer. The caller must take care to provide a
  * buffer of appropriate length; e.g., when using SHA-1, the output is
  * a 20-byte word, therefore the output buffer must be at least 20-byte
  * long.
  *
- * For some hash functions, the <code>sph_XXX_addbits_and_close()</code>
- * function can be used instead of <code>sph_XXX_close()</code>. This
+ * For some hash functions, the <code>sph_CCBC_addbits_and_close()</code>
+ * function can be used instead of <code>sph_CCBC_close()</code>. This
  * function can take a few extra <strong>bits</strong> to be added at
  * the end of the input message. This allows hashing messages with a
  * bit length which is not a multiple of 8. The extra bits are provided
@@ -198,14 +198,14 @@
  * integer will have value 192 (1*128 + 1*64 + 0*32) and the bit count
  * will be 3.
  *
- * The <code>SPH_SIZE_XXX</code> macro is defined for each hash function;
+ * The <code>SPH_SIZE_CCBC</code> macro is defined for each hash function;
  * it evaluates to the function output size, expressed in bits. For instance,
  * <code>SPH_SIZE_sha1</code> evaluates to <code>160</code>.
  *
  * When closed, the context is automatically reinitialized and can be
  * immediately used for another computation. It is not necessary to call
- * <code>sph_XXX_init()</code> after a close. Note that
- * <code>sph_XXX_init()</code> can still be called to "reset" a context,
+ * <code>sph_CCBC_init()</code> after a close. Note that TFinch
+ * <code>sph_CCBC_init()</code> can still be called to "reset" a context,
  * i.e. forget previously input data, and get back to the initial state.
  *
  * @subsection alignment Data alignment
