@@ -67,11 +67,11 @@ QString BitcoinUnits::name(int unit)
     } else {
         switch (unit) {
         case CCBC:
-            return QString("tXXX");
+            return QString("tCCBC");
         case mCCBC:
-            return QString("mtXXX");
+            return QString("mtCCBC");
         case uCCBC:
-            return QString::fromUtf8("μtXXX");
+            return QString::fromUtf8("μtCCBC");
         default:
             return QString("???");
         }
@@ -94,11 +94,11 @@ QString BitcoinUnits::description(int unit)
     } else {
         switch (unit) {
         case CCBC:
-            return QString("TestXXXs");
+            return QString("TestCCBCs");
         case mCCBC:
-            return QString("Milli-TestXXX (1 / 1" THIN_SP_UTF8 "000)");
+            return QString("Milli-TestCCBC (1 / 1" THIN_SP_UTF8 "000)");
         case uCCBC:
-            return QString("Micro-TestXXX (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            return QString("Micro-TestCCBC (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }

@@ -31,13 +31,13 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent),
     ui->setupUi(this);
 
     // "Spending 999999 zCCBC ought to be enough for anybody." - Bill Gates, 2017
-    ui->zXXXpayAmount->setValidator( new QDoubleValidator(0.0, 21000000.0, 20, this) );
+    ui->zCCBCpayAmount->setValidator( new QDoubleValidator(0.0, 21000000.0, 20, this) );
     ui->labelMintAmountValue->setValidator( new QIntValidator(0, 999999, this) );
 
     // Default texts for (mini-) coincontrol
     ui->labelCoinControlQuantity->setText (tr("Coins automatically selected"));
     ui->labelCoinControlAmount->setText (tr("Coins automatically selected"));
-    ui->labelzXXXSyncStatus->setText("(" + tr("out of sync") + ")");
+    ui->labelzCCBCSyncStatus->setText("(" + tr("out of sync") + ")");
 
     // Sunken frame for minting messages
     ui->TEMintStatus->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
@@ -94,11 +94,11 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent),
 
     //temporary disable for maintenance
     if(GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
-        ui->pushButtonMintzXXX->setEnabled(false);
-        ui->pushButtonMintzXXX->setToolTip(tr("zCCBC is currently disabled due to maintenance."));
+        ui->pushButtonMintzCCBC->setEnabled(false);
+        ui->pushButtonMintzCCBC->setToolTip(tr("zCCBC is currently disabled due to maintenance."));
 
-        ui->pushButtonSpendzXXX->setEnabled(false);
-        ui->pushButtonSpendzXXX->setToolTip(tr("zCCBC is currently disabled due to maintenance."));
+        ui->pushButtonSpendzCCBC->setEnabled(false);
+        ui->pushButtonSpendzCCBC->setToolTip(tr("zCCBC is currently disabled due to maintenance."));
     }
 }
 
@@ -137,11 +137,11 @@ void PrivacyDialog::on_addressBookButton_clicked()
     dlg.setModel(walletModel->getAddressTableModel());
     if (dlg.exec()) {
         ui->payTo->setText(dlg.getReturnValue());
-        ui->zXXXpayAmount->setFocus();
+        ui->zCCBCpayAmount->setFocus();
     }
 }
 
-void PrivacyDialog::on_pushButtonMintzXXX_clicked()
+void PrivacyDialog::on_pushButtonMintzCCBC_clicked()
 {
     if (!walletModel || !walletModel->getOptionsModel())
         return;
@@ -253,7 +253,7 @@ void PrivacyDialog::on_pushButtonSpentReset_clicked()
     return;
 }
 
-void PrivacyDialog::on_pushButtonSpendzXXX_clicked()
+void PrivacyDialog::on_pushButtonSpendzCCBC_clicked()
 {
 
     if (!walletModel || !walletModel->getOptionsModel() || !pwalletMain)
@@ -274,11 +274,11 @@ void PrivacyDialog::on_pushButtonSpendzXXX_clicked()
             return;
         }
         // Wallet is unlocked now, sedn zCCBC
-        sendzXXX();
+        sendzCCBC();
         return;
     }
     // Wallet already unlocked or not encrypted at all, send zCCBC
-    sendzXXX();
+    sendzCCBC();
 }
 
 void PrivacyDialog::on_pushButtonZXxxControl_clicked()
@@ -299,7 +299,7 @@ static inline int64_t roundint64(double d)
     return (int64_t)(d > 0 ? d + 0.5 : d - 0.5);
 }
 
-void PrivacyDialog::sendzXXX()
+void PrivacyDialog::sendzCCBC()
 {
     QSettings settings;
 
@@ -317,13 +317,13 @@ void PrivacyDialog::sendzXXX()
     }
 
     // Double is allowed now
-    double dAmount = ui->zXXXpayAmount->text().toDouble();
+    double dAmount = ui->zCCBCpayAmount->text().toDouble();
     CAmount nAmount = roundint64(dAmount* COIN);
 
     // Check amount validity
     if (!MoneyRange(nAmount) || nAmount <= 0.0) {
         QMessageBox::warning(this, tr("Spend Zerocoin"), tr("Invalid Send Amount"), QMessageBox::Ok, QMessageBox::Ok);
-        ui->zXXXpayAmount->setFocus();
+        ui->zCCBCpayAmount->setFocus();
         return;
     }
 
@@ -351,7 +351,7 @@ void PrivacyDialog::sendzXXX()
 
         if (retval != QMessageBox::Yes) {
             // Sending canceled
-            ui->zXXXpayAmount->setFocus();
+            ui->zCCBCpayAmount->setFocus();
             return;
         }
     }
@@ -429,7 +429,7 @@ void PrivacyDialog::sendzXXX()
             QMessageBox::warning(this, tr("Spend Zerocoin"), receipt.GetStatusMessage().c_str(), QMessageBox::Ok, QMessageBox::Ok);
             ui->TEMintStatus->setPlainText(tr("Spend Zerocoin failed with status = ") +QString::number(receipt.GetStatus(), 10) + "\n" + "Message: " + QString::fromStdString(receipt.GetStatusMessage()));
         }
-        ui->zXXXpayAmount->setFocus();
+        ui->zCCBCpayAmount->setFocus();
         ui->TEMintStatus->repaint();
         return;
     }
@@ -472,7 +472,7 @@ void PrivacyDialog::sendzXXX()
     strReturn += strStats;
 
     // Clear amount to avoid double spending when accidentally clicking twice
-    ui->zXXXpayAmount->setText ("0");
+    ui->zCCBCpayAmount->setText ("0");
 
     ui->TEMintStatus->setPlainText(strReturn);
     ui->TEMintStatus->repaint();
@@ -656,7 +656,7 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
 
     ui->labelzAvailableAmount->setText(QString::number(zerocoinBalance/COIN) + QString(" zCCBC "));
     ui->labelzAvailableAmount_2->setText(QString::number(matureZerocoinBalance/COIN) + QString(" zCCBC "));
-    ui->labelzXXXAmountValue->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance - immatureBalance - nLockedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzCCBCAmountValue->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance - immatureBalance - nLockedBalance, false, BitcoinUnits::separatorAlways));
 }
 
 void PrivacyDialog::updateDisplayUnit()
@@ -672,7 +672,7 @@ void PrivacyDialog::updateDisplayUnit()
 
 void PrivacyDialog::showOutOfSyncWarning(bool fShow)
 {
-    ui->labelzXXXSyncStatus->setVisible(fShow);
+    ui->labelzCCBCSyncStatus->setVisible(fShow);
 }
 
 void PrivacyDialog::keyPressEvent(QKeyEvent* event)

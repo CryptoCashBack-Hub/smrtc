@@ -31,7 +31,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
        <item>
-        <widget class="QLabel" name="zXXXLabel">
+        <widget class="QLabel" name="zCCBCLabel">
          <property name="minimumSize">
           <size>
            <width>460</width>
@@ -74,7 +74,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
                <item>
-                <widget class="QLabel" name="labelzXXXActions">
+                <widget class="QLabel" name="labelzCCBCActions">
                  <property name="font">
                   <font>
                    <pointsize>12</pointsize>
@@ -91,7 +91,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzXXXSyncStatus">
+                <widget class="QLabel" name="labelzCCBCSyncStatus">
                  <property name="toolTip">
                   <string>The displayed information may be out of date. Your wallet automatically synchronizes with the CCBC network after a connection is established, but this process has not completed yet.</string>
                  </property>
@@ -137,7 +137,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_4">
                <item>
-                <widget class="QPushButton" name="pushButtonMintzXXX">
+                <widget class="QPushButton" name="pushButtonMintzCCBC">
                  <property name="minimumSize">
                   <size>
                    <width>131</width>
@@ -169,14 +169,14 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzXXX_2">
+                <widget class="QLabel" name="labelzCCBC_2">
                  <property name="text">
                   <string>zCCBC</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzXXXAmountText">
+                <widget class="QLabel" name="labelzCCBCAmountText">
                  <property name="toolTip">
                   <string>Available Balance are coins (CCBC) which are confirmed and not locked or Masternode collaterals.</string>
                  </property>
@@ -189,7 +189,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzXXXAmountValue">
+                <widget class="QLabel" name="labelzCCBCAmountValue">
                  <property name="toolTip">
                   <string>Enter an amount of CCBC to convert to zCcbc</string>
                  </property>
@@ -542,7 +542,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_6">
                <item>
-                <widget class="QPushButton" name="pushButtonSpendzXXX">
+                <widget class="QPushButton" name="pushButtonSpendzCCBC">
                  <property name="minimumSize">
                   <size>
                    <width>131</width>
@@ -558,7 +558,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzXXXBalanceText">
+                <widget class="QLabel" name="labelzCCBCBalanceText">
                  <property name="toolTip">
                   <string>Available (mature and spendable) zCCBC for spending</string>
                  </property>
@@ -784,15 +784,15 @@ zCCBC are mature when they have more than 20 confirmations AND more than 1 mints
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
                  <property name="buddy">
-                  <cstring>zXXXpayAmount</cstring>
+                  <cstring>zCCBCpayAmount</cstring>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="zXXXpayAmount"/>
+                <widget class="QLineEdit" name="zCCBCpayAmount"/>
                </item>
                <item>
-                <widget class="QLabel" name="labelzXXX">
+                <widget class="QLabel" name="labelzCCBC">
                  <property name="minimumSize">
                   <size>
                    <width>55</width>
@@ -886,7 +886,7 @@ zCCBC are mature when they have more than 20 confirmations AND more than 1 mints
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_21">
                <item>
-                <widget class="QLabel" name="labelzXXXStats">
+                <widget class="QLabel" name="labelzCCBCStats">
                  <property name="font">
                   <font>
                    <pointsize>12</pointsize>

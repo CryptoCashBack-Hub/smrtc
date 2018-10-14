@@ -176,7 +176,7 @@
         <translation>Потвърдете шифрирането на портфейла</translation>
     </message>
     <message>
-        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your XXXs from being stolen by malware infecting your computer.</source>
+        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
         <translation>Ccbc сега ще се затвори, за да довърши процеса по шифриране. Запомнете, че шифрирането на вашия портфейл не може напълно да защити вашия Ccbc от това, да бъде откраднат чрез злонамерен софутуер, инфектирал вашия компютър.</translation>
     </message>
     <message>
@@ -3179,11 +3179,11 @@ Please be patient...</source>
         <translation>Автоматично избрани монети</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uXXXs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uXXXs in fee,&lt;br /&gt;while "at least" pays 1000 uXXXs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uCCBCs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uCCBCs in fee,&lt;br /&gt;while "at least" pays 1000 uCCBCs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation>Ако собствената такса е настроена на 1000 uCCBC и превода е само 250 байта, то тогава "за килобайт" само плаща 250 uCCBC входяща такса, &lt;br /&gt;докато "минимална сума" плаща 1000 uCCBC. За транзакции по-големи от килобайт, и двете плащат за килобайт.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uXXXs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uXXXs in fee,&lt;br /&gt;while "total at least" pays 1000 uXXXs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uCCBCs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uCCBCs in fee,&lt;br /&gt;while "total at least" pays 1000 uCCBCs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation>Ако собствената такса е настроена на 1000 uCCBC и превода е само 250 байта, то тогава "за килобайт" само плаща 250 uCCBC входяща такса,&lt;br /&gt; докато "минимална сума" плаща 1000 uCCBC. За транзакции по-големи от килобайт, и двете плащат за килобайт.</translation>
     </message>
     <message>

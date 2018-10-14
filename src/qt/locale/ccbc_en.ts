@@ -221,7 +221,7 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your XXXs from being stolen by malware infecting your computer.</source>
+        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2492,7 +2492,7 @@ If AutoMint is enabled this percentage will settle around the configured AutoMin
     <message>
         <location line="+7"/>
         <location line="+10"/>
-        <source>Unlocked XXXs. These can be used for zCCBC minting.</source>
+        <source>Unlocked CCBCs. These can be used for zCCBC minting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4253,12 +4253,12 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+772"/>
-        <source>If the custom fee is set to 1000 uXXXs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uXXXs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uXXXs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uCCBCs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uCCBCs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uCCBCs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>If the custom fee is set to 1000 uXXXs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uXXXs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uXXXs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uCCBCs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uCCBCs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uCCBCs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

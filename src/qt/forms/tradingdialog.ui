@@ -181,7 +181,7 @@
       <string>Asks</string>
      </property>
     </widget>
-    <widget class="QLabel" name="XXXSupply">
+    <widget class="QLabel" name="CCBCSupply">
      <property name="geometry">
       <rect>
        <x>540</x>
@@ -197,7 +197,7 @@
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="XXXDemand">
+    <widget class="QLabel" name="CCBCDemand">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -432,7 +432,7 @@
     <attribute name="title">
      <string>Buy</string>
     </attribute>
-    <widget class="QPushButton" name="BuyXXX">
+    <widget class="QPushButton" name="BuyCCBC">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1707,7 +1707,7 @@
       <string>CCBC</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="UnitsInputXXX">
+    <widget class="QLineEdit" name="UnitsInputCCBC">
      <property name="geometry">
       <rect>
        <x>310</x>
@@ -1741,7 +1741,7 @@
       </font>
      </property>
     </widget>
-    <widget class="QPushButton" name="SellXXXBTN">
+    <widget class="QPushButton" name="SellCCBCBTN">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1782,7 +1782,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="XXXAvailableLabel">
+       <widget class="QLabel" name="CCBCAvailableLabel">
         <property name="palette">
          <palette>
           <active>
@@ -2213,7 +2213,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="labelXXX">
+       <widget class="QLabel" name="labelCCBC">
         <property name="font">
          <font>
           <weight>75</weight>
@@ -2733,7 +2733,7 @@
       <string>TextLabel</string>
      </property>
     </widget>
-    <widget class="QLabel" name="XXXBalanceLabel">
+    <widget class="QLabel" name="CCBCBalanceLabel">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2784,7 +2784,7 @@
       <string>BTC Balance:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="XXXAvailableLabel_2">
+    <widget class="QLabel" name="CCBCAvailableLabel_2">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2835,7 +2835,7 @@
       <string>CCBC Pending:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="XXXPendingLabel">
+    <widget class="QLabel" name="CCBCPendingLabel">
      <property name="geometry">
       <rect>
        <x>150</x>

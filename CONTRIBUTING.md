@@ -76,7 +76,7 @@ the pull request affects. Valid areas as:
 
 Examples:
 
-    Consensus: Add new opcode for BIP-XXXX OP_CHECKAWESOMESIG
+    Consensus: Add new opcode for BIP-XXXXX OP_CHECKAWESOMESIG
     Net: Automatically create hidden service, listen on Tor
     Qt: Add feed bump button
     Trivial: Fix typo in init.cpp

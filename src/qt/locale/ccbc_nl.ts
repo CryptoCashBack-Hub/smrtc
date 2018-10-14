@@ -176,8 +176,8 @@
         <translation>Bevestig versleuteling van de portemonnee</translation>
     </message>
     <message>
-        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your XXXs from being stolen by malware infecting your computer.</source>
-        <translation>Ccbc zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw XXXs stelen.</translation>
+        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
+        <translation>Ccbc zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw CCBCs stelen.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -3167,12 +3167,12 @@ Wees alsjeblieft geduldig...</translation>
         <translation>Munten automatisch geselecteerd</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uXXXs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uXXXs in fee,&lt;br /&gt;while "at least" pays 1000 uXXXs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uXXXs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uCCBC's in vergoeding,&lt;br /&gt;terwijl "minstens" 1000 uCCBC's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uCCBCs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uCCBCs in fee,&lt;br /&gt;while "at least" pays 1000 uCCBCs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uCCBCs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uCCBC's in vergoeding,&lt;br /&gt;terwijl "minstens" 1000 uCCBC's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uXXXs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uXXXs in fee,&lt;br /&gt;while "total at least" pays 1000 uXXXs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uXXXs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uCCBC's in vergoeding,&lt;br /&gt;terwijl "totaal minstens" 1000 uCCBC's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uCCBCs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uCCBCs in fee,&lt;br /&gt;while "total at least" pays 1000 uCCBCs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Als de aangepaste vergoeding is ingesteld op 1000 uCCBCs en de transactie is slechts 250 bytes, dan betaalt per kilobyte alleen 250 uCCBC's in vergoeding,&lt;br /&gt;terwijl "totaal minstens" 1000 uCCBC's betaalt. Voor transacties die groter zijn dan een kilobyte, betalen beiden per kilobyte.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Ccbc transactions than the network can process.</source>

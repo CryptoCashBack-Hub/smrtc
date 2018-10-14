@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ZXXXCONTROLDIALOG_H
-#define ZXXXCONTROLDIALOG_H
+#ifndef ZCCBCCONTROLDIALOG_H
+#define ZCCBCCONTROLDIALOG_H
 
 #include <QDialog>
 #include <QTreeWidgetItem>
@@ -53,4 +53,4 @@ private slots:
     void ButtonAllClicked();
 };
 
-#endif // ZXXXCONTROLDIALOG_H
+#endif // ZCCBCCONTROLDIALOG_H

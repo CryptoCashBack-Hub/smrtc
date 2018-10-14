@@ -176,7 +176,7 @@
         <translation>Bekræft, og tegnebogen krypteres.</translation>
     </message>
     <message>
-        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your XXXs from being stolen by malware infecting your computer.</source>
+        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
         <translation>Ccbc vil lukke ned for at færdiggøre kryptograferingsprocesserne. Husk at kryptering alene ikke sikrer mod tyveri af mønterne fra malware eller virus på computeren.</translation>
     </message>
     <message>
@@ -2741,12 +2741,12 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Bekræftelsestid</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uXXXs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uXXXs in fee,&lt;br /&gt;while "at least" pays 1000 uXXXs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Hvis den brugerfastsatte gebyrbetaling er sat til 1000 uXXXs og transaktionen kun fylder 250 bytes, så vil "pr. kilobyte" kun udbetale 250 uCCBC i gebyr, &lt;br /&gt; mens "mindst" udbetaler 1000 uXXXs. For transaktioner større end en kilobyte betales i begge tilfælde i forhold til antallet af kilobytes </translation>
+        <source>If the custom fee is set to 1000 uCCBCs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uCCBCs in fee,&lt;br /&gt;while "at least" pays 1000 uCCBCs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Hvis den brugerfastsatte gebyrbetaling er sat til 1000 uCCBCs og transaktionen kun fylder 250 bytes, så vil "pr. kilobyte" kun udbetale 250 uCCBC i gebyr, &lt;br /&gt; mens "mindst" udbetaler 1000 uCCBCs. For transaktioner større end en kilobyte betales i begge tilfælde i forhold til antallet af kilobytes </translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uXXXs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uXXXs in fee,&lt;br /&gt;while "total at least" pays 1000 uXXXs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Hvis den brugerfastsatte gebyrbetaling er sat til 1000 uXXXs og transaktionen kun fylder 250 bytes, så vil "pr. kilobyte" kun udbetale 250 uCCBC i gebyr, &lt;br /&gt; mens "Total-mindst" udbetaler 1000 uXXXs. For transaktioner større end en kilobyte betales i begge tilfælde i forhold til antallet af kilobytes </translation>
+        <source>If the custom fee is set to 1000 uCCBCs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uCCBCs in fee,&lt;br /&gt;while "total at least" pays 1000 uCCBCs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Hvis den brugerfastsatte gebyrbetaling er sat til 1000 uCCBCs og transaktionen kun fylder 250 bytes, så vil "pr. kilobyte" kun udbetale 250 uCCBC i gebyr, &lt;br /&gt; mens "Total-mindst" udbetaler 1000 uCCBCs. For transaktioner større end en kilobyte betales i begge tilfælde i forhold til antallet af kilobytes </translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Ccbc transactions than the network can process.</source>
@@ -3718,7 +3718,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
     </message>
     <message>
         <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 CCBC.</source>
-        <translation>SwiftTx understøtter ikke afsendelse af så store beløb endnu. Transaktioner er for tiden begrænsede til %1XXX.</translation>
+        <translation>SwiftTx understøtter ikke afsendelse af så store beløb endnu. Transaktioner er for tiden begrænsede til %1CCBC.</translation>
     </message>
 </context>
 <context>
