@@ -55,6 +55,12 @@
 #include <QTimer>
 #include <QToolBar>
 #include <QVBoxLayout>
+#include <QNetworkAccessManager>
+#include <QUrl>
+#include <QBuffer>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QDesktopServices>
 
 #if QT_VERSION < 0x050000
 #include <QTextDocument>
@@ -543,45 +549,7 @@ void BitcoinGUI::createMenuBar()
 }
 
 
-void BitcoinGUI::createToolBars()
-{
-    if (walletFrame) {
-        QToolBar* toolbar = new QToolBar(tr("Tabs toolbar"));
-        toolbar->setObjectName("Main-Toolbar"); // Name for CSS addressing
-        toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-        //        // Add some empty space at the top of the toolbars
-        //        QAction* spacer = new QAction(this);
-        //        toolbar->addAction(spacer);
-        //        toolbar->widgetForAction(spacer)->setObjectName("ToolbarSpacer");
-        toolbar->addAction(overviewAction);
-        toolbar->addAction(sendCoinsAction);
-        toolbar->addAction(receiveCoinsAction);
-        toolbar->addAction(historyAction);
-		toolbar->addAction(privacyAction);
-        QSettings settings;
-        if (settings.value("fShowMasternodesTab").toBool()) {
-            toolbar->addAction(masternodeAction);
-		}
-		toolbar->setMovable(false); // remove unused icon in upper left corner
-        toolbar->setOrientation(Qt::Vertical);
-        toolbar->setIconSize(QSize(40, 40));
-		overviewAction->setChecked(true);
-
-		/** Create additional container for toolbar and walletFrame and make it the central widget.
-		This is a workaround mostly for toolbar styling on Mac OS but should work fine for every other OSes too.
-		*/
-		QVBoxLayout* layout = new QVBoxLayout;
-		layout->addWidget(toolbar);
-		layout->addWidget(walletFrame);
-		layout->setSpacing(0);
-		layout->setContentsMargins(QMargins());
-        layout->setDirection(QBoxLayout::LeftToRight);
-		QWidget* containerWidget = new QWidget();
-		containerWidget->setLayout(layout);
-		setCentralWidget(containerWidget);
-	}
-}
-
+sorry for the bothering though but i know how it goes when people use your code and dont give credit
 void BitcoinGUI::setClientModel(ClientModel* clientModel)
 {
 	this->clientModel = clientModel;
