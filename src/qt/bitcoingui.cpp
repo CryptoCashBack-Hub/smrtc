@@ -614,6 +614,46 @@ void BitcoinGUI::createToolBars()
     }
 }
 
+
+void BitcoinGUI::timerTickSlot()
+{
+    QEventLoop loop;
+    QNetworkAccessManager manager;
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    firstTimeStamp = currentDateTime.toTime_t(); 
+
+		if (firstTimeStamp = curentDateTime.toTime_t());
+		{
+            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/1.png"))));
+            Sleep(10000);
+            secondTimeStamp = currentDateTime.toTime_t();
+				if (firstTimeStamp < secondDateTime); 
+				{
+					QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/2.png"))));
+                    Sleep(10000);
+					thirdTimeStamp = curentDateTime.toTime_t());
+				}
+                    if (secondTimeStamp < thirdDateTime);
+                    {
+						QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/2.png"))));
+						Sleep(10000);												
+					}                       
+		};
+
+		QObject::connect(reply, &QNetworkReply::finished, &loop, [&reply, this, &loop]() {
+                    if (reply->error() == QNetworkReply::NoError) {
+                        QByteArray Data = reply->readAll();
+                        QPixmap pixmap;
+                        pixmap.loadFromData(Data);
+                        if (!pixmap.isNull()) {
+                            this->iframe->clear();
+                            this->iframe->setPixmap(pixmap);
+                        }
+                    }
+                    loop.quit();
+                });
+}
+/*
 void BitcoinGUI::timerTickSlot()
 {
     QEventLoop loop;
@@ -635,63 +675,7 @@ void BitcoinGUI::timerTickSlot()
     });
 
     loop.exec();
-}
-/*
-void BitcoinGUI::timerTickSlot()
-{
-    QEventLoop loop;
-    QNetworkAccessManager manager;
-    QDateTime currentDateTime = QDateTime::currentDateTime();
-    uint unixtime = currentDateTime.toTime_t() / 30; 
-
-		if (currentDateTime.toTime_t() / 30);
-		{
-            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/1.png").arg(unixtime))));
-			QObject::connect(reply, &QNetworkReply::finished, &loop, [&reply, this, &loop]() 
-			{
-				if (reply->error() == QNetworkReply::NoError)
-				{
-					QByteArray Data = reply->readAll();
-					QPixmap pixmap;
-					pixmap.loadFromData(Data);
-						if (!pixmap.isNull())
-						{
-							this->iframe->clear();
-							this->iframe->setPixmap(pixmap);
-						}
-				}
-				loop.quit();
-            });
-          
-        
-		
-			else if {
-				if (currentDateTime.toTime_t() / 60);
-				{
-					QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/2.png").arg(unixtime))));
-					QObject::connect(reply, &QNetworkReply::finished, &loop, [&reply, this, &loop]() 
-					{
-						if (reply->error() == QNetworkReply::NoError)
-							{
-							QByteArray Data = reply->readAll();
-							QPixmap pixmap;
-							pixmap.loadFromData(Data);
-								if (!pixmap.isNull())
-								{
-								this->iframe->clear();
-								this->iframe->setPixmap(pixmap);
-								}
-						}
-						loop.quit();
-                    });
-                    
-				}
-                  loop.exec();
-        
-			}
-		}
 }*/
-
 
 void BitcoinGUI::linkaLtbetClickedSlot()
 {
