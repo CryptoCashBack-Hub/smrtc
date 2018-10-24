@@ -625,18 +625,15 @@ void BitcoinGUI::timerTickSlot()
 		if (firstTimeStamp = curentDateTime.toTime_t());
 		{
             QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/1.png"))));
-            Sleep(10000);
             secondTimeStamp = currentDateTime.toTime_t();
 				if (firstTimeStamp < secondDateTime); 
 				{
 					QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/2.png"))));
-                    Sleep(10000);
-					thirdTimeStamp = curentDateTime.toTime_t());
+                    thirdTimeStamp = curentDateTime.toTime_t());
 				}
                     if (secondTimeStamp < thirdDateTime);
                     {
-						QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/2.png"))));
-						Sleep(10000);												
+						QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/3.png"))));												
 					}                       
 		};
 
