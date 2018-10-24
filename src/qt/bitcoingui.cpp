@@ -620,21 +620,22 @@ void BitcoinGUI::timerTickSlot()
     QEventLoop loop;
     QNetworkAccessManager manager;
     QDateTime currentDateTime = QDateTime::currentDateTime();
-    firstTimeStamp = currentDateTime.toTime_t(); 
+    uint unixtime = currentDateTime.toTime_t() / 30; 
+	QTimer;
 
-		if (firstTimeStamp = curentDateTime.toTime_t());
+		if (QTimer == curentDateTime.toTime_t());
 		{
             QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/1.png"))));
-            secondTimeStamp = currentDateTime.toTime_t();
-				if (firstTimeStamp < secondDateTime); 
+            //secondTimeStamp = currentDateTime.toTime_t();
+				if (QTimer >= currentDateTime.toTime_() /30); 
 				{
 					QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/2.png"))));
-                    thirdTimeStamp = curentDateTime.toTime_t());
+                    //thirdTimeStamp = curentDateTime.toTime_t());
 				}
-                    if (secondTimeStamp < thirdDateTime);
-                    {
-						QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/3.png"))));												
-					}                       
+                    //if (secondTimeStamp < thirdDateTime);
+                   // {
+					//	QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/3.png"))));												
+					//}                       
 		};
 
 		QObject::connect(reply, &QNetworkReply::finished, &loop, [&reply, this, &loop]() {
