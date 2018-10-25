@@ -621,9 +621,9 @@ void BitcoinGUI::timerTickSlot()
     QNetworkAccessManager manager;
     QDateTime currentDateTime = QDateTime::currentDateTime();
     uint unixtime = currentDateTime.toTime_t() / 30; 
-	QTimer;
+	QTimer = currentDateTime.toTime_t();
 
-		if (QTimer == curentDateTime.toTime_t());
+		if (QTimer == uint unixtime);
 		{
             QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/1.png"))));
             //secondTimeStamp = currentDateTime.toTime_t();
