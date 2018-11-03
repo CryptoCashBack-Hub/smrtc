@@ -1,5 +1,5 @@
 ---
-name: "ccbc-linux-1.0.0.1"
+name: "ccbc-linux-1.0.0.5"
 enable_cache: true
 suites:
 - "trusty"
@@ -29,7 +29,7 @@ packages:
 - "python"
 reference_datetime: "2015-06-01 00:00:00"
 remotes:
-- "url": "https://github.com/SMRT2/ccbc"
+- "url": "https://github.com/CryptoCashBack-Hub/ccbc"
   "dir": "ccbc"
 files: []
 script: |

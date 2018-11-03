@@ -1,5 +1,5 @@
 ---
-name: "ccbc-osx-1.0.0.1"
+name: "ccbc-osx-1.0.0.5"
 enable_cache: true
 suites:
 - "trusty"
@@ -28,7 +28,7 @@ packages:
 - "python-setuptools"
 - "fonts-tuffy"
 remotes:
-- "url": "https://github.com/SMRT2/ccbc"
+- "url": "https://github.com/CryptoCashBack-Hub/ccbc"
   "dir": "ccbc"
 files:
 - "MacOSX10.11.sdk.tar.gz"
