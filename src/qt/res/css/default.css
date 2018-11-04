@@ -902,7 +902,8 @@ padding-right:5px;
 /**************************** OVERVIEW SCREEN *******************************************/
 
 QWidget .QFrame#frame { /* Wallet Balance */
-min-width:490px;
+    min-width: 490px;
+    background: url("https://github.com/CryptoCashBack-Hub/CCBC_Guides/blob/master/WalletBackground/Live/walletFrame_bg.png");
 }
 
 QWidget .QFrame#frame > .QLabel {
@@ -1242,13 +1243,14 @@ QWidget .QFrame#frame_3 .QLabel#labelTotalz { /* Available total Balance */
 /**************************** RECENT TRANSACTIONS ***************************************/
 
 QWidget .QFrame#frame_2 { /* Transactions Widget */
-min-width:410px;
-min-height:100px;
-margin-right:20px;
-margin-left:0;
-margin-top:0;
-background-image: url(':/images/walletFrame.png');
-background-repeat:none;
+    min-width: 410px;
+    min-height: 100px;
+    margin-right: 20px;
+    margin-left: 0;
+    margin-top: 0;
+    background: url("https://github.com/CryptoCashBack-Hub/CCBC_Guides/blob/master/WalletBackground/Live/walletFrame.png");
+    /*background-image: url(':/images/walletFrame.png');*/
+    background-repeat: none;
 }
 
     QWidget .QFrame#frame_2 .QLabel#label_4 { /* Recent Transactions Label */
