@@ -2,12 +2,10 @@
 /*************** [COLOR CODES] Blue:#fab43b  ORANGE:#fab43b *****************************/
 /****************************************************************************************/
 
-body {
-    background: url(https://raw.githubusercontent.com/CryptoCashBack-Hub/CCBC_Guides/master/WalletBackground/Live/walletFrame.png) no-repeat 0 0;
-}
 
 WalletFrame {
     /*border-image: url(':/images/walletFrame_bg') 0 0 0 0 stretch stretch;*/
+    background: url(https://raw.githubusercontent.com/CryptoCashBack-Hub/CCBC_Guides/master/WalletBackground/Live/walletFrame.png) no-repeat 0 0;
     border-top: 0px solid #000;
     margin: 0;
     padding: 0;
