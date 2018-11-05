@@ -66,7 +66,7 @@
         <file alias="leftArrow_small">res/images/leftArrow_small.png</file>
         <file alias="rightArrow_small">res/images/rightArrow_small.png</file>
         <file alias="qtreeview_selected">res/images/qtreeview_selected.png</file>
-        <url alias="walletFrame_bg">https://raw.githubusercontent.com/CryptoCashBack-Hub/CCBC_Guides/master/WalletBackground/Live/walletFrame_bg.png</url>
+        <uri alias="walletFrame_bg">https://raw.githubusercontent.com/CryptoCashBack-Hub/CCBC_Guides/master/WalletBackground/Live/walletFrame_bg.png</uri>
         <file alias="walletFrame">res/images/walletFrame.png</file>
         <file alias="splash">res/images/splash.png</file>
         <file alias="splash_testnet">res/images/splash_testnet.png</file>
