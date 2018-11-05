@@ -4,11 +4,14 @@
 
 
 WalletFrame {
-    /*border-image: url(':/images/walletFrame_bg') 0 0 0 0 stretch stretch;*/
+    /*border-image: url(':/images/walletFrame_bg') 0 0 0 0 stretch stretch;
     background: url(https://raw.githubusercontent.com/CryptoCashBack-Hub/CCBC_Guides/master/WalletBackground/Live/walletFrame.png) no-repeat 0 0;
     border-top: 0px solid #000;
     margin: 0;
-    padding: 0;
+    padding: 0;*/
+    padding: 77px 0px;
+    background: url(https://raw.githubusercontent.com/CryptoCashBack-Hub/CCBC_Guides/master/WalletBackground/Live/walletFrame.png) no-repeat scroll right bottom, url(https://raw.githubusercontent.com/CryptoCashBack-Hub/CCBC_Guides/master/WalletBackground/Live/walletFrame.png) 2000px bottom #a4cb5a !important;
+    background-size: contain;
 }
 
 QStatusBar {
