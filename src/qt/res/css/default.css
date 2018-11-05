@@ -4,14 +4,10 @@
 
 
 WalletFrame {
-    /*border-image: url(':/images/walletFrame_bg') 0 0 0 0 stretch stretch;
-    background: url(https://raw.githubusercontent.com/CryptoCashBack-Hub/CCBC_Guides/master/WalletBackground/Live/walletFrame.png) no-repeat 0 0;
+    border-image: url(https://webassets.ssisurveys.com/savewithsurveys/panel/banners/Dash_mob_resp_med.png) 0 0 0 0 stretch stretch;
     border-top: 0px solid #000;
     margin: 0;
-    padding: 0;*/
-    padding: 77px 0px;
-    background: url(https://webassets.ssisurveys.com/savewithsurveys/panel/banners/Dash_mob_resp_med.png) no-repeat scroll right bottom, url(https://webassets.ssisurveys.com/savewithsurveys/panel/spot_art/green_top_bar.png) 2000px bottom !important;
-    background-size: contain;
+    padding: 0;
 }
 
 QStatusBar {
