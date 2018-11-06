@@ -56,7 +56,7 @@
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_7">
              <item>
-              <widget class="QPushButton" name="pushButton_9">
+              <widget class="QPushButton" name="pushButton_2">
                <property name="text">
                 <string/>
                </property>
@@ -67,7 +67,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_10">
+              <widget class="QPushButton" name="pushButton_3">
                <property name="text">
                 <string/>
                </property>
@@ -78,7 +78,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_11">
+              <widget class="QPushButton" name="pushButton_4">
                <property name="text">
                 <string/>
                </property>
@@ -89,7 +89,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_12">
+              <widget class="QPushButton" name="pushButton">
                <property name="text">
                 <string/>
                </property>

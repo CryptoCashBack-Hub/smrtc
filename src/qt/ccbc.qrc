@@ -56,7 +56,7 @@
         <file alias="twitter">res/icons/twitter.png</file>
         <file alias="telegram">res/icons/telegram.png</file>
         <file alias="discord">res/icons/discord.png</file>
-        <file alias="sitelogo">res/icons/logo_small.png</file>
+        <file alias="sitelogo">res/icons/sitelogo.png</file>
     </qresource>
     <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>
