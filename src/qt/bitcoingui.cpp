@@ -1,9 +1,3 @@
-// Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
-// Distributed under the MIT/X11 software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "bitcoingui.h"
 
 #include "bitcoinunits.h"
@@ -496,7 +490,6 @@ void BitcoinGUI::createMenuBar()
 #endif
 
     // Configure the menus
-	//This is what makes the drop down menu bar
     QMenu* file = appMenuBar->addMenu(tr("&File"));
     if (walletFrame) {
         file->addAction(openAction);
@@ -572,7 +565,6 @@ void BitcoinGUI::createToolBars()
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
         toolbar->addAction(privacyAction);
-
         QSettings settings;
         if (settings.value("fShowMasternodesTab").toBool()) {
             toolbar->addAction(masternodeAction);
@@ -615,56 +607,6 @@ void BitcoinGUI::createToolBars()
         setCentralWidget(containerWidget);
     }
 }
-/*
-void BitcoinGUI::timerTickSlot()
-{
-    QEventLoop loop;
-    QNetworkAccessManager manager;
-    QDateTime currentDateTime = QDateTime::currentDateTime();
-    uint unixtime = currentDateTime.toTime_t() / 30;
-	    //Variable need to be up top so the do not redeclare every call
-    uint NextrunTimer;
-    int AdvertBanner;
-    //Our current time is greater than the last time we did our last run
-    if (unixtime >= NextrunTimer) {
-        //Switch Banner from 1-7 if we don't find one default to one
-        switch (AdvertBanner) {
-        case 1:
-            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/1.png"))));
-            AdvertBanner++;
-            break;
-        case 2:
-            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/2.png"))));
-            AdvertBanner++;
-            break;
-        case 3:
-            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/3.png"))));
-            AdvertBanner++;
-            break;
-        case 4:
-            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/4.png"))));
-            AdvertBanner++;
-            break;
-        case 5:
-            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/5.png"))));
-            AdvertBanner++;
-            break;
-        case 6:
-            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/6.png"))));
-            AdvertBanner++;
-            break;
-        default:
-            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/1.png"))));
-            AdvertBanner = 1;
-        }
-        //Declare our next run time with the current timestamp + Interval for the nex Run
-        NextrunTimer = unixtime + timeInterval;
-    }
-
-}
-*/
-
-
 
 
 void BitcoinGUI::timerTickSlot()
@@ -700,7 +642,6 @@ void BitcoinGUI::linkClickedSlot()
     uint unixtime = currentDateTime.toTime_t() / 30;
     QDesktopServices::openUrl(QUrl(QString("https://altbet.io/go/%1").arg(unixtime)));
 }
-
 
 void BitcoinGUI::setClientModel(ClientModel* clientModel)
 {
@@ -1137,7 +1078,7 @@ void BitcoinGUI::setNumBlocks(int count)
 void BitcoinGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret)
 {
     QString strTitle = tr("CCBC Core"); // default title
-                                       // Default to information icon
+                                        // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
 
