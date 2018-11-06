@@ -598,7 +598,6 @@ void BitcoinGUI::createToolBars()
 
         webtimer->start();
 
-		emit Background();
         emit timerTickSlot();
 
         /** Create additional container for toolbar and walletFrame and make it the central widget.
