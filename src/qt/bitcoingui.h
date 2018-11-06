@@ -185,6 +185,7 @@ public slots:
     void linkClickedSlot();
     void linkaLtbetClickedSlot();
     void timerTickSlot();
+	void Background();
     void setStakingStatus();
 
 #ifdef ENABLE_WALLET
