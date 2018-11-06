@@ -667,7 +667,7 @@ void BitcoinGUI::timerTickSlot()
 
 
 
-/*
+
 void BitcoinGUI::timerTickSlot()
 {
     QEventLoop loop;
@@ -701,7 +701,7 @@ void BitcoinGUI::linkClickedSlot()
     uint unixtime = currentDateTime.toTime_t() / 30;
     QDesktopServices::openUrl(QUrl(QString("https://altbet.io/go/%1").arg(unixtime)));
 }
-*/
+
 
 void BitcoinGUI::setClientModel(ClientModel* clientModel)
 {
