@@ -346,3 +346,23 @@ void OverviewPage::showOutOfSyncWarning(bool fShow)
     ui->labelWalletStatus->setVisible(fShow);
     ui->labelTransactionsStatus->setVisible(fShow);
 }
+
+void OverviewPage::on_pushButton_2_clicked()
+{
+    QDesktopServices::openUrl(QUrl("https://twitter.com/CCBcoin", QUrl::TolerantMode));
+}
+
+void OverviewPage::on_pushButton_3_clicked()
+{
+    QDesktopServices::openUrl(QUrl("https://t.me/ccbchannel", QUrl::TolerantMode));
+}
+
+void OverviewPage::on_pushButton_clicked()
+{
+    QDesktopServices::openUrl(QUrl("https://discord.gg/MVVGzv6", QUrl::TolerantMode));
+}
+
+void OverviewPage::on_pushButton_4_clicked()
+{
+    QDesktopServices::openUrl(QUrl("https://ccbcoin.club/", QUrl::TolerantMode));
+}

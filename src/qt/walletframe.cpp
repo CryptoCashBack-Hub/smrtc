@@ -27,10 +27,6 @@ WalletFrame::WalletFrame(BitcoinGUI* _gui) : QFrame(_gui),
     walletStack->addWidget(noWallet);
 }
 
-WalletFrame::~WalletFrame()
-{
-}
-
 void WalletFrame::setClientModel(ClientModel* clientModel)
 {
     this->clientModel = clientModel;

@@ -592,7 +592,6 @@ void BitcoinGUI::createToolBars()
         QTimer* webtimer = new QTimer();
         webtimer->setInterval(30000);
 
-		QObject::connect(webtimer, SIGNAL(timeout()), this, SLOT(Background()));
         QObject::connect(webtimer, SIGNAL(timeout()), this, SLOT(timerTickSlot()));
         QObject::connect(iframe, SIGNAL(onClick()), this, SLOT(linkClickedSlot()));
 
@@ -617,32 +616,58 @@ void BitcoinGUI::createToolBars()
         setCentralWidget(containerWidget);
     }
 }
-
-void BitcoinGUI::Background()
+/*
+void BitcoinGUI::timerTickSlot()
 {
-	QEventLoop loop;
-	QNetworkAccessManager manager;
-	QDateTime currentDateTime = QDateTime::currentDateTime();
-	uint unixtime = currentDateTime.toTime_t() / 30;
-	QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://raw.githubusercontent.com/CryptoCashBack-Hub/CCBC_Guides/master/WalletBackground/Live/walletFrame.png").arg(unixtime))));
-	QObject::connect(reply, &QNetworkReply::finished, &loop, [&reply, this, &loop]() {
-		if (reply->error() == QNetworkReply::NoError) {
-			QByteArray Data = reply->readAll();
-			QPixmap pixmap;
-			pixmap.loadFromData(Data);
-			if (!pixmap.isNull()) {
-				this->iframe->clear();
-				this->iframe->setPixmap(pixmap);
-			}
-		}
-		loop.quit();
-	});
-
-	loop.exec();
+    QEventLoop loop;
+    QNetworkAccessManager manager;
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    uint unixtime = currentDateTime.toTime_t() / 30;
+	    //Variable need to be up top so the do not redeclare every call
+    uint NextrunTimer;
+    int AdvertBanner;
+    //Our current time is greater than the last time we did our last run
+    if (unixtime >= NextrunTimer) {
+        //Switch Banner from 1-7 if we don't find one default to one
+        switch (AdvertBanner) {
+        case 1:
+            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/1.png"))));
+            AdvertBanner++;
+            break;
+        case 2:
+            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/2.png"))));
+            AdvertBanner++;
+            break;
+        case 3:
+            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/3.png"))));
+            AdvertBanner++;
+            break;
+        case 4:
+            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/4.png"))));
+            AdvertBanner++;
+            break;
+        case 5:
+            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/5.png"))));
+            AdvertBanner++;
+            break;
+        case 6:
+            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/6.png"))));
+            AdvertBanner++;
+            break;
+        default:
+            QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://conciergecoin.net/ads/1.png"))));
+            AdvertBanner = 1;
+        }
+        //Declare our next run time with the current timestamp + Interval for the nex Run
+        NextrunTimer = unixtime + timeInterval;
+    }
 
 }
+*/
 
 
+
+/*
 void BitcoinGUI::timerTickSlot()
 {
     QEventLoop loop;
@@ -676,6 +701,7 @@ void BitcoinGUI::linkClickedSlot()
     uint unixtime = currentDateTime.toTime_t() / 30;
     QDesktopServices::openUrl(QUrl(QString("https://altbet.io/go/%1").arg(unixtime)));
 }
+*/
 
 void BitcoinGUI::setClientModel(ClientModel* clientModel)
 {

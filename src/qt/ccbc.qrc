@@ -53,6 +53,10 @@
         <file alias="browse">res/icons/browse.png</file>
         <file alias="staking_active">res/icons/staking_active.png</file>
         <file alias="staking_inactive">res/icons/staking_inactive.png</file>
+        <file alias="twitter">res/icons/twitter.png</file>
+        <file alias="telegram">res/icons/telegram.png</file>
+        <file alias="discord">res/icons/discord.png</file>
+        <file alias="sitelogo">res/icons/logo_small.png</file>
     </qresource>
     <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>
@@ -71,9 +75,6 @@
         <file alias="splash">res/images/splash.png</file>
         <file alias="splash_testnet">res/images/splash_testnet.png</file>
     </qresource>
-  <qresource prefix="https://github.com/CryptoCashBack-Hub/CCBC_Guides/tree/master/WalletBackground/Live">
-    <file alias="background">WalletBackground/Live/walletFrame_bg.png</file>
-  </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/spinner-000.png</file>
         <file alias="spinner-001">res/movies/spinner-001.png</file>

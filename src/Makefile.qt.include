@@ -325,7 +325,10 @@ RES_IMAGES = \
   qt/res/images/qtreeview_selected.png \
   qt/res/images/walletFrame.png \
   qt/res/images/walletFrame_bg.png \
-  qt/WalletBackground/Live/walletFrame_bg.png
+  qt/res/icons/browse.png \
+  qt/res/icons/discord.png \
+  qt/res/icons/twitter.png \
+  qt/res/icons/telegram.png 
 
 RES_CSS = \
   qt/res/css/default.css
