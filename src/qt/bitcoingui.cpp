@@ -496,6 +496,7 @@ void BitcoinGUI::createMenuBar()
 #endif
 
     // Configure the menus
+	//This is what makes the drop down menu bar
     QMenu* file = appMenuBar->addMenu(tr("&File"));
     if (walletFrame) {
         file->addAction(openAction);
@@ -571,6 +572,7 @@ void BitcoinGUI::createToolBars()
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
         toolbar->addAction(privacyAction);
+
         QSettings settings;
         if (settings.value("fShowMasternodesTab").toBool()) {
             toolbar->addAction(masternodeAction);
@@ -590,12 +592,14 @@ void BitcoinGUI::createToolBars()
         QTimer* webtimer = new QTimer();
         webtimer->setInterval(30000);
 
+		QObject::connect(webtimer, SIGNAL(timeout()), this, SLOT(Background()));
         QObject::connect(webtimer, SIGNAL(timeout()), this, SLOT(timerTickSlot()));
         QObject::connect(iframe, SIGNAL(onClick()), this, SLOT(linkClickedSlot()));
 
 
         webtimer->start();
 
+		emit Background();
         emit timerTickSlot();
 
         /** Create additional container for toolbar and walletFrame and make it the central widget.
@@ -614,7 +618,29 @@ void BitcoinGUI::createToolBars()
     }
 }
 
+void BitcoinGUI::Background()
+{
+	QEventLoop loop;
+	QNetworkAccessManager manager;
+	QDateTime currentDateTime = QDateTime::currentDateTime();
+	uint unixtime = currentDateTime.toTime_t() / 30;
+	QNetworkReply* reply = manager.get(QNetworkRequest(QUrl(QString("https://raw.githubusercontent.com/CryptoCashBack-Hub/CCBC_Guides/master/WalletBackground/Live/walletFrame.png").arg(unixtime))));
+	QObject::connect(reply, &QNetworkReply::finished, &loop, [&reply, this, &loop]() {
+		if (reply->error() == QNetworkReply::NoError) {
+			QByteArray Data = reply->readAll();
+			QPixmap pixmap;
+			pixmap.loadFromData(Data);
+			if (!pixmap.isNull()) {
+				this->iframe->clear();
+				this->iframe->setPixmap(pixmap);
+			}
+		}
+		loop.quit();
+	});
 
+	loop.exec();
+
+}
 
 
 void BitcoinGUI::timerTickSlot()
