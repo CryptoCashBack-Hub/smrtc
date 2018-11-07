@@ -61,7 +61,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="../../../../../posq/midas_coin/src/qt/midas.qrc">
+                <iconset resource="../ccbc.qrc">
                  <normaloff>:/icons/twitter</normaloff>:/icons/twitter</iconset>
                </property>
               </widget>
@@ -72,7 +72,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="../../../../../posq/midas_coin/src/qt/midas.qrc">
+                <iconset resource="../ccbc.qrc">
                  <normaloff>:/icons/telegram</normaloff>:/icons/telegram</iconset>
                </property>
               </widget>
@@ -83,7 +83,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="../../../../../posq/midas_coin/src/qt/midas.qrc">
+                <iconset resource="../ccbc.qrc">
                  <normaloff>:/icons/sitelogo</normaloff>:/icons/sitelogo</iconset>
                </property>
               </widget>
@@ -94,7 +94,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="../../../../../posq/midas_coin/src/qt/midas.qrc">
+                <iconset resource="../ccbc.qrc">
                  <normaloff>:/icons/discord</normaloff>:/icons/discord</iconset>
                </property>
               </widget>
