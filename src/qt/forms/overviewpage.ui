@@ -37,10 +37,10 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
+    <layout class="QGridLayout" name="gridLayout_6">
+     <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
         <widget class="QFrame" name="frame">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -408,7 +408,7 @@
          </layout>
         </widget>
        </item>
-       <item>
+       <item row="1" column="0">
         <widget class="QFrame" name="frameObfuscation">
          <property name="minimumSize">
           <size>
@@ -880,7 +880,7 @@
            <rect>
             <x>0</x>
             <y>150</y>
-            <width>386</width>
+            <width>461</width>
             <height>224</height>
            </rect>
           </property>
@@ -922,29 +922,13 @@
              <property name="spacing">
               <number>12</number>
              </property>
-             <item row="7" column="0" colspan="2">
-              <widget class="Line" name="lineSpendableBalance_3">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
+             <item row="3" column="0">
+              <widget class="QLabel" name="labelUnLockedBalanceText">
+               <property name="toolTip">
+                <string>Unlocked CCBCs. These can be used for zCCBC minting.</string>
                </property>
-              </widget>
-             </item>
-             <item row="7" column="2">
-              <widget class="Line" name="lineWatchBalance_3">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>140</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
+               <property name="text">
+                <string>Unlocked:</string>
                </property>
               </widget>
              </item>
@@ -973,6 +957,120 @@
                </property>
               </widget>
              </item>
+             <item row="4" column="3">
+              <spacer name="horizontalSpacer_6">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="6" column="2">
+              <widget class="QLabel" name="label100Percent">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="labelLockedBalanceText">
+               <property name="toolTip">
+                <string>Locked CCBC or Masternode collaterals. These are excluded from zCCBC minting.</string>
+               </property>
+               <property name="text">
+                <string>Locked:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLabel" name="labelLockedBalance">
+               <property name="toolTip">
+                <string>Locked CCBC or Masternode collaterals. These are excluded from zCCBC minting.</string>
+               </property>
+               <property name="text">
+                <string>0.000 000 00 CCBC</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLabel" name="labelUnLockedBalance">
+               <property name="toolTip">
+                <string>Unlocked CCBCs. These can be used for zCCBC minting.</string>
+               </property>
+               <property name="text">
+                <string>0.000 000 00 CCBC</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="labelzBalanceTextz">
+               <property name="toolTip">
+                <string/>
+               </property>
+               <property name="text">
+                <string>zCCBC:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="0" colspan="2">
+              <widget class="Line" name="lineSpendableBalance_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="labelTotalTextz">
+               <property name="text">
+                <string>Total:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="labelBalanceTextz">
+               <property name="text">
+                <string>CCBC:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QLabel" name="labelCCBCPercent">
+               <property name="text">
+                <string>0 %</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="2">
+              <widget class="QLabel" name="labelzCCBCPercent">
+               <property name="toolTip">
+                <string>Current percentage of zCCBC.
+If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%)</string>
+               </property>
+               <property name="text">
+                <string>0 %</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
              <item row="6" column="1">
               <widget class="QLabel" name="labelTotalz">
                <property name="font">
@@ -998,30 +1096,22 @@
                </property>
               </widget>
              </item>
-             <item row="4" column="3">
-              <spacer name="horizontalSpacer_6">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
+             <item row="7" column="2">
+              <widget class="Line" name="lineWatchBalance_3">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
-               <property name="sizeHint" stdset="0">
+               <property name="minimumSize">
                 <size>
-                 <width>40</width>
-                 <height>20</height>
+                 <width>140</width>
+                 <height>0</height>
                 </size>
                </property>
-              </spacer>
-             </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="labelTotalTextz">
-               <property name="text">
-                <string>Total:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="labelBalanceTextz">
-               <property name="text">
-                <string>CCBC:</string>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
                </property>
               </widget>
              </item>
@@ -1047,96 +1137,6 @@
                </property>
                <property name="textInteractionFlags">
                 <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="labelzBalanceTextz">
-               <property name="toolTip">
-                <string/>
-               </property>
-               <property name="text">
-                <string>zCCBC:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="2">
-              <widget class="QLabel" name="labelzCCBCPercent">
-               <property name="toolTip">
-                <string>Current percentage of zCCBC.
-If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%)</string>
-               </property>
-               <property name="text">
-                <string>0 %</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="2">
-              <widget class="QLabel" name="label100Percent">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLabel" name="labelLockedBalance">
-               <property name="toolTip">
-                <string>Locked CCBC or Masternode collaterals. These are excluded from zCCBC minting.</string>
-               </property>
-               <property name="text">
-                <string>0.000 000 00 CCBC</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="labelLockedBalanceText">
-               <property name="toolTip">
-                <string>Locked CCBC or Masternode collaterals. These are excluded from zCCBC minting.</string>
-               </property>
-               <property name="text">
-                <string>Locked:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="labelUnLockedBalanceText">
-               <property name="toolTip">
-                <string>Unlocked CCBCs. These can be used for zCCBC minting.</string>
-               </property>
-               <property name="text">
-                <string>Unlocked:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QLabel" name="labelUnLockedBalance">
-               <property name="toolTip">
-                <string>Unlocked CCBCs. These can be used for zCCBC minting.</string>
-               </property>
-               <property name="text">
-                <string>0.000 000 00 CCBC</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="2">
-              <widget class="QLabel" name="labelCCBCPercent">
-               <property name="text">
-                <string>0 %</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1415,7 +1415,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
        </item>
       </layout>
      </item>
-     <item>
+     <item row="0" column="1">
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QFrame" name="frame_2">
@@ -1567,8 +1567,8 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../../../../../posq/midas_coin/src/qt/midas.qrc">
-          <normaloff>:/icons/sitelogo</normaloff>:/icons/sitelogo</iconset>
+         <iconset>
+          <normaloff>../res/icons/bitcoin.png</normaloff>../res/icons/bitcoin.png</iconset>
         </property>
        </widget>
       </item>
