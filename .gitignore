@@ -175,3 +175,4 @@ config.status
 .vs/CCBC/v15/ipch/AutoPCH/9aee69b83316a60c/DETERMINISTICMINT.ipch
 .vs/CCBC/v15/ipch/AutoPCH/5c29bc89793bbcd4/DB_IMPL.ipch
 src/qt/res/RCa28156
+*.autosave
