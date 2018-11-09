@@ -50,59 +50,6 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
-           <widget class="QWidget" name="horizontalWidget_2" native="true">
-            <property name="styleSheet">
-             <string notr="true">padding: 10px; background-color: #000; border-radius: 4px;</string>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_7">
-             <item>
-              <widget class="QPushButton" name="pushButton_2">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="../ccbc.qrc">
-                 <normaloff>:/icons/twitter</normaloff>:/icons/twitter</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_3">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="../ccbc.qrc">
-                 <normaloff>:/icons/telegram</normaloff>:/icons/telegram</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_4">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="../ccbc.qrc">
-                 <normaloff>:/icons/sitelogo</normaloff>:/icons/sitelogo</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="../ccbc.qrc">
-                 <normaloff>:/icons/discord</normaloff>:/icons/discord</iconset>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
            <spacer name="verticalSpacer_4">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -1585,6 +1532,59 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
       </layout>
      </item>
     </layout>
+   </item>
+   <item row="2" column="0">
+    <widget class="QWidget" name="horizontalWidget_2" native="true">
+     <property name="styleSheet">
+      <string notr="true">padding: 10px; background-color: #000; border-radius: 4px;</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../../../posq/midas_coin/src/qt/midas.qrc">
+          <normaloff>:/icons/twitter</normaloff>:/icons/twitter</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../../../posq/midas_coin/src/qt/midas.qrc">
+          <normaloff>:/icons/telegram</normaloff>:/icons/telegram</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../../../posq/midas_coin/src/qt/midas.qrc">
+          <normaloff>:/icons/sitelogo</normaloff>:/icons/sitelogo</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../../../posq/midas_coin/src/qt/midas.qrc">
+          <normaloff>:/icons/discord</normaloff>:/icons/discord</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>
