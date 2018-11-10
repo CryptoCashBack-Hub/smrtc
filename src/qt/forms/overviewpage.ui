@@ -32,7 +32,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../../../../../posq/midas_coin/src/qt/midas.qrc">
+         <iconset resource="/CrytoCashBack-Hub/CCBC/src/qt/ccbc.qrc">
           <normaloff>:/icons/twitter</normaloff>:/icons/twitter</iconset>
         </property>
        </widget>
@@ -43,7 +43,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../../../../../posq/midas_coin/src/qt/midas.qrc">
+         <iconset resource="/CrytoCashBack-Hub/CCBC/src/qt/ccbc.qrc">
           <normaloff>:/icons/telegram</normaloff>:/icons/telegram</iconset>
         </property>
        </widget>
@@ -54,8 +54,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>../res/icons/bitcoin.png</normaloff>../res/icons/bitcoin.png</iconset>
+         <iconset resource="/CrytoCashBack-Hub/CCBC/src/qt/ccbc.qrc">
+          <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
         </property>
        </widget>
       </item>
@@ -65,7 +65,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../../../../../posq/midas_coin/src/qt/midas.qrc">
+         <iconset resource="/CrytoCashBack-Hub/CCBC/src/qt/ccbc.qrc">
           <normaloff>:/icons/discord</normaloff>:/icons/discord</iconset>
         </property>
        </widget>
