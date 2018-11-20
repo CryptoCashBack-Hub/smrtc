@@ -46,6 +46,8 @@ signals:
 
 private:
     QTimer* timer;
+    QTimer* timerinfo_mn;
+    QTimer* timerinfo_blockchain;
     Ui::OverviewPage* ui;
     ClientModel* clientModel;
     WalletModel* walletModel;
