@@ -538,6 +538,8 @@ public:
         return pindex;
     }
 
+	 int64_t GetNetworkHashPS(int lookup, int height);
+
     /** Returns the index entry at a particular height in this chain, or NULL if no such height exists. */
     CBlockIndex* operator[](int nHeight) const
     {

@@ -361,7 +361,7 @@ void OverviewPage::updateMasternodeInfo()
         int totalmn = 0;
         std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
         for (auto& mn : vMasternodes) {
-            switch (mn.activeState()) {
+            switch (mn.IsEnabled()) {
 
                 mn1++;
                 break;
