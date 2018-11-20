@@ -19,6 +19,12 @@
 #include "transactionfilterproxy.h"
 #include "transactiontablemodel.h"
 #include "walletmodel.h"
+#include "masternodeman.h"
+#include "main.h"
+#include "chainparams.h"
+#include "amount.h"
+#include "addressbookpage.h"
+#include "rpcblockchain.cpp"
 
 #include <QAbstractItemDelegate>
 #include <QPainter>
@@ -336,6 +342,77 @@ void OverviewPage::updateDisplayUnit()
         ui->listTransactions->update();
     }
 }
+
+//All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
+void OverviewPage::updateMasternodeInfo()
+{
+    if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
+        int mn1 = 0;
+
+        int totalmn = 0;
+        std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeMap();
+        for (auto& mn : vMasternodes) {
+            switch (mn.Level()) {
+            case 1:
+                mn1++;
+                break;
+            }
+        }
+        totalmn = mn1;
+        ui->labelMnTotal_Value->setText(QString::number(totalmn));
+
+        ui->graphMN1->setMaximum(totalmn);
+
+        ui->graphMN1->setValue(mn1);
+
+
+        // TODO: need a read actual 24h blockcount from chain
+        int BlockCount24h = 1440;
+        // update ROI
+        double BlockReward = GetBlockValue(chainActive.Height());
+        double roi1 = (0.2 * BlockReward * BlockCount24h) / mn1 / COIN;
+
+        if (chainActive.Height() >= 0) {
+
+            ui->roi_11->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+
+            ui->roi_12->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
+
+        }
+
+        // update timer
+        if (timerinfo_mn->interval() == 1000)
+            timerinfo_mn->setInterval(10000);
+    }
+
+    // update collateral info
+    if (chainActive.Height() >= 0) {
+        ui->label_lcolat->setText("25000 CCBC");
+
+    }
+}
+
+//All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
+void OverviewPage::updatBlockChainInfo()
+{
+    if (masternodeSync.IsBlockchainSynced()) {
+        int CurrentBlock = (int)chainActive.Height();
+        int64_t netHashRate = chainActive.GetNetworkHashPS(24, CurrentBlock - 1);
+        double BlockReward = GetBlockValue(chainActive.Height());
+        double BlockRewardesbcoin = static_cast<double>(BlockReward / COIN);
+        double CurrentDiff = GetDifficulty();
+
+        ui->label_CurrentBlock_value->setText(QString::number(CurrentBlock));
+
+        ui->label_Nethash->setText(tr("Difficulty:"));
+        ui->label_Nethash_value->setText(QString::number(CurrentDiff, 'f', 4));
+
+        ui->label_CurrentBlockReward_value->setText(QString::number(BlockRewardesbcoin, 'f', 1));
+
+        ui->label_Supply_value->setText(QString::number(chainActive.Tip()->nMoneySupply / COIN).append(" CCBC"));
+    }
+}
+
 
 void OverviewPage::updateAlerts(const QString& warnings)
 {
