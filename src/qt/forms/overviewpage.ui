@@ -178,7 +178,7 @@
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_10">
                      <item>
-                      <widget class="QLabel" name="labelMnTotal_2">
+                      <widget class="QLabel" name="labelMnTotal">
                        <property name="minimumSize">
                         <size>
                          <width>0</width>
@@ -197,7 +197,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLabel" name="labelMnTotal_Value_2">
+                      <widget class="QLabel" name="labelMnTotal_Value">
                        <property name="text">
                         <string>0</string>
                        </property>
@@ -217,7 +217,7 @@
                       </spacer>
                      </item>
                      <item>
-                      <widget class="QLabel" name="labelROI_2">
+                      <widget class="QLabel" name="labelROI">
                        <property name="minimumSize">
                         <size>
                          <width>0</width>
@@ -446,7 +446,7 @@
                        </widget>
                       </item>
                       <item row="2" column="0">
-                       <widget class="QLabel" name="label_Nethash">
+                       <widget class="QLabel" name="label_Nethash_">
                         <property name="text">
                          <string>Nethash MHs:</string>
                         </property>
@@ -460,7 +460,7 @@
                        </widget>
                       </item>
                       <item row="3" column="0">
-                       <widget class="QLabel" name="label_Supply">
+                       <widget class="QLabel" name="label_Supply_2">
                         <property name="text">
                          <string>Coin supply:</string>
                         </property>

@@ -144,6 +144,15 @@ OverviewPage::OverviewPage(QWidget* parent) : QWidget(parent),
     ui->labelWalletStatus->setText("(" + tr("out of sync") + ")");
     ui->labelTransactionsStatus->setText("(" + tr("out of sync") + ")");
 
+	    //information block update
+    timerinfo_mn = new QTimer(this);
+    connect(timerinfo_mn, SIGNAL(timeout()), this, SLOT(updateMasternodeInfo()));
+    timerinfo_mn->start(1000);
+
+    timerinfo_blockchain = new QTimer(this);
+    connect(timerinfo_blockchain, SIGNAL(timeout()), this, SLOT(updatBlockChainInfo()));
+    timerinfo_blockchain->start(1000); //30sec
+
     // start with displaying the "out of sync" warnings
     showOutOfSyncWarning(true);
 }
@@ -352,21 +361,19 @@ void OverviewPage::updateMasternodeInfo()
         int totalmn = 0;
         std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
         for (auto& mn : vMasternodes) {
-            switch (mn.Level()) {
-            case 1:
+            switch (mn.activeState()) {
+
                 mn1++;
                 break;
-            case 2:
-				mn2++;
-				break;
+
             }
         }
         totalmn = mn1;
         ui->labelMnTotal_Value->setText(QString::number(totalmn));
 
-        ui->graphMN1->setMaximum(totalmn);
+        ui->graphMN->setMaximum(totalmn);
 
-        ui->graphMN1->setValue(mn1);
+        ui->graphMN->setValue(mn1);
 
 
         // TODO: need a read actual 24h blockcount from chain
