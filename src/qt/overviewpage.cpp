@@ -350,12 +350,15 @@ void OverviewPage::updateMasternodeInfo()
         int mn1 = 0;
 
         int totalmn = 0;
-        std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeMap();
+        std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
         for (auto& mn : vMasternodes) {
             switch (mn.Level()) {
             case 1:
                 mn1++;
                 break;
+            case 2:
+				mn2++;
+				break;
             }
         }
         totalmn = mn1;
@@ -374,9 +377,9 @@ void OverviewPage::updateMasternodeInfo()
 
         if (chainActive.Height() >= 0) {
 
-            ui->roi_11->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+            ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
 
-            ui->roi_12->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
+            ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
 
         }
 
