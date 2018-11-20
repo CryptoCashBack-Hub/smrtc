@@ -911,6 +911,56 @@ font-weight:normal;
 min-height:30px;
 }
 
+
+
+/*************** Frame_bottom_1 section*****************/
+/********************* Masternodes *********************/
+
+QWidget .QFrame#frameInfo { /*bottom frame 1 - info */
+    background-color: #ffffff;
+    border-style: none;
+    border: 1px solid;
+    border-color: #d2d2d2;
+}
+
+QWidget .QFrame#frame_bottom_1 {
+    border-style: solid;
+}
+
+QWidget .QFrame#frameMnInfo {
+    border-style: 0px;
+}
+
+QWidget .QFrame#frameMnInfoLevels {
+    border-style: 0px;
+    border-top: 1px solid #d2d2d2;
+    border-top-color: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #ffffff, stop:0.2 #d2d2d2, stop:0.8 #d2d2d2, stop:1 #ffffff);
+}
+
+QWidget .QFrame#frameBlockchainInfo {
+    border-style: 0px;
+}
+
+QWidget .QFrame#frameBlockchainInfoData {
+    border-style: 0px;
+    border-top: 1px solid #d2d2d2;
+    border-top-color: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #ffffff, stop:0.2 #d2d2d2, stop:0.8 #d2d2d2, stop:1 #ffffff);
+}
+
+
+QWidget .QProgressBar#graphMN {
+    color: #000000;
+    border: 0px solid;
+    border-color: #d2d2d2;
+    /*    border-left:1px solid #d2d2d2;
+        border-radius:0px;*/
+    background-color: transparent;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+
 QWidget .QFrame#frame .QLabel#label_5 { /* CCBC Balances Label */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 min-width:160px;
