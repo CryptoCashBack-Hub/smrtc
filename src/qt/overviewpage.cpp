@@ -353,7 +353,7 @@ void OverviewPage::updateDisplayUnit()
 }
 
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
-void OverviewPage::updateMasternodeInfo(int nHeight)
+void OverviewPage::updateMasternodeInfo()
 {
 		if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
        
