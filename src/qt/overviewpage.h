@@ -6,6 +6,7 @@
 #define BITCOIN_QT_OVERVIEWPAGE_H
 
 #include "amount.h"
+#include "main.h"
 
 #include <QWidget>
 
@@ -75,7 +76,7 @@ private slots:
     void on_pushButton_3_clicked();
     void on_pushButton_clicked();
     void on_pushButton_4_clicked();
-    void updateMasternodeInfo();
+    void updateMasternodeInfo(int64_t GetMasternodePayment);
     void updatBlockChainInfo();
 };
 
