@@ -355,8 +355,8 @@ void OverviewPage::updateDisplayUnit()
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
 void OverviewPage::updateMasternodeInfo()
 {
-    if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
-        int mn1 = mn++;
+		if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
+        int mn1 = 0;
 
         int totalmn = 0;
         std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
@@ -369,6 +369,7 @@ void OverviewPage::updateMasternodeInfo()
 
            // }
         }
+             mn++;
         totalmn = mn1;
         ui->labelMnTotal_Value->setText(QString::number(totalmn));
 
