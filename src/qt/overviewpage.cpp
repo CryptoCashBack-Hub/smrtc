@@ -408,6 +408,7 @@ void OverviewPage::updateMasternodeInfo(int nHeight)
                     } else {
                         reward = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
                     }
+                    return reward;
                     
 					double roi1 = reward;
 
