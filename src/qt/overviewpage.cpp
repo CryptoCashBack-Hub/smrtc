@@ -358,39 +358,39 @@ void OverviewPage::updateMasternodeInfo(int64_t GetMasternodePayment)
 		if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
        
 
-		int mn1 = 0;
-		int mn2 = 0;
-		int mn3 = 0;
-		int mn4 = 0;
-		int totalmn = 0;
-		std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
-			for (auto& mn : vMasternodes)
-			{
-				switch (mn.nActiveState = true)
+			int mn1 = 0;
+			int mn2 = 0;
+			int mn3 = 0;
+			int mn4 = 0;
+			int totalmn = 0;
+			std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
+				for (auto& mn : vMasternodes)
 				{
-					case 1:
-						mn1++; break;
-					case 2:
-						mn2++; break;
-					case 3:
-						mn3++; break;
-					case 4:
-						mn4++; break;
+					switch (mn.nActiveState = true)
+					{
+						case 1:
+							mn1++; break;
+						case 2:
+							mn2++; break;
+						case 3:
+							mn3++; break;
+						case 4:
+							mn4++; break;
+					}
+
 				}
-
-			}
-				totalmn = mn1 + mn2 + mn3 + mn4;
-				ui->labelMnTotal_Value->setText(QString::number(totalmn));
-				ui->graphMN->setMaximum(totalmn);
-				ui->graphMN->setValue(mn1);
+					totalmn = mn1 + mn2 + mn3 + mn4;
+					ui->labelMnTotal_Value->setText(QString::number(totalmn));
+					ui->graphMN->setMaximum(totalmn);
+					ui->graphMN->setValue(mn1);
 
 
-				// TODO: need a read actual 24h blockcount from chain
-				int BlockCount24h = 1440;
-				//int64_t GetMasternodePayment;
-				// update ROI
-				double BlockReward = GetBlockValue(chainActive.Height());
-				double roi1 = (GetMasternodePayment * BlockReward * BlockCount24h) / mn1 / COIN;
+					// TODO: need a read actual 24h blockcount from chain
+					int BlockCount24h = 1440;
+					// update ROI
+					double BlockReward = GetBlockValue(chainActive.Height());
+
+					double roi1 = (GetMasternodePayment(GetBlockValue) * BlockReward * BlockCount24h) / mn1 / COIN;
 
 			if (chainActive.Height() >= 0) {
 
