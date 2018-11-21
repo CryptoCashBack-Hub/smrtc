@@ -388,9 +388,10 @@ void OverviewPage::updateMasternodeInfo(int64_t GetMasternodePayment)
 					// TODO: need a read actual 24h blockcount from chain
 					int BlockCount24h = 1440;
 					// update ROI
+                    int64_t MNreward = GetMasternodePayment(GetBlockValue);
 					double BlockReward = GetBlockValue(chainActive.Height());
 
-					double roi1 = (GetMasternodePayment(GetBlockValue) * BlockReward * BlockCount24h) / mn1 / COIN;
+					double roi1 = MNreward * BlockReward * BlockCount24h) / mn1 / COIN;
 
 			if (chainActive.Height() >= 0) {
 
