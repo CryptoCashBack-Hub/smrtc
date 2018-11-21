@@ -356,17 +356,18 @@ void OverviewPage::updateDisplayUnit()
 void OverviewPage::updateMasternodeInfo()
 {
     if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
-        int mn1 = 0;
+        int mn1 = mn++;
 
         int totalmn = 0;
         std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
-        for (auto& mn : vMasternodes) {
-            switch (mn.IsEnabled()) {
+		
+        //for (auto& mn : vMasternodes) {
+          //  switch (mn.activeState = true) {
 
-                mn1++;
-                break;
+            //    mn1++;
+              //  break;
 
-            }
+           // }
         }
         totalmn = mn1;
         ui->labelMnTotal_Value->setText(QString::number(totalmn));
