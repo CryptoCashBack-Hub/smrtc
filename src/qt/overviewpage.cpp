@@ -389,35 +389,55 @@ void OverviewPage::updateMasternodeInfo(int nHeight)
 					int BlockCount24h = 1440;
 					// update ROI
 					double BlockReward = GetBlockValue(chainActive.Height());
-                    //double reward = 0;
                     //int CurrentBlock = (int)chainActive.Height();
 
 					if (nHeight <= 91000 && nHeight > 88000){ //72%
                        double roi = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
+
+                        ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
 					} 
 
-					if (nHeight <= 94000 && nHeight > 91000) { //74%
+			        else if (nHeight <= 94000 && nHeight > 91000) { //74%
                         double roi = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
+
+                        ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
 					}
 					
-					if (nHeight <= 97000 && nHeight > 94000) { //76%
+					else if (nHeight <= 97000 && nHeight > 94000) { //76%
                         double roi = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
+
+                        ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
 					} 
 
-					if (nHeight <= 100000 && nHeight > 97000) { //78%
+					else if (nHeight <= 100000 && nHeight > 97000) { //78%
                         double roi = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
+
+                        ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
 					}
 
-					if (nHeight <= 125000 && nHeight > 100000) { //80%
-                        double roi = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN; 
+					else if (nHeight <= 125000 && nHeight > 100000) { //80%
+                        double roi = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN;
+
+                        ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
 					} 
 					
-					if (nHeight <= 150000 && nHeight > 125000) { //85%
+					else if (nHeight <= 150000 && nHeight > 125000) { //85%
                         double roi = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
+
+                        ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
                     } 
 					
-					if (nHeight <= 175000 && nHeight > 150000) { //90%
+					else if (nHeight <= 175000 && nHeight > 150000) { //90%
                         double roi = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN; 
+
+						ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
                     }
                     
 					//double roi1 = reward;
@@ -425,12 +445,12 @@ void OverviewPage::updateMasternodeInfo(int nHeight)
 			
 
 				
-			if (chainActive.Height() >= 0) {
+			//if (chainActive.Height() >= 0) {
 
-				ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
-				ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
+				//ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+				//ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
 
-			}
+			//}
 
 				// update timer
 				if (timerinfo_mn->interval() == 1000)
