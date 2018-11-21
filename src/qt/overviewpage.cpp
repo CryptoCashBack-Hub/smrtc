@@ -353,7 +353,7 @@ void OverviewPage::updateDisplayUnit()
 }
 
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
-void OverviewPage::updateMasternodeInfo(int64_t GetMasternodePayment)
+void OverviewPage::updateMasternodeInfo()
 {
 		if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
        
@@ -388,10 +388,10 @@ void OverviewPage::updateMasternodeInfo(int64_t GetMasternodePayment)
 					// TODO: need a read actual 24h blockcount from chain
 					int BlockCount24h = 1440;
 					// update ROI
-                    int64_t MNreward = GetMasternodePayment(GetBlockValue);
+                    int64_t MNreward = GetBlockValue(GetMasternodePayment);
 					double BlockReward = GetBlockValue(chainActive.Height());
 
-					double roi1 = MNreward * BlockReward * BlockCount24h) / mn1 / COIN;
+					double roi1 = (MNreward * BlockReward * BlockCount24h) / mn1 / COIN;
 
 			if (chainActive.Height() >= 0) {
 
