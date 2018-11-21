@@ -389,28 +389,38 @@ void OverviewPage::updateMasternodeInfo(int nHeight)
 					int BlockCount24h = 1440;
 					// update ROI
 					double BlockReward = GetBlockValue(chainActive.Height());
-                    double reward = 0;
+                    //double reward = 0;
+                    //int CurrentBlock = (int)chainActive.Height();
 
-					if (nHeight <= 91000 && nHeight > 88000) { //72%
-                        reward = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
-					} else if (nHeight <= 94000 && nHeight > 91000) { //74%
-                        reward = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    } else if (nHeight <= 97000 && nHeight > 94000) { //76%
-                        reward = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    } else if (nHeight <= 100000 && nHeight > 97000) { //78%
-                        reward = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    } else if (nHeight <= 125000 && nHeight > 100000) { //80%
-                        reward = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN; 
-                    } else if (nHeight <= 150000 && nHeight > 125000) { //85%
-                        reward = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    } else if (nHeight <= 175000 && nHeight > 150000) { //90%
-                        reward = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN; 
-                    } else {
-                        reward = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
+					if (nHeight <= 91000 && nHeight > 88000){ //72%
+                       double roi = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
+					} 
+
+					if (nHeight <= 94000 && nHeight > 91000) { //74%
+                        double roi = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
+					}
+					
+					if (nHeight <= 97000 && nHeight > 94000) { //76%
+                        double roi = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
+					} 
+
+					if (nHeight <= 100000 && nHeight > 97000) { //78%
+                        double roi = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
+					}
+
+					if (nHeight <= 125000 && nHeight > 100000) { //80%
+                        double roi = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN; 
+					} 
+					
+					if (nHeight <= 150000 && nHeight > 125000) { //85%
+                        double roi = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
+                    } 
+					
+					if (nHeight <= 175000 && nHeight > 150000) { //90%
+                        double roi = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN; 
                     }
-                    return reward;
                     
-					double roi1 = reward;
+					//double roi1 = reward;
 
 			
 
