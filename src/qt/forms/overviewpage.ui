@@ -1923,7 +1923,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../res/icons/bitcoin.png</normaloff>../res/icons/bitcoin.png</iconset>
+          <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
         </property>
        </widget>
       </item>
@@ -1944,7 +1944,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
   </layout>
  </widget>
  <resources>
-  <include location="../../../../../posq/midas_coin/src/qt/midas.qrc"/>
+  <include location="../../../../../ccbc/CryptoCashBack_Hub/src/qt/ccbc.qrc"/>
  </resources>
  <connections/>
 </ui>
