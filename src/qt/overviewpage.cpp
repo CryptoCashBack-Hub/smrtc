@@ -361,15 +361,15 @@ void OverviewPage::updateMasternodeInfo()
         int totalmn = 0;
         std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
 		
-        //for (auto& mn : vMasternodes) {
-          //  switch (mn.activeState = true) {
+			for (auto& mn : vMasternodes) {
+				switch (mn.activeState = true) {
 
-            //    mn1++;
-              //  break;
+					mn1++;
+					break;
 
-           // }
-        }
-             mn++;
+				}
+			}
+             
         totalmn = mn1;
         ui->labelMnTotal_Value->setText(QString::number(totalmn));
 
