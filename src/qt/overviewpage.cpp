@@ -391,23 +391,24 @@ void OverviewPage::updateMasternodeInfo(int nHeight)
 					double BlockReward = GetBlockValue(chainActive.Height());
                     
 					if (nHeight <= 91000 && nHeight > 88000) { //72%
-                        double roi1 = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        reward = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
 					} else if (nHeight <= 94000 && nHeight > 91000) { //74%
-                        double roi1 = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        reward = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 97000 && nHeight > 94000) { //76%
-                        double roi1 = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        reward = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 100000 && nHeight > 97000) { //78%
-                        double roi1 = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        reward = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 125000 && nHeight > 100000) { //80%
-                        double roi1 = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN; 
+                        reward = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN; 
                     } else if (nHeight <= 150000 && nHeight > 125000) { //85%
-                        double roi1 = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        reward = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 175000 && nHeight > 150000) { //90%
-                        double roi1 = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN; 
+                        reward = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN; 
                     } else {
-                        double roi1 = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        reward = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
                     }
                     
+					double roi1 = reward;
 
 			
 
