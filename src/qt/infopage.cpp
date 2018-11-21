@@ -110,9 +110,9 @@ public:
 
     int unit;
 };
-#include "overviewpage.moc"
+#include "InfoPage.moc"
 
-void OverviewPage::setClientModel(ClientModel* model)
+void InfoPage::setClientModel(ClientModel* model)
 {
     this->clientModel = model;
     if (model) {
@@ -124,7 +124,7 @@ void OverviewPage::setClientModel(ClientModel* model)
 
 
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
-void OverviewPage::updateMasternodeInfo()
+void InfoPage::updateMasternodeInfo()
 {
 		if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
        
@@ -202,7 +202,7 @@ void OverviewPage::updateMasternodeInfo()
 }
 
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
-void OverviewPage::updatBlockChainInfo()
+void InfoPage::updatBlockChainInfo()
 {
     if (masternodeSync.IsBlockchainSynced()) {
         int CurrentBlock = (int)chainActive.Height();
