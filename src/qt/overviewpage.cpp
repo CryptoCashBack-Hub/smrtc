@@ -391,7 +391,7 @@ void OverviewPage::updateMasternodeInfo()
         int BlockCount24h = 1440;
         // update ROI
         double BlockReward = GetBlockValue(chainActive.Height());
-        double roi1 = (0.2 * BlockReward * BlockCount24h) / mn1 / COIN;
+        double roi1 = (GetMasternodePayment * BlockReward * BlockCount24h) / mn1 / COIN;
 
         if (chainActive.Height() >= 0) {
 
