@@ -392,13 +392,13 @@ void OverviewPage::updateMasternodeInfo(int nHeight)
                     //int CurrentBlock = (int)chainActive.Height();
 
 					double roi1 = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    double roi2 = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    double roi3 = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    double roi4 = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    double roi5 = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    double roi6 = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    double roi7 = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
-
+                    //double roi2 = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
+                    //double roi3 = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
+                    //double roi4 = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
+                    //double roi5 = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN;
+                    //double roi6 = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
+                    //double roi7 = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
+                    /*
 					if (nHeight <= 91000 && nHeight > 88000){ //72%
                        
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
@@ -439,19 +439,19 @@ void OverviewPage::updateMasternodeInfo(int nHeight)
  
 						ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi7, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi7, 'f', 1).append(" days"));
-                    }
+                    }*/
                     
 					//double roi1 = reward;
 
 			
 
 				
-			//if (chainActive.Height() >= 0) {
+			if (chainActive.Height() >= 0) {
 
-				//ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
-				//ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
+				ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+				ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
 
-			//}
+			}
 
 				// update timer
 				if (timerinfo_mn->interval() == 1000)
