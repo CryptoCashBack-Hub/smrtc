@@ -389,7 +389,8 @@ void OverviewPage::updateMasternodeInfo(int nHeight)
 					int BlockCount24h = 1440;
 					// update ROI
 					double BlockReward = GetBlockValue(chainActive.Height());
-                    
+                    double reward = 0;
+
 					if (nHeight <= 91000 && nHeight > 88000) { //72%
                         reward = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
 					} else if (nHeight <= 94000 && nHeight > 91000) { //74%
