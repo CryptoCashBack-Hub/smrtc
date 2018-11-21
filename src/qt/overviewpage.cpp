@@ -353,7 +353,7 @@ void OverviewPage::updateDisplayUnit()
 }
 
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
-void OverviewPage::updateMasternodeInfo(GetMasternodePayment)
+void OverviewPage::updateMasternodeInfo(int64_t GetMasternodePayment)
 {
 		if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
        
@@ -364,48 +364,45 @@ void OverviewPage::updateMasternodeInfo(GetMasternodePayment)
 		int mn4 = 0;
 		int totalmn = 0;
 		std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
-		for (auto& mn : vMasternodes)
-		{
-			switch (mn.nActiveState = true)
+			for (auto& mn : vMasternodes)
 			{
-			case 1:
-				mn1++; break;
-			case 2:
-				mn2++; break;
-			case 3:
-				mn3++; break;
-			case 4:
-				mn4++; break;
+				switch (mn.nActiveState = true)
+				{
+					case 1:
+						mn1++; break;
+					case 2:
+						mn2++; break;
+					case 3:
+						mn3++; break;
+					case 4:
+						mn4++; break;
+				}
+
+			}
+				totalmn = mn1 + mn2 + mn3 + mn4;
+				ui->labelMnTotal_Value->setText(QString::number(totalmn));
+				ui->graphMN->setMaximum(totalmn);
+				ui->graphMN->setValue(mn1);
+
+
+				// TODO: need a read actual 24h blockcount from chain
+				int BlockCount24h = 1440;
+				//int64_t GetMasternodePayment;
+				// update ROI
+				double BlockReward = GetBlockValue(chainActive.Height());
+				double roi1 = (GetMasternodePayment * BlockReward * BlockCount24h) / mn1 / COIN;
+
+			if (chainActive.Height() >= 0) {
+
+				ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+				ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
+
 			}
 
-		}
-		totalmn = mn1 + mn2 + mn3 + mn4;
-		ui->labelMnTotal_Value->setText(QString::number(totalmn));
-
-        ui->graphMN->setMaximum(totalmn);
-
-        ui->graphMN->setValue(mn1);
-
-
-        // TODO: need a read actual 24h blockcount from chain
-        int BlockCount24h = 1440;
-        //int64_t GetMasternodePayment;
-        // update ROI
-        double BlockReward = GetBlockValue(chainActive.Height());
-        double roi1 = (GetMasternodePayment * BlockReward * BlockCount24h) / mn1 / COIN;
-
-        if (chainActive.Height() >= 0) {
-
-            ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
-
-            ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
-
+				// update timer
+				if (timerinfo_mn->interval() == 1000)
+					timerinfo_mn->setInterval(10000);
         }
-
-        // update timer
-        if (timerinfo_mn->interval() == 1000)
-            timerinfo_mn->setInterval(10000);
-    }
 
     // update collateral info
     if (chainActive.Height() >= 0) {
