@@ -1,0 +1,52 @@
+// Copyright (c) 2011-2013 The Bitcoin developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+#ifndef BITCOIN_QT_OVERVIEWPAGE_H
+#define BITCOIN_QT_OVERVIEWPAGE_H
+
+#include "amount.h"
+#include "main.h"
+
+#include <QWidget>
+
+class ClientModel;
+class TransactionFilterProxy;
+class TxViewDelegate;
+class WalletModel;
+
+namespace Ui
+{
+class InfoPage;
+}
+
+QT_BEGIN_NAMESPACE
+class QModelIndex;
+QT_END_NAMESPACE
+
+/** InfoPage ("home") page widget */
+class InfoPage : public QWidget
+{
+    Q_OBJECT
+
+
+private:
+    QTimer* timer;
+    QTimer* timerinfo_mn;
+    QTimer* timerinfo_blockchain;
+    Ui::InfoPage* ui;
+    ClientModel* clientModel;
+    WalletModel* walletModel;
+    int nDisplayUnit;
+
+
+    TxViewDelegate* txdelegate;
+    TransactionFilterProxy* filter;
+
+private slots:
+    void updateDisplayUnit();
+    void updateMasternodeInfo();
+    void updatBlockChainInfo();
+};
+
+#endif // BITCOIN_QT_OVERVIEWPAGE_H
