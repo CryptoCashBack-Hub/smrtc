@@ -389,28 +389,27 @@ void OverviewPage::updateMasternodeInfo(int nHeight)
 					int BlockCount24h = 1440;
 					// update ROI
 					double BlockReward = GetBlockValue(chainActive.Height());
-                    double ret = 0;
-					
+                    double roi1 = 0;
 					if (nHeight <= 91000 && nHeight > 88000) { //72%
-						ret = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        roi1 = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 94000 && nHeight > 91000) { //74%
-						ret = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
+                       roi1 = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 97000 && nHeight > 94000) { //76%
-                        ret = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        roi1 = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 100000 && nHeight > 97000) { //78%
-                        ret = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        roi1 = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 125000 && nHeight > 100000) { //80%
-                        ret = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN; 
+                        roi1 = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN; 
                     } else if (nHeight <= 150000 && nHeight > 125000) { //85%
-                        ret = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        roi1 = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 175000 && nHeight > 150000) { //90%
-                        ret = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN; 
+                        roi1 = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN; 
                     } else {
-                        ret = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        roi1 = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
                     }
-                    return ret;
+                    return roi1;
 
-					double roi1 = ret;
+			
 
 				
 			if (chainActive.Height() >= 0) {
