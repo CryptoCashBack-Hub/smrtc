@@ -358,20 +358,29 @@ void OverviewPage::updateMasternodeInfo()
 		if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
         int mn1 = 0;
 
-        int totalmn = 0;
-        std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
-		
-			for (auto& mn : vMasternodes) {
-				switch (mn.GetStatus.nActiveState()) {
-
-					mn1++;
-					break;
-
-				}
+		int mn1 = 0;
+		int mn2 = 0;
+		int mn3 = 0;
+		int mn4 = 0;
+		int totalmn = 0;
+		std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeMap();
+		for (auto& mn : vMasternodes)
+		{
+			switch (mn.nActiveState())
+			{
+			case 1:
+				mn1++; break;
+			case 2:
+				mn2++; break;
+			case 3:
+				mn3++; break;
+			case 4:
+				mn4++; break;
 			}
-             
-        totalmn = mn1;
-        ui->labelMnTotal_Value->setText(QString::number(totalmn));
+
+		}
+		totalmn = mn1 + mn2 + mn3 + mn4;
+		ui->labelMnTotal_Value->setText(QString::number(totalmn));
 
         ui->graphMN->setMaximum(totalmn);
 
