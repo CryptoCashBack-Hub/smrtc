@@ -353,7 +353,7 @@ void OverviewPage::updateDisplayUnit()
 }
 
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
-void OverviewPage::updateMasternodeInfo(int nHeight, int64_t blockValue, int nMasternodeCount)
+void OverviewPage::updateMasternodeInfo(int nHeight)
 {
 		if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
        
@@ -389,24 +389,28 @@ void OverviewPage::updateMasternodeInfo(int nHeight, int64_t blockValue, int nMa
 					int BlockCount24h = 1440;
 					// update ROI
 					double BlockReward = GetBlockValue(chainActive.Height());
-                     
+                    double ret = 0;
+					
 					if (nHeight <= 91000 && nHeight > 88000) { //72%
-						double roi1 = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
+						ret = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 94000 && nHeight > 91000) { //74%
-						double roi1 = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
+						ret = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 97000 && nHeight > 94000) { //76%
-                        double roi1 = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        ret = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 100000 && nHeight > 97000) { //78%
-                        double roi1 = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        ret = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 125000 && nHeight > 100000) { //80%
-                        double roi1 = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN; 
+                        ret = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN; 
                     } else if (nHeight <= 150000 && nHeight > 125000) { //85%
-                        double roi1 = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
+                        ret = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
                     } else if (nHeight <= 175000 && nHeight > 150000) { //90%
-                        double roi1 = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN; 
+                        ret = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN; 
                     } else {
-                        double roi1 = (GetSeeSaw(blockValue, nMasternodeCount, nHeight) * BlockReward * BlockCount24h) / mn1 / COIN; // Start of seesaw rewards
+                        ret = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
                     }
+                    return ret;
+
+					double roi1 = ret;
 
 				
 			if (chainActive.Height() >= 0) {
