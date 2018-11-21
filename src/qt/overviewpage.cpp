@@ -356,7 +356,7 @@ void OverviewPage::updateDisplayUnit()
 void OverviewPage::updateMasternodeInfo()
 {
 		if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
-        int mn1 = 0;
+       
 
 		int mn1 = 0;
 		int mn2 = 0;
