@@ -345,7 +345,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #else
     privacyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
 #endif
-    tabGroup->addAction(privacyAction);
+    tabGroup->addAction(infoAction);
 
 	infoAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Info"), this);
 	infoAction->setStatusTip(tr("Information Tab"));
