@@ -798,6 +798,7 @@ void BitcoinGUI::createTrayIconMenu()
     trayIconMenu->addAction(optionsAction);
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(openInformationAction);
+    trayIconMenu->addAction(openInfoAction);
     trayIconMenu->addAction(openRPCConsoleAction);
     trayIconMenu->addAction(openNetworkAction);
     trayIconMenu->addAction(openPeersAction);
