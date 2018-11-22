@@ -42,12 +42,13 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
                                           walletModel(0)
 {
     // Create tabs
-    overviewPage = new OverviewPage();
-    
+    overviewPage = new OverviewPage();    
     explorerWindow = new BlockExplorer(this);
+
     transactionsPage = new QWidget(this);
     QVBoxLayout* vbox = new QVBoxLayout();
     QHBoxLayout* hbox_buttons = new QHBoxLayout();
+
     transactionView = new TransactionView(this);
     vbox->addWidget(transactionView);
     QPushButton* exportButton = new QPushButton(tr("&Export"), this);
@@ -76,10 +77,10 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
     privacyPage = new PrivacyDialog();
     receiveCoinsPage = new ReceiveCoinsDialog();
     sendCoinsPage = new SendCoinsDialog();
-    informationPage = new Information();
+    informationPage = new InformationPage();
 
     addWidget(overviewPage);
-    addWidget(informationPage)
+	addWidget(informationPage);
     addWidget(transactionsPage);
     addWidget(privacyPage);
     addWidget(receiveCoinsPage);
@@ -106,6 +107,10 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
 
     // Pass through messages from sendCoinsPage
     connect(sendCoinsPage, SIGNAL(message(QString, QString, unsigned int)), this, SIGNAL(message(QString, QString, unsigned int)));
+
+	// Pass through messages from informationPage
+	connect(informationPage, SIGNAL(message(QString, QString, unsigned int)), this, SIGNAL(message(QString, QString, unsigned int)));
+
 
     // Pass through messages from transactionView
     connect(transactionView, SIGNAL(message(QString, QString, unsigned int)), this, SIGNAL(message(QString, QString, unsigned int)));
