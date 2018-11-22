@@ -206,6 +206,11 @@ void WalletView::gotoHistoryPage()
     setCurrentWidget(transactionsPage);
 }
 
+void WalletView::gotoInformationPage()
+{
+    setCurrentWidget(informationPage);
+}
+
 
 void WalletView::gotoBlockExplorerPage()
 {
