@@ -14,6 +14,7 @@ class BitcoinGUI;
 class ClientModel;
 class OverviewPage;
 class ReceiveCoinsDialog;
+class InformationPage;
 class PrivacyDialog;
 class SendCoinsDialog;
 class SendCoinsRecipient;
@@ -63,6 +64,7 @@ private:
     OverviewPage* overviewPage;
     QWidget* transactionsPage;
     ReceiveCoinsDialog* receiveCoinsPage;
+    InformationPage* informationPage;
     PrivacyDialog* privacyPage;
     SendCoinsDialog* sendCoinsPage;
     BlockExplorer* explorerWindow;

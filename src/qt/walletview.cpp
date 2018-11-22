@@ -43,6 +43,7 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
 {
     // Create tabs
     overviewPage = new OverviewPage();
+    informationPage = new InformationPage();
     explorerWindow = new BlockExplorer(this);
     transactionsPage = new QWidget(this);
     QVBoxLayout* vbox = new QVBoxLayout();
