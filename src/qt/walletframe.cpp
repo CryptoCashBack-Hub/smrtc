@@ -128,6 +128,13 @@ void WalletFrame::gotoBlockExplorerPage()
         i.value()->gotoBlockExplorerPage();
 }
 
+void WalletFrame::gotoInformationPage()
+{
+    QMap<QString, WalletView*>::const_iterator i;
+    for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
+        i.value()->gotoInformationPage();
+}
+
 void WalletFrame::gotoReceiveCoinsPage()
 {
     QMap<QString, WalletView*>::const_iterator i;
