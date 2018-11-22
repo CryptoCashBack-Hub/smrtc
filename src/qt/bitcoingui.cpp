@@ -85,7 +85,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             historyAction(0),
                                                                             masternodeAction(0),
 																			informationAction(0),
-																			infoAction,
+																			infoAction(0),
                                                                             quitAction(0),
                                                                             sendCoinsAction(0),
                                                                             usedSendingAddressesAction(0),
