@@ -387,7 +387,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     connect(privacyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(privacyAction, SIGNAL(triggered()), this, SLOT(gotoPrivacyPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(informationAction, SIGNAL(triggered()), this, SLOT(gotoInformationPage()));
+    connect(informationAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
 	connect(informationAction, SIGNAL(triggered()), this, SLOT(gotoInformationPage()));
 #endif // ENABLE_WALLET
 
@@ -876,8 +876,8 @@ void BitcoinGUI::gotoHistoryPage()
 
 void BitcoinGUI::gotoInformationPage()
 {
-	informationAction->setChecked(true);
-	if (walletFrame) walletFrame->gotoInformationPage();
+    informationAction->setChecked(true);
+    if (walletFrame) walletFrame->gotoInformationPage();
 }
 
 void BitcoinGUI::gotoMasternodePage()
