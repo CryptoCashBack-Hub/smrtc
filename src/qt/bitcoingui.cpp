@@ -85,6 +85,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             historyAction(0),
                                                                             masternodeAction(0),
 																			informationAction(0),
+																			infoAction,
                                                                             quitAction(0),
                                                                             sendCoinsAction(0),
                                                                             usedSendingAddressesAction(0),
@@ -347,9 +348,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(informationAction);
 
-	informationAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Info"), this);
+	informationAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Information"), this);
 	informationAction->setStatusTip(tr("Information Tab"));
-	informationAction->setToolTip(privacyAction->statusTip());
+	informationAction->setToolTip(informationAction->statusTip());
 	informationAction->setCheckable(true);
 #ifdef Q_OS_MAC
 	informationAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));

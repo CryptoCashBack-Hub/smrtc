@@ -100,25 +100,30 @@ private:
     QAction* masternodeAction;
     QAction* quitAction;
     QAction* sendCoinsAction;
+    QAction* receiveCoinsAction;
+    QAction* privacyAction;
+    QAction* optionsAction;
+
     QAction* usedSendingAddressesAction;
     QAction* usedReceivingAddressesAction;
     QAction* signMessageAction;
     QAction* verifyMessageAction;
+
     QAction* bip38ToolAction;
     QAction* multisigCreateAction;
     QAction* multisigSpendAction;
     QAction* multisigSignAction;
+
     QAction* aboutAction;
-    QAction* receiveCoinsAction;
-    QAction* privacyAction;
-    QAction* optionsAction;
+    QAction* aboutQtAction;
     QAction* toggleHideAction;
+
     QAction* encryptWalletAction;
     QAction* backupWalletAction;
     QAction* changePassphraseAction;
     QAction* unlockWalletAction;
     QAction* lockWalletAction;
-    QAction* aboutQtAction;
+
     QAction* openInformationAction;
     QAction* openRPCConsoleAction;
     QAction* openNetworkAction;
