@@ -84,7 +84,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             overviewAction(0),
                                                                             historyAction(0),
                                                                             masternodeAction(0),
-																			infoAction(0),
+																			informationAction(0),
                                                                             quitAction(0),
                                                                             sendCoinsAction(0),
                                                                             usedSendingAddressesAction(0),
@@ -345,18 +345,18 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #else
     privacyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
 #endif
-    tabGroup->addAction(infoAction);
+    tabGroup->addAction(informationAction);
 
-	infoAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Info"), this);
-	infoAction->setStatusTip(tr("Information Tab"));
-	infoAction->setToolTip(privacyAction->statusTip());
-	infoAction->setCheckable(true);
+	informationAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Info"), this);
+	informationAction->setStatusTip(tr("Information Tab"));
+	informationAction->setToolTip(privacyAction->statusTip());
+	informationAction->setCheckable(true);
 #ifdef Q_OS_MAC
-	infoAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
+	informationAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
 #else
-	infoAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+	informationAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
 #endif
-	tabGroup->addAction(infoAction);
+	tabGroup->addAction(informationAction);
 
 #ifdef ENABLE_WALLET
 
@@ -387,8 +387,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     connect(privacyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(privacyAction, SIGNAL(triggered()), this, SLOT(gotoPrivacyPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(infoAction, SIGNAL(triggered()), this, SLOT(gotoInfoPage()));
-	connect(infoAction, SIGNAL(triggered()), this, SLOT(gotoInfoPage()));
+    connect(informationAction, SIGNAL(triggered()), this, SLOT(gotoInformationPage()));
+	connect(informationAction, SIGNAL(triggered()), this, SLOT(gotoInformationPage()));
 #endif // ENABLE_WALLET
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
@@ -433,6 +433,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 
     openInfoAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Information"), this);
     openInfoAction->setStatusTip(tr("Show diagnostic information"));
+
     openRPCConsoleAction = new QAction(QIcon(":/icons/debugwindow"), tr("&Debug console"), this);
     openRPCConsoleAction->setStatusTip(tr("Open debugging console"));
     openNetworkAction = new QAction(QIcon(":/icons/connect_4"), tr("&Network Monitor"), this);
@@ -582,7 +583,7 @@ void BitcoinGUI::createToolBars()
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
         toolbar->addAction(privacyAction);
-		toolbar->addAction(infoAction);
+		toolbar->addAction(informationAction);
         QSettings settings;
         if (settings.value("fShowMasternodesTab").toBool()) {
             toolbar->addAction(masternodeAction);
@@ -731,7 +732,7 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     receiveCoinsAction->setEnabled(enabled);
     privacyAction->setEnabled(enabled);
     historyAction->setEnabled(enabled);
-	infoAction->setEnabled(enabled);
+	information->setEnabled(enabled);
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeAction->setEnabled(enabled);
@@ -795,7 +796,7 @@ void BitcoinGUI::createTrayIconMenu()
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(optionsAction);
     trayIconMenu->addSeparator();
-    trayIconMenu->addAction(openInfoAction);
+    trayIconMenu->addAction(openInformationAction);
     trayIconMenu->addAction(openRPCConsoleAction);
     trayIconMenu->addAction(openNetworkAction);
     trayIconMenu->addAction(openPeersAction);
@@ -868,10 +869,10 @@ void BitcoinGUI::gotoHistoryPage()
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
-void BitcoinGUI::gotoInfoPage()
+void BitcoinGUI::gotoInformationPage()
 {
-	infoAction->setChecked(true);
-	if (walletFrame) walletFrame->gotoInfoPage();
+	informationAction->setChecked(true);
+	if (walletFrame) walletFrame->gotoInformationPage();
 }
 
 void BitcoinGUI::gotoMasternodePage()

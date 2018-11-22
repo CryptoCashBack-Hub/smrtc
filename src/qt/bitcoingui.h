@@ -96,7 +96,7 @@ private:
     QMenuBar* appMenuBar;
     QAction* overviewAction;
     QAction* historyAction;
-	QAction* infoAction;
+	QAction* informationAction;
     QAction* masternodeAction;
     QAction* quitAction;
     QAction* sendCoinsAction;
@@ -119,7 +119,7 @@ private:
     QAction* unlockWalletAction;
     QAction* lockWalletAction;
     QAction* aboutQtAction;
-    QAction* openInfoAction;
+    QAction* openInformationAction;
     QAction* openRPCConsoleAction;
     QAction* openNetworkAction;
     QAction* openPeersAction;
@@ -207,8 +207,8 @@ private slots:
     void gotoOverviewPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
-	/** Switch to info page */
-	void gotoInfoPage();
+	/** Switch to information page */
+	void gotoInformationPage();
     /** Switch to Explorer Page */
     void gotoBlockExplorerPage();
     /** Switch to masternode page */

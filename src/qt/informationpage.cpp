@@ -5,8 +5,8 @@
 // Distributed under the MIT/X11 software license, see the accompanyingF
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "infopage.h"
-#include "ui_infopage.h"
+#include "informationpage.h"
+#include "ui_informationpage.h"
 
 #include "bitcoinunits.h"
 #include "clientmodel.h"
@@ -110,9 +110,9 @@ public:
 
     int unit;
 };
-#include "InfoPage.moc"
+#include "InformationPage.moc"
 
-void InfoPage::setClientModel(ClientModel* model)
+void InformationPage::setClientModel(ClientModel* model)
 {
     this->clientModel = model;
     if (model) {
@@ -124,7 +124,7 @@ void InfoPage::setClientModel(ClientModel* model)
 
 
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
-void InfoPage::updateMasternodeInfo()
+void InformationPage::updateMasternodeInfo()
 {
 		if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
        
@@ -202,7 +202,7 @@ void InfoPage::updateMasternodeInfo()
 }
 
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
-void InfoPage::updatBlockChainInfo()
+void InformationPage::updatBlockChainInfo()
 {
     if (masternodeSync.IsBlockchainSynced()) {
         int CurrentBlock = (int)chainActive.Height();

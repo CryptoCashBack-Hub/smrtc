@@ -17,15 +17,15 @@ class WalletModel;
 
 namespace Ui
 {
-class InfoPage;
+class InformationPage;
 }
 
 QT_BEGIN_NAMESPACE
 class QModelIndex;
 QT_END_NAMESPACE
 
-/** InfoPage ("home") page widget */
-class InfoPage : public QWidget
+/** InformationPage ("home") page widget */
+class InformationPage : public QWidget
 {
     Q_OBJECT
 
@@ -34,7 +34,7 @@ private:
     QTimer* timer;
     QTimer* timerinfo_mn;
     QTimer* timerinfo_blockchain;
-    Ui::InfoPage* ui;
+    Ui::InformationPage* ui;
     ClientModel* clientModel;
     WalletModel* walletModel;
     int nDisplayUnit;
