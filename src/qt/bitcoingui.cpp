@@ -85,7 +85,6 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             historyAction(0),
                                                                             masternodeAction(0),
 																			informationAction(0),
-																			infoAction(0),
                                                                             quitAction(0),
                                                                             sendCoinsAction(0),
                                                                             usedSendingAddressesAction(0),
@@ -786,18 +785,22 @@ void BitcoinGUI::createTrayIconMenu()
 
     // Configuration of the tray icon (or dock icon) icon menu
     trayIconMenu->addAction(toggleHideAction);
+
+	//Main Icons on wallet
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(sendCoinsAction);
     trayIconMenu->addAction(receiveCoinsAction);
     trayIconMenu->addAction(privacyAction);
+    trayIconMenu->addAction(informationAction);
     trayIconMenu->addSeparator();
+
+	//File Menu
     trayIconMenu->addAction(signMessageAction);
     trayIconMenu->addAction(verifyMessageAction);
     trayIconMenu->addAction(bip38ToolAction);
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(optionsAction);
     trayIconMenu->addSeparator();
-    trayIconMenu->addAction(openInformationAction);
     trayIconMenu->addAction(openInfoAction);
     trayIconMenu->addAction(openRPCConsoleAction);
     trayIconMenu->addAction(openNetworkAction);
