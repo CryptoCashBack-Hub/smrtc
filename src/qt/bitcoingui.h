@@ -116,6 +116,7 @@ private:
 
     QAction* aboutAction;
     QAction* aboutQtAction;
+    QAction* openInfoAction;
     QAction* toggleHideAction;
 
     QAction* encryptWalletAction;
