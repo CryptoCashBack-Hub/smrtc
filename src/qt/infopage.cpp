@@ -151,7 +151,7 @@ void InfoPage::updateMasternodeInfo()
 
 				}
 					totalmn = mn1 + mn2 + mn3 + mn4;
-					ui->labelMnTotal_Value->setText(QString::number(totalmn));
+					//ui->labelMnTotal_Value->setText(QString::number(totalmn));
 					ui->graphMN->setMaximum(totalmn);
 					ui->graphMN->setValue(mn1);
 
