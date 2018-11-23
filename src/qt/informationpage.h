@@ -5,36 +5,34 @@
 #ifndef BITCOIN_QT_INFORMATIONPAGE_H
 #define BITCOIN_QT_INFORMATIONPAGE_H
 
-#include "amount.h"
-#include "main.h"
+#include "guiutil.h"
 
+#include <QKeyEvent>
 #include <QWidget>
 
-class ClientModel;
-class TransactionFilterProxy;
-class TxViewDelegate;
 class WalletModel;
-
-void setModel(WalletModel* model);
-namespace Ui
-{
-class InformationPage;
-}
-
 QT_BEGIN_NAMESPACE
-class QModelIndex;
+class QFrame;
+class QLineEdit;
+class QMenu;
 QT_END_NAMESPACE
 
-/** InformationPage ("home") page widget */
+/** Widget showing the transaction list for a wallet, including a filter row.
+    Using the filter row, the user can view or export a subset of the transactions.
+  */
 class InformationPage : public QWidget
 {
     Q_OBJECT
 
-		public:
-    explicit InformationPage(QWidget* parent = 0);
+public:
+
 
     void setModel(WalletModel* model);
 
+
+
+private:
+    WalletModel* model;
 
 private:
     QTimer* timer;
@@ -45,7 +43,6 @@ private:
     WalletModel* walletModel;
     int nDisplayUnit;
 
-
     TxViewDelegate* txdelegate;
     TransactionFilterProxy* filter;
 
@@ -54,5 +51,10 @@ private slots:
     void updateMasternodeInfo();
     void updatBlockChainInfo();
 };
-
+class InformationPage : public QWidget
+{
+    Q_OBJECT
+public:
+    void setModel(WalletModel* model);
+};
 #endif // BITCOIN_QT_INFORMATIONPAGE_H
