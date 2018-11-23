@@ -46,6 +46,15 @@ void InformationPage::setModel(WalletModel* model)
 
 }
 
+void InformationPage::setClientModel(ClientModel* clientModel)
+{
+    this->clientModel = clientModel;
+
+    if (clientModel) {
+        connect(clientModel, SIGNAL(numBlocksChanged(int)), this, SLOT(updateSmartFeeLabel()));
+    }
+}
+
 
 
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2

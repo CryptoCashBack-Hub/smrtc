@@ -31,26 +31,26 @@ class InformationPage : public QWidget
     Q_OBJECT
 
 public:
+    explicit InformationPage(QWidget* parent = 0);
+    ~InformationPage();
 
-
+    void setClientModel(ClientModel* clientModel);
     void setModel(WalletModel* model);
-
-
 
 private:
     WalletModel* model;
 
 private:
+    Ui::InformationPage* ui;
+    ClientModel* clientModel;
+    WalletModel* model;
+
+
+
     QTimer* timer;
     QTimer* timerinfo_mn;
     QTimer* timerinfo_blockchain;
-    Ui::informationpage* ui;
-    ClientModel* clientModel;
-    WalletModel* walletModel;
     int nDisplayUnit;
-
-    TxViewDelegate* txdelegate;
-    TransactionFilterProxy* filter;
 
 private slots:
     void updateDisplayUnit();
