@@ -112,6 +112,12 @@ public:
 };
 #include "InformationPage.moc"
 
+void TransactionView::setModel(WalletModel* model)
+{
+    QSettings settings;
+
+}
+
 void InformationPage::setClientModel(ClientModel* model)
 {
     this->clientModel = model;
