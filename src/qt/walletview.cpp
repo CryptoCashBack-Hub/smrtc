@@ -77,7 +77,7 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
     privacyPage = new PrivacyDialog();
     receiveCoinsPage = new ReceiveCoinsDialog();
     sendCoinsPage = new SendCoinsDialog();
-    informationPage = new InformationPage(this);
+    informationPage = new InformationPage();
 
     addWidget(overviewPage);
 	addWidget(informationPage);
