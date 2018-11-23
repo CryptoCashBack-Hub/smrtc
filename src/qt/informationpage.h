@@ -51,10 +51,4 @@ private slots:
     void updateMasternodeInfo();
     void updatBlockChainInfo();
 };
-class InformationPage : public QWidget
-{
-    Q_OBJECT
-public:
-    void setModel(WalletModel* model);
-};
 #endif // BITCOIN_QT_INFORMATIONPAGE_H
