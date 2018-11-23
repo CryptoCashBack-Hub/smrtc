@@ -12,6 +12,7 @@ class BitcoinGUI;
 class ClientModel;
 class SendCoinsRecipient;
 class WalletModel;
+class InformationPage;
 class WalletView;
 class TradingDialog;
 class BlockExplorer;
