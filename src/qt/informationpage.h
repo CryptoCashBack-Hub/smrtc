@@ -5,14 +5,15 @@
 #ifndef BITCOIN_QT_INFORMATIONPAGE_H
 #define BITCOIN_QT_INFORMATIONPAGE_H
 
-#include "guiutil.h"
+#include "amount.h"
+#include "main.h"
 
-#include <QKeyEvent>
 #include <QWidget>
 
 class ClientModel;
-class OptionsModel;
-
+class TransactionFilterProxy;
+class TxViewDelegate;
+class WalletModel;
 
 namespace Ui
 {
@@ -20,12 +21,9 @@ class InformationPage;
 }
 
 QT_BEGIN_NAMESPACE
-class QUrl;
+class QModelIndex;
 QT_END_NAMESPACE
 
-/** Widget showing the transaction list for a wallet, including a filter row.
-    Using the filter row, the user can view or export a subset of the transactions.
-  */
 class InformationPage : public QWidget
 {
     Q_OBJECT
@@ -35,22 +33,28 @@ public:
     ~InformationPage();
 
     void setClientModel(ClientModel* clientModel);
-    void setModel(WalletModel* model);
+    void setWalletModel(WalletModel* walletModel);
+    void showOutOfSyncWarning(bool fShow);
+
+	//public slots:
+    //void setBalance(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance, const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance);
+
+
+	//signals:
+    //void transactionClicked(const QModelIndex& index);
 
 private:
-    WalletModel* model;
-
-private:
-    Ui::InformationPage* ui;
-    ClientModel* clientModel;
-    WalletModel* model;
-
-
-
     QTimer* timer;
     QTimer* timerinfo_mn;
     QTimer* timerinfo_blockchain;
+    Ui::InformationPage* ui;
+    ClientModel* clientModel;
+    WalletModel* walletModel;
+
     int nDisplayUnit;
+
+    TxViewDelegate* txdelegate;
+    TransactionFilterProxy* filter;
 
 private slots:
     void updateDisplayUnit();

@@ -55,7 +55,30 @@ void InformationPage::setClientModel(ClientModel* clientModel)
     }
 }
 
+InformationPage::InformationPage(QWidget* parent) : QWidget(parent),
+													ui(new Ui::InformationPAge),
+													clientModel(0),
+													walletModel(0),
+													filter(0)
+{
+    nDisplayUnit = 0; // just make sure it's not unitialized
+    ui->setupUi(this);
 
+
+
+
+    //information block update
+    timerinfo_mn = new QTimer(this);
+    connect(timerinfo_mn, SIGNAL(timeout()), this, SLOT(updateMasternodeInfo()));
+    timerinfo_mn->start(1000);
+
+    timerinfo_blockchain = new QTimer(this);
+    connect(timerinfo_blockchain, SIGNAL(timeout()), this, SLOT(updatBlockChainInfo()));
+    timerinfo_blockchain->start(1000); //30sec
+
+    // start with displaying the "out of sync" warnings
+    showOutOfSyncWarning(true);
+}
 
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
 void InformationPage::updateMasternodeInfo()
