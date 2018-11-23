@@ -15,6 +15,7 @@ class TransactionFilterProxy;
 class TxViewDelegate;
 class WalletModel;
 
+void setModel(WalletModel* model);
 namespace Ui
 {
 class InformationPage;
@@ -28,6 +29,11 @@ QT_END_NAMESPACE
 class InformationPage : public QWidget
 {
     Q_OBJECT
+
+		public:
+    explicit InformationPage(QWidget* parent = 0);
+
+    void setModel(WalletModel* model);
 
 
 private:
@@ -49,4 +55,4 @@ private slots:
     void updatBlockChainInfo();
 };
 
-#endif // BITCOIN_QT_OVERVIEWPAGE_H
+#endif // BITCOIN_QT_INFORMATIONPAGE_H
