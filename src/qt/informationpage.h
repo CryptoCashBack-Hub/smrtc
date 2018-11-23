@@ -10,11 +10,17 @@
 #include <QKeyEvent>
 #include <QWidget>
 
-class WalletModel;
+class ClientModel;
+class OptionsModel;
+
+
+namespace Ui
+{
+class InformationPage;
+}
+
 QT_BEGIN_NAMESPACE
-class QFrame;
-class QLineEdit;
-class QMenu;
+class QUrl;
 QT_END_NAMESPACE
 
 /** Widget showing the transaction list for a wallet, including a filter row.
@@ -38,7 +44,7 @@ private:
     QTimer* timer;
     QTimer* timerinfo_mn;
     QTimer* timerinfo_blockchain;
-    Ui::InformationPage* ui;
+    Ui::informationpage* ui;
     ClientModel* clientModel;
     WalletModel* walletModel;
     int nDisplayUnit;
