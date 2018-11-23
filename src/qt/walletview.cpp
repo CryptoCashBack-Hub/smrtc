@@ -158,7 +158,7 @@ void WalletView::setWalletModel(WalletModel* walletModel)
     }
     privacyPage->setModel(walletModel);
     receiveCoinsPage->setModel(walletModel);
-    sendCoinsPage->setModel(walletModel);
+    sendCoinsPage->setClientModel(walletModel);
     informationPage->setModel(walletModel);
 
     if (walletModel) {
