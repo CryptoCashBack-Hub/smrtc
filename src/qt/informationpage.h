@@ -36,12 +36,13 @@ public:
     void setWalletModel(WalletModel* walletModel);
     void showOutOfSyncWarning(bool fShow);
 
-	//public slots:
-    //void setBalance(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance, const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance);
-
-
-	//signals:
-    //void transactionClicked(const QModelIndex& index);
+       enum TabTypes {
+        TAB_INFO = 0,
+        TAB_CONSOLE = 1,
+        TAB_GRAPH = 2,
+        TAB_PEERS = 3,
+        TAB_REPAIR = 4
+    };
 
 private:
     QTimer* timer;
