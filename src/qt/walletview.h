@@ -57,7 +57,7 @@ public:
 
     void showOutOfSyncWarning(bool fShow);
 
-	void gotoInformationPage(enum ToolsPage::TabTypes page);
+	void gotoInformationPage(enum InformationPage::TabTypes page);
 
 
 private:
