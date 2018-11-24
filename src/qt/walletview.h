@@ -58,9 +58,6 @@ public:
 
     void showOutOfSyncWarning(bool fShow);
 
-	void gotoInformationPage(enum InformationPage::TabTypes page);
-
-
 private:
     ClientModel* clientModel;
     WalletModel* walletModel;

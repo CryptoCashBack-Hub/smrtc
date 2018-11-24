@@ -223,12 +223,13 @@ void WalletView::gotoInformationPage()
     setCurrentWidget(informationPage);
 }
 
+/*
 void WalletView::gotoInformationPage(enum InformationPage::TabTypes page)
 {
     informationPage->setTabFocus(page);
     setCurrentWidget(informationPage);
 }
-
+*/
 
 
 
