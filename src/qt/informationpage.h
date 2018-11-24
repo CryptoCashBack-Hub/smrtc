@@ -83,8 +83,6 @@ private:
     QTimer* timer;
     QTimer* timerinfo_mn;
     QTimer* timerinfo_blockchain;
-    Ui::InformationPage* ui;
-    ClientModel* clientModel;
     WalletModel* walletModel;
 
     int nDisplayUnit;
