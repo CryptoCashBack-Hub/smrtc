@@ -87,9 +87,6 @@ private:
 
     int nDisplayUnit;
 
-    TxViewDelegate* txdelegate;
-    TransactionFilterProxy* filter;
-
 private slots:
     void updateDisplayUnit();
     void updateMasternodeInfo();
