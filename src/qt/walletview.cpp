@@ -128,6 +128,9 @@ void WalletView::setBitcoinGUI(BitcoinGUI* gui)
         // Pass through encryption status changed signals
         connect(this, SIGNAL(encryptionStatusChanged(int)), gui, SLOT(setEncryptionStatus(int)));
 
+
+		connect(informationPage, SIGNAL(handleRestart(QStringList)), gui, SLOT(handleRestart(QStringList)));
+
         // Pass through transaction notifications
         connect(this, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), gui, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));
     }
@@ -139,6 +142,7 @@ void WalletView::setClientModel(ClientModel* clientModel)
 
     overviewPage->setClientModel(clientModel);
     sendCoinsPage->setClientModel(clientModel);
+    informationAction->setClientModel(clientModel);
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeListPage->setClientModel(clientModel);
