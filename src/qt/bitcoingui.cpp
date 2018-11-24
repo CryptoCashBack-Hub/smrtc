@@ -876,6 +876,8 @@ void BitcoinGUI::gotoHistoryPage()
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
+
+
 void BitcoinGUI::gotoToolsPage()
 {
     toolsAction->setChecked(true);
@@ -911,6 +913,9 @@ void BitcoinGUI::showRepair()
     toolsAction->setChecked(true);
     walletFrame->gotoToolsPageTab(ToolsPage::TAB_REPAIR);
 }
+
+
+
 
 void BitcoinGUI::gotoMasternodePage()
 {

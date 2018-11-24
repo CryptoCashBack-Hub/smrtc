@@ -1,7 +1,13 @@
-#include "walletframe.h"
+// Copyright (c) 2011-2014 The Bitcoin developers
+// Copyright (c) 2014-2015 The Dash developers
+// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2018-2019 The esbcoin Core developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "walletframe.h"
+#include "toolspage.h"
 #include "bitcoingui.h"
-#include "walletview.h"
 
 #include <cstdio>
 
@@ -128,11 +134,19 @@ void WalletFrame::gotoBlockExplorerPage()
         i.value()->gotoBlockExplorerPage();
 }
 
-void WalletFrame::gotoInformationPage()
+void WalletFrame::gotoToolsPage()
 {
     QMap<QString, WalletView*>::const_iterator i;
     for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
-        i.value()->gotoInformationPage();
+        i.value()->gotoToolsPage();
+}
+
+
+void WalletFrame::gotoToolsPageTab(enum ToolsPage::TabTypes page)
+{
+    QMap<QString, WalletView*>::const_iterator i;
+    for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
+        i.value()->gotoToolsPageTab(page);
 }
 
 void WalletFrame::gotoReceiveCoinsPage()

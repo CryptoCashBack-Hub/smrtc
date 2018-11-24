@@ -7,12 +7,13 @@
 
 #include <QFrame>
 #include <QMap>
+#include "toolspage.h"
 
 class BitcoinGUI;
 class ClientModel;
 class SendCoinsRecipient;
 class WalletModel;
-class InformationPage;
+class ToolsPage;
 class WalletView;
 class TradingDialog;
 class BlockExplorer;
@@ -53,8 +54,9 @@ private:
 public slots:
     /** Switch to overview (home) page */
     void gotoOverviewPage();
-    /** Switch to information  page */
-    void gotoInformationPage();
+    /** Switch to tools page */
+    void gotoToolsPage();
+    void gotoToolsPageTab(enum ToolsPage::TabTypes page);
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
     /** Switch to masternode page */
