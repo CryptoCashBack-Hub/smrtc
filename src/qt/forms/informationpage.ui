@@ -19,8 +19,8 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
     <widget class="QLabel" name="labelAlerts">
      <property name="visible">
       <bool>true</bool>
@@ -36,7 +36,7 @@
      </property>
     </widget>
    </item>
-   <item>
+   <item row="1" column="0">
     <widget class="QFrame" name="frame">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -106,13 +106,6 @@
               <property name="verticalSpacing">
                <number>6</number>
               </property>
-              <item row="0" column="2">
-               <widget class="QLabel" name="label_CurrentBlock_value">
-                <property name="text">
-                 <string>0</string>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="0">
                <widget class="QLabel" name="label_CurrentBlock">
                 <property name="minimumSize">
@@ -146,15 +139,8 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="label_Nethash">
-                <property name="text">
-                 <string>Nethash MHs:</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="label_Nethash_value">
+              <item row="0" column="2">
+               <widget class="QLabel" name="label_CurrentBlock_value">
                 <property name="text">
                  <string>0</string>
                 </property>
@@ -164,13 +150,6 @@
                <widget class="QLabel" name="label_Supply_2">
                 <property name="text">
                  <string>Coin supply:</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QLabel" name="label_Supply_value">
-                <property name="text">
-                 <string>0</string>
                 </property>
                </widget>
               </item>
@@ -189,6 +168,27 @@
                  </size>
                 </property>
                </spacer>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_Nethash">
+                <property name="text">
+                 <string>Nethash MHs:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="label_Nethash_value">
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLabel" name="label_Supply_value">
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </widget>
@@ -225,8 +225,8 @@
      </layout>
     </widget>
    </item>
-   <item>
-    <widget class="QFrame" name="frameObfuscation">
+   <item row="2" column="0">
+    <widget class="QWidget" name="widgetMNData" native="true">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -235,12 +235,6 @@
      </property>
      <property name="layoutDirection">
       <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
      </property>
      <widget class="QPushButton" name="runAutoDenom">
       <property name="geometry">
@@ -981,8 +975,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../../../../../ccbc/CryptoCashBack_Hub/src/qt/ccbc.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
