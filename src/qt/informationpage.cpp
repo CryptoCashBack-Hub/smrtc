@@ -61,6 +61,7 @@ InformationPage::InformationPage(QWidget* parent) : QWidget(parent),
 													walletModel(0),
 													filter(0)
 {
+    GUIUtil::restoreWindowGeometry("nInformationPageWindow", this->size(), this);
     nDisplayUnit = 0; // just make sure it's not unitialized
     ui->setupUi(this);
 
