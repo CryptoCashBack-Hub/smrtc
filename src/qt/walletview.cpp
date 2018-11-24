@@ -128,11 +128,10 @@ void WalletView::setBitcoinGUI(BitcoinGUI* gui)
         // Pass through encryption status changed signals
         connect(this, SIGNAL(encryptionStatusChanged(int)), gui, SLOT(setEncryptionStatus(int)));
 
-
-		connect(informationPage, SIGNAL(handleRestart(QStringList)), gui, SLOT(handleRestart(QStringList)));
-
         // Pass through transaction notifications
         connect(this, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), gui, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));
+
+		connect(informationPage, SIGNAL(handleRestart(QStringList)), gui, SLOT(handleRestart(QStringList)));
     }
 }
 
@@ -163,7 +162,6 @@ void WalletView::setWalletModel(WalletModel* walletModel)
     privacyPage->setModel(walletModel);
     receiveCoinsPage->setModel(walletModel);
     sendCoinsPage->setModel(walletModel);
-    informationPage->setModel(clientModel);
 
     if (walletModel) {
         // Receive and pass through messages from wallet model
@@ -215,10 +213,21 @@ void WalletView::gotoHistoryPage()
     setCurrentWidget(transactionsPage);
 }
 
+
+
+//New Information Page
 void WalletView::gotoInformationPage()
 {
     setCurrentWidget(informationPage);
 }
+
+void WalletView::gotoInformationPageTab(enum InformationPage::TabTypes page)
+{
+    informationPage->setTabFocus(page);
+    setCurrentWidget(informationPage);
+}
+
+
 
 
 void WalletView::gotoBlockExplorerPage()
