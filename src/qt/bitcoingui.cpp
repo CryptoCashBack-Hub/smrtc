@@ -347,7 +347,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(privacyAction);
 
-    informationAction = new QAction(QIcon(GUIUtil::getThemeImage(":/icons/bitcoin")), "", this);
+    informationAction = new QAction(QIcon(GUIUtil::getThemeImage(":/icons/information")), "", this);
     informationAction->setStatusTip(tr("Information"));
     informationAction->setToolTip(toolsAction->statusTip());
     informationAction->setCheckable(true);
