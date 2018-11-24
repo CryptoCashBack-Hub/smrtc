@@ -345,18 +345,18 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #else
     privacyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
 #endif
-    tabGroup->addAction(informationAction);
+    tabGroup->addAction(privacyAction);
 
-	informationAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Information"), this);
-	informationAction->setStatusTip(tr("Information Tab"));
-	informationAction->setToolTip(informationAction->statusTip());
-	informationAction->setCheckable(true);
+    informationAction = new QAction(QIcon(GUIUtil::getThemeImage(":/icons/bitcoin")), "", this);
+    informationAction->setStatusTip(tr("Information"));
+    informationAction->setToolTip(toolsAction->statusTip());
+    informationAction->setCheckable(true);
 #ifdef Q_OS_MAC
-	informationAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
+    informationAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_7));
 #else
-	informationAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+    informationAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
 #endif
-	tabGroup->addAction(informationAction);
+    tabGroup->addAction(informationAction);
 
 #ifdef ENABLE_WALLET
 
