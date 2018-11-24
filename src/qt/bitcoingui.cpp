@@ -349,7 +349,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 
     informationAction = new QAction(QIcon(GUIUtil::getThemeImage(":/icons/information")), "", this);
     informationAction->setStatusTip(tr("Information"));
-    informationAction->setToolTip(toolsAction->statusTip());
+    informationAction->setToolTip(informationAction->statusTip());
     informationAction->setCheckable(true);
 #ifdef Q_OS_MAC
     informationAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_7));
