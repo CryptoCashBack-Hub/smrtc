@@ -16,6 +16,7 @@
 #include "optionsmodel.h"
 #include "rpcconsole.h"
 #include "utilitydialog.h"
+#include "toolspage.h"
 
 #ifdef ENABLE_WALLET
 #include "blockexplorer.h"
@@ -84,7 +85,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             overviewAction(0),
                                                                             historyAction(0),
                                                                             masternodeAction(0),
-																			informationAction(0),
+																			toolsAction(0),
                                                                             quitAction(0),
                                                                             sendCoinsAction(0),
                                                                             usedSendingAddressesAction(0),
@@ -347,16 +348,16 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(privacyAction);
 
-    informationAction = new QAction(QIcon(":/icons/information"), tr("&Information"), this);
-    informationAction->setStatusTip(tr("Information"));
-    informationAction->setToolTip(informationAction->statusTip());
-    informationAction->setCheckable(true);
+    toolsAction = new QAction(QIcon(GUIUtil::getThemeImage(":/icons/tools")), "", this);
+    toolsAction->setStatusTip(tr("Tools"));
+    toolsAction->setToolTip(toolsAction->statusTip());
+    toolsAction->setCheckable(true);
 #ifdef Q_OS_MAC
-    informationAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_7));
+    toolsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_7));
 #else
-    informationAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
+    toolsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
 #endif
-    tabGroup->addAction(informationAction);
+    tabGroup->addAction(toolsAction);
 
 #ifdef ENABLE_WALLET
 
@@ -387,8 +388,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     connect(privacyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(privacyAction, SIGNAL(triggered()), this, SLOT(gotoPrivacyPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(informationAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-	connect(informationAction, SIGNAL(triggered()), this, SLOT(gotoInformationPage()));
+    connect(toolsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+	connect(toolsAction, SIGNAL(triggered()), this, SLOT(gotoToolsPage()));
 #endif // ENABLE_WALLET
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
@@ -583,7 +584,7 @@ void BitcoinGUI::createToolBars()
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
         toolbar->addAction(privacyAction);
-		toolbar->addAction(informationAction);
+        toolbar->addAction(toolsAction);
         QSettings settings;
         if (settings.value("fShowMasternodesTab").toBool()) {
             toolbar->addAction(masternodeAction);
@@ -794,7 +795,7 @@ void BitcoinGUI::createTrayIconMenu()
     trayIconMenu->addAction(informationAction);
     trayIconMenu->addSeparator();
 
-	//File Menu
+	/*//File Menu
     trayIconMenu->addAction(signMessageAction);
     trayIconMenu->addAction(verifyMessageAction);
     trayIconMenu->addAction(bip38ToolAction);
@@ -811,6 +812,7 @@ void BitcoinGUI::createTrayIconMenu()
     trayIconMenu->addAction(openMNConfEditorAction);
     trayIconMenu->addAction(showBackupsAction);
     trayIconMenu->addAction(openBlockExplorerAction);
+	*/
 #ifndef Q_OS_MAC // This is built-in on Mac
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
@@ -874,10 +876,40 @@ void BitcoinGUI::gotoHistoryPage()
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
-void BitcoinGUI::gotoInformationPage()
+void BitcoinGUI::gotoToolsPage()
 {
-    informationAction->setChecked(true);
-    if (walletFrame) walletFrame->gotoInformationPage();
+    toolsAction->setChecked(true);
+    if (toolsAction) walletFrame->gotoToolsPage();
+}
+
+void BitcoinGUI::showInfo()
+{
+    toolsAction->setChecked(true);
+    walletFrame->gotoToolsPageTab(ToolsPage::TAB_INFO);
+}
+
+void BitcoinGUI::showConsole()
+{
+    toolsAction->setChecked(true);
+    walletFrame->gotoToolsPageTab(ToolsPage::TAB_CONSOLE);
+}
+
+void BitcoinGUI::showGraph()
+{
+    toolsAction->setChecked(true);
+    walletFrame->gotoToolsPageTab(ToolsPage::TAB_GRAPH);
+}
+
+void BitcoinGUI::showPeers()
+{
+    toolsAction->setChecked(true);
+    walletFrame->gotoToolsPageTab(ToolsPage::TAB_PEERS);
+}
+
+void BitcoinGUI::showRepair()
+{
+    toolsAction->setChecked(true);
+    walletFrame->gotoToolsPageTab(ToolsPage::TAB_REPAIR);
 }
 
 void BitcoinGUI::gotoMasternodePage()

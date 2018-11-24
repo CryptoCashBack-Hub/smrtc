@@ -96,7 +96,7 @@ private:
     QMenuBar* appMenuBar;
     QAction* overviewAction;
     QAction* historyAction;
-	QAction* informationAction;
+	QAction* toolsAction;
     QAction* masternodeAction;
     QAction* quitAction;
     QAction* sendCoinsAction;
@@ -213,8 +213,8 @@ private slots:
     void gotoOverviewPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
-	/** Switch to information page */
-	void gotoInformationPage();
+    /** Switch to tools page */
+    void gotoToolsPage();
     /** Switch to Explorer Page */
     void gotoBlockExplorerPage();
     /** Switch to masternode page */

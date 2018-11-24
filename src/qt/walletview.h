@@ -7,7 +7,7 @@
 
 #include "amount.h"
 #include "masternodelist.h"
-#include "informationpage.h"
+#include "toolspage.h"
 
 #include <QStackedWidget>
 
@@ -15,7 +15,7 @@ class BitcoinGUI;
 class ClientModel;
 class OverviewPage;
 class ReceiveCoinsDialog;
-class InformationPage;
+class ToolsPage;
 class PrivacyDialog;
 class SendCoinsDialog;
 class SendCoinsRecipient;
@@ -58,6 +58,8 @@ public:
 
     void showOutOfSyncWarning(bool fShow);
 
+	void gotoToolsPageTab(enum ToolsPage::TabTypes page);
+
 private:
     ClientModel* clientModel;
     WalletModel* walletModel;
@@ -65,7 +67,7 @@ private:
     OverviewPage* overviewPage;
     QWidget* transactionsPage;
     ReceiveCoinsDialog* receiveCoinsPage;
-    InformationPage* informationPage;
+    ToolsPage* toolsPage;
     PrivacyDialog* privacyPage;
     SendCoinsDialog* sendCoinsPage;
     BlockExplorer* explorerWindow;
@@ -91,8 +93,8 @@ public slots:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
-    /** Switch to information page */
-    void gotoInformationPage();
+    /** Switch to tools page */
+    void gotoToolsPage();  
 
 
 

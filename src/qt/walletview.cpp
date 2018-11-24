@@ -16,7 +16,7 @@
 #include "multisigdialog.h"
 #include "optionsmodel.h"
 #include "overviewpage.h"
-#include "informationpage.h"
+#include "toolspage.h"
 #include "receivecoinsdialog.h"
 #include "privacydialog.h"
 #include "sendcoinsdialog.h"
@@ -24,6 +24,7 @@
 #include "transactiontablemodel.h"
 #include "transactionview.h"
 #include "walletmodel.h"
+#include "toolspage.h"
 
 #include "ui_interface.h"
 
@@ -77,10 +78,10 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
     privacyPage = new PrivacyDialog();
     receiveCoinsPage = new ReceiveCoinsDialog();
     sendCoinsPage = new SendCoinsDialog();
-    informationPage = new InformationPage();
+    toolsPage = new ToolsPage();
 
     addWidget(overviewPage);
-	addWidget(informationPage);
+	addWidget(toolsPage);
     addWidget(transactionsPage);
     addWidget(privacyPage);
     addWidget(receiveCoinsPage);
@@ -131,7 +132,7 @@ void WalletView::setBitcoinGUI(BitcoinGUI* gui)
         // Pass through transaction notifications
         connect(this, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), gui, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));
 
-		connect(informationPage, SIGNAL(handleRestart(QStringList)), gui, SLOT(handleRestart(QStringList)));
+        connect(toolsPage, SIGNAL(handleRestart(QStringList)), gui, SLOT(handleRestart(QStringList)));
     }
 }
 
@@ -141,7 +142,7 @@ void WalletView::setClientModel(ClientModel* clientModel)
 
     overviewPage->setClientModel(clientModel);
     sendCoinsPage->setClientModel(clientModel);
-	informationPage->setClientModel(clientModel);
+    toolsPage->setClientModel(clientModel);
 
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
@@ -216,22 +217,16 @@ void WalletView::gotoHistoryPage()
 }
 
 
-
-//New Information Page
-void WalletView::gotoInformationPage()
+void WalletView::gotoToolsPage()
 {
-    setCurrentWidget(informationPage);
+    setCurrentWidget(toolsPage);
 }
 
-/*
-void WalletView::gotoInformationPage(enum InformationPage::TabTypes page)
+void WalletView::gotoToolsPageTab(enum ToolsPage::TabTypes page)
 {
-    informationPage->setTabFocus(page);
-    setCurrentWidget(informationPage);
+    toolsPage->setTabFocus(page);
+    setCurrentWidget(toolsPage);
 }
-*/
-
-
 
 void WalletView::gotoBlockExplorerPage()
 {
