@@ -142,6 +142,7 @@ void WalletView::setClientModel(ClientModel* clientModel)
     overviewPage->setClientModel(clientModel);
     sendCoinsPage->setClientModel(clientModel);
     informationAction->setClientModel(clientModel);
+
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeListPage->setClientModel(clientModel);

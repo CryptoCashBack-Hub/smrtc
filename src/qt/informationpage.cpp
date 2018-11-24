@@ -178,3 +178,8 @@ void InformationPage::updatBlockChainInfo()
         ui->label_Supply_value->setText(QString::number(chainActive.Tip()->nMoneySupply / COIN).append(" CCBC"));
     }
 }
+
+void InformationPage::setTabFocus(enum TabTypes tabType)
+{
+    ui->tabWidget->setCurrentIndex(tabType);
+}
