@@ -254,6 +254,12 @@ private slots:
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
 #endif
 
+	void showInfo();
+    void showConsole();
+    void showGraph();
+    void showPeers();
+    void showRepair();
+
     /** Show window if hidden, unminimize when minimized, rise when obscured or show if hidden and fToggleHidden is true */
     void showNormalIfMinimized(bool fToggleHidden = false);
     /** Simply calls showNormalIfMinimized(true) for use in SLOT() macro */
