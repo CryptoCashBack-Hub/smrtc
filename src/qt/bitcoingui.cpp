@@ -792,10 +792,10 @@ void BitcoinGUI::createTrayIconMenu()
     trayIconMenu->addAction(sendCoinsAction);
     trayIconMenu->addAction(receiveCoinsAction);
     trayIconMenu->addAction(privacyAction);
-    trayIconMenu->addAction(informationAction);
+    trayIconMenu->addAction(toolsAction);
     trayIconMenu->addSeparator();
 
-	/*//File Menu
+	//File Menu
     trayIconMenu->addAction(signMessageAction);
     trayIconMenu->addAction(verifyMessageAction);
     trayIconMenu->addAction(bip38ToolAction);
@@ -812,7 +812,7 @@ void BitcoinGUI::createTrayIconMenu()
     trayIconMenu->addAction(openMNConfEditorAction);
     trayIconMenu->addAction(showBackupsAction);
     trayIconMenu->addAction(openBlockExplorerAction);
-	*/
+	
 #ifndef Q_OS_MAC // This is built-in on Mac
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
