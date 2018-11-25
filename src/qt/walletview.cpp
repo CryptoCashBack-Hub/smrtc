@@ -16,15 +16,13 @@
 #include "multisigdialog.h"
 #include "optionsmodel.h"
 #include "overviewpage.h"
-#include "toolspage.h"
 #include "receivecoinsdialog.h"
-#include "privacydialog.h"
 #include "sendcoinsdialog.h"
 #include "signverifymessagedialog.h"
+#include "toolspage.h"
 #include "transactiontablemodel.h"
 #include "transactionview.h"
 #include "walletmodel.h"
-#include "toolspage.h"
 
 #include "ui_interface.h"
 
@@ -38,24 +36,25 @@
 #include <QSettings>
 #include <QVBoxLayout>
 
+
 WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
                                           clientModel(0),
                                           walletModel(0)
 {
     // Create tabs
-    overviewPage = new OverviewPage();    
-    explorerWindow = new BlockExplorer(this);
+    overviewPage = new OverviewPage();
+
+    explorerWindow = new BlockExplorer();
 
     transactionsPage = new QWidget(this);
     QVBoxLayout* vbox = new QVBoxLayout();
     QHBoxLayout* hbox_buttons = new QHBoxLayout();
-
     transactionView = new TransactionView(this);
     vbox->addWidget(transactionView);
     QPushButton* exportButton = new QPushButton(tr("&Export"), this);
     exportButton->setToolTip(tr("Export the data in the current tab to a file"));
 #ifndef Q_OS_MAC // Icons on push buttons are very uncommon on Mac
-    exportButton->setIcon(QIcon(":/icons/export"));
+    exportButton->setIcon(QIcon(GUIUtil::getThemeImage(":/icons/export")));
 #endif
     hbox_buttons->addStretch();
 
@@ -75,10 +74,14 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
     vbox->addLayout(hbox_buttons);
     transactionsPage->setLayout(vbox);
 
-    privacyPage = new PrivacyDialog();
     receiveCoinsPage = new ReceiveCoinsDialog();
     sendCoinsPage = new SendCoinsDialog();
+
     toolsPage = new ToolsPage();
+
+
+
+    privacyPage = new PrivacyDialog();
 
     addWidget(overviewPage);
 	addWidget(toolsPage);
@@ -88,7 +91,7 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
     addWidget(sendCoinsPage);
     addWidget(explorerWindow);
 
-    QSettings settings;
+      QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeListPage = new MasternodeList();
         addWidget(masternodeListPage);
@@ -133,6 +136,7 @@ void WalletView::setBitcoinGUI(BitcoinGUI* gui)
         connect(this, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), gui, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));
 
         connect(toolsPage, SIGNAL(handleRestart(QStringList)), gui, SLOT(handleRestart(QStringList)));
+        //connect(explorerWindow, SIGNAL(handleRestart(QStringList)), gui, SLOT(handleRestart(QStringList)));
     }
 }
 
@@ -157,12 +161,10 @@ void WalletView::setWalletModel(WalletModel* walletModel)
     // Put transaction list in tabs
     transactionView->setModel(walletModel);
     overviewPage->setWalletModel(walletModel);
-	
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeListPage->setWalletModel(walletModel);
     }
-    privacyPage->setModel(walletModel);
     receiveCoinsPage->setModel(walletModel);
     sendCoinsPage->setModel(walletModel);
 
@@ -207,8 +209,6 @@ void WalletView::processNewTransaction(const QModelIndex& parent, int start, int
 void WalletView::gotoOverviewPage()
 {
     setCurrentWidget(overviewPage);
-    // Refresh UI-elements in case coins were locked/unlocked in CoinControl
-    walletModel->emitBalanceChanged();
 }
 
 void WalletView::gotoHistoryPage()
