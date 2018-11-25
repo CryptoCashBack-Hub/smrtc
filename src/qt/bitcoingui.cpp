@@ -348,7 +348,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(privacyAction);
 
-    toolsAction = new QAction(QIcon(GUIUtil::getThemeImage(":/icons/tools")), "", this);
+    toolsAction = new QAction(QIcon(QIcon(":/icons/tools")), "", this);
     toolsAction->setStatusTip(tr("Tools"));
     toolsAction->setToolTip(toolsAction->statusTip());
     toolsAction->setCheckable(true);
@@ -562,7 +562,8 @@ void BitcoinGUI::createToolBars()
     if (walletFrame) {
         QToolBar* toolbar = new QToolBar(tr("Tabs toolbar"));
         toolbar->setObjectName("Main-Toolbar"); // Name for CSS addressing
-        toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        toolbar->setIconSize(QSize(35, 35));
+        toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
         //        // Add some empty space at the top of the toolbars
         //        QAction* spacer = new QAction(this);
         //        toolbar->addAction(spacer);
@@ -571,42 +572,44 @@ void BitcoinGUI::createToolBars()
         headerLabel* header = new headerLabel();
         header->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         header->setCursor(Qt::PointingHandCursor);
+
+
+		//Needed for ad banner
         QObject::connect(header, SIGNAL(onClick()), this, SLOT(linkaLtbetClickedSlot()));
 
         toolbar->addWidget(header);
-
         toolbar->addAction(overviewAction);
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
         toolbar->addAction(privacyAction);
-        toolbar->addAction(toolsAction);
+
         QSettings settings;
         if (settings.value("fShowMasternodesTab").toBool()) {
             toolbar->addAction(masternodeAction);
         }
+        toolbar->addAction(toolsAction);
         toolbar->setMovable(false); // remove unused icon in upper left corner
         toolbar->setOrientation(Qt::Vertical);
         toolbar->setIconSize(QSize(40, 40));
         overviewAction->setChecked(true);
 
+		//Ad Banner stuff
         iframe = new WebFrame(this);
         iframe->setProperty("class", "iframe");
         iframe->setObjectName(QStringLiteral("webFrame"));
         iframe->setMinimumWidth(180);
         iframe->setMaximumWidth(180);
         iframe->setCursor(Qt::PointingHandCursor);
-
-        QTimer* webtimer = new QTimer();
+		QTimer* webtimer = new QTimer();
         webtimer->setInterval(30000);
-
         QObject::connect(webtimer, SIGNAL(timeout()), this, SLOT(timerTickSlot()));
         QObject::connect(iframe, SIGNAL(onClick()), this, SLOT(linkClickedSlot()));
-
-
         webtimer->start();
-
         emit timerTickSlot();
+        //Ad Banner stuff Ends here
+
+
 
         /** Create additional container for toolbar and walletFrame and make it the central widget.
 		This is a workaround mostly for toolbar styling on Mac OS but should work fine for every other OSes too.
@@ -624,7 +627,7 @@ void BitcoinGUI::createToolBars()
     }
 }
 
-
+//Main AdBanner section
 void BitcoinGUI::timerTickSlot()
 {
     QEventLoop loop;
@@ -658,6 +661,7 @@ void BitcoinGUI::linkClickedSlot()
     uint unixtime = currentDateTime.toTime_t() / 30;
     QDesktopServices::openUrl(QUrl(QString("https://altbet.io/go/%1").arg(unixtime)));
 }
+//End of AdBanner Section
 
 void BitcoinGUI::setClientModel(ClientModel* clientModel)
 {
@@ -729,7 +733,6 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     receiveCoinsAction->setEnabled(enabled);
     privacyAction->setEnabled(enabled);
     historyAction->setEnabled(enabled);
-	toolsAction->setEnabled(enabled);
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeAction->setEnabled(enabled);
@@ -781,8 +784,9 @@ void BitcoinGUI::createTrayIconMenu()
 #endif
 
     // Configuration of the tray icon (or dock icon) icon menu
-    trayIconMenu->addAction(toggleHideAction);
 
+    trayIconMenu->addAction(toggleHideAction);
+    /*
 	//Main Icons on wallet
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(sendCoinsAction);
@@ -808,7 +812,7 @@ void BitcoinGUI::createTrayIconMenu()
     trayIconMenu->addAction(openMNConfEditorAction);
     trayIconMenu->addAction(showBackupsAction);
     trayIconMenu->addAction(openBlockExplorerAction);
-	
+	*/
 #ifndef Q_OS_MAC // This is built-in on Mac
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
