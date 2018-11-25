@@ -5,9 +5,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "walletframe.h"
 #include "toolspage.h"
+#include "walletframe.h"
+
 #include "bitcoingui.h"
+#include "walletview.h"
 
 #include <cstdio>
 
