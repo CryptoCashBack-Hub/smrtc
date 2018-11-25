@@ -67,14 +67,12 @@ private:
     OverviewPage* overviewPage;
     QWidget* transactionsPage;
     ReceiveCoinsDialog* receiveCoinsPage;
-    ToolsPage* toolsPage;
     PrivacyDialog* privacyPage;
     SendCoinsDialog* sendCoinsPage;
     BlockExplorer* explorerWindow;
     MasternodeList* masternodeListPage;
-
+    ToolsPage* toolsPage;
     TransactionView* transactionView;
-
     QProgressDialog* progressDialog;
     QLabel* transactionSum;
 
