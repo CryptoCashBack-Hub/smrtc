@@ -733,7 +733,7 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     receiveCoinsAction->setEnabled(enabled);
     privacyAction->setEnabled(enabled);
     historyAction->setEnabled(enabled);
-	informationAction->setEnabled(enabled);
+	toolsAction->setEnabled(enabled);
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeAction->setEnabled(enabled);

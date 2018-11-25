@@ -125,7 +125,7 @@ private:
     QAction* unlockWalletAction;
     QAction* lockWalletAction;
 
-    QAction* openInformationAction;
+    QAction* openToolsAction;
     QAction* openRPCConsoleAction;
     QAction* openNetworkAction;
     QAction* openPeersAction;
