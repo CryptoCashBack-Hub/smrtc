@@ -244,12 +244,14 @@ void WalletFrame::lockWallet()
         walletView->lockWallet();
 }
 
+/*
 void WalletFrame::toggleLockWallet()
 {
     WalletView* walletView = currentWalletView();
     if (walletView)
         walletView->toggleLockWallet();
 }
+*/
 
 void WalletFrame::usedSendingAddresses()
 {
