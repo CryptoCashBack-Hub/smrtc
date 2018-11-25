@@ -107,9 +107,9 @@ QTabBar::tab {
     border-color: #d2d2d2;
 }
 
-    QTabBar::tab:selected {
-        background: white;
-    }
+QTabBar::tab:selected {
+    background: white;
+}
 
     QTabBar::tab:!selected {
         background: transparent;
@@ -1766,6 +1766,64 @@ QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::seperator {
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::indicator { /* Coin Control Widget Checkbox */
 
 }
+
+
+
+
+/****************************************************************************************/
+/*************** TOOLS PAGE *****************/
+/****************************************************************************************/
+
+
+QWidget#ToolsPage QWidget#tab_peers QLabel#peerHeading { /* Peers Info Header */
+    color: #819AC8;
+}
+
+
+QWidget#ToolsPage QWidget#peerWidget {
+    border: 1px solid;
+    border-color: #d2d2d2;
+    background-color: #ffffff;
+}
+
+
+
+
+QWidget#ToolsPage QTableView#peerWidget::item { /* Peers Table Items */
+    color: #333333;
+}
+
+QWidget#ToolsPage QPushButton#openDebugLogfileButton {
+    max-width: 60px;
+}
+
+QWidget#ToolsPage QTextEdit#messagesWidget { /* Console Messages Window */
+    border: 0;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+QWidget#ToolsPage QLineEdit#lineEdit { /* Console Input */
+    margin-right: 5px;
+}
+
+QWidget#ToolsPage QPushButton#clearButton { /* Console Clear Button */
+    background-color: transparent;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+QWidget#ToolsPage .QGroupBox #line { /* Network In Line */
+    background-color: green;
+}
+
+QWidget#ToolsPage .QGroupBox #line_2 { /* Network Out Line */
+    background: red;
+}
+
+
+
+
 
 /**************************** RECEIVE COINS *********************************************/
 
