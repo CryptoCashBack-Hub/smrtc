@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "walletview.h"
-#include "privacypage.h"
+#include "privacydialog.h"
 #include "addressbookpage.h"
 #include "askpassphrasedialog.h"
 #include "bip38tooldialog.h"
