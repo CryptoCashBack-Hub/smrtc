@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "walletview.h"
-
+#include "privacypage.h"
 #include "addressbookpage.h"
 #include "askpassphrasedialog.h"
 #include "bip38tooldialog.h"
@@ -76,11 +76,7 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
 
     receiveCoinsPage = new ReceiveCoinsDialog();
     sendCoinsPage = new SendCoinsDialog();
-
     toolsPage = new ToolsPage();
-
-
-
     privacyPage = new PrivacyDialog();
 
     addWidget(overviewPage);
