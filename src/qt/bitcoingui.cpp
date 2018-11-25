@@ -389,7 +389,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     connect(privacyAction, SIGNAL(triggered()), this, SLOT(gotoPrivacyPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(toolsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-	connect(toolsAction, SIGNAL(triggered()), this, SLOT(gotoToolsPage()));
+    connect(toolsAction, SIGNAL(triggered()), this, SLOT(gotoToolsPage()));
 #endif // ENABLE_WALLET
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
@@ -540,16 +540,9 @@ void BitcoinGUI::createMenuBar()
 
     if (walletFrame) {
         QMenu* tools = appMenuBar->addMenu(tr("&Tools"));
-        tools->addAction(openInfoAction);
-        tools->addAction(openRPCConsoleAction);
-        tools->addAction(openNetworkAction);
-        tools->addAction(openPeersAction);
-        tools->addAction(openRepairAction);
-        tools->addSeparator();
         tools->addAction(openConfEditorAction);
         tools->addAction(openMNConfEditorAction);
         tools->addAction(showBackupsAction);
-        tools->addAction(openBlockExplorerAction);
     }
 
     QMenu* help = appMenuBar->addMenu(tr("&Help"));
@@ -557,6 +550,9 @@ void BitcoinGUI::createMenuBar()
     help->addSeparator();
     help->addAction(aboutAction);
     help->addAction(aboutQtAction);
+    }
+
+
 }
 
 //All credit goes to altbetdev and the project https://altbet.io/
