@@ -523,7 +523,7 @@ void BitcoinGUI::createMenuBar()
         file->addAction(multisigSpendAction);
         file->addAction(multisigSignAction);
         file->addSeparator();
-    }
+		}
     file->addAction(quitAction);
 
     QMenu* settings = appMenuBar->addMenu(tr("&Settings"));
@@ -535,7 +535,7 @@ void BitcoinGUI::createMenuBar()
         settings->addAction(bip38ToolAction);
         settings->addAction(multiSendAction);
         settings->addSeparator();
-    }
+		}
     settings->addAction(optionsAction);
 
     if (walletFrame) {
@@ -543,7 +543,7 @@ void BitcoinGUI::createMenuBar()
         tools->addAction(openConfEditorAction);
         tools->addAction(openMNConfEditorAction);
         tools->addAction(showBackupsAction);
-    }
+		}
 
     QMenu* help = appMenuBar->addMenu(tr("&Help"));
     help->addAction(showHelpMessageAction);
@@ -551,9 +551,6 @@ void BitcoinGUI::createMenuBar()
     help->addAction(aboutAction);
     help->addAction(aboutQtAction);
     }
-
-
-}
 
 //All credit goes to altbetdev and the project https://altbet.io/
 //
