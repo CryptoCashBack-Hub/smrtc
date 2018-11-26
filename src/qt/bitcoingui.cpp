@@ -16,6 +16,7 @@
 #include "optionsmodel.h"
 #include "rpcconsole.h"
 #include "utilitydialog.h"
+#include "toolspage.h"
 
 #ifdef ENABLE_WALLET
 #include "blockexplorer.h"
@@ -84,6 +85,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             overviewAction(0),
                                                                             historyAction(0),
                                                                             masternodeAction(0),
+																			//toolsAction(0),
                                                                             quitAction(0),
                                                                             sendCoinsAction(0),
                                                                             usedSendingAddressesAction(0),
@@ -235,16 +237,16 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
 
-    // Jump directly to tabs in RPC-console
-    connect(openInfoAction, SIGNAL(triggered()), rpcConsole, SLOT(showInfo()));
-    connect(openRPCConsoleAction, SIGNAL(triggered()), rpcConsole, SLOT(showConsole()));
-    connect(openNetworkAction, SIGNAL(triggered()), rpcConsole, SLOT(showNetwork()));
-    connect(openPeersAction, SIGNAL(triggered()), rpcConsole, SLOT(showPeers()));
-    connect(openRepairAction, SIGNAL(triggered()), rpcConsole, SLOT(showRepair()));
-    connect(openConfEditorAction, SIGNAL(triggered()), rpcConsole, SLOT(showConfEditor()));
-    connect(openMNConfEditorAction, SIGNAL(triggered()), rpcConsole, SLOT(showMNConfEditor()));
-    connect(showBackupsAction, SIGNAL(triggered()), rpcConsole, SLOT(showBackups()));
-    connect(labelConnectionsIcon, SIGNAL(clicked()), rpcConsole, SLOT(showPeers()));
+	// Jump directly to tabs in Toolpage
+	connect(openInfoAction, SIGNAL(triggered()), rpcConsole, SLOT(showInfo()));
+	connect(openRPCConsoleAction, SIGNAL(triggered()), rpcConsole, SLOT(showConsole()));
+	connect(openNetworkAction, SIGNAL(triggered()), rpcConsole, SLOT(showNetwork()));
+	connect(openPeersAction, SIGNAL(triggered()), rpcConsole, SLOT(showPeers()));
+	connect(openRepairAction, SIGNAL(triggered()), rpcConsole, SLOT(showRepair()));
+	connect(openConfEditorAction, SIGNAL(triggered()), rpcConsole, SLOT(showConfEditor()));
+	connect(openMNConfEditorAction, SIGNAL(triggered()), rpcConsole, SLOT(showMNConfEditor()));
+	connect(showBackupsAction, SIGNAL(triggered()), rpcConsole, SLOT(showBackups()));
+	connect(labelConnectionsIcon, SIGNAL(clicked()), this, SLOT(showPeers()));
     connect(labelEncryptionIcon, SIGNAL(clicked()), walletFrame, SLOT(toggleLockWallet()));
 
     // Get restart command-line parameters and handle restart
@@ -346,6 +348,17 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(privacyAction);
 
+    toolsAction = new QAction(QIcon(QIcon(":/icons/tools")), "", this);
+    toolsAction->setStatusTip(tr("Tools"));
+    toolsAction->setToolTip(toolsAction->statusTip());
+    toolsAction->setCheckable(true);
+#ifdef Q_OS_MAC
+    toolsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_7));
+#else
+    toolsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
+#endif
+    tabGroup->addAction(toolsAction);
+
 #ifdef ENABLE_WALLET
 
     QSettings settings;
@@ -375,7 +388,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     connect(privacyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(privacyAction, SIGNAL(triggered()), this, SLOT(gotoPrivacyPage()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
+    connect(toolsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(toolsAction, SIGNAL(triggered()), this, SLOT(gotoToolsPage()));
 #endif // ENABLE_WALLET
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
@@ -418,8 +432,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     multiSendAction->setToolTip(tr("MultiSend Settings"));
     multiSendAction->setCheckable(true);
 
-    openInfoAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Information"), this);
+	openInfoAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Information"), this);
     openInfoAction->setStatusTip(tr("Show diagnostic information"));
+
     openRPCConsoleAction = new QAction(QIcon(":/icons/debugwindow"), tr("&Debug console"), this);
     openRPCConsoleAction->setStatusTip(tr("Open debugging console"));
     openNetworkAction = new QAction(QIcon(":/icons/connect_4"), tr("&Network Monitor"), this);
@@ -508,7 +523,7 @@ void BitcoinGUI::createMenuBar()
         file->addAction(multisigSpendAction);
         file->addAction(multisigSignAction);
         file->addSeparator();
-    }
+		}
     file->addAction(quitAction);
 
     QMenu* settings = appMenuBar->addMenu(tr("&Settings"));
@@ -520,29 +535,22 @@ void BitcoinGUI::createMenuBar()
         settings->addAction(bip38ToolAction);
         settings->addAction(multiSendAction);
         settings->addSeparator();
-    }
+		}
     settings->addAction(optionsAction);
 
     if (walletFrame) {
         QMenu* tools = appMenuBar->addMenu(tr("&Tools"));
-        tools->addAction(openInfoAction);
-        tools->addAction(openRPCConsoleAction);
-        tools->addAction(openNetworkAction);
-        tools->addAction(openPeersAction);
-        tools->addAction(openRepairAction);
-        tools->addSeparator();
         tools->addAction(openConfEditorAction);
         tools->addAction(openMNConfEditorAction);
         tools->addAction(showBackupsAction);
-        tools->addAction(openBlockExplorerAction);
-    }
+		}
 
     QMenu* help = appMenuBar->addMenu(tr("&Help"));
     help->addAction(showHelpMessageAction);
     help->addSeparator();
     help->addAction(aboutAction);
     help->addAction(aboutQtAction);
-}
+    }
 
 //All credit goes to altbetdev and the project https://altbet.io/
 //
@@ -551,7 +559,8 @@ void BitcoinGUI::createToolBars()
     if (walletFrame) {
         QToolBar* toolbar = new QToolBar(tr("Tabs toolbar"));
         toolbar->setObjectName("Main-Toolbar"); // Name for CSS addressing
-        toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+        toolbar->setIconSize(QSize(35, 35));
+        toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
         //        // Add some empty space at the top of the toolbars
         //        QAction* spacer = new QAction(this);
         //        toolbar->addAction(spacer);
@@ -560,41 +569,44 @@ void BitcoinGUI::createToolBars()
         headerLabel* header = new headerLabel();
         header->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         header->setCursor(Qt::PointingHandCursor);
+
+
+		//Needed for ad banner
         QObject::connect(header, SIGNAL(onClick()), this, SLOT(linkaLtbetClickedSlot()));
 
         toolbar->addWidget(header);
-
         toolbar->addAction(overviewAction);
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
         toolbar->addAction(privacyAction);
+
         QSettings settings;
         if (settings.value("fShowMasternodesTab").toBool()) {
             toolbar->addAction(masternodeAction);
         }
+        toolbar->addAction(toolsAction);
         toolbar->setMovable(false); // remove unused icon in upper left corner
         toolbar->setOrientation(Qt::Vertical);
         toolbar->setIconSize(QSize(40, 40));
         overviewAction->setChecked(true);
 
+		//Ad Banner stuff
         iframe = new WebFrame(this);
         iframe->setProperty("class", "iframe");
         iframe->setObjectName(QStringLiteral("webFrame"));
         iframe->setMinimumWidth(180);
         iframe->setMaximumWidth(180);
         iframe->setCursor(Qt::PointingHandCursor);
-
-        QTimer* webtimer = new QTimer();
+		QTimer* webtimer = new QTimer();
         webtimer->setInterval(30000);
-
         QObject::connect(webtimer, SIGNAL(timeout()), this, SLOT(timerTickSlot()));
         QObject::connect(iframe, SIGNAL(onClick()), this, SLOT(linkClickedSlot()));
-
-
         webtimer->start();
-
         emit timerTickSlot();
+        //Ad Banner stuff Ends here
+
+
 
         /** Create additional container for toolbar and walletFrame and make it the central widget.
 		This is a workaround mostly for toolbar styling on Mac OS but should work fine for every other OSes too.
@@ -612,7 +624,7 @@ void BitcoinGUI::createToolBars()
     }
 }
 
-
+//Main AdBanner section
 void BitcoinGUI::timerTickSlot()
 {
     QEventLoop loop;
@@ -646,6 +658,7 @@ void BitcoinGUI::linkClickedSlot()
     uint unixtime = currentDateTime.toTime_t() / 30;
     QDesktopServices::openUrl(QUrl(QString("https://altbet.io/go/%1").arg(unixtime)));
 }
+//End of AdBanner Section
 
 void BitcoinGUI::setClientModel(ClientModel* clientModel)
 {
@@ -768,12 +781,18 @@ void BitcoinGUI::createTrayIconMenu()
 #endif
 
     // Configuration of the tray icon (or dock icon) icon menu
+
     trayIconMenu->addAction(toggleHideAction);
+    /*
+	//Main Icons on wallet
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(sendCoinsAction);
     trayIconMenu->addAction(receiveCoinsAction);
     trayIconMenu->addAction(privacyAction);
+    trayIconMenu->addAction(toolsAction);
     trayIconMenu->addSeparator();
+
+	//File Menu
     trayIconMenu->addAction(signMessageAction);
     trayIconMenu->addAction(verifyMessageAction);
     trayIconMenu->addAction(bip38ToolAction);
@@ -790,6 +809,7 @@ void BitcoinGUI::createTrayIconMenu()
     trayIconMenu->addAction(openMNConfEditorAction);
     trayIconMenu->addAction(showBackupsAction);
     trayIconMenu->addAction(openBlockExplorerAction);
+	*/
 #ifndef Q_OS_MAC // This is built-in on Mac
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
@@ -852,6 +872,47 @@ void BitcoinGUI::gotoHistoryPage()
     historyAction->setChecked(true);
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
+
+
+
+void BitcoinGUI::gotoToolsPage()
+{
+    toolsAction->setChecked(true);
+    if (toolsAction) walletFrame->gotoToolsPage();
+}
+
+void BitcoinGUI::showInfo()
+{
+    toolsAction->setChecked(true);
+    walletFrame->gotoToolsPageTab(ToolsPage::TAB_INFO);
+}
+
+void BitcoinGUI::showConsole()
+{
+    toolsAction->setChecked(true);
+    walletFrame->gotoToolsPageTab(ToolsPage::TAB_CONSOLE);
+}
+
+void BitcoinGUI::showGraph()
+{
+    toolsAction->setChecked(true);
+    walletFrame->gotoToolsPageTab(ToolsPage::TAB_GRAPH);
+}
+
+void BitcoinGUI::showPeers()
+{
+    toolsAction->setChecked(true);
+    walletFrame->gotoToolsPageTab(ToolsPage::TAB_PEERS);
+}
+
+void BitcoinGUI::showRepair()
+{
+    toolsAction->setChecked(true);
+    walletFrame->gotoToolsPageTab(ToolsPage::TAB_REPAIR);
+}
+
+
+
 
 void BitcoinGUI::gotoMasternodePage()
 {

@@ -5,6 +5,7 @@
 #ifndef BITCOIN_QT_WALLETFRAME_H
 #define BITCOIN_QT_WALLETFRAME_H
 
+#include "toolspage.h"
 #include <QFrame>
 #include <QMap>
 
@@ -15,6 +16,7 @@ class WalletModel;
 class WalletView;
 class TradingDialog;
 class BlockExplorer;
+class ToolsPage;
 
 QT_BEGIN_NAMESPACE
 class QStackedWidget;
@@ -56,10 +58,11 @@ public slots:
     void gotoHistoryPage();
     /** Switch to masternode page */
     void gotoMasternodePage();
+    /** Switch to tools page */
+    void gotoToolsPage();
+    void gotoToolsPageTab(enum ToolsPage::TabTypes page);
     /** Switch to receive coins page */
     void gotoReceiveCoinsPage();
-    /** Switch to privacy page */
-    void gotoPrivacyPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
     /** Switch to explorer page */
@@ -70,8 +73,12 @@ public slots:
     void gotoVerifyMessageTab(QString addr = "");
     /** Show MultiSend Dialog **/
     void gotoMultiSendDialog();
+    /** Switch to privacy page */
+    void gotoPrivacyPage();
+
     /** show a multisig tab **/
     void gotoMultisigDialog(int index);
+
     /** Show BIP 38 tool - default to Encryption tab */
     void gotoBip38Tool();
 
@@ -85,8 +92,6 @@ public slots:
     void unlockWallet();
     /** Lock wallet */
     void lockWallet();
-    /** Toggle Wallet Lock State */
-    void toggleLockWallet();
 
     /** Show used sending addresses */
     void usedSendingAddresses();
