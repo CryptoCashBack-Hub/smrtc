@@ -53,6 +53,10 @@
         <file alias="browse">res/icons/browse.png</file>
         <file alias="staking_active">res/icons/staking_active.png</file>
         <file alias="staking_inactive">res/icons/staking_inactive.png</file>
+        <file alias="twitter">res/icons/twitter.png</file>
+        <file alias="telegram">res/icons/telegram.png</file>
+        <file alias="discord">res/icons/discord.png</file>
+        <file alias="sitelogo">res/icons/sitelogo.png</file>
     </qresource>
     <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>
@@ -66,8 +70,8 @@
         <file alias="leftArrow_small">res/images/leftArrow_small.png</file>
         <file alias="rightArrow_small">res/images/rightArrow_small.png</file>
         <file alias="qtreeview_selected">res/images/qtreeview_selected.png</file>
-        <file alias="walletFrame_bg">res/images/walletFrame_bg.png</file>
         <file alias="walletFrame">res/images/walletFrame.png</file>
+        <file alias="walletFrame_bg">res/images/walletFrame_bg.png</file>
         <file alias="splash">res/images/splash.png</file>
         <file alias="splash_testnet">res/images/splash_testnet.png</file>
     </qresource>

@@ -190,6 +190,10 @@ BITCOIN_QT_H = \
   qt/zccbccontroldialog.h
 
 RES_ICONS = \
+  qt/res/icons/sitelogo.png \
+  qt/res/icons/discord.png \
+  qt/res/icons/twitter.png \
+  qt/res/icons/telegram.png \
   qt/res/icons/add.png \
   qt/res/icons/address-book.png \
   qt/res/icons/bitcoin.ico \
@@ -325,7 +329,6 @@ RES_IMAGES = \
   qt/res/images/qtreeview_selected.png \
   qt/res/images/walletFrame.png \
   qt/res/images/walletFrame_bg.png \
-  qt/res/images/walletFrame_bg.png
 
 RES_CSS = \
   qt/res/css/default.css
