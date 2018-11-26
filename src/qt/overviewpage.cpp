@@ -384,10 +384,10 @@ void OverviewPage::updateMasternodeInfo()
 					ui->graphMN->setMaximum(totalmn);
 					ui->graphMN->setValue(mn1);
 
+
 					// TODO: need a read actual 24h blockcount from chain
 					int BlockCount24h = 1440;
 					// update ROI
-
 					double BlockReward = GetBlockValue(chainActive.Height());
                     double roi1 = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
                     double roi2 = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
@@ -397,39 +397,67 @@ void OverviewPage::updateMasternodeInfo()
                     double roi6 = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
                     double roi7 = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
                     
-					if (chainActive.Height() <= 91000 && chainActive.Height() > 88000){ //72%  
+					if (chainActive.Height() <= 91000 && chainActive.Height() > 88000)
+                    { //72%
+                       
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
-                        ui->label_lcolat->setText("25000 CCBC");
-					}else if (chainActive.Height() <= 94000 && chainActive.Height() > 91000) { //74%                      
+					} 
+
+			        else if (chainActive.Height() <= 94000 && chainActive.Height() > 91000) { //74%
+                        
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi2, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi2, 'f', 1).append(" days"));
-                        ui->label_lcolat->setText("25000 CCBC");
-					}else if (chainActive.Height() <= 97000 && chainActive.Height() > 94000) { //76%                       
+					}
+					
+					else if (chainActive.Height() <= 97000 && chainActive.Height() > 94000) { //76%
+                        
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi3, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi3, 'f', 1).append(" days"));
-                        ui->label_lcolat->setText("25000 CCBC");
-					}else if (chainActive.Height() <= 100000 && chainActive.Height() > 97000) { //78%
+					} 
+
+					else if (chainActive.Height() <= 100000 && chainActive.Height() > 97000) { //78%
+
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi4, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi4, 'f', 1).append(" days"));
-                        ui->label_lcolat->setText("25000 CCBC");
-					}else if (chainActive.Height() <= 125000 && chainActive.Height() > 100000) { //80%
+					}
+
+					else if (chainActive.Height() <= 125000 && chainActive.Height() > 100000) { //80%
+
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi5, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi5, 'f', 1).append(" days"));
-                        ui->label_lcolat->setText("25000 CCBC");
-					}else if (chainActive.Height() <= 150000 && chainActive.Height() > 125000) { //85%
+					} 
+					
+					else if (chainActive.Height() <= 150000 && chainActive.Height() > 125000) { //85%
+
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi6, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi6, 'f', 1).append(" days"));
-                        ui->label_lcolat->setText("25000 CCBC");
-                    }else if (chainActive.Height() <= 175000 && chainActive.Height() > 150000) { //90%
+                    } 
+					
+					else if (chainActive.Height() <= 175000 && chainActive.Height() > 150000) { //90%
+ 
 						ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi7, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi7, 'f', 1).append(" days"));
-                        ui->label_lcolat->setText("25000 CCBC");
                     }
-                    // update timer
-                    if (timerinfo_mn->interval() == 1000)
-                        timerinfo_mn->setInterval(10000);
+             
+			/*	
+			if (chainActive.Height() >= 0) {
+
+				ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
+				ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
+
+			}*/
+
+				// update timer
+				if (timerinfo_mn->interval() == 1000)
+					timerinfo_mn->setInterval(10000);
         }
+
+    // update collateral info
+    if (chainActive.Height() >= 0) {
+        ui->label_lcolat->setText("25000 CCBC");
+
+    }
 }
 
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2

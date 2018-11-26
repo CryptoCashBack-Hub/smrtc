@@ -128,21 +128,6 @@ void WalletFrame::gotoBlockExplorerPage()
         i.value()->gotoBlockExplorerPage();
 }
 
-void WalletFrame::gotoToolsPage()
-{
-    QMap<QString, WalletView*>::const_iterator i;
-    for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
-        i.value()->gotoToolsPage();
-}
-
-
-void WalletFrame::gotoToolsPageTab(enum ToolsPage::TabTypes page)
-{
-    QMap<QString, WalletView*>::const_iterator i;
-    for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
-        i.value()->gotoToolsPageTab(page);
-}
-
 void WalletFrame::gotoReceiveCoinsPage()
 {
     QMap<QString, WalletView*>::const_iterator i;
@@ -236,14 +221,12 @@ void WalletFrame::lockWallet()
         walletView->lockWallet();
 }
 
-/*
 void WalletFrame::toggleLockWallet()
 {
     WalletView* walletView = currentWalletView();
     if (walletView)
         walletView->toggleLockWallet();
 }
-*/
 
 void WalletFrame::usedSendingAddresses()
 {

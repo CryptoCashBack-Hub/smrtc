@@ -96,36 +96,29 @@ private:
     QMenuBar* appMenuBar;
     QAction* overviewAction;
     QAction* historyAction;
-	QAction* toolsAction;
     QAction* masternodeAction;
     QAction* quitAction;
     QAction* sendCoinsAction;
-    QAction* receiveCoinsAction;
-    QAction* privacyAction;
-    QAction* optionsAction;
-
     QAction* usedSendingAddressesAction;
     QAction* usedReceivingAddressesAction;
     QAction* signMessageAction;
     QAction* verifyMessageAction;
-
     QAction* bip38ToolAction;
     QAction* multisigCreateAction;
     QAction* multisigSpendAction;
     QAction* multisigSignAction;
-
     QAction* aboutAction;
-    QAction* aboutQtAction;
-    QAction* openInfoAction;
+    QAction* receiveCoinsAction;
+    QAction* privacyAction;
+    QAction* optionsAction;
     QAction* toggleHideAction;
-
     QAction* encryptWalletAction;
     QAction* backupWalletAction;
     QAction* changePassphraseAction;
     QAction* unlockWalletAction;
     QAction* lockWalletAction;
-
-    QAction* openToolsAction;
+    QAction* aboutQtAction;
+    QAction* openInfoAction;
     QAction* openRPCConsoleAction;
     QAction* openNetworkAction;
     QAction* openPeersAction;
@@ -213,8 +206,6 @@ private slots:
     void gotoOverviewPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
-    /** Switch to tools page */
-    void gotoToolsPage();
     /** Switch to Explorer Page */
     void gotoBlockExplorerPage();
     /** Switch to masternode page */
@@ -253,12 +244,6 @@ private slots:
     /** Handle tray icon clicked */
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
 #endif
-
-	void showInfo();
-    void showConsole();
-    void showGraph();
-    void showPeers();
-    void showRepair();
 
     /** Show window if hidden, unminimize when minimized, rise when obscured or show if hidden and fToggleHidden is true */
     void showNormalIfMinimized(bool fToggleHidden = false);

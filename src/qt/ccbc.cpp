@@ -14,7 +14,6 @@
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "intro.h"
-#include "toolspage.h"
 #include "net.h"
 #include "networkstyle.h"
 #include "optionsmodel.h"
