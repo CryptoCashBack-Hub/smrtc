@@ -85,7 +85,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             overviewAction(0),
                                                                             historyAction(0),
                                                                             masternodeAction(0),
-																			toolsAction(0),
+																			//toolsAction(0),
                                                                             quitAction(0),
                                                                             sendCoinsAction(0),
                                                                             usedSendingAddressesAction(0),
@@ -237,16 +237,16 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
 
-    // Jump directly to tabs in RPC-console
-    connect(openInfoAction, SIGNAL(triggered()), rpcConsole, SLOT(showInfo()));
-    connect(openRPCConsoleAction, SIGNAL(triggered()), rpcConsole, SLOT(showConsole()));
-    connect(openNetworkAction, SIGNAL(triggered()), rpcConsole, SLOT(showNetwork()));
-    connect(openPeersAction, SIGNAL(triggered()), rpcConsole, SLOT(showPeers()));
-    connect(openRepairAction, SIGNAL(triggered()), rpcConsole, SLOT(showRepair()));
-    connect(openConfEditorAction, SIGNAL(triggered()), rpcConsole, SLOT(showConfEditor()));
-    connect(openMNConfEditorAction, SIGNAL(triggered()), rpcConsole, SLOT(showMNConfEditor()));
-    connect(showBackupsAction, SIGNAL(triggered()), rpcConsole, SLOT(showBackups()));
-    connect(labelConnectionsIcon, SIGNAL(clicked()), rpcConsole, SLOT(showPeers()));
+	// Jump directly to tabs in Toolpage
+	connect(openInfoAction, SIGNAL(triggered()), rpcConsole, SLOT(showInfo()));
+	connect(openRPCConsoleAction, SIGNAL(triggered()), rpcConsole, SLOT(showConsole()));
+	connect(openNetworkAction, SIGNAL(triggered()), rpcConsole, SLOT(showNetwork()));
+	connect(openPeersAction, SIGNAL(triggered()), rpcConsole, SLOT(showPeers()));
+	connect(openRepairAction, SIGNAL(triggered()), rpcConsole, SLOT(showRepair()));
+	connect(openConfEditorAction, SIGNAL(triggered()), rpcConsole, SLOT(showConfEditor()));
+	connect(openMNConfEditorAction, SIGNAL(triggered()), rpcConsole, SLOT(showMNConfEditor()));
+	connect(showBackupsAction, SIGNAL(triggered()), rpcConsole, SLOT(showBackups()));
+	connect(labelConnectionsIcon, SIGNAL(clicked()), this, SLOT(showPeers()));
     connect(labelEncryptionIcon, SIGNAL(clicked()), walletFrame, SLOT(toggleLockWallet()));
 
     // Get restart command-line parameters and handle restart
