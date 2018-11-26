@@ -119,9 +119,9 @@ OverviewPage::OverviewPage(QWidget* parent) : QWidget(parent),
                                               currentBalance(-1),
                                               currentUnconfirmedBalance(-1),
                                               currentImmatureBalance(-1),
-                                              currentZerocoinBalance(-1),
-                                              currentUnconfirmedZerocoinBalance(-1),
-                                              currentimmatureZerocoinBalance(-1),
+                                              //currentZerocoinBalance(-1),
+                                              //currentUnconfirmedZerocoinBalance(-1),
+                                              //currentimmatureZerocoinBalance(-1),
                                               currentWatchOnlyBalance(-1),
                                               currentWatchUnconfBalance(-1),
                                               currentWatchImmatureBalance(-1),
@@ -168,6 +168,7 @@ OverviewPage::~OverviewPage()
     delete ui;
 }
 
+/*
 void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBalance, QString& sCCBCPercentage, QString& szCCBCPercentage)
 {
     int nPrecision = 2;
@@ -191,17 +192,18 @@ void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBala
     sCCBCPercentage = "(" + QLocale(QLocale::system()).toString(dPercentage, 'f', nPrecision) + " %)";
     
 }
+*/
 
 void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, 
-                              const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
+                              //const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
                               const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance)
 {
     currentBalance = balance;
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
-    currentZerocoinBalance = zerocoinBalance;
+    //currentZerocoinBalance = zerocoinBalance;
     currentUnconfirmedZerocoinBalance = unconfirmedZerocoinBalance;
-    currentimmatureZerocoinBalance = immatureZerocoinBalance;
+    //currentimmatureZerocoinBalance = immatureZerocoinBalance;
     currentWatchOnlyBalance = watchOnlyBalance;
     currentWatchUnconfBalance = watchUnconfBalance;
     currentWatchImmatureBalance = watchImmatureBalance;
@@ -218,8 +220,9 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelWatchPending->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchImmatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance + watchUnconfBalance + watchImmatureBalance, false, BitcoinUnits::separatorAlways));
-
-    // zCCBC labels
+    
+	/*
+     //zCCBC labels
     QString szPercentage = "";
     QString sPercentage = "";
     CAmount nLockedBalance = 0;
@@ -256,8 +259,8 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     }
     ui->labelzCCBCPercent->setToolTip(automintHelp);
 
-    // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
-    // for the non-mining users
+     only show immature (newly mined) balance if it's non-zero, so as not to complicate things
+    for the non-mining users
     bool showImmature = immatureBalance != 0;
     bool showWatchOnlyImmature = watchImmatureBalance != 0;
 
@@ -272,6 +275,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
         cachedTxLocks = nCompleteTXLocks;
         ui->listTransactions->update();
     }
+    */
 }
 
 // show/hide watch-only labels
@@ -322,7 +326,7 @@ void OverviewPage::setWalletModel(WalletModel* model)
 
         // Keep up to date with wallet
         setBalance(model->getBalance(), model->getUnconfirmedBalance(), model->getImmatureBalance(),
-                   model->getZerocoinBalance(), model->getUnconfirmedZerocoinBalance(), model->getImmatureZerocoinBalance(), 
+                   //model->getZerocoinBalance(), model->getUnconfirmedZerocoinBalance(), model->getImmatureZerocoinBalance(), 
                    model->getWatchBalance(), model->getWatchUnconfirmedBalance(), model->getWatchImmatureBalance());
         connect(model, SIGNAL(balanceChanged(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)), this, 
                          SLOT(setBalance(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)));
@@ -381,8 +385,8 @@ void OverviewPage::updateMasternodeInfo()
 				}
 					totalmn = mn1 + mn2 + mn3 + mn4;
 					ui->labelMnTotal_Value->setText(QString::number(totalmn));
-					ui->graphMN->setMaximum(totalmn);
-					ui->graphMN->setValue(mn1);
+					//ui->graphMN->setMaximum(totalmn);
+					//ui->graphMN->setValue(mn1);
 
 
 					// TODO: need a read actual 24h blockcount from chain
@@ -397,56 +401,34 @@ void OverviewPage::updateMasternodeInfo()
                     double roi6 = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
                     double roi7 = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
                     
-					if (chainActive.Height() <= 91000 && chainActive.Height() > 88000)
-                    { //72%
-                       
+					if (chainActive.Height() <= 91000 && chainActive.Height() > 88000){ //72%                       
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
-					} 
-
-			        else if (chainActive.Height() <= 94000 && chainActive.Height() > 91000) { //74%
+					}else if (chainActive.Height() <= 94000 && chainActive.Height() > 91000) { //74%
                         
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi2, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi2, 'f', 1).append(" days"));
-					}
-					
-					else if (chainActive.Height() <= 97000 && chainActive.Height() > 94000) { //76%
+					}else if (chainActive.Height() <= 97000 && chainActive.Height() > 94000) { //76%
                         
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi3, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi3, 'f', 1).append(" days"));
-					} 
-
-					else if (chainActive.Height() <= 100000 && chainActive.Height() > 97000) { //78%
+					}else if (chainActive.Height() <= 100000 && chainActive.Height() > 97000) { //78%
 
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi4, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi4, 'f', 1).append(" days"));
-					}
-
-					else if (chainActive.Height() <= 125000 && chainActive.Height() > 100000) { //80%
+					}else if (chainActive.Height() <= 125000 && chainActive.Height() > 100000) { //80%
 
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi5, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi5, 'f', 1).append(" days"));
-					} 
-					
-					else if (chainActive.Height() <= 150000 && chainActive.Height() > 125000) { //85%
+					}else if (chainActive.Height() <= 150000 && chainActive.Height() > 125000) { //85%
 
                         ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi6, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi6, 'f', 1).append(" days"));
-                    } 
-					
-					else if (chainActive.Height() <= 175000 && chainActive.Height() > 150000) { //90%
+                    }else if (chainActive.Height() <= 175000 && chainActive.Height() > 150000) { //90%
  
 						ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi7, 'f', 0).append("  |"));
                         ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi7, 'f', 1).append(" days"));
                     }
-             
-			/*	
-			if (chainActive.Height() >= 0) {
-
-				ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  |"));
-				ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
-
-			}*/
 
 				// update timer
 				if (timerinfo_mn->interval() == 1000)
@@ -456,7 +438,6 @@ void OverviewPage::updateMasternodeInfo()
     // update collateral info
     if (chainActive.Height() >= 0) {
         ui->label_lcolat->setText("25000 CCBC");
-
     }
 }
 
