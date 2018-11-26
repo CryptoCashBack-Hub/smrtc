@@ -177,13 +177,4 @@ config.status
 src/qt/res/RCa28156
 *.autosave
 .vs/CCBC/v15/ipch/AutoPCH/17a9e86b3fc8b7b0/BITCOINGUI.ipch
-.vs/CCBC/v15/ipch/AutoPCH/bda0a626fedbb60c/INFOPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/68386e8ece743ee3/OVERVIEWPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/f23d24a681de1e86/INFOPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/d1ef3eb8a21365f3/BITCOINGUI.ipch
-.vs/CCBC/v15/ipch/AutoPCH/517f432c444a571e/INFORMATIONPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/b8977c721c017288/BITCOINGUI.ipch
-.vs/CCBC/v15/ipch/AutoPCH/ef6b69bb996d1ba4/INFORMATIONPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/e71fa6fdd808a0a6/GUIUTIL.ipch
-.vs/CCBC/v15/ipch/AutoPCH/d4a3bffed64abf81/TOOLSPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/ca08e325c2dfb89e/BITCOINGUI.ipch
+
