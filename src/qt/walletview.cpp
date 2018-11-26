@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "walletview.h"
-
+#include "privacydialog.h"
 #include "addressbookpage.h"
 #include "askpassphrasedialog.h"
 #include "bip38tooldialog.h"
@@ -17,9 +17,9 @@
 #include "optionsmodel.h"
 #include "overviewpage.h"
 #include "receivecoinsdialog.h"
-#include "privacydialog.h"
 #include "sendcoinsdialog.h"
 #include "signverifymessagedialog.h"
+#include "toolspage.h"
 #include "transactiontablemodel.h"
 #include "transactionview.h"
 #include "walletmodel.h"
@@ -36,13 +36,16 @@
 #include <QSettings>
 #include <QVBoxLayout>
 
+
 WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
                                           clientModel(0),
                                           walletModel(0)
 {
     // Create tabs
     overviewPage = new OverviewPage();
-    explorerWindow = new BlockExplorer(this);
+
+    explorerWindow = new BlockExplorer();
+
     transactionsPage = new QWidget(this);
     QVBoxLayout* vbox = new QVBoxLayout();
     QHBoxLayout* hbox_buttons = new QHBoxLayout();
@@ -71,18 +74,20 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
     vbox->addLayout(hbox_buttons);
     transactionsPage->setLayout(vbox);
 
-    privacyPage = new PrivacyDialog();
     receiveCoinsPage = new ReceiveCoinsDialog();
     sendCoinsPage = new SendCoinsDialog();
+    toolsPage = new ToolsPage();
+    privacyPage = new PrivacyDialog();
 
     addWidget(overviewPage);
+	addWidget(toolsPage);
     addWidget(transactionsPage);
     addWidget(privacyPage);
     addWidget(receiveCoinsPage);
     addWidget(sendCoinsPage);
     addWidget(explorerWindow);
 
-    QSettings settings;
+      QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeListPage = new MasternodeList();
         addWidget(masternodeListPage);
@@ -125,6 +130,9 @@ void WalletView::setBitcoinGUI(BitcoinGUI* gui)
 
         // Pass through transaction notifications
         connect(this, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), gui, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));
+
+        connect(toolsPage, SIGNAL(handleRestart(QStringList)), gui, SLOT(handleRestart(QStringList)));
+        //connect(explorerWindow, SIGNAL(handleRestart(QStringList)), gui, SLOT(handleRestart(QStringList)));
     }
 }
 
@@ -134,6 +142,8 @@ void WalletView::setClientModel(ClientModel* clientModel)
 
     overviewPage->setClientModel(clientModel);
     sendCoinsPage->setClientModel(clientModel);
+    toolsPage->setClientModel(clientModel);
+
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeListPage->setClientModel(clientModel);
@@ -151,7 +161,6 @@ void WalletView::setWalletModel(WalletModel* walletModel)
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeListPage->setWalletModel(walletModel);
     }
-    privacyPage->setModel(walletModel);
     receiveCoinsPage->setModel(walletModel);
     sendCoinsPage->setModel(walletModel);
 
@@ -196,8 +205,6 @@ void WalletView::processNewTransaction(const QModelIndex& parent, int start, int
 void WalletView::gotoOverviewPage()
 {
     setCurrentWidget(overviewPage);
-    // Refresh UI-elements in case coins were locked/unlocked in CoinControl
-    walletModel->emitBalanceChanged();
 }
 
 void WalletView::gotoHistoryPage()
@@ -205,6 +212,17 @@ void WalletView::gotoHistoryPage()
     setCurrentWidget(transactionsPage);
 }
 
+
+void WalletView::gotoToolsPage()
+{
+    setCurrentWidget(toolsPage);
+}
+
+void WalletView::gotoToolsPageTab(enum ToolsPage::TabTypes page)
+{
+    toolsPage->setTabFocus(page);
+    setCurrentWidget(toolsPage);
+}
 
 void WalletView::gotoBlockExplorerPage()
 {
