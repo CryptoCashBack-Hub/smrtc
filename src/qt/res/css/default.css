@@ -1091,15 +1091,14 @@ margin-left:16px;
 
 /**************************** ROI Section*********************/
 QWidget .QFrame#frame .QLabel#label_6 { /*MN Header Section Label*/
-    qproperty-alignment: 'AlignVCenter | AlignRight';
+    qproperty-alignment: 'AlignVCenter | AlignLeft';
     min-width: 160px;
-    background-color: #333;
-    color: #fff;
-    margin-right: 5px;
-    padding-right: 5px;
+    background-color: transparent;
+    color: #333;
     font-weight: bold;
     font-size: 14px;
-    min-height: 35px;
+    margin-right: 5px;
+    padding-right: 5px;
 }
 
 QWidget .QFrame#frame .QLabel#label_Needed_Collat { /* Collateral Label */
@@ -1184,15 +1183,14 @@ QWidget .QFrame#frame .QLabel#roi_1 { /* ROI amount */
 
 /**************************** Network Section*********************/
 QWidget .QFrame#frame .QLabel#label_7 { /*Network Header Section Label*/
-    qproperty-alignment: 'AlignVCenter | AlignRight';
+    qproperty-alignment: 'AlignVCenter | AlignLeft';
     min-width: 160px;
-    background-color: #333;
-    color: #fff;
-    margin-right: 5px;
-    padding-right: 5px;
+    background-color: transparent;
+    color: #333;
     font-weight: bold;
     font-size: 14px;
-    min-height: 35px;
+    margin-right: 5px;
+    padding-right: 5px;
 }
 
 QWidget .QFrame#frame .QLabel#label_CurrentBlock { /* Current Block Label */
