@@ -105,20 +105,6 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent),
     }
 }
 
-void PrivacyDialog::updateDisplayUnit()
-{
-	if (walletModel && walletModel->getOptionsModel()) {
-		nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
-		if (currentBalance != -1)
-			setBalance(currentZerocoinBalance, currentUnconfirmedZerocoinBalance, currentimmatureZerocoinBalance);
-
-		// Update txdelegate->unit with the current unit
-		txdelegate->unit = nDisplayUnit;
-
-		ui->listTransactions->update();
-	}
-}
-
 /*
 void PrivacyDialog::setBalance(const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance)
 {
