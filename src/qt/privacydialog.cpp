@@ -26,6 +26,9 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent),
                                                 ui(new Ui::PrivacyDialog),
                                                 walletModel(0),
                                                 currentBalance(-1)
+												//currentZerocoinBalance(-1),
+												//currentUnconfirmedZerocoinBalance(-1),
+												//currentimmatureZerocoinBalance(-1)
 {
     nDisplayUnit = 0; // just make sure it's not unitialized
     ui->setupUi(this);
