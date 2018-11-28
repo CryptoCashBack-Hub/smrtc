@@ -8,30 +8,30 @@
 #include "overviewpage.h"
 #include "ui_overviewpage.h"
 
+#include "addressbookpage.h"
+#include "amount.h"
 #include "bitcoinunits.h"
+#include "chainparams.h"
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "init.h"
+#include "main.h"
+#include "masternodeman.h"
 #include "obfuscation.h"
 #include "obfuscationconfig.h"
 #include "optionsmodel.h"
+#include "rpcblockchain.cpp"
 #include "transactionfilterproxy.h"
 #include "transactiontablemodel.h"
 #include "walletmodel.h"
-#include "masternodeman.h"
-#include "main.h"
-#include "chainparams.h"
-#include "amount.h"
-#include "addressbookpage.h"
-#include "rpcblockchain.cpp"
 
 #include <QAbstractItemDelegate>
+#include <QDesktopServices>
 #include <QPainter>
 #include <QSettings>
 #include <QTimer>
 #include <QUrl>
-#include <QDesktopServices>
 
 #define DECORATION_SIZE 48
 #define ICON_OFFSET 16
@@ -144,7 +144,7 @@ OverviewPage::OverviewPage(QWidget* parent) : QWidget(parent),
     ui->labelWalletStatus->setText("(" + tr("out of sync") + ")");
     ui->labelTransactionsStatus->setText("(" + tr("out of sync") + ")");
 
-	    //information block update
+    //information block update
     timerinfo_mn = new QTimer(this);
     connect(timerinfo_mn, SIGNAL(timeout()), this, SLOT(updateMasternodeInfo()));
     timerinfo_mn->start(1000);
@@ -173,7 +173,6 @@ void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBala
 {
     int nPrecision = 2;
     double dzPercentage = 0.0;
-
     if (nZerocoinBalance <= 0){
         dzPercentage = 0.0;
     }
@@ -185,7 +184,6 @@ void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBala
             dzPercentage = 100.0 * (double)(nZerocoinBalance / (double)(nZerocoinBalance + nUnlockedBalance));
         }
     }
-
     double dPercentage = 100.0 - dzPercentage;
     
     szCCBCPercentage = "(" + QLocale(QLocale::system()).toString(dzPercentage, 'f', nPrecision) + " %)";
@@ -195,15 +193,17 @@ void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBala
 */
 
 void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
-                              const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
-                              const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance)
+    //const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
+    const CAmount& watchOnlyBalance,
+    const CAmount& watchUnconfBalance,
+    const CAmount& watchImmatureBalance)
 {
     currentBalance = balance;
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
-    currentZerocoinBalance = zerocoinBalance;
-    currentUnconfirmedZerocoinBalance = unconfirmedZerocoinBalance;
-    currentimmatureZerocoinBalance = immatureZerocoinBalance;
+    //currentZerocoinBalance = zerocoinBalance;
+    //currentUnconfirmedZerocoinBalance = unconfirmedZerocoinBalance;
+    //currentimmatureZerocoinBalance = immatureZerocoinBalance;
     currentWatchOnlyBalance = watchOnlyBalance;
     currentWatchUnconfBalance = watchUnconfBalance;
     currentWatchImmatureBalance = watchImmatureBalance;
@@ -220,9 +220,9 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelWatchPending->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchImmatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance + watchUnconfBalance + watchImmatureBalance, false, BitcoinUnits::separatorAlways));
-    
-	
-     //zCCBC labels
+
+
+    //zCCBC labels
     /*
     QString szPercentage = "";
     QString sPercentage = "";
@@ -231,26 +231,23 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
         nLockedBalance = pwalletMain->GetLockedCoins();
     }
     ui->labelLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nLockedBalance, false, BitcoinUnits::separatorAlways));
-
     CAmount nTotalBalance = balance + unconfirmedBalance;
     CAmount nUnlockedBalance = nTotalBalance - nLockedBalance;
     CAmount matureZerocoinBalance = zerocoinBalance - immatureZerocoinBalance;
-    //getPercentage(nUnlockedBalance, zerocoinBalance, sPercentage, szPercentage);
-
+    getPercentage(nUnlockedBalance, zerocoinBalance, sPercentage, szPercentage);
     ui->labelBalancez->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalBalance, false, BitcoinUnits::separatorAlways));
     ui->labelzBalancez->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
     ui->labelzBalanceImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureZerocoinBalance, false, BitcoinUnits::separatorAlways));
     ui->labelzBalanceUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedZerocoinBalance, false, BitcoinUnits::separatorAlways));
     ui->labelzBalanceMature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, matureZerocoinBalance, false, BitcoinUnits::separatorAlways));
     ui->labelTotalz->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalBalance + zerocoinBalance, false, BitcoinUnits::separatorAlways));
-    //ui->labelUnLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nUnlockedBalance, false, BitcoinUnits::separatorAlways));
-    //ui->labelCCBCPercent->setText(sPercentage);
-    //ui->labelzCCBCPercent->setText(szPercentage);
-
+    ui->labelUnLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nUnlockedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelCCBCPercent->setText(sPercentage);
+    ui->labelzCCBCPercent->setText(szPercentage);
     // Adjust bubble-help according to AutoMint settings
     QString automintHelp = tr("Current percentage of zCCBC.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
     bool fEnableZeromint = GetBoolArg("-enablezeromint", false);
-    //int nZeromintPercentage = GetArg("-zeromintpercentage", 10);
+    int nZeromintPercentage = GetArg("-zeromintpercentage", 10);
     if (fEnableZeromint) {
         automintHelp += tr("AutoMint is currently enabled and set to ") + QString::number(nZeromintPercentage) + "%.\n";
         automintHelp += tr("To disable AutoMint delete set 'enablezeromint=1' to 'enablezeromint=0' in ccbc.conf.");
@@ -259,13 +256,13 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
         automintHelp += tr("AutoMint is currently disabled.\nTo enable AutoMint add 'enablezeromint=1' in ccbc.conf");
     }
     ui->labelzCCBCPercent->setToolTip(automintHelp);
-	
+	*/
 
-     //only show immature (newly mined) balance if it's non-zero, so as not to complicate things
-     //for the non-mining users
+    //only show immature (newly mined) balance if it's non-zero, so as not to complicate things
+    //for the non-mining users
     bool showImmature = immatureBalance != 0;
     bool showWatchOnlyImmature = watchImmatureBalance != 0;
-	*/
+
     // for symmetry reasons also show immature label when the watch-only one is shown
     ui->labelImmature->setVisible(showImmature || showWatchOnlyImmature);
     ui->labelImmatureText->setVisible(showImmature || showWatchOnlyImmature);
@@ -277,7 +274,6 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
         cachedTxLocks = nCompleteTXLocks;
         ui->listTransactions->update();
     }
-    
 }
 
 // show/hide watch-only labels
@@ -329,16 +325,14 @@ void OverviewPage::setWalletModel(WalletModel* model)
         ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);
 
         // Keep up to date with wallet
-		setBalance(model->getBalance(), model->getUnconfirmedBalance(), model->getImmatureBalance(),
-		//setBalance(model->getBalance(), model->getUnconfirmedBalance(), model->getImmatureBalance(),
-                  // model->getZerocoinBalance(), model->getUnconfirmedZerocoinBalance(), model->getImmatureZerocoinBalance(), 
-                   model->getWatchBalance(), model->getWatchUnconfirmedBalance(), model->getWatchImmatureBalance());
-        //connect(model, SIGNAL(balanceChanged(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)), this, 
-                         //SLOT(setBalance(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)));
-						 
-			     // This below worked with only the non z balances on overview page.
-				connect(model, SIGNAL(balanceChanged(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)), this,
-				SLOT(setBalance(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)));
+        setBalance(model->getBalance(), model->getUnconfirmedBalance(), model->getImmatureBalance(),
+            //setBalance(model->getBalance(), model->getUnconfirmedBalance(), model->getImmatureBalance(),
+            //model->getZerocoinBalance(), model->getUnconfirmedZerocoinBalance(), model->getImmatureZerocoinBalance(),
+            model->getWatchBalance(), model->getWatchUnconfirmedBalance(), model->getWatchImmatureBalance());
+        //connect(model, SIGNAL(balanceChanged(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)), this,
+        //SLOT(setBalance(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)));
+        connect(model, SIGNAL(balanceChanged(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)), this,
+            SLOT(setBalance(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)));
 
 
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
@@ -357,9 +351,8 @@ void OverviewPage::updateDisplayUnit()
         nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
         if (currentBalance != -1)
             //setBalance(currentBalance, currentUnconfirmedBalance, currentImmatureBalance, currentZerocoinBalance, currentUnconfirmedZerocoinBalance, currentimmatureZerocoinBalance,
-            setBalance(currentBalance, currentUnconfirmedBalance, currentImmatureBalance);
-            //currentZerocoinBalance, currentUnconfirmedZerocoinBalance, currentimmatureZerocoinBalance,
-			//currentWatchOnlyBalance, currentWatchUnconfBalance, currentWatchImmatureBalance);
+            setBalance(currentBalance, currentUnconfirmedBalance, currentImmatureBalance,
+                currentWatchOnlyBalance, currentWatchUnconfBalance, currentWatchImmatureBalance);
 
         // Update txdelegate->unit with the current unit
         txdelegate->unit = nDisplayUnit;
@@ -371,81 +364,80 @@ void OverviewPage::updateDisplayUnit()
 //All credit goes to the ESB team for developing this. https://github.com/BlockchainFor/ESBC2
 void OverviewPage::updateMasternodeInfo()
 {
-		if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
-       
-
-			int mn1 = 0;
-			int mn2 = 0;
-			int mn3 = 0;
-			int mn4 = 0;
-			int totalmn = 0;
-			std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
-				for (auto& mn : vMasternodes)
-				{
-					switch (mn.nActiveState = true)
-					{
-						case 1:
-							mn1++; break;
-						case 2:
-							mn2++; break;
-						case 3:
-							mn3++; break;
-						case 4:
-							mn4++; break;
-					}
-
-				}
-					totalmn = mn1 + mn2 + mn3 + mn4;
-					ui->labelMnTotal_Value->setText(QString::number(totalmn));
-					//ui->graphMN->setMaximum(totalmn);
-					//ui->graphMN->setValue(mn1);
-
-
-					// TODO: need a read actual 24h blockcount from chain
-					int BlockCount24h = 1440;
-					// update ROI
-					double BlockReward = GetBlockValue(chainActive.Height());
-                    double roi1 = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    double roi2 = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    double roi3 = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    double roi4 = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    double roi5 = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    double roi6 = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    double roi7 = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
-                    
-					if (chainActive.Height() <= 91000 && chainActive.Height() > 88000){ //72%                       
-                        ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  CCBC"));
-                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
-					}else if (chainActive.Height() <= 94000 && chainActive.Height() > 91000) { //74%
-                        
-                        ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi2, 'f', 0).append("  CCBC"));
-                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi2, 'f', 1).append(" days"));
-					}else if (chainActive.Height() <= 97000 && chainActive.Height() > 94000) { //76%
-                        
-                        ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi3, 'f', 0).append("  CCBC"));
-                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi3, 'f', 1).append(" days"));
-					}else if (chainActive.Height() <= 100000 && chainActive.Height() > 97000) { //78%
-
-                        ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi4, 'f', 0).append("  CCBC"));
-                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi4, 'f', 1).append(" days"));
-					}else if (chainActive.Height() <= 125000 && chainActive.Height() > 100000) { //80%
-
-                        ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi5, 'f', 0).append("  CCBC"));
-                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi5, 'f', 1).append(" days"));
-					}else if (chainActive.Height() <= 150000 && chainActive.Height() > 125000) { //85%
-
-                        ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi6, 'f', 0).append("  CCBC"));
-                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi6, 'f', 1).append(" days"));
-                    }else if (chainActive.Height() <= 175000 && chainActive.Height() > 150000) { //90%
- 
-						ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi7, 'f', 0).append("  CCBC"));
-                        ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi7, 'f', 1).append(" days"));
-                    }
-
-				// update timer
-				if (timerinfo_mn->interval() == 1000)
-					timerinfo_mn->setInterval(10000);
+    if (masternodeSync.IsBlockchainSynced() && masternodeSync.IsSynced()) {
+        int mn1 = 0;
+        int mn2 = 0;
+        int mn3 = 0;
+        int mn4 = 0;
+        int totalmn = 0;
+        std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
+        for (auto& mn : vMasternodes) {
+            switch (mn.nActiveState = true) {
+            case 1:
+                mn1++;
+                break;
+            case 2:
+                mn2++;
+                break;
+            case 3:
+                mn3++;
+                break;
+            case 4:
+                mn4++;
+                break;
+            }
         }
+        totalmn = mn1 + mn2 + mn3 + mn4;
+        ui->labelMnTotal_Value->setText(QString::number(totalmn));
+        //ui->graphMN->setMaximum(totalmn);
+        //ui->graphMN->setValue(mn1);
+
+
+        // TODO: need a read actual 24h blockcount from chain
+        int BlockCount24h = 1440;
+        // update ROI
+        double BlockReward = GetBlockValue(chainActive.Height());
+        double roi1 = (0.72 * BlockReward * BlockCount24h) / mn1 / COIN;
+        double roi2 = (0.74 * BlockReward * BlockCount24h) / mn1 / COIN;
+        double roi3 = (0.76 * BlockReward * BlockCount24h) / mn1 / COIN;
+        double roi4 = (0.78 * BlockReward * BlockCount24h) / mn1 / COIN;
+        double roi5 = (0.80 * BlockReward * BlockCount24h) / mn1 / COIN;
+        double roi6 = (0.85 * BlockReward * BlockCount24h) / mn1 / COIN;
+        double roi7 = (0.90 * BlockReward * BlockCount24h) / mn1 / COIN;
+
+        if (chainActive.Height() <= 91000 && chainActive.Height() > 88000) { //72%
+            ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi1, 'f', 0).append("  CCBC"));
+            ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi1, 'f', 1).append(" days"));
+        } else if (chainActive.Height() <= 94000 && chainActive.Height() > 91000) { //74%
+
+            ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi2, 'f', 0).append("  CCBC"));
+            ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi2, 'f', 1).append(" days"));
+        } else if (chainActive.Height() <= 97000 && chainActive.Height() > 94000) { //76%
+
+            ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi3, 'f', 0).append("  CCBC"));
+            ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi3, 'f', 1).append(" days"));
+        } else if (chainActive.Height() <= 100000 && chainActive.Height() > 97000) { //78%
+
+            ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi4, 'f', 0).append("  CCBC"));
+            ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi4, 'f', 1).append(" days"));
+        } else if (chainActive.Height() <= 125000 && chainActive.Height() > 100000) { //80%
+
+            ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi5, 'f', 0).append("  CCBC"));
+            ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi5, 'f', 1).append(" days"));
+        } else if (chainActive.Height() <= 150000 && chainActive.Height() > 125000) { //85%
+
+            ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi6, 'f', 0).append("  CCBC"));
+            ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi6, 'f', 1).append(" days"));
+        } else if (chainActive.Height() <= 175000 && chainActive.Height() > 150000) { //90%
+
+            ui->roi->setText(mn1 == 0 ? "-" : QString::number(roi7, 'f', 0).append("  CCBC"));
+            ui->roi_1->setText(mn1 == 0 ? " " : QString::number(25000 / roi7, 'f', 1).append(" days"));
+        }
+
+        // update timer
+        if (timerinfo_mn->interval() == 1000)
+            timerinfo_mn->setInterval(10000);
+    }
 
     // update collateral info
     if (chainActive.Height() >= 0) {
