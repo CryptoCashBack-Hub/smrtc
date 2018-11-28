@@ -12,6 +12,7 @@
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"
+#include "privacydialog.ui"
 #include "init.h"
 #include "obfuscation.h"
 #include "obfuscationconfig.h"
