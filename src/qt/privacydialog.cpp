@@ -637,6 +637,7 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
             break;
         }
     }
+
     CAmount matureZerocoinBalance = zerocoinBalance - immatureZerocoinBalance;
     CAmount nLockedBalance = 0;
 
@@ -650,9 +651,9 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
     if (pwalletMain) {
         nLockedBalance = pwalletMain->GetLockedCoins();
     }
-    ui->labelLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nLockedBalance, false, BitcoinUnits::separatorAlways));    
-    CAmount matureZerocoinBalance = zerocoinBalance - immatureZerocoinBalance;
-    getPercentage(nUnlockedBalance, zerocoinBalance, sPercentage, szPercentage);
+       
+
+   
     ui->labelBalancez->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalBalance, false, BitcoinUnits::separatorAlways));
     ui->labelzBalancez->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
     ui->labelzBalanceImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureZerocoinBalance, false, BitcoinUnits::separatorAlways));
