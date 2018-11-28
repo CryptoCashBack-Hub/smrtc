@@ -648,6 +648,60 @@ bool PrivacyDialog::updateLabel(const QString& address)
     return false;
 }
 
+
+/*
+void PrivacyDialog::setBalance(const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance)
+{
+
+	currentZerocoinBalance = zerocoinBalance;
+	currentUnconfirmedZerocoinBalance = unconfirmedZerocoinBalance;
+	currentimmatureZerocoinBalance = immatureZerocoinBalance;
+
+
+	// zCCBC labels
+	ui->labelzBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
+
+
+	//zCCBC label
+	//QString szPercentage = "";
+	QString sPercentage = "";
+	CAmount nLockedBalance = 0;
+	if (pwalletMain) {
+	nLockedBalance = pwalletMain->GetLockedCoins();
+	}
+	//ui->labelLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nLockedBalance, false, BitcoinUnits::separatorAlways));
+
+	//CAmount nTotalBalance = balance + unconfirmedBalance;
+	//CAmount nUnlockedBalance = nTotalBalance - nLockedBalance;
+	CAmount matureZerocoinBalance = zerocoinBalance - immatureZerocoinBalance;
+	//getPercentage(nUnlockedBalance, zerocoinBalance, sPercentage, szPercentage);
+
+	//ui->labelBalancez->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalBalance, false, BitcoinUnits::separatorAlways));
+	ui->labelzBalancez->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
+	ui->labelzBalanceImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureZerocoinBalance, false, BitcoinUnits::separatorAlways));
+	ui->labelzBalanceUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedZerocoinBalance, false, BitcoinUnits::separatorAlways));
+	ui->labelzBalanceMature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, matureZerocoinBalance, false, BitcoinUnits::separatorAlways));
+	ui->labelTotalz->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalBalance + zerocoinBalance, false, BitcoinUnits::separatorAlways));
+	//ui->labelUnLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nUnlockedBalance, false, BitcoinUnits::separatorAlways));
+	//ui->labelCCBCPercent->setText(sPercentage);
+	//ui->labelzCCBCPercent->setText(szPercentage);
+
+	// Adjust bubble-help according to AutoMint settings
+	QString automintHelp = tr("Current percentage of zCCBC.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
+	bool fEnableZeromint = GetBoolArg("-enablezeromint", false);
+	int nZeromintPercentage = GetArg("-zeromintpercentage", 10);
+	if (fEnableZeromint) {
+	automintHelp += tr("AutoMint is currently enabled and set to ") + QString::number(nZeromintPercentage) + "%.\n";
+	automintHelp += tr("To disable AutoMint delete set 'enablezeromint=1' to 'enablezeromint=0' in ccbc.conf.");
+	}
+	else {
+	automintHelp += tr("AutoMint is currently disabled.\nTo enable AutoMint add 'enablezeromint=1' in ccbc.conf");
+	}
+	ui->labelzCCBCPercent->setToolTip(automintHelp);
+
+
+}*/
+
 void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
                                const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
                                const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance)
@@ -662,6 +716,7 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
     currentWatchOnlyBalance = watchOnlyBalance;
     currentWatchUnconfBalance = watchUnconfBalance;
     currentWatchImmatureBalance = watchImmatureBalance;
+    currentimmatureZerocoinBalance = immatureZerocoinBalance;
 
 	
     CWalletDB walletdb(pwalletMain->strWalletFile);
