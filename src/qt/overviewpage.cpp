@@ -114,6 +114,7 @@ public:
 
 OverviewPage::OverviewPage(QWidget* parent) : QWidget(parent),
                                               ui(new Ui::OverviewPage),
+                                              ui(new Ui::PrivacyDialog),
                                               clientModel(0),
                                               walletModel(0),
                                               currentBalance(-1),
