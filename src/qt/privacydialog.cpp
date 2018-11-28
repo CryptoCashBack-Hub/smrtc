@@ -119,6 +119,7 @@ void PrivacyDialog::updateDisplayUnit()
 	}
 }
 
+/*
 void PrivacyDialog::setBalance(const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance)
 {
 
@@ -169,7 +170,7 @@ void PrivacyDialog::setBalance(const CAmount& zerocoinBalance, const CAmount& un
 	ui->labelzCCBCPercent->setToolTip(automintHelp);
 
 
-}
+}*/
 
 void PrivacyDialog::setWalletModel(WalletModel* model)
 {
@@ -676,6 +677,7 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
     currentWatchUnconfBalance = watchUnconfBalance;
     currentWatchImmatureBalance = watchImmatureBalance;
 
+	
     CWalletDB walletdb(pwalletMain->strWalletFile);
     list<CZerocoinMint> listMints = walletdb.ListMintedCoins(true, false, true);
 
@@ -777,6 +779,10 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
     if (walletModel) {
         nLockedBalance = walletModel->getLockedBalance();
     }
+    ui->labelzBalanceImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureZerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalanceUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedZerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalanceMature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, matureZerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelTotalz->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalBalance + zerocoinBalance, false, BitcoinUnits::separatorAlways));
 
     ui->labelzAvailableAmount->setText(QString::number(zerocoinBalance/COIN) + QString(" zCCBC "));
     ui->labelzAvailableAmount_2->setText(QString::number(matureZerocoinBalance/COIN) + QString(" zCCBC "));
