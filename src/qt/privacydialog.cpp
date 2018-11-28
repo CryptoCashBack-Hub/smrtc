@@ -26,9 +26,6 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent),
                                                 ui(new Ui::PrivacyDialog),
                                                 walletModel(0),
                                                 currentBalance(-1)
-												//currentZerocoinBalance(-1),
-												//currentUnconfirmedZerocoinBalance(-1),
-												//currentimmatureZerocoinBalance(-1)
 {
     nDisplayUnit = 0; // just make sure it's not unitialized
     ui->setupUi(this);
@@ -534,7 +531,7 @@ bool PrivacyDialog::updateLabel(const QString& address)
 }
 
 void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance, const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance)
-{
+{	
     currentBalance = balance;
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
@@ -642,13 +639,29 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
     }
     CAmount matureZerocoinBalance = zerocoinBalance - immatureZerocoinBalance;
     CAmount nLockedBalance = 0;
+
+
     if (walletModel) {
         nLockedBalance = walletModel->getLockedBalance();
     }
 
-    ui->labelzAvailableAmount->setText(QString::number(zerocoinBalance / COIN) + QString(" zCCBC "));
-    ui->labelzAvailableAmount_2->setText(QString::number(matureZerocoinBalance / COIN) + QString(" zCCBC "));
-    ui->labelzCCBCAmountValue->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance - immatureBalance - nLockedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
+
+    if (pwalletMain) {
+        nLockedBalance = pwalletMain->GetLockedCoins();
+    }
+    ui->labelLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nLockedBalance, false, BitcoinUnits::separatorAlways));    
+    CAmount matureZerocoinBalance = zerocoinBalance - immatureZerocoinBalance;
+    getPercentage(nUnlockedBalance, zerocoinBalance, sPercentage, szPercentage);
+    ui->labelBalancez->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalancez->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalanceImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureZerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalanceUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedZerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelzBalanceMature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, matureZerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelTotalz->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalBalance + zerocoinBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelUnLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nUnlockedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelCCBCPercent->setText(sPercentage);
+    ui->labelzCCBCPercent->setText(szPercentage);    
 }
 
 void PrivacyDialog::updateDisplayUnit()
