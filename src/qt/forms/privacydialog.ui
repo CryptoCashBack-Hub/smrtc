@@ -673,69 +673,21 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="zCCBCLabel">
-     <property name="minimumSize">
-      <size>
-       <width>460</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>48</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="toolTip">
-      <string>CCBC which were anonymized via Zerocin Protocol</string>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string>Zerocoin CCBC (zCCBC)</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="3">
-    <widget class="Line" name="line_2">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>1</height>
-      </size>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0" rowspan="3" colspan="3">
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="2">
       <layout class="QHBoxLayout" name="horizontalLayout_11">
        <item>
         <layout class="QGridLayout" name="gridLayout">
-         <item row="7" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_30">
+         <item row="6" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_29">
            <item>
-            <widget class="QLabel" name="labelzDenom4Text">
+            <widget class="QLabel" name="labelzDenom3Text">
              <property name="toolTip">
-              <string>Denominations with value 50:</string>
+              <string>Denominations with value 10:</string>
              </property>
              <property name="text">
-              <string>Denom. with value 50:</string>
+              <string>Denom. with value 10:</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -743,7 +695,7 @@
             </widget>
            </item>
            <item>
-            <spacer name="horizontalSpacer_29">
+            <spacer name="horizontalSpacer_28">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -756,7 +708,7 @@
             </spacer>
            </item>
            <item>
-            <widget class="QLabel" name="labelzDenom4Amount">
+            <widget class="QLabel" name="labelzDenom3Amount">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -777,204 +729,6 @@
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="16" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_37">
-           <item>
-            <widget class="QLabel" name="labelZsupplyText1">
-             <property name="text">
-              <string>Denom. 1:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_36">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLabel" name="labelZsupplyAmount1">
-             <property name="text">
-              <string>0 zCCBC</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="5" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_28">
-           <item>
-            <widget class="QLabel" name="labelzDenom2Text">
-             <property name="toolTip">
-              <string>Denominations with value 5:</string>
-             </property>
-             <property name="text">
-              <string>Denom. with value 5:</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_27">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLabel" name="labelzDenom2Amount">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>
-                                      Unconfirmed: less than 20 confirmations
-                                      Immature: confirmed, but less than 1 mint of the same denomination after it was minted
-                                    </string>
-             </property>
-             <property name="text">
-              <string>0 x</string>
-             </property>
-             <property name="textFormat">
-              <enum>Qt::RichText</enum>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="13" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_35">
-           <item>
-            <widget class="QLabel" name="label_AutoMintStatus">
-             <property name="toolTip">
-              <string>
-                                      Show the current status of automatic zCCBC minting.
-
-                                      To change the status (restart required):
-                                      - enable: add 'enablezeromint=1' to pivx.conf
-                                      - disable: add 'enablezeromint=0' to pivx.conf
-
-                                      To change the percentage (no restart required):
-                                      - menu Settings-&gt;Options-&gt;Percentage of autominted zCCBC
-
-                                    </string>
-             </property>
-             <property name="text">
-              <string>AutoMint Status</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_34">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLabel" name="labelTurnedOff">
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Automint Is Disabled</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="14" column="0" colspan="2">
-          <widget class="Line" name="line_5">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>1</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>1</height>
-            </size>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="15" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_36">
-           <item>
-            <widget class="QLabel" name="labelZsupplyText">
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Global Supply:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_35">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLabel" name="labelZsupplyAmount">
-             <property name="font">
-              <font>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>0 zCCBC</string>
              </property>
             </widget>
            </item>
@@ -1152,25 +906,6 @@
            </item>
           </layout>
          </item>
-         <item row="1" column="0" colspan="2">
-          <widget class="Line" name="line_1_right">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>1</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>1</height>
-            </size>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
          <item row="9" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_32">
            <item>
@@ -1225,6 +960,25 @@
             </widget>
            </item>
           </layout>
+         </item>
+         <item row="1" column="0" colspan="2">
+          <widget class="Line" name="line_1_right">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>1</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>1</height>
+            </size>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
          </item>
          <item row="10" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_33">
@@ -1367,22 +1121,6 @@
            </item>
           </layout>
          </item>
-         <item row="2" column="1">
-          <spacer name="verticalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Maximum</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>13</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
          <item row="18" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_39">
            <item>
@@ -1413,6 +1151,22 @@
             </widget>
            </item>
           </layout>
+         </item>
+         <item row="2" column="1">
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Maximum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>13</height>
+            </size>
+           </property>
+          </spacer>
          </item>
          <item row="19" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_40">
@@ -1500,15 +1254,15 @@
            </item>
           </layout>
          </item>
-         <item row="6" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_29">
+         <item row="7" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_30">
            <item>
-            <widget class="QLabel" name="labelzDenom3Text">
+            <widget class="QLabel" name="labelzDenom4Text">
              <property name="toolTip">
-              <string>Denominations with value 10:</string>
+              <string>Denominations with value 50:</string>
              </property>
              <property name="text">
-              <string>Denom. with value 10:</string>
+              <string>Denom. with value 50:</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1516,7 +1270,7 @@
             </widget>
            </item>
            <item>
-            <spacer name="horizontalSpacer_28">
+            <spacer name="horizontalSpacer_29">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -1529,7 +1283,7 @@
             </spacer>
            </item>
            <item>
-            <widget class="QLabel" name="labelzDenom3Amount">
+            <widget class="QLabel" name="labelzDenom4Amount">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -1550,6 +1304,204 @@
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="16" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_37">
+           <item>
+            <widget class="QLabel" name="labelZsupplyText1">
+             <property name="text">
+              <string>Denom. 1:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_36">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelZsupplyAmount1">
+             <property name="text">
+              <string>0 zCCBC</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="5" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_28">
+           <item>
+            <widget class="QLabel" name="labelzDenom2Text">
+             <property name="toolTip">
+              <string>Denominations with value 5:</string>
+             </property>
+             <property name="text">
+              <string>Denom. with value 5:</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_27">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelzDenom2Amount">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>
+                                      Unconfirmed: less than 20 confirmations
+                                      Immature: confirmed, but less than 1 mint of the same denomination after it was minted
+                                    </string>
+             </property>
+             <property name="text">
+              <string>0 x</string>
+             </property>
+             <property name="textFormat">
+              <enum>Qt::RichText</enum>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="13" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_35">
+           <item>
+            <widget class="QLabel" name="label_AutoMintStatus">
+             <property name="toolTip">
+              <string>
+                                      Show the current status of automatic zCCBC minting.
+
+                                      To change the status (restart required):
+                                      - enable: add 'enablezeromint=1' to ccbc.conf
+                                      - disable: add 'enablezeromint=0' to ccbc.conf
+
+                                      To change the percentage (no restart required):
+                                      - menu Settings-&gt;Options-&gt;Percentage of autominted zCCBC
+
+                                    </string>
+             </property>
+             <property name="text">
+              <string>AutoMint Status</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_34">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelTurnedOff">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Automint Is Disabled</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="14" column="0" colspan="2">
+          <widget class="Line" name="line_5">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>1</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>1</height>
+            </size>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="15" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_36">
+           <item>
+            <widget class="QLabel" name="labelZsupplyText">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Global Supply:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_35">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelZsupplyAmount">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>0 zCCBC</string>
              </property>
             </widget>
            </item>
@@ -1776,37 +1728,6 @@
            </item>
           </layout>
          </item>
-         <item row="21" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_42">
-           <item>
-            <widget class="QLabel" name="labelZsupplyText500">
-             <property name="text">
-              <string>Denom. 500:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_41">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLabel" name="labelZsupplyAmount500">
-             <property name="text">
-              <string>0 zCCBC</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
          <item row="23" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_44">
            <item>
@@ -1838,24 +1759,36 @@
            </item>
           </layout>
          </item>
-         <item row="25" column="0">
-          <widget class="QLabel" name="label_5z_3">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>20</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Zerocoin Transactional Information</string>
-           </property>
-          </widget>
+         <item row="21" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_42">
+           <item>
+            <widget class="QLabel" name="labelZsupplyText500">
+             <property name="text">
+              <string>Denom. 500:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_41">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelZsupplyAmount500">
+             <property name="text">
+              <string>0 zCCBC</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item row="20" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_41">
@@ -1888,9 +1821,41 @@
            </item>
           </layout>
          </item>
+         <item row="25" column="0">
+          <widget class="QLabel" name="label_5z_3">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Zerocoin Transactional Information</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
       </layout>
+     </item>
+     <item row="0" column="1">
+      <widget class="Line" name="line">
+       <property name="maximumSize">
+        <size>
+         <width>1</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
      </item>
      <item row="0" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -2538,7 +2503,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="../ccbc.qrc">
+                <iconset>
                  <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
                </property>
                <property name="shortcut">
@@ -2555,7 +2520,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="../ccbc.qrc">
+                <iconset>
                  <normaloff>:/icons/editpaste</normaloff>:/icons/editpaste</iconset>
                </property>
                <property name="shortcut">
@@ -2696,45 +2661,7 @@
        </item>
       </layout>
      </item>
-     <item row="0" column="1">
-      <widget class="Line" name="line">
-       <property name="maximumSize">
-        <size>
-         <width>1</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
     </layout>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLabel" name="labelCoinControlChangeLabel">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="margin">
-      <number>3</number>
-     </property>
-    </widget>
    </item>
    <item row="8" column="0">
     <widget class="QLabel" name="labelCoinControlAfterFee">
@@ -2773,10 +2700,57 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="zCCBCLabel">
+     <property name="minimumSize">
+      <size>
+       <width>460</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>CCBC which were anonymized via Zerocin Protocol</string>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string>Zerocoin CCBC (zCCBC)</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="3">
+    <widget class="Line" name="line_2">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>1</height>
+      </size>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
   </layout>
   <zorder>zCCBCLabel</zorder>
   <zorder>line_2</zorder>
-  <zorder>labelCoinControlChangeLabel</zorder>
   <zorder>dummyHideWidget</zorder>
   <zorder>WarningLabel</zorder>
   <zorder>labelCoinControlAfterFee</zorder>
@@ -2789,7 +2763,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../ccbc.qrc"/>
+  <include location="../smrtc.qrc"/>
  </resources>
  <connections/>
 </ui>

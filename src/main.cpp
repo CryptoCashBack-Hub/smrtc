@@ -112,81 +112,79 @@ const string strMessageMagic = "DarkNet Signed Message:\n";
 // Internal stuff
 namespace
 {
+	struct CBlockIndexWorkComparator {
+		bool operator()(CBlockIndex* pa, CBlockIndex* pb) const
+		{
+			// First sort by most total work, ...
+			if (pa->nChainWork > pb->nChainWork) return false;
+			if (pa->nChainWork < pb->nChainWork) return true;
 
-struct CBlockIndexWorkComparator {
-    bool operator()(CBlockIndex* pa, CBlockIndex* pb) const
-    {
-        // First sort by most total work, ...
-        if (pa->nChainWork > pb->nChainWork) return false;
-        if (pa->nChainWork < pb->nChainWork) return true;
+			// ... then by earliest time received, ...
+			if (pa->nSequenceId < pb->nSequenceId) return false;
+			if (pa->nSequenceId > pb->nSequenceId) return true;
 
-        // ... then by earliest time received, ...
-        if (pa->nSequenceId < pb->nSequenceId) return false;
-        if (pa->nSequenceId > pb->nSequenceId) return true;
+			// Use pointer address as tie breaker (should only happen with blocks
+			// loaded from disk, as those all have id 0).
+			if (pa < pb) return false;
+			if (pa > pb) return true;
 
-        // Use pointer address as tie breaker (should only happen with blocks
-        // loaded from disk, as those all have id 0).
-        if (pa < pb) return false;
-        if (pa > pb) return true;
+			// Identical blocks.
+			return false;
+		}
+	};
 
-        // Identical blocks.
-        return false;
-    }
-};
+	CBlockIndex* pindexBestInvalid;
 
-CBlockIndex* pindexBestInvalid;
+	/**
+	* The set of all CBlockIndex entries with BLOCK_VALID_TRANSACTIONS (for itself and all ancestors) and
+	* as good as our current tip or better. Entries may be failed, though.
+	*/
+	set<CBlockIndex*, CBlockIndexWorkComparator> setBlockIndexCandidates;
+	/** Number of nodes with fSyncStarted. */
+	int nSyncStarted = 0;
+	/** All pairs A->B, where A (or one if its ancestors) misses transactions, but B has transactions. */
+	multimap<CBlockIndex*, CBlockIndex*> mapBlocksUnlinked;
 
-/**
-     * The set of all CBlockIndex entries with BLOCK_VALID_TRANSACTIONS (for itself and all ancestors) and
-     * as good as our current tip or better. Entries may be failed, though.
-     */
-set<CBlockIndex*, CBlockIndexWorkComparator> setBlockIndexCandidates;
-/** Number of nodes with fSyncStarted. */
-int nSyncStarted = 0;
-/** All pairs A->B, where A (or one if its ancestors) misses transactions, but B has transactions. */
-multimap<CBlockIndex*, CBlockIndex*> mapBlocksUnlinked;
+	CCriticalSection cs_LastBlockFile;
+	std::vector<CBlockFileInfo> vinfoBlockFile;
+	int nLastBlockFile = 0;
 
-CCriticalSection cs_LastBlockFile;
-std::vector<CBlockFileInfo> vinfoBlockFile;
-int nLastBlockFile = 0;
+	/**
+	* Every received block is assigned a unique and increasing identifier, so we
+	* know which one to give priority in case of a fork.
+	*/
+	CCriticalSection cs_nBlockSequenceId;
+	/** Blocks loaded from disk are assigned id 0, so start the counter at 1. */
+	uint32_t nBlockSequenceId = 1;
 
-/**
-     * Every received block is assigned a unique and increasing identifier, so we
-     * know which one to give priority in case of a fork.
-     */
-CCriticalSection cs_nBlockSequenceId;
-/** Blocks loaded from disk are assigned id 0, so start the counter at 1. */
-uint32_t nBlockSequenceId = 1;
+	/**
+	* Sources of received blocks, to be able to send them reject messages or ban
+	* them, if processing happens afterwards. Protected by cs_main.
+	*/
+	map<uint256, NodeId> mapBlockSource;
 
-/**
-     * Sources of received blocks, to be able to send them reject messages or ban
-     * them, if processing happens afterwards. Protected by cs_main.
-     */
-map<uint256, NodeId> mapBlockSource;
+	/** Blocks that are in flight, and that are in the queue to be downloaded. Protected by cs_main. */
+	struct QueuedBlock {
+		uint256 hash;
+		CBlockIndex* pindex;        //! Optional.
+		int64_t nTime;              //! Time of "getdata" request in microseconds.
+		int nValidatedQueuedBefore; //! Number of blocks queued with validated headers (globally) at the time this one is requested.
+		bool fValidatedHeaders;     //! Whether this block has validated headers at the time of request.
+	};
+	map<uint256, pair<NodeId, list<QueuedBlock>::iterator> > mapBlocksInFlight;
 
-/** Blocks that are in flight, and that are in the queue to be downloaded. Protected by cs_main. */
-struct QueuedBlock {
-    uint256 hash;
-    CBlockIndex* pindex;        //! Optional.
-    int64_t nTime;              //! Time of "getdata" request in microseconds.
-    int nValidatedQueuedBefore; //! Number of blocks queued with validated headers (globally) at the time this one is requested.
-    bool fValidatedHeaders;     //! Whether this block has validated headers at the time of request.
-};
-map<uint256, pair<NodeId, list<QueuedBlock>::iterator> > mapBlocksInFlight;
+	/** Number of blocks in flight with validated headers. */
+	int nQueuedValidatedHeaders = 0;
 
-/** Number of blocks in flight with validated headers. */
-int nQueuedValidatedHeaders = 0;
+	/** Number of preferable block download peers. */
+	int nPreferredDownload = 0;
 
-/** Number of preferable block download peers. */
-int nPreferredDownload = 0;
+	/** Dirty block index entries. */
+	set<CBlockIndex*> setDirtyBlockIndex;
 
-/** Dirty block index entries. */
-set<CBlockIndex*> setDirtyBlockIndex;
-
-/** Dirty block file entries. */
-set<int> setDirtyFileInfo;
-} // namespace
-
+	/** Dirty block file entries. */
+	set<int> setDirtyFileInfo;
+} // anon namespace
 
   //////////////////////////////////////////////////////////////////////////////
   //
@@ -214,7 +212,7 @@ namespace
 		boost::signals2::signal<void(const CBlock&, const CValidationState&)> BlockChecked;
 	} g_signals;
 
-} // namespace
+} // anon namespace
 
 void RegisterValidationInterface(CValidationInterface* pwalletIn)
 {
@@ -551,7 +549,7 @@ namespace
 		}
 	}
 
-} // namespace
+} // anon namespace
 
 bool GetNodeStateStats(NodeId nodeid, CNodeStateStats& stats)
 {
@@ -2564,8 +2562,8 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
 		ret = blockValue / 10 * 9; //90%
 	}else if (nHeight > 175000) {
         ret = blockValue / 10 * 9; //90%
-    }
-    return ret;
+	}
+		return ret;
 }
 
 //Treasury blocks start from 60,000 and then each block after
@@ -2575,16 +2573,24 @@ int nTreasuryBlockStep = 1440;
 //Put spork toggle to turn on and off.
 bool IsTreasuryBlock(int nHeight)
 {
+	//This is put in for when dev fee is turned off.
+	if (nHeight < nStartTreasuryBlock)
+		return false;
+	else if (IsSporkActive(SPORK_17_TREASURY_PAYMENT_ENFORCEMENT))
+		return false;
+	else if ((nHeight - nStartTreasuryBlock) % nTreasuryBlockStep == 0)
+		return true;
+	else
+		return false;
 
-    //This is put in for when dev fee is turned off.
-    if (nHeight < nStartTreasuryBlock)
-        return false;
-    else if (IsSporkActive(SPORK_17_TREASURY_PAYMENT_ENFORCEMENT))
-        return false;
-    else if ((nHeight - nStartTreasuryBlock) % nTreasuryBlockStep == 0)
-        return true;
-    else
-        return false;
+	/*
+	if (nHeight < nStartTreasuryBlock)
+	return false;
+	else if ((nHeight - nStartTreasuryBlock) % nTreasuryBlockStep == 0)
+	return true;
+	else
+	return false;
+	*/
 }
 
 int64_t GetTreasuryAward(int nHeight)
@@ -2625,19 +2631,28 @@ int nReviveBlockStep = 1440;
 //Checks to see if block count above is correct if not then no Revive
 bool IsReviveBlock(int nHeight)
 {
-    // Old fee for AQX before admin gave up on project
-    // CCBC will not pay for revival fee since CCBC dev did all work
-    // And AQX team didnt help like promised.
 
-    if (nHeight < nStartReviveBlock)
-        return false;
-    else if (IsSporkActive(SPORK_18_REVIVE_PAYMENT_ENFORCEMENT))
-        return false;
-    else if ((nHeight - nStartReviveBlock) % nReviveBlockStep == 0)
-        return true;
-    else
-        return false;
-  
+	// Old fee for AQX before admin gave up on project
+	// CCBC will not pay for revival fee since CCBC dev did all work
+	// And AQX team didnt help like promised.
+
+	if (nHeight < nStartReviveBlock)
+		return false;
+	else if (IsSporkActive(SPORK_18_REVIVE_PAYMENT_ENFORCEMENT))
+		return false;
+	else if ((nHeight - nStartReviveBlock) % nReviveBlockStep == 0)
+		return true;
+	else
+		return false;
+
+	/*
+	if (nHeight < nStartReviveBlock)
+	return false;
+	else if ((nHeight - nStartReviveBlock) % nReviveBlockStep == 0)
+	return true;
+	else
+	return false;
+	*/
 }
 
 int64_t GetReviveAward(int nHeight)
@@ -3795,11 +3810,10 @@ bool DisconnectBlocksAndReprocess(int blocks)
 }
 
 /*
+DisconnectBlockAndInputs
 
-    DisconnectBlockAndInputs
-    Remove conflicting blocks for successful SwiftX transaction locks
-    This should be very rare (Probably will never happen)
-
+Remove conflicting blocks for successful SwiftX transaction locks
+This should be very rare (Probably will never happen)
 */
 // ***TODO*** clean up here
 bool DisconnectBlockAndInputs(CValidationState& state, CTransaction txLock)
@@ -6781,33 +6795,28 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 //       it was the one which was commented out
 int ActiveProtocol()
 {
-
-    // SPORK_14 will remove early wallet adopters of protocol 70002 where max supply didnt have cap and
-    // seesaw masternode amount was set to 5k instead of 25k collateral
-    /*
+	// SPORK_14 will remove early wallet adopters of protocol 70002 where max supply didnt have cap and
+	// seesaw masternode amount was set to 5k instead of 25k collateral
+	/*
 	if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
 	return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
 	return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 	*/
 
-
-    // SPORK_15 will be used after SPORK_14 is used and commented out from being turned off.
-    // SPORK_15 has been turned on and will be commented out to prevent from being turned off.
-    // Approved by TFinch 11/29/2018
-    /*
-
+	// SPORK_15 will be used after SPORK_14 is used and commented out from being turned off.
+	// SPORK_15 has been turned on and will be commented out to prevent from being turned off. 
+	// Approved by TFinch 11/29/2018
+	/*
 	if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
 	return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
 	return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 	*/
 
-
-    // SPORK_19 will be used after SPORK_15 is used and commented out from being turned off.
-    // This will be turned on after first of the year to enforce me spork privkey!
-    if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
-        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-    return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
-
+	// SPORK_19 will be used after SPORK_15 is used and commented out from being turned off.
+	// This will be turned on after first of the year to enforce me spork privkey!
+	if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
+		return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+	return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }
 
 // requires LOCK(cs_vRecvMsg)
@@ -7217,19 +7226,17 @@ std::string CBlockFileInfo::ToString() const
 class CMainCleanup
 {
 public:
+	CMainCleanup() {}
+	~CMainCleanup()
+	{
+		// block headers
+		BlockMap::iterator it1 = mapBlockIndex.begin();
+		for (; it1 != mapBlockIndex.end(); it1++)
+			delete (*it1).second;
+		mapBlockIndex.clear();
 
-    CMainCleanup() {}
-    ~CMainCleanup()
-    {
-        // block headers
-        BlockMap::iterator it1 = mapBlockIndex.begin();
-        for (; it1 != mapBlockIndex.end(); it1++)
-            delete (*it1).second;
-        mapBlockIndex.clear();
-
-        // orphan transactions
-        mapOrphanTransactions.clear();
-        mapOrphanTransactionsByPrev.clear();
-    }
+		// orphan transactions
+		mapOrphanTransactions.clear();
+		mapOrphanTransactionsByPrev.clear();
+	}
 } instance_of_cmaincleanup;
-

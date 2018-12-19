@@ -87,13 +87,6 @@ void ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 
 		LogPrintf("spork - new %s ID %d Time %d bestHeight %d\n", hash.ToString(), spork.nSporkID, spork.nValue, chainActive.Tip()->nHeight);
 
-		        if (spork.nTimeSigned >= Params().NewSporkStart()) {
-                    if (!sporkManager.CheckSignature(spork, true)) {
-                        LogPrintf("%s : Invalid Signature\n", __func__);
-                        Misbehaving(pfrom->GetId(), 100);
-                        return;
-                    }
-                }
 		if (!sporkManager.CheckSignature(spork)) {
 			LogPrintf("spork - invalid signature\n");
 			Misbehaving(pfrom->GetId(), 100);
@@ -189,29 +182,17 @@ void ReprocessBlocks(int nBlocks)
 	}
 }
 
-bool CSporkManager::CheckSignature(CSporkMessage& spork, bool fCheckSigner)
+bool CSporkManager::CheckSignature(CSporkMessage& spork)
 {
 	//note: need to investigate why this is failing
 	std::string strMessage = boost::lexical_cast<std::string>(spork.nSporkID) + boost::lexical_cast<std::string>(spork.nValue) + boost::lexical_cast<std::string>(spork.nTimeSigned);
 	CPubKey pubkeynew(ParseHex(Params().SporkKey()));
 	std::string errorMessage = "";
-	//if (obfuScationSigner.VerifyMessage(pubkeynew, spork.vchSig, strMessage, errorMessage)) {
-		//return true;
-	//}
+	if (obfuScationSigner.VerifyMessage(pubkeynew, spork.vchSig, strMessage, errorMessage)) {
+		return true;
+	}
 
-	    bool fValidWithNewKey = obfuScationSigner.VerifyMessage(pubkeynew, spork.vchSig, strMessage, errorMessage);
-
-        if (fCheckSigner && !fValidWithNewKey)
-            return false;
-
-	    // See if window is open that allows for old spork key to sign messages
-        if (!fValidWithNewKey && GetAdjustedTime() < Params().RejectOldSporkKey()) {
-            CPubKey pubkeyold(ParseHex(Params().SporkKeyOld()));
-            return obfuScationSigner.VerifyMessage(pubkeyold, spork.vchSig, strMessage, errorMessage);
-        }
-
-        return fValidWithNewKey;
-
+	return false;
 }
 
 bool CSporkManager::Sign(CSporkMessage& spork)
@@ -318,7 +299,7 @@ std::string CSporkManager::GetSporkNameByID(int id)
 	if (id == SPORK_16_ZEROCOIN_MAINTENANCE_MODE) return "SPORK_16_ZEROCOIN_MAINTENANCE_MODE";
 	if (id == SPORK_17_TREASURY_PAYMENT_ENFORCEMENT) return "SPORK_17_TREASURY_PAYMENT_ENFORCEMENT";
 	if (id == SPORK_18_REVIVE_PAYMENT_ENFORCEMENT) return "SPORK_18_REVIVE_PAYMENT_ENFORCEMENT";
-	if (id == SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3) return "SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3";
+	if (id == SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3) return "SPORK_16_NEW_PROTOCOL_ENFORCEMENT_3";
 
 	return "Unknown";
 }
