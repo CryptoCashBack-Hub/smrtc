@@ -423,7 +423,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../ccbc.qrc">
+            <iconset resource="../smrtc.qrc">
              <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
            </property>
            <property name="shortcut">
@@ -1387,7 +1387,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../ccbc.qrc"/>
+  <include location="../smrtc.qrc"/>
  </resources>
  <connections/>
 </ui>

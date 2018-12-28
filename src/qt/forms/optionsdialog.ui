@@ -473,7 +473,7 @@
          </property>
          <property name="text">
           <string>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/ccbc-project/ccbc-project-translations</string>
+https://www.transifex.com/smrtc-project/smrtc-project-translations</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>

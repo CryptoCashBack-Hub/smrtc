@@ -4660,7 +4660,7 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
         }
     }
     if (nMints || nSpends)
-        LogPrintf("%s : block contains %d zCCBC mints and %d zCCCBC spends\n", __func__, nMints, nSpends);
+        LogPrintf("%s : block contains %d zCcbc mints and %d zCcbc spends\n", __func__, nMints, nSpends);
 
     // ppcoin: check proof-of-stake
     // Limited duplicity on stake: prevents block flood attack
@@ -4668,7 +4668,7 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
     //if (pblock->IsProofOfStake() && setStakeSeen.count(pblock->GetProofOfStake())/* && !mapOrphanBlocksByPrev.count(hash)*/)
     //    return error("ProcessNewBlock() : duplicate proof-of-stake (%s, %d) for block %s", pblock->GetProofOfStake().first.ToString().c_str(), pblock->GetProofOfStake().second, pblock->GetHash().ToString().c_str());
 
-    // Provided from NovaCoin: check proof-of-stake block signature
+    // NovaCoin: check proof-of-stake block signature
     if (!pblock->CheckBlockSignature())
         return error("ProcessNewBlock() : bad proof-of-stake block signature");
 

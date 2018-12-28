@@ -28,7 +28,7 @@
       </sizepolicy>
      </property>
      <property name="pixmap">
-      <pixmap resource="../ccbc.qrc">:/images/about</pixmap>
+      <pixmap resource="../smrtc.qrc">:/images/about</pixmap>
      </property>
     </widget>
    </item>
@@ -97,7 +97,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../ccbc.qrc"/>
+  <include location="../smrtc.qrc"/>
  </resources>
  <connections>
   <connection>
