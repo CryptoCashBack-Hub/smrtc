@@ -1315,7 +1315,7 @@
         <string>S&amp;end</string>
        </property>
        <property name="icon">
-        <iconset resource="../smrtc.qrc">
+        <iconset resource="../ccbc.qrc">
          <normaloff>:/icons/send</normaloff>:/icons/send</iconset>
        </property>
        <property name="autoDefault">
@@ -1341,7 +1341,7 @@
         <string>Clear &amp;All</string>
        </property>
        <property name="icon">
-        <iconset resource="../smrtc.qrc">
+        <iconset resource="../ccbc.qrc">
          <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
        </property>
        <property name="autoDefault">
@@ -1358,7 +1358,7 @@
         <string>Add &amp;Recipient</string>
        </property>
        <property name="icon">
-        <iconset resource="../smrtc.qrc">
+        <iconset resource="../ccbc.qrc">
          <normaloff>:/icons/add</normaloff>:/icons/add</iconset>
        </property>
        <property name="autoDefault">
@@ -1456,7 +1456,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../smrtc.qrc"/>
+  <include location="../ccbc.qrc"/>
  </resources>
  <connections/>
  <buttongroups>

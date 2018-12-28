@@ -1,13 +1,13 @@
-#include "multisenddialog.h"
 #include "addressbookpage.h"
 #include "base58.h"
 #include "init.h"
+#include "multisenddialog.h"
 #include "ui_multisenddialog.h"
 #include "walletmodel.h"
 #include <QLineEdit>
 #include <QMessageBox>
-#include <boost/lexical_cast.hpp>
 #include <QStyle>
+#include <boost/lexical_cast.hpp>
 
 using namespace std;
 using namespace boost;

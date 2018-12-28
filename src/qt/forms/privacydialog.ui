@@ -2787,7 +2787,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../smrtc.qrc"/>
+  <include location="../ccbc.qrc"/>
  </resources>
  <connections/>
 </ui>
