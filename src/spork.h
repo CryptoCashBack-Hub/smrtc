@@ -59,8 +59,8 @@ Sporks 11,12, and 16 to be removed with 1st zerocoin release
 #define SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2_DEFAULT 4070908800    //This was turned on by TFinch
 #define SPORK_16_ZEROCOIN_MAINTENANCE_MODE_DEFAULT 4070908800     //OFF 01/01/2099 @ 12:00am (UTC)
 #define SPORK_17_TREASURY_PAYMENT_ENFORCEMENT_DEFAULT 4070908800  //OFF 01/01/2099 @ 12:00am (UTC)
-#define SPORK_18_REVIVE_PAYMENT_ENFORCEMENT_DEFAULT 4070908800    //OFF This will be turned on if Admin in AQX is not active on 1/1/2019
-#define SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3_DEFAULT 4070908800    //OFF 01/01/2099 @ 12:00am (UTC)
+#define SPORK_18_REVIVE_PAYMENT_ENFORCEMENT_DEFAULT 1546444353    //Turned on by TFinch 1/2/2019 block 148917 and checkpoint made
+#define SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3_DEFAULT 4070908800    //Turned on by TFinch at block 145k
 
 class CSporkMessage;
 class CSporkManager;
