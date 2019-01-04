@@ -58,7 +58,7 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
 
     (0, uint256("0xa9f081734c579a25872ce366d5520482755d26ff3db73fbe7bdd4e973bc0e173"))
-	(150817, uint256("56378ce6b77fbe32c613941cf7725669cbd9c191dc9182719c438e668173fa16")); //When spork 18 was turned on
+	(150817, uint256("0x56378ce6b77fbe32c613941cf7725669cbd9c191dc9182719c438e668173fa16")); //When spork 18 was turned on
 	
 	static const Checkpoints::CCheckpointData data = {
 	&mapCheckpoints,
@@ -171,15 +171,6 @@ public:
 
 		//Teams Seeder
 		vSeeds.push_back(CDNSSeedData("seeder.ccbcoin.club", "seeder.ccbcoin.club"));
-		//Seeds	Community Nodes
-		vSeeds.push_back(CDNSSeedData("144.202.16.251", "144.202.16.251"));
-		vSeeds.push_back(CDNSSeedData("104.238.159.161", "104.238.159.161"));
-		vSeeds.push_back(CDNSSeedData("178.128.116.146", "178.128.116.146"));
-		vSeeds.push_back(CDNSSeedData("95.179.199.170", "95.179.199.170"));
-		vSeeds.push_back(CDNSSeedData("158.69.143.106", "158.69.143.106"));
-
-		//IPV6 Nodes
-		vSeeds.push_back(CDNSSeedData("[2001:19f0:5:6c99:3b12::1]", "[2001:19f0:5:6c99:3b12::1]"));
 
 		base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 63); //S
 		base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 68); //C
