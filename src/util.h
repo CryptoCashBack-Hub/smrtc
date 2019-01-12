@@ -212,6 +212,7 @@ void RenameThread(const char* name);
  *    boost::function<void()> f = boost::bind(&FunctionWithArg, argument);
  *    threadGroup.create_thread(boost::bind(&LoopForever<boost::function<void()> >, "nothing", f, milliseconds));
  */
+/*
 template <typename Callable>
 void LoopForever(const char* name, Callable func, int64_t msecs)
 {
@@ -234,7 +235,7 @@ void LoopForever(const char* name, Callable func, int64_t msecs)
         throw;
     }
 }
-
+*/
 /**
  * .. and a wrapper that just calls func once
  */

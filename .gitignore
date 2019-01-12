@@ -183,3 +183,5 @@ config.status
 .vs/CCBC/v15/ipch/AutoPCH/5bd79ca3052e20c2/NETBASE.ipch
 .vs/CCBC/v15/ipch/AutoPCH/bac51a75c75f068e/RPCNET.ipch
 .vs/CCBC/v15/ipch/AutoPCH/e71fa6fdd808a0a6/GUIUTIL.ipch
+.vs/CCBC/v15/ipch/AutoPCH/47ea7bab20a03820/RPCCLIENT.ipch
+.vs/CCBC/v15/ipch/AutoPCH/da9e7932fe7625fd/SCHEDULER.ipch
