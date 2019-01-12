@@ -104,6 +104,8 @@ public:
 };
 
 extern CClientUIInterface uiInterface;
+/** Banlist did change. */
+boost::signals2::signal<void(void)> BannedListChanged;
 
 /**
  * Translation function: Call Translate signal on UI interface, which returns a boost::optional result.
