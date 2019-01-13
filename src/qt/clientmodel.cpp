@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2015-2018 The CCBC developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,6 +18,7 @@
 #include "masternode-sync.h"
 #include "masternodeman.h"
 #include "net.h"
+#include "netbase.h"
 #include "ui_interface.h"
 #include "util.h"
 
@@ -76,7 +77,7 @@ QString ClientModel::getMasternodeCountString() const
     int ipv4 = 0, ipv6 = 0, onion = 0;
     mnodeman.CountNetworks(ActiveProtocol(), ipv4, ipv6, onion);
     int nUnknown = mnodeman.size() - ipv4 - ipv6 - onion;
-    if (nUnknown < 0) nUnknown = 0;
+    if(nUnknown < 0) nUnknown = 0;
     return tr("Total: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Unknown: %5)").arg(QString::number((int)mnodeman.size())).arg(QString::number((int)ipv4)).arg(QString::number((int)ipv6)).arg(QString::number((int)onion)).arg(QString::number((int)nUnknown));
 }
 
@@ -217,11 +218,10 @@ PeerTableModel* ClientModel::getPeerTableModel()
     return peerTableModel;
 }
 
-BanTableModel* ClientModel::getBanTableModel()
+BanTableModel *ClientModel::getBanTableModel()
 {
     return banTableModel;
 }
-
 
 QString ClientModel::formatFullVersion() const
 {
@@ -253,7 +253,6 @@ void ClientModel::updateBanlist()
     banTableModel->refresh();
 }
 
-
 // Handlers for core signals
 static void ShowProgress(ClientModel* clientmodel, const std::string& title, int nProgress)
 {
@@ -278,12 +277,11 @@ static void NotifyAlertChanged(ClientModel* clientmodel, const uint256& hash, Ch
         Q_ARG(int, status));
 }
 
-static void BannedListChanged(ClientModel* clientmodel)
+static void BannedListChanged(ClientModel *clientmodel)
 {
     qDebug() << QString("%1: Requesting update for peer banlist").arg(__func__);
     QMetaObject::invokeMethod(clientmodel, "updateBanlist", Qt::QueuedConnection);
 }
-
 
 void ClientModel::subscribeToCoreSignals()
 {
@@ -301,4 +299,22 @@ void ClientModel::unsubscribeFromCoreSignals()
     uiInterface.NotifyNumConnectionsChanged.disconnect(boost::bind(NotifyNumConnectionsChanged, this, _1));
     uiInterface.NotifyAlertChanged.disconnect(boost::bind(NotifyAlertChanged, this, _1, _2));
     uiInterface.BannedListChanged.disconnect(boost::bind(BannedListChanged, this));
+}
+
+bool ClientModel::getTorInfo(std::string& ip_port) const
+{
+    proxyType onion;
+    if (GetProxy((Network) 3, onion) && IsReachable((Network) 3)) {
+        {
+            LOCK(cs_mapLocalHost);
+            for (const std::pair<const CNetAddr, LocalServiceInfo>& item : mapLocalHost) {
+                if (item.first.IsTor()) {
+                     CService addrOnion = CService(item.first.ToString(), item.second.nPort);
+                     ip_port = addrOnion.ToStringIPPort();
+                     return true;
+                }
+            }
+        }
+    }
+    return false;
 }

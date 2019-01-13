@@ -1,5 +1,4 @@
-// Copyright (c) 2017 The CCBC developers
-// Copyright (c) 2017-2018 The Ccbc developers
+// Copyright (c) 2017-2018 The CCBC developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,6 +17,16 @@ namespace Ui {
 class ZCcbcControlDialog;
 }
 
+class CZCcbcControlWidgetItem : public QTreeWidgetItem
+{
+public:
+    explicit CZCcbcControlWidgetItem(QTreeWidget *parent, int type = Type) : QTreeWidgetItem(parent, type) {}
+    explicit CZCcbcControlWidgetItem(int type = Type) : QTreeWidgetItem(type) {}
+    explicit CZCcbcControlWidgetItem(QTreeWidgetItem *parent, int type = Type) : QTreeWidgetItem(parent, type) {}
+
+    bool operator<(const QTreeWidgetItem &other) const;
+};
+
 class ZCcbcControlDialog : public QDialog
 {
     Q_OBJECT
@@ -28,9 +37,9 @@ public:
 
     void setModel(WalletModel* model);
 
-    static std::list<std::string> listSelectedMints;
-    static std::list<CZerocoinMint> listMints;
-    static std::vector<CZerocoinMint> GetSelectedMints();
+    static std::set<std::string> setSelectedMints;
+    static std::set<CMintMeta> setMints;
+    static std::vector<CMintMeta> GetSelectedMints();
 
 private:
     Ui::ZCcbcControlDialog *ui;
@@ -44,9 +53,11 @@ private:
         COLUMN_CHECKBOX,
         COLUMN_DENOMINATION,
         COLUMN_PUBCOIN,
+        COLUMN_VERSION,
         COLUMN_CONFIRMATIONS,
         COLUMN_ISSPENDABLE
     };
+    friend class CZCcbcControlWidgetItem;
 
 private slots:
     void updateSelection(QTreeWidgetItem* item, int column);
