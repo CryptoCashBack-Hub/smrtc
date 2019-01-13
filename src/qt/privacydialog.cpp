@@ -305,7 +305,7 @@ void PrivacyDialog::on_pushButtonZCCBCControl_clicked()
 
 void PrivacyDialog::setZCCBCControlLabels(int64_t nAmount, int nQuantity)
 {
-    ui->labelzCCBCSelected_int->setText(QString::number(nAmount));
+    ui->labelzCcbcSelected_int->setText(QString::number(nAmount));
     ui->labelQuantitySelected_int->setText(QString::number(nQuantity));
 }
 
