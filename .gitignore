@@ -188,3 +188,6 @@ config.status
 .vs/CCBC/v15/ipch/AutoPCH/ae49745d491d791d/NET.ipch
 .vs/CCBC/v15/ipch/AutoPCH/71712c4febe8e588/NETBASE.ipch
 .vs/CCBC/v15/ipch/AutoPCH/e9765b8c98ac26f0/INIT.ipch
+.vs/CCBC/v15/ipch/AutoPCH/1006f8ed7350b444/RPCNET.ipch
+.vs/CCBC/v15/ipch/AutoPCH/68292eaeca98818a/RPCCLIENT.ipch
+.vs/CCBC/v15/ipch/AutoPCH/6d84e643a43936ed/RPCCONSOLE.ipch
