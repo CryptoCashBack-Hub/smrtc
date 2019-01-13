@@ -1,573 +1,230 @@
-DIST_SUBDIRS = secp256k1
-AM_LDFLAGS = $(PTHREAD_CFLAGS) $(LIBTOOL_LDFLAGS)
+# Copyright (c) 2013-2016 The Bitcoin Core developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+ACLOCAL_AMFLAGS = -I build-aux/m4
+SUBDIRS = src
+.PHONY: deploy FORCE
 
-if EMBEDDED_LEVELDB
-LEVELDB_CPPFLAGS += -I$(srcdir)/leveldb/include
-LEVELDB_CPPFLAGS += -I$(srcdir)/leveldb/helpers/memenv
-LIBLEVELDB += $(builddir)/leveldb/libleveldb.a
-LIBMEMENV  += $(builddir)/leveldb/libmemenv.a
+GZIP_ENV="-9n"
+export PYTHONPATH
 
-# NOTE: This dependency is not strictly necessary, but without it make may try to build both in parallel, which breaks the LevelDB build system in a race
-$(LIBLEVELDB): $(LIBMEMENV)
+BITCOIND_BIN=$(top_builddir)/src/$(BITCOIN_DAEMON_NAME)$(EXEEXT)
+BITCOIN_QT_BIN=$(top_builddir)/src/qt/$(BITCOIN_GUI_NAME)$(EXEEXT)
+BITCOIN_CLI_BIN=$(top_builddir)/src/$(BITCOIN_CLI_NAME)$(EXEEXT)
+BITCOIN_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setup$(EXEEXT)
 
-$(LIBLEVELDB) $(LIBMEMENV):
-	@echo "Building LevelDB ..." && $(MAKE) -C $(@D) $(@F) CXX="$(CXX)" \
-	  CC="$(CC)" PLATFORM=$(TARGET_OS) AR="$(AR)" $(LEVELDB_TARGET_FLAGS) \
-          OPT="$(CXXFLAGS) $(CPPFLAGS)"
-endif
+empty :=
+space := $(empty) $(empty)
 
-BITCOIN_CONFIG_INCLUDES=-I$(builddir)/config
-BITCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+OSX_APP=CCBC-Qt.app
+OSX_VOLNAME = $(subst $(space),-,$(PACKAGE_NAME))
+OSX_DMG = $(OSX_VOLNAME).dmg
+OSX_BACKGROUND_SVG=background.svg
+OSX_BACKGROUND_IMAGE=background.tiff
+OSX_BACKGROUND_IMAGE_DPIS=36 72
+OSX_DSSTORE_GEN=$(top_srcdir)/contrib/macdeploy/custom_dsstore.py
+OSX_DEPLOY_SCRIPT=$(top_srcdir)/contrib/macdeploy/macdeployqtplus
+OSX_FANCY_PLIST=$(top_srcdir)/contrib/macdeploy/fancy.plist
+OSX_INSTALLER_ICONS=$(top_srcdir)/src/qt/res/icons/bitcoin.icns
+OSX_PLIST=$(top_builddir)/share/qt/Info.plist #not installed
+OSX_QT_TRANSLATIONS = da,de,es,hu,ru,uk,zh_CN,zh_TW
 
-BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
+DIST_DOCS = $(wildcard doc/*.md) $(wildcard doc/release-notes/*.md)
 
-LIBBITCOIN_SERVER=libbitcoin_server.a
-LIBBITCOIN_WALLET=libbitcoin_wallet.a
-LIBBITCOIN_COMMON=libbitcoin_common.a
-LIBBITCOIN_CLI=libbitcoin_cli.a
-LIBBITCOIN_UTIL=libbitcoin_util.a
-LIBBITCOIN_CRYPTO=crypto/libbitcoin_crypto.a
-LIBBITCOIN_UNIVALUE=univalue/libbitcoin_univalue.a
-LIBBITCOIN_ZEROCOIN=libzerocoin/libbitcoin_zerocoin.a
-LIBBITCOINQT=qt/libbitcoinqt.a
-LIBSECP256K1=secp256k1/libsecp256k1.la
+WINDOWS_PACKAGING = $(top_srcdir)/share/pixmaps/bitcoin.ico \
+  $(top_srcdir)/share/pixmaps/nsis-header.bmp \
+  $(top_srcdir)/share/pixmaps/nsis-wizard.bmp \
+  $(top_srcdir)/doc/README_windows.txt
 
-$(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
-	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C $(@D) $(@F)
+OSX_PACKAGING = $(OSX_DEPLOY_SCRIPT) $(OSX_FANCY_PLIST) $(OSX_INSTALLER_ICONS) \
+  $(top_srcdir)/contrib/macdeploy/$(OSX_BACKGROUND_SVG) \
+  $(OSX_DSSTORE_GEN) \
+  $(top_srcdir)/contrib/macdeploy/detached-sig-apply.sh \
+  $(top_srcdir)/contrib/macdeploy/detached-sig-create.sh
 
-# Make is not made aware of per-object dependencies to avoid limiting building parallelization
-# But to build the less dependent modules first, we manually select their order here:
-EXTRA_LIBRARIES = \
-  crypto/libbitcoin_crypto.a \
-  libbitcoin_util.a \
-  libbitcoin_common.a \
-  univalue/libbitcoin_univalue.a \
-  libzerocoin/libbitcoin_zerocoin.a \
-  libbitcoin_server.a \
-  libbitcoin_cli.a
-if ENABLE_WALLET
-BITCOIN_INCLUDES += $(BDB_CPPFLAGS)
-EXTRA_LIBRARIES += libbitcoin_wallet.a
-endif
+COVERAGE_INFO = baseline_filtered_combined.info baseline.info block_test.info \
+  leveldb_baseline.info test_ccbc_filtered.info total_coverage.info \
+  baseline_filtered.info block_test_filtered.info \
+  leveldb_baseline_filtered.info test_ccbc_coverage.info test_ccbc.info
 
-if ENABLE_ZMQ
-EXTRA_LIBRARIES += libbitcoin_zmq.a
-endif
+dist-hook:
+	-$(MAKE) -C $(top_distdir)/src/leveldb clean
+	-$(MAKE) -C $(top_distdir)/src/secp256k1 distclean
+	-$(GIT) archive --format=tar HEAD -- src/clientversion.cpp | $(AMTAR) -C $(top_distdir) -xf -
 
-if BUILD_BITCOIN_LIBS
-lib_LTLIBRARIES = libbitcoinconsensus.la
-LIBBITCOIN_CONSENSUS=libbitcoinconsensus.la
+distcheck-hook:
+	$(MKDIR_P) $(top_distdir)/_build/src/leveldb
+	cp -rf $(top_srcdir)/src/leveldb/* $(top_distdir)/_build/src/leveldb/
+	-$(MAKE) -C $(top_distdir)/_build/src/leveldb clean
+
+distcleancheck:
+	@:
+
+$(BITCOIN_WIN_INSTALLER): all-recursive
+	$(MKDIR_P) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(BITCOIND_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(BITCOIN_QT_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(BITCOIN_CLI_BIN) $(top_builddir)/release
+	@test -f $(MAKENSIS) && $(MAKENSIS) -V2 $(top_builddir)/share/setup.nsi || \
+	  echo error: could not build $@
+	@echo built $@
+
+$(OSX_APP)/Contents/PkgInfo:
+	$(MKDIR_P) $(@D)
+	@echo "APPL????" > $@
+
+$(OSX_APP)/Contents/Resources/empty.lproj:
+	$(MKDIR_P) $(@D)
+	@touch $@
+
+$(OSX_APP)/Contents/Info.plist: $(OSX_PLIST)
+	$(MKDIR_P) $(@D)
+	$(INSTALL_DATA) $< $@
+
+$(OSX_APP)/Contents/Resources/bitcoin.icns: $(OSX_INSTALLER_ICONS)
+	$(MKDIR_P) $(@D)
+	$(INSTALL_DATA) $< $@
+
+$(OSX_APP)/Contents/MacOS/CCBC-Qt: $(BITCOIN_QT_BIN)
+	$(MKDIR_P) $(@D)
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $< $@
+
+$(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings:
+	$(MKDIR_P) $(@D)
+	echo '{	CFBundleDisplayName = "$(PACKAGE_NAME)"; CFBundleName = "$(PACKAGE_NAME)"; }' > $@
+
+OSX_APP_BUILT=$(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lproj \
+  $(OSX_APP)/Contents/Resources/bitcoin.icns $(OSX_APP)/Contents/Info.plist \
+  $(OSX_APP)/Contents/MacOS/CCBC-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
+
+osx_volname:
+	echo $(OSX_VOLNAME) >$@
+
+if BUILD_DARWIN
+$(OSX_DMG): $(OSX_APP_BUILT) $(OSX_PACKAGING) $(OSX_BACKGROUND_IMAGE)
+	$(PYTHON) $(OSX_DEPLOY_SCRIPT) $(OSX_APP) -add-qt-tr $(OSX_QT_TRANSLATIONS) -translations-dir=$(QT_TRANSLATION_DIR) -dmg -fancy $(OSX_FANCY_PLIST) -verbose 2 -volname $(OSX_VOLNAME)
+
+$(OSX_BACKGROUND_IMAGE).png: contrib/macdeploy/$(OSX_BACKGROUND_SVG)
+	sed 's/PACKAGE_NAME/$(PACKAGE_NAME)/' < "$<" | $(RSVG_CONVERT) -f png -d 36 -p 36 -o $@
+$(OSX_BACKGROUND_IMAGE)@2x.png: contrib/macdeploy/$(OSX_BACKGROUND_SVG)
+	sed 's/PACKAGE_NAME/$(PACKAGE_NAME)/' < "$<" | $(RSVG_CONVERT) -f png -d 72 -p 72 -o $@
+$(OSX_BACKGROUND_IMAGE): $(OSX_BACKGROUND_IMAGE).png $(OSX_BACKGROUND_IMAGE)@2x.png
+	tiffutil -cathidpicheck $^ -out $@
+
+deploydir: $(OSX_DMG)
 else
-LIBBITCOIN_CONSENSUS=
+APP_DIST_DIR=$(top_builddir)/dist
+APP_DIST_EXTRAS=$(APP_DIST_DIR)/.background/$(OSX_BACKGROUND_IMAGE) $(APP_DIST_DIR)/.DS_Store $(APP_DIST_DIR)/Applications
+
+$(APP_DIST_DIR)/Applications:
+	@rm -f $@
+	@cd $(@D); $(LN_S) /Applications $(@F)
+
+$(APP_DIST_EXTRAS): $(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/CCBC-Qt
+
+$(OSX_DMG): $(APP_DIST_EXTRAS)
+	$(GENISOIMAGE) -no-cache-inodes -D -l -probe -V "$(OSX_VOLNAME)" -no-pad -r -dir-mode 0755 -apple -o $@ dist
+
+dpi%.$(OSX_BACKGROUND_IMAGE): contrib/macdeploy/$(OSX_BACKGROUND_SVG)
+	sed 's/PACKAGE_NAME/$(PACKAGE_NAME)/' < "$<" | $(RSVG_CONVERT) -f png -d $* -p $* | $(IMAGEMAGICK_CONVERT) - $@
+OSX_BACKGROUND_IMAGE_DPIFILES := $(foreach dpi,$(OSX_BACKGROUND_IMAGE_DPIS),dpi$(dpi).$(OSX_BACKGROUND_IMAGE))
+$(APP_DIST_DIR)/.background/$(OSX_BACKGROUND_IMAGE): $(OSX_BACKGROUND_IMAGE_DPIFILES)
+	$(MKDIR_P) $(@D)
+	$(TIFFCP) -c none $(OSX_BACKGROUND_IMAGE_DPIFILES) $@
+
+$(APP_DIST_DIR)/.DS_Store: $(OSX_DSSTORE_GEN)
+	$(PYTHON) $< "$@" "$(OSX_VOLNAME)"
+
+$(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/CCBC-Qt: $(OSX_APP_BUILT) $(OSX_PACKAGING)
+	INSTALLNAMETOOL=$(INSTALLNAMETOOL)  OTOOL=$(OTOOL) STRIP=$(STRIP) $(PYTHON) $(OSX_DEPLOY_SCRIPT) $(OSX_APP) -translations-dir=$(QT_TRANSLATION_DIR) -add-qt-tr $(OSX_QT_TRANSLATIONS) -verbose 2
+
+deploydir: $(APP_DIST_EXTRAS)
 endif
 
-bin_PROGRAMS =
-TESTS =
-
-if BUILD_BITCOIND
-  bin_PROGRAMS += ccbcd
+if TARGET_DARWIN
+appbundle: $(OSX_APP_BUILT)
+deploy: $(OSX_DMG)
 endif
-
-if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += ccbc-cli ccbc-tx
-endif
-
-.PHONY: FORCE
-# ccbc core #
-BITCOIN_CORE_H = \
-  activemasternode.h \
-  accumulators.h \
-  accumulatormap.h \
-  addrman.h \
-  alert.h \
-  allocators.h \
-  amount.h \
-  base58.h \
-  bip38.h \
-  bloom.h \
-  chain.h \
-  chainparams.h \
-  chainparamsbase.h \
-  chainparamsseeds.h \
-  checkpoints.h \
-  checkqueue.h \
-  clientversion.h \
-  coincontrol.h \
-  coins.h \
-  compat.h \
-  compat/sanity.h \
-  compressor.h \
-  primitives/block.h \
-  primitives/transaction.h \
-  primitives/zerocoin.h \
-  core_io.h \
-  crypter.h \
-  denomination_functions.h \
-  obfuscation.h \
-  obfuscation-relay.h \
-  db.h \
-  eccryptoverify.h \
-  ecwrapper.h \
-  hash.h \
-  init.h \
-  kernel.h \
-  swifttx.h \
-  key.h \
-  keystore.h \
-  leveldbwrapper.h \
-  limitedmap.h \
-  main.h \
-  masternode.h \
-  masternode-payments.h \
-  masternode-budget.h \
-  masternode-sync.h \
-  masternodeman.h \
-  masternodeconfig.h \
-  merkleblock.h \
-  miner.h \
-  mruset.h \
-  netbase.h \
-  net.h \
-  noui.h \
-  pow.h \
-  protocol.h \
-  pubkey.h \
-  random.h \
-  reverselock.h \
-  reverse_iterate.h \
-  rpcclient.h \
-  rpcprotocol.h \
-  rpcserver.h \
-  scheduler.h \
-  script/interpreter.h \
-  script/script.h \
-  script/sigcache.h \
-  script/sign.h \
-  script/standard.h \
-  script/script_error.h \
-  serialize.h \
-  spork.h \
-  sporkdb.h \
-  streams.h \
-  sync.h \
-  threadsafety.h \
-  timedata.h \
-  tinyformat.h \
-  torcontrol.h \
-  txdb.h \
-  txmempool.h \
-  ui_interface.h \
-  uint256.h \
-  undo.h \
-  util.h \
-  utilstrencodings.h \
-  utilmoneystr.h \
-  utiltime.h \
-  validationinterface.h \
-  version.h \
-  wallet.h \
-  wallet_ismine.h \
-  walletdb.h \
-  zmq/zmqabstractnotifier.h \
-  zmq/zmqconfig.h \
-  zmq/zmqnotificationinterface.h \
-  zmq/zmqpublishnotifier.h \
-  compat/sanity.h
-
-JSON_H = \
-  json/json_spirit.h \
-  json/json_spirit_error_position.h \
-  json/json_spirit_reader.h \
-  json/json_spirit_reader_template.h \
-  json/json_spirit_stream_reader.h \
-  json/json_spirit_utils.h \
-  json/json_spirit_value.h \
-  json/json_spirit_writer.h \
-  json/json_spirit_writer_template.h
-
-obj/build.h: FORCE
-	@$(MKDIR_P) $(builddir)/obj
-	@$(top_srcdir)/share/genbuild.sh $(abs_top_builddir)/src/obj/build.h \
-	  $(abs_top_srcdir)
-libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
-
-# server: shared between ccbcd and ccbc-qt
-libbitcoin_server_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libbitcoin_server_a_SOURCES = \
-  addrman.cpp \
-  alert.cpp \
-  bloom.cpp \
-  chain.cpp \
-  checkpoints.cpp \
-  init.cpp \
-  leveldbwrapper.cpp \
-  main.cpp \
-  merkleblock.cpp \
-  miner.cpp \
-  net.cpp \
-  noui.cpp \
-  pow.cpp \
-  rest.cpp \
-  rpcblockchain.cpp \
-  rpcmasternode.cpp \
-  rpcmasternode-budget.cpp \
-  rpcmining.cpp \
-  rpcmisc.cpp \
-  rpcnet.cpp \
-  rpcrawtransaction.cpp \
-  rpcserver.cpp \
-  script/sigcache.cpp \
-  sporkdb.cpp \
-  timedata.cpp \
-  torcontrol.cpp \
-  txdb.cpp \
-  txmempool.cpp \
-  validationinterface.cpp \
-  $(JSON_H) \
-  $(BITCOIN_CORE_H)
-
-if ENABLE_ZMQ
-LIBBITCOIN_ZMQ=libbitcoin_zmq.a
-
-libbitcoin_zmq_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
-libbitcoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_zmq_a_SOURCES = \
-  zmq/zmqabstractnotifier.cpp \
-  zmq/zmqnotificationinterface.cpp \
-  zmq/zmqpublishnotifier.cpp
-endif
-
-# wallet: shared between ccbcd and ccbc-qt, but only linked
-# when wallet enabled
-
-libbitcoin_wallet_a_CFLAGS = -fPIC
-libbitcoin_wallet_a_CPPFLAGS = $(BITCOIN_INCLUDES)
-libbitcoin_wallet_a_SOURCES = \
-  activemasternode.cpp \
-  bip38.cpp \
-  denomination_functions.cpp \
-  obfuscation.cpp \
-  obfuscation-relay.cpp \
-  db.cpp \
-  crypter.cpp \
-  swifttx.cpp \
-  masternode.cpp \
-  masternode-budget.cpp \
-  masternode-payments.cpp \
-  masternode-sync.cpp \
-  masternodeconfig.cpp \
-  masternodeman.cpp \
-  rpcdump.cpp \
-  primitives/zerocoin.cpp \
-  rpcwallet.cpp \
-  kernel.cpp \
-  wallet.cpp \
-  wallet_ismine.cpp \
-  walletdb.cpp \
-  $(BITCOIN_CORE_H)
-
-# crypto primitives library
-crypto_libbitcoin_crypto_a_CFLAGS = -fPIC
-crypto_libbitcoin_crypto_a_CPPFLAGS = $(BITCOIN_CONFIG_INCLUDES)
-crypto_libbitcoin_crypto_a_SOURCES = \
-  crypto/sha1.cpp \
-  crypto/sha256.cpp \
-  crypto/sha512.cpp \
-  crypto/hmac_sha256.cpp \
-  crypto/rfc6979_hmac_sha256.cpp \
-  crypto/hmac_sha512.cpp \
-  crypto/scrypt.cpp \
-  crypto/ripemd160.cpp \
-  crypto/sph_md_helper.c \
-  crypto/sph_sha2big.c \
-  crypto/aes_helper.c \
-  crypto/blake.c \
-  crypto/bmw.c \
-  crypto/groestl.c \
-  crypto/jh.c \
-  crypto/luffa.c \
-  crypto/keccak.c \
-  crypto/skein.c \
-  crypto/cubehash.c \
-  crypto/shavite.c \
-  crypto/shabal.c \
-  crypto/simd.c \
-  crypto/echo.c \
-  crypto/whirlpool.c \
-  crypto/haval.c \
-  crypto/hamsi.c \
-  crypto/fugue.c \
-  crypto/sha2.c \
-  crypto/common.h \
-  crypto/sha256.h \
-  crypto/sha512.h \
-  crypto/hmac_sha256.h \
-  crypto/rfc6979_hmac_sha256.h \
-  crypto/hmac_sha512.h \
-  crypto/scrypt.h \
-  crypto/sha1.h \
-  crypto/ripemd160.h \
-  crypto/sph_blake.h \
-  crypto/sph_bmw.h \
-  crypto/sph_groestl.h \
-  crypto/sph_jh.h \
-  crypto/sph_keccak.h \
-  crypto/sph_luffa.h \
-  crypto/sph_shavite.h \
-  crypto/sph_hamsi.h \
-  crypto/sph_cubehash.h \
-  crypto/sph_skein.h \
-  crypto/sph_simd.h \
-  crypto/sph_fugue.h \
-  crypto/sph_echo.h \
-  crypto/sph_shabal.h \
-  crypto/sph_whirlpool.h \
-  crypto/sph_sha2.h \
-  crypto/sph_haval.h \
-  crypto/sph_types.h
-
-# univalue JSON library
-univalue_libbitcoin_univalue_a_SOURCES = \
-  univalue/univalue.cpp \
-  univalue/univalue_read.cpp \
-  univalue/univalue_write.cpp \
-  univalue/univalue_escapes.h \
-  univalue/univalue.h
-
-# libzerocoin library
-libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
-  libzerocoin/Accumulator.h \
-  libzerocoin/AccumulatorProofOfKnowledge.h \
-  libzerocoin/bignum.h \
-  libzerocoin/Coin.h \
-  libzerocoin/CoinSpend.h \
-  libzerocoin/Commitment.h \
-  libzerocoin/Denominations.h \
-  libzerocoin/ParamGeneration.h \
-  libzerocoin/Params.h \
-  libzerocoin/SerialNumberSignatureOfKnowledge.h \
-  libzerocoin/ZerocoinDefines.h \
-  libzerocoin/Accumulator.cpp \
-  libzerocoin/AccumulatorProofOfKnowledge.cpp \
-  libzerocoin/Coin.cpp \
-  libzerocoin/Denominations.cpp \
-  libzerocoin/CoinSpend.cpp \
-  libzerocoin/Commitment.cpp \
-  libzerocoin/ParamGeneration.cpp \
-  libzerocoin/Params.cpp \
-  libzerocoin/SerialNumberSignatureOfKnowledge.cpp
-
-# common: shared between ccbcd, and ccbc-qt and non-server tools
-libbitcoin_common_a_CPPFLAGS = $(BITCOIN_INCLUDES)
-libbitcoin_common_a_SOURCES = \
-  accumulators.cpp \
-  accumulatormap.cpp \
-  allocators.cpp \
-  amount.cpp \
-  base58.cpp \
-  bip38.cpp \
-  chainparams.cpp \
-  coins.cpp \
-  compressor.cpp \
-  primitives/block.cpp \
-  primitives/transaction.cpp \
-  primitives/zerocoin.cpp \
-  core_read.cpp \
-  core_write.cpp \
-  eccryptoverify.cpp \
-  ecwrapper.cpp \
-  hash.cpp \
-  key.cpp \
-  keystore.cpp \
-  netbase.cpp \
-  protocol.cpp \
-  pubkey.cpp \
-  scheduler.cpp \
-  script/interpreter.cpp \
-  script/script.cpp \
-  script/sign.cpp \
-  script/standard.cpp \
-  script/script_error.cpp \
-  spork.cpp \
-  sporkdb.cpp \
-  $(BITCOIN_CORE_H)
-
-# util: shared between all executables.
-# This library *must* be included to make sure that the glibc
-# backward-compatibility objects and their sanity checks are linked.
-libbitcoin_util_a_CPPFLAGS = $(BITCOIN_INCLUDES)
-libbitcoin_util_a_SOURCES = \
-  allocators.cpp \
-  compat/strnlen.cpp \
-  compat/glibc_sanity.cpp \
-  compat/glibcxx_sanity.cpp \
-  chainparamsbase.cpp \
-  clientversion.cpp \
-  random.cpp \
-  rpcprotocol.cpp \
-  sync.cpp \
-  uint256.cpp \
-  util.cpp \
-  utilstrencodings.cpp \
-  utilmoneystr.cpp \
-  utiltime.cpp \
-  $(BITCOIN_CORE_H)
-
-if GLIBC_BACK_COMPAT
-libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
-libbitcoin_util_a_SOURCES += compat/glibcxx_compat.cpp
-endif
-
-# cli: shared between ccbc-cli and ccbc-qt
-libbitcoin_cli_a_CPPFLAGS = $(BITCOIN_INCLUDES)
-libbitcoin_cli_a_SOURCES = \
-  rpcclient.cpp \
-  $(BITCOIN_CORE_H)
-
-nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
-#
-
-# bitcoind binary #
-ccbcd_LDADD = \
-  $(LIBBITCOIN_SERVER) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UNIVALUE) \
-  $(LIBBITCOIN_ZEROCOIN) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_CRYPTO) \
-  $(LIBLEVELDB) \
-  $(LIBMEMENV) \
-  $(LIBSECP256K1)
-
-if ENABLE_ZMQ
-ccbcd_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
-endif
-
-if ENABLE_WALLET
-ccbcd_LDADD += libbitcoin_wallet.a
-endif
-ccbcd_SOURCES = ccbcd.cpp
-#
-
 if TARGET_WINDOWS
-ccbcd_SOURCES += ccbcd-res.rc
+deploy: $(BITCOIN_WIN_INSTALLER)
 endif
 
-ccbcd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-ccbcd_CPPFLAGS = $(BITCOIN_INCLUDES)
-ccbcd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+$(BITCOIN_QT_BIN): FORCE
+	$(MAKE) -C src qt/$(@F)
 
+$(BITCOIND_BIN): FORCE
+	$(MAKE) -C src $(@F)
 
-# ccbc-cli binary #
-ccbc_cli_LDADD = \
-  $(LIBBITCOIN_CLI) \
-  $(LIBBITCOIN_UTIL) \
-  $(BOOST_LIBS) \
-  $(SSL_LIBS) \
-  $(CRYPTO_LIBS) \
-  $(EVENT_LIBS)
+$(BITCOIN_CLI_BIN): FORCE
+	$(MAKE) -C src $(@F)
 
-ccbc_cli_SOURCES = \
-  ccbc-cli.cpp
+if USE_LCOV
 
-ccbc_cli_CPPFLAGS = $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-#
+baseline.info:
+	$(LCOV) -c -i -d $(abs_builddir)/src -o $@
 
-# ccbc-tx binary #
-ccbc_tx_LDADD = \
-  $(LIBBITCOIN_UNIVALUE) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_ZEROCOIN) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_CRYPTO) \
-  $(LIBSECP256K1) \
-  $(BOOST_LIBS) \
-  $(CRYPTO_LIBS)
+baseline_filtered.info: baseline.info
+	$(LCOV) -r $< "/usr/include/*" -o $@
 
-ccbc_tx_SOURCES = ccbc-tx.cpp
-ccbc_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
-#
-ccbc_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+leveldb_baseline.info: baseline_filtered.info
+	$(LCOV) -c -i -d $(abs_builddir)/src/leveldb -b $(abs_builddir)/src/leveldb -o $@
 
-if TARGET_WINDOWS
-ccbc_cli_SOURCES += ccbc-cli-res.rc
-endif
-ccbc_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+leveldb_baseline_filtered.info: leveldb_baseline.info
+	$(LCOV) -r $< "/usr/include/*" -o $@
 
-if BUILD_BITCOIN_LIBS
-include_HEADERS = script/bitcoinconsensus.h
-libbitcoinconsensus_la_SOURCES = \
-  allocators.cpp \
-  primitives/transaction.cpp \
-  crypto/hmac_sha512.cpp \
-  crypto/scrypt.cpp \
-  crypto/sha1.cpp \
-  crypto/sha256.cpp \
-  crypto/sha512.cpp \
-  crypto/ripemd160.cpp \
-  eccryptoverify.cpp \
-  ecwrapper.cpp \
-  hash.cpp \
-  pubkey.cpp \
-  script/script.cpp \
-  script/interpreter.cpp \
-  script/bitcoinconsensus.cpp \
-  uint256.cpp \
-  utilstrencodings.cpp
+baseline_filtered_combined.info: leveldb_baseline_filtered.info baseline_filtered.info
+	$(LCOV) -a leveldb_baseline_filtered.info -a baseline_filtered.info -o $@
 
-if GLIBC_BACK_COMPAT
-  libbitcoinconsensus_la_SOURCES += compat/glibc_compat.cpp
-  libbitcoinconsensus_la_SOURCES += compat/glibcxx_compat.cpp
+test_ccbc.info: baseline_filtered_combined.info
+	$(MAKE) -C src/ check
+	$(LCOV) -c -d $(abs_builddir)/src -t test_ccbc -o $@
+	$(LCOV) -z -d $(abs_builddir)/src
+	$(LCOV) -z -d $(abs_builddir)/src/leveldb
+
+test_ccbc_filtered.info: test_ccbc.info
+	$(LCOV) -r $< "/usr/include/*" -o $@
+
+block_test.info: test_ccbc_filtered.info
+	$(MKDIR_P) qa/tmp
+	-@TIMEOUT=15 qa/pull-tester/run-bitcoind-for-test.sh $(JAVA) -jar $(JAVA_COMPARISON_TOOL) qa/tmp/compTool 0
+	$(LCOV) -c -d $(abs_builddir)/src --t BitcoinJBlockTest -o $@
+	$(LCOV) -z -d $(abs_builddir)/src
+	$(LCOV) -z -d $(abs_builddir)/src/leveldb
+
+block_test_filtered.info: block_test.info
+	$(LCOV) -r $< "/usr/include/*" -o $@
+
+test_ccbc_coverage.info: baseline_filtered_combined.info test_ccbc_filtered.info
+	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_ccbc_filtered.info -o $@
+
+total_coverage.info:  baseline_filtered_combined.info test_ccbc_filtered.info block_test_filtered.info
+	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_ccbc_filtered.info -a block_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
+
+test_ccbc.coverage/.dirstamp:  test_ccbc_coverage.info
+	$(GENHTML) -s $< -o $(@D)
+	@touch $@
+
+total.coverage/.dirstamp: total_coverage.info
+	$(GENHTML) -s $< -o $(@D)
+	@touch $@
+
+cov: test_ccbc.coverage/.dirstamp total.coverage/.dirstamp
+
 endif
 
-libbitcoinconsensus_la_LDFLAGS = -no-undefined $(RELDFLAGS)
-libbitcoinconsensus_la_LIBADD = $(CRYPTO_LIBS) $(BOOST_LIBS)
-libbitcoinconsensus_la_CPPFLAGS = $(CRYPTO_CFLAGS) -I$(builddir)/obj -DBUILD_BITCOIN_INTERNAL
-if USE_LIBSECP256K1
-libbitcoinconsensus_la_LIBADD += secp256k1/libsecp256k1.la
-endif
-endif
+dist_noinst_SCRIPTS = autogen.sh
 
-CLEANFILES = leveldb/libleveldb.a leveldb/libmemenv.a
-CLEANFILES += *.gcda *.gcno
-CLEANFILES += compat/*.gcda compat/*.gcno
-CLEANFILES += crypto/*.gcda crypto/*.gcno
-CLEANFILES += primitives/*.gcda primitives/*.gcno
-CLEANFILES += script/*.gcda script/*.gcno
-CLEANFILES += univalue/*.gcda univalue/*.gcno
-CLEANFILES += zmq/*.gcda zmq/*.gcno
+EXTRA_DIST = $(top_srcdir)/share/genbuild.sh qa/pull-tester/rpc-tests.sh qa/pull-tester/run-bitcoin-cli qa/rpc-tests $(DIST_DOCS) $(WINDOWS_PACKAGING) $(OSX_PACKAGING)
 
-DISTCLEANFILES = obj/build.h
+EXTRA_DIST += \
+    src/crypto/md_helper.c \
+    src/crypto/haval_helper.c \
+    src/crypto/hamsi_helper.c 
+    
+CLEANFILES = $(OSX_DMG) $(BITCOIN_WIN_INSTALLER)
 
-EXTRA_DIST = leveldb
+.INTERMEDIATE: $(COVERAGE_INFO)
 
 clean-local:
-	-$(MAKE) -C leveldb clean
-	-$(MAKE) -C secp256k1 clean
-	rm -f leveldb/*/*.gcno leveldb/helpers/memenv/*.gcno
-	-rm -f config.h
-
-.rc.o:
-	@test -f $(WINDRES)
-	$(AM_V_GEN) $(WINDRES) -DWINDRES_PREPROC -i $< -o $@
-
-.mm.o:
-	$(AM_V_CXX) $(OBJCXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	  $(CPPFLAGS) $(AM_CXXFLAGS) $(QT_INCLUDES) $(CXXFLAGS)  -c -o $@ $<
-
-%.pb.cc %.pb.h: %.proto
-	@test -f $(PROTOC)
-	$(AM_V_GEN) $(PROTOC) --cpp_out=$(@D) --proto_path=$(abspath $(<D) $<)
-
-if ENABLE_TESTS
-include Makefile.test.include
-endif
-
-if ENABLE_QT
-include Makefile.qt.include
-endif
-
-if ENABLE_QT_TESTS
-include Makefile.qttest.include
-endif
+	rm -rf test_ccbc.coverage/ total.coverage/ $(OSX_APP)
