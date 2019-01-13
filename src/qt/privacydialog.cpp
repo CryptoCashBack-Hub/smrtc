@@ -1,5 +1,5 @@
-// Copyright (c) 2017-2018 The CCBC developers
-// Distributed under the MIT software license, see the accompanying
+// Copyright (c) 2011-2014 The Bitcoin developers
+// Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "privacydialog.h"
@@ -16,20 +16,16 @@
 #include "coincontrol.h"
 #include "zccbccontroldialog.h"
 #include "spork.h"
-#include "askpassphrasedialog.h"
 
 #include <QClipboard>
 #include <QSettings>
 #include <utilmoneystr.h>
 #include <QtWidgets>
-#include <primitives/deterministicmint.h>
-#include <accumulators.h>
 
-PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint | Qt::WindowCloseButtonHint),
+PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent),
                                                           ui(new Ui::PrivacyDialog),
                                                           walletModel(0),
-                                                          currentBalance(-1),
-                                                          fDenomsMinimized(true)
+                                                          currentBalance(-1)
 {
     nDisplayUnit = 0; // just make sure it's not unitialized
     ui->setupUi(this);
@@ -100,7 +96,6 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent, Qt::WindowSystem
     else{
         fMinimizeChange = settings.value("fMinimizeChange").toBool();
     }
-
     ui->checkBoxMinimizeChange->setChecked(fMinimizeChange);
 
     // Start with displaying the "out of sync" warnings
@@ -110,19 +105,18 @@ PrivacyDialog::PrivacyDialog(QWidget* parent) : QDialog(parent, Qt::WindowSystem
     ui->WarningLabel->hide();    // Explanatory text visible in QT-Creator
     ui->dummyHideWidget->hide(); // Dummy widget with elements to hide
 
-    // Set labels/buttons depending on SPORK_16 status
-    updateSPORK16Status();
+    //temporary disable for maintenance
+    if(GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
+        ui->pushButtonMintzCCBC->setEnabled(false);
+        ui->pushButtonMintzCCBC->setToolTip(tr("zCCBC is currently disabled due to maintenance."));
 
-    // init Denoms section
-    if(!settings.contains("fDenomsSectionMinimized"))
-        settings.setValue("fDenomsSectionMinimized", true);
-    minimizeDenomsSection(settings.value("fDenomsSectionMinimized").toBool());
+        ui->pushButtonSpendzCCBC->setEnabled(false);
+        ui->pushButtonSpendzCCBC->setToolTip(tr("zCCBC is currently disabled due to maintenance."));
+    }
 }
 
 PrivacyDialog::~PrivacyDialog()
 {
-    QSettings settings;
-    settings.setValue("fDenomsSectionMinimized", fDenomsMinimized);
     delete ui;
 }
 
@@ -152,9 +146,8 @@ void PrivacyDialog::on_pasteButton_clicked()
 
 void PrivacyDialog::on_addressBookButton_clicked()
 {
-    if (!walletModel || !walletModel->getOptionsModel())
+    if (!walletModel)
         return;
-
     AddressBookPage dlg(AddressBookPage::ForSelection, AddressBookPage::SendingTab, this);
     dlg.setModel(walletModel->getAddressTableModel());
     if (dlg.exec()) {
@@ -181,7 +174,7 @@ void PrivacyDialog::on_pushButtonMintzCCBC_clicked()
     // Request unlock if wallet was locked or unlocked for mixing:
     WalletModel::EncryptionStatus encStatus = walletModel->getEncryptionStatus();
     if (encStatus == walletModel->Locked) {
-        WalletModel::UnlockContext ctx(walletModel->requestUnlock(AskPassphraseDialog::Context::Mint_zCCBC, true));
+        WalletModel::UnlockContext ctx(walletModel->requestUnlock(true));
         if (!ctx.isValid()) {
             // Unlock wallet was cancelled
             ui->TEMintStatus->setPlainText(tr("Error: Your wallet is locked. Please enter the wallet passphrase first."));
@@ -204,7 +197,7 @@ void PrivacyDialog::on_pushButtonMintzCCBC_clicked()
     int64_t nTime = GetTimeMillis();
 
     CWalletTx wtx;
-    vector<CDeterministicMint> vMints;
+    vector<CZerocoinMint> vMints;
     string strError = pwalletMain->MintZerocoin(nAmount, wtx, vMints, CoinControlDialog::coinControl);
 
     // Return if something went wrong during minting
@@ -225,15 +218,13 @@ void PrivacyDialog::on_pushButtonMintzCCBC_clicked()
     QString strStats = "";
     ui->TEMintStatus->setPlainText(strStatsHeader);
 
-    for (CDeterministicMint dMint : vMints) {
+    for (CZerocoinMint mint : vMints) {
         boost::this_thread::sleep(boost::posix_time::milliseconds(100));
-        strStats = strStats + QString::number(dMint.GetDenomination()) + " ";
+        strStats = strStats + QString::number(mint.GetDenomination()) + " ";
         ui->TEMintStatus->setPlainText(strStatsHeader + strStats);
         ui->TEMintStatus->repaint ();
 
     }
-
-    ui->TEMintStatus->verticalScrollBar()->setValue(ui->TEMintStatus->verticalScrollBar()->maximum()); // Automatically scroll to end of text
 
     // Available balance isn't always updated, so force it.
     setBalance(walletModel->getBalance(), walletModel->getUnconfirmedBalance(), walletModel->getImmatureBalance(),
@@ -246,22 +237,26 @@ void PrivacyDialog::on_pushButtonMintzCCBC_clicked()
 
 void PrivacyDialog::on_pushButtonMintReset_clicked()
 {
-    ui->TEMintStatus->setPlainText(tr("Starting ResetMintZerocoin: rescanning complete blockchain, this will need up to 30 minutes depending on your hardware.\nPlease be patient..."));
+    if (!walletModel || !walletModel->getOptionsModel())
+        return;
+
+    ui->TEMintStatus->setPlainText(tr("Starting ResetMintZerocoin: rescanning complete blockchain, this will need up to 30 minutes depending on your hardware. \nPlease be patient..."));
     ui->TEMintStatus->repaint ();
 
     int64_t nTime = GetTimeMillis();
-    string strResetMintResult = pwalletMain->ResetMintZerocoin();
+    string strResetMintResult = pwalletMain->ResetMintZerocoin(false); // do not do the extended search from GUI
     double fDuration = (double)(GetTimeMillis() - nTime)/1000.0;
     ui->TEMintStatus->setPlainText(QString::fromStdString(strResetMintResult) + tr("Duration: ") + QString::number(fDuration) + tr(" sec.\n"));
     ui->TEMintStatus->repaint ();
-    ui->TEMintStatus->verticalScrollBar()->setValue(ui->TEMintStatus->verticalScrollBar()->maximum()); // Automatically scroll to end of text
 
     return;
 }
 
-
 void PrivacyDialog::on_pushButtonSpentReset_clicked()
 {
+    if (!walletModel || !walletModel->getOptionsModel())
+        return;
+
     ui->TEMintStatus->setPlainText(tr("Starting ResetSpentZerocoin: "));
     ui->TEMintStatus->repaint ();
     int64_t nTime = GetTimeMillis();
@@ -269,7 +264,6 @@ void PrivacyDialog::on_pushButtonSpentReset_clicked()
     double fDuration = (double)(GetTimeMillis() - nTime)/1000.0;
     ui->TEMintStatus->setPlainText(QString::fromStdString(strResetSpentResult) + tr("Duration: ") + QString::number(fDuration) + tr(" sec.\n"));
     ui->TEMintStatus->repaint ();
-    ui->TEMintStatus->verticalScrollBar()->setValue(ui->TEMintStatus->verticalScrollBar()->maximum()); // Automatically scroll to end of text
 
     return;
 }
@@ -289,7 +283,7 @@ void PrivacyDialog::on_pushButtonSpendzCCBC_clicked()
     // Request unlock if wallet was locked or unlocked for mixing:
     WalletModel::EncryptionStatus encStatus = walletModel->getEncryptionStatus();
     if (encStatus == walletModel->Locked || encStatus == walletModel->UnlockedForAnonymizationOnly) {
-        WalletModel::UnlockContext ctx(walletModel->requestUnlock(AskPassphraseDialog::Context::Send_zCCBC, true));
+        WalletModel::UnlockContext ctx(walletModel->requestUnlock(true));
         if (!ctx.isValid()) {
             // Unlock wallet was cancelled
             return;
@@ -302,19 +296,16 @@ void PrivacyDialog::on_pushButtonSpendzCCBC_clicked()
     sendzCCBC();
 }
 
-void PrivacyDialog::on_pushButtonZCcbcControl_clicked()
+void PrivacyDialog::on_pushButtonZCCBCControl_clicked()
 {
-    if (!walletModel || !walletModel->getOptionsModel())
-        return;
-
-    ZCcbcControlDialog* zCcbcControl = new ZCcbcControlDialog(this);
-    zCcbcControl->setModel(walletModel);
-    zCcbcControl->exec();
+    ZCCBCControlDialog* zCCBCControl = new ZCCBCControlDialog(this);
+    zCCBCControl->setModel(walletModel);
+    zCCBCControl->exec();
 }
 
-void PrivacyDialog::setZCcbcControlLabels(int64_t nAmount, int nQuantity)
+void PrivacyDialog::setZCCBCControlLabels(int64_t nAmount, int nQuantity)
 {
-    ui->labelzCcbcSelected_int->setText(QString::number(nAmount));
+    ui->labelzCCBCSelected_int->setText(QString::number(nAmount));
     ui->labelQuantitySelected_int->setText(QString::number(nQuantity));
 }
 
@@ -334,7 +325,7 @@ void PrivacyDialog::sendzCCBC()
     }
     else{
         if (!address.IsValid()) {
-            QMessageBox::warning(this, tr("Spend Zerocoin"), tr("Invalid Ccbc Address"), QMessageBox::Ok, QMessageBox::Ok);
+            QMessageBox::warning(this, tr("Spend Zerocoin"), tr("Invalid CCBC Address"), QMessageBox::Ok, QMessageBox::Ok);
             ui->payTo->setFocus();
             return;
         }
@@ -417,33 +408,13 @@ void PrivacyDialog::sendzCCBC()
     }
 
     int64_t nTime = GetTimeMillis();
-    ui->TEMintStatus->setPlainText(tr("Spending Zerocoin.\nComputationally expensive, might need several minutes depending on the selected Security Level and your hardware.\nPlease be patient..."));
+    ui->TEMintStatus->setPlainText(tr("Spending Zerocoin.\nComputationally expensive, might need several minutes depending on the selected Security Level and your hardware. \nPlease be patient..."));
     ui->TEMintStatus->repaint();
 
     // use mints from zCCBC selector if applicable
-    vector<CMintMeta> vMintsToFetch;
     vector<CZerocoinMint> vMintsSelected;
-    if (!ZCcbcControlDialog::setSelectedMints.empty()) {
-        vMintsToFetch = ZCcbcControlDialog::GetSelectedMints();
-
-        for (auto& meta : vMintsToFetch) {
-            if (meta.nVersion < libzerocoin::PrivateCoin::PUBKEY_VERSION) {
-                //version 1 coins have to use full security level to successfully spend.
-                if (nSecurityLevel < 100) {
-                    QMessageBox::warning(this, tr("Spend Zerocoin"), tr("Version 1 zCCBC require a security level of 100 to successfully spend."), QMessageBox::Ok, QMessageBox::Ok);
-                    ui->TEMintStatus->setPlainText(tr("Failed to spend zCCBC"));
-                    ui->TEMintStatus->repaint();
-                    return;
-                }
-            }
-            CZerocoinMint mint;
-            if (!pwalletMain->GetMint(meta.hashSerial, mint)) {
-                ui->TEMintStatus->setPlainText(tr("Failed to fetch mint associated with serial hash"));
-                ui->TEMintStatus->repaint();
-                return;
-            }
-            vMintsSelected.emplace_back(mint);
-        }
+    if (!ZCCBCControlDialog::listSelectedMints.empty()) {
+        vMintsSelected = ZCCBCControlDialog::GetSelectedMints();
     }
 
     // Spend zCCBC
@@ -461,17 +432,10 @@ void PrivacyDialog::sendzCCBC()
 
     // Display errors during spend
     if (!fSuccess) {
-        if (receipt.GetStatus() == ZCCBC_SPEND_V1_SEC_LEVEL) {
-            QMessageBox::warning(this, tr("Spend Zerocoin"), tr("Version 1 zCCBC require a security level of 100 to successfully spend."), QMessageBox::Ok, QMessageBox::Ok);
-            ui->TEMintStatus->setPlainText(tr("Failed to spend zCCBC"));
-            ui->TEMintStatus->repaint();
-            return;
-        }
-
         int nNeededSpends = receipt.GetNeededSpends(); // Number of spends we would need for this transaction
         const int nMaxSpends = Params().Zerocoin_MaxSpendsPerTransaction(); // Maximum possible spends for one zCCBC transaction
         if (nNeededSpends > nMaxSpends) {
-            QString strStatusMessage = tr("Too much inputs (") + QString::number(nNeededSpends, 10) + tr(") needed.\nMaximum allowed: ") + QString::number(nMaxSpends, 10);
+            QString strStatusMessage = tr("Too much inputs (") + QString::number(nNeededSpends, 10) + tr(") needed. \nMaximum allowed: ") + QString::number(nMaxSpends, 10);
             strStatusMessage += tr("\nEither mint higher denominations (so fewer inputs are needed) or reduce the amount to spend.");
             QMessageBox::warning(this, tr("Spend Zerocoin"), strStatusMessage.toStdString().c_str(), QMessageBox::Ok, QMessageBox::Ok);
             ui->TEMintStatus->setPlainText(tr("Spend Zerocoin failed with status = ") +QString::number(receipt.GetStatus(), 10) + "\n" + "Message: " + QString::fromStdString(strStatusMessage.toStdString()));
@@ -482,23 +446,11 @@ void PrivacyDialog::sendzCCBC()
         }
         ui->zCCBCpayAmount->setFocus();
         ui->TEMintStatus->repaint();
-        ui->TEMintStatus->verticalScrollBar()->setValue(ui->TEMintStatus->verticalScrollBar()->maximum()); // Automatically scroll to end of text
         return;
     }
 
-    if (walletModel && walletModel->getAddressTableModel()) {
-        // If zCCBC was spent successfully update the addressbook with the label
-        std::string labelText = ui->addAsLabel->text().toStdString();
-        if (!labelText.empty())
-            walletModel->updateAddressBookLabels(address.Get(), labelText, "send");
-        else
-            walletModel->updateAddressBookLabels(address.Get(), "(no label)", "send");
-    }
-
     // Clear zccbc selector in case it was used
-    ZCcbcControlDialog::setSelectedMints.clear();
-    ui->labelzCcbcSelected_int->setText(QString("0"));
-    ui->labelQuantitySelected_int->setText(QString("0"));
+    ZCCBCControlDialog::listSelectedMints.clear();
 
     // Some statistics for entertainment
     QString strStats = "";
@@ -510,12 +462,11 @@ void PrivacyDialog::sendzCCBC()
         strStats += tr("serial: ") + spend.GetSerial().ToString().c_str() + "\n";
         strStats += tr("Spend is 1 of : ") + QString::number(spend.GetMintCount()) + " mints in the accumulator\n";
         nValueIn += libzerocoin::ZerocoinDenominationToAmount(spend.GetDenomination());
-        ++nCount;
     }
 
     CAmount nValueOut = 0;
     for (const CTxOut& txout: wtxNew.vout) {
-        strStats += tr("value out: ") + FormatMoney(txout.nValue).c_str() + " Ccbc, ";
+        strStats += tr("value out: ") + FormatMoney(txout.nValue).c_str() + " CCBC, ";
         nValueOut += txout.nValue;
 
         strStats += tr("address: ");
@@ -540,7 +491,6 @@ void PrivacyDialog::sendzCCBC()
 
     ui->TEMintStatus->setPlainText(strReturn);
     ui->TEMintStatus->repaint();
-    ui->TEMintStatus->verticalScrollBar()->setValue(ui->TEMintStatus->verticalScrollBar()->maximum()); // Automatically scroll to end of text
 }
 
 void PrivacyDialog::on_payTo_textChanged(const QString& address)
@@ -563,9 +513,6 @@ void PrivacyDialog::coinControlClipboardAmount()
 // Coin Control: button inputs -> show actual coin control dialog
 void PrivacyDialog::coinControlButtonClicked()
 {
-    if (!walletModel || !walletModel->getOptionsModel())
-        return;
-
     CoinControlDialog dlg;
     dlg.setModel(walletModel);
     dlg.exec();
@@ -590,29 +537,6 @@ void PrivacyDialog::coinControlUpdateLabels()
     }
 }
 
-
-void PrivacyDialog::on_pushButtonShowDenoms_clicked()
-{
-    minimizeDenomsSection(false);
-}
-
-void PrivacyDialog::on_pushButtonHideDenoms_clicked()
-{
-    minimizeDenomsSection(true);
-}
-
-void PrivacyDialog::minimizeDenomsSection(bool fMinimize)
-{
-    if (fMinimize) {
-        ui->balanceSupplyFrame->show();
-        ui->verticalFrameRight->hide();
-    } else {
-        ui->balanceSupplyFrame->hide();
-        ui->verticalFrameRight->show();
-    }
-    fDenomsMinimized = fMinimize;
-}
-
 bool PrivacyDialog::updateLabel(const QString& address)
 {
     if (!walletModel)
@@ -632,6 +556,7 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
                                const CAmount& zerocoinBalance, const CAmount& unconfirmedZerocoinBalance, const CAmount& immatureZerocoinBalance,
                                const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance)
 {
+
     currentBalance = balance;
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
@@ -642,6 +567,9 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
     currentWatchUnconfBalance = watchUnconfBalance;
     currentWatchImmatureBalance = watchImmatureBalance;
 
+    CWalletDB walletdb(pwalletMain->strWalletFile);
+    list<CZerocoinMint> listMints = walletdb.ListMintedCoins(true, false, true);
+
     std::map<libzerocoin::CoinDenomination, CAmount> mapDenomBalances;
     std::map<libzerocoin::CoinDenomination, int> mapUnconfirmed;
     std::map<libzerocoin::CoinDenomination, int> mapImmature;
@@ -651,20 +579,29 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
         mapImmature.insert(make_pair(denom, 0));
     }
 
-    std::vector<CMintMeta> vMints = pwalletMain->zccbcTracker->GetMints(false);
-    map<libzerocoin::CoinDenomination, int> mapMaturityHeights = GetMintMaturityHeight();
-    for (auto& meta : vMints){
+    int nBestHeight = chainActive.Height();
+    for (auto& mint : listMints){
         // All denominations
-        mapDenomBalances.at(meta.denom)++;
+        mapDenomBalances.at(mint.GetDenomination())++;
 
-        if (!meta.nHeight || chainActive.Height() - meta.nHeight <= Params().Zerocoin_MintRequiredConfirmations()) {
+        if (!mint.GetHeight() || chainActive.Height() - mint.GetHeight() <= Params().Zerocoin_MintRequiredConfirmations()) {
             // All unconfirmed denominations
-            mapUnconfirmed.at(meta.denom)++;
-        } else {
-            if (meta.denom == libzerocoin::CoinDenomination::ZQ_ERROR) {
-                mapImmature.at(meta.denom)++;
-            } else if (meta.nHeight >= mapMaturityHeights.at(meta.denom)) {
-                mapImmature.at(meta.denom)++;
+            mapUnconfirmed.at(mint.GetDenomination())++;
+        }
+        else {
+            // After a denomination is confirmed it might still be immature because < 1 of the same denomination were minted after it
+            CBlockIndex *pindex = chainActive[mint.GetHeight() + 1];
+            int nHeight2CheckpointsDeep = nBestHeight - (nBestHeight % 10) - 20;
+            int nMintsAdded = 0;
+            while (pindex->nHeight < nHeight2CheckpointsDeep) { //at least 2 checkpoints from the top block
+                nMintsAdded += count(pindex->vMintDenominationsInBlock.begin(), pindex->vMintDenominationsInBlock.end(), mint.GetDenomination());
+                if (nMintsAdded >= Params().Zerocoin_RequiredAccumulation())
+                    break;
+                pindex = chainActive[pindex->nHeight + 1];
+            }
+            if (nMintsAdded < Params().Zerocoin_RequiredAccumulation()){
+                // Immature denominations
+                mapImmature.at(mint.GetDenomination())++;
             }
         }
     }
@@ -726,7 +663,7 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
                 break;
         }
     }
-    CAmount matureZerocoinBalance = zerocoinBalance - unconfirmedZerocoinBalance - immatureZerocoinBalance;
+    CAmount matureZerocoinBalance = zerocoinBalance - immatureZerocoinBalance;
     CAmount nLockedBalance = 0;
     if (walletModel) {
         nLockedBalance = walletModel->getLockedBalance();
@@ -734,19 +671,13 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
 
     ui->labelzAvailableAmount->setText(QString::number(zerocoinBalance/COIN) + QString(" zCCBC "));
     ui->labelzAvailableAmount_2->setText(QString::number(matureZerocoinBalance/COIN) + QString(" zCCBC "));
-    ui->labelzAvailableAmount_4->setText(QString::number(zerocoinBalance/COIN) + QString(" zCCBC "));
     ui->labelzCCBCAmountValue->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance - immatureBalance - nLockedBalance, false, BitcoinUnits::separatorAlways));
-
     // Display AutoMint status
-    updateAutomintStatus();
 
-    // Update/enable labels and buttons depending on the current SPORK_16 status
-    updateSPORK16Status();
+    updateAutomintStatus();
 
     // Display global supply
     ui->labelZsupplyAmount->setText(QString::number(chainActive.Tip()->GetZerocoinSupply()/COIN) + QString(" <b>zCCBC </b> "));
-    ui->labelZsupplyAmount_2->setText(QString::number(chainActive.Tip()->GetZerocoinSupply()/COIN) + QString(" <b>zCCBC </b> "));
-
     for (auto denom : libzerocoin::zerocoinDenomList) {
         int64_t nSupply = chainActive.Tip()->mapZerocoinSupply.at(denom);
         QString strSupply = QString::number(nSupply) + " x " + QString::number(denom) + " = <b>" +
@@ -812,38 +743,12 @@ void PrivacyDialog::keyPressEvent(QKeyEvent* event)
 void PrivacyDialog::updateAutomintStatus()
 {
     QString strAutomintStatus = tr("AutoMint Status:");
-
-    if (pwalletMain->isZeromintEnabled ()) {
+     if (pwalletMain->isZeromintEnabled ()) {
        strAutomintStatus += tr(" <b>enabled</b>.");
     }
     else {
        strAutomintStatus += tr(" <b>disabled</b>.");
     }
-
-    strAutomintStatus += tr(" Configured target percentage: <b>") + QString::number(pwalletMain->getZeromintPercentage()) + "%</b>";
+     strAutomintStatus += tr(" Configured target percentage: <b>") + QString::number(pwalletMain->getZeromintPercentage()) + "%</b>";
     ui->label_AutoMintStatus->setText(strAutomintStatus);
-}
-
-void PrivacyDialog::updateSPORK16Status()
-{
-    // Update/enable labels, buttons and tooltips depending on the current SPORK_16 status
-    bool fButtonsEnabled =  ui->pushButtonMintzCCBC->isEnabled();
-    bool fMaintenanceMode = GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE);
-    if (fMaintenanceMode && fButtonsEnabled) {
-        // Mint zCCBC
-        ui->pushButtonMintzCCBC->setEnabled(false);
-        ui->pushButtonMintzCCBC->setToolTip(tr("zCCBC is currently disabled due to maintenance."));
-
-        // Spend zCCBC
-        ui->pushButtonSpendzCCBC->setEnabled(false);
-        ui->pushButtonSpendzCCBC->setToolTip(tr("zCCBC is currently disabled due to maintenance."));
-    } else if (!fMaintenanceMode && !fButtonsEnabled) {
-        // Mint zCCBC
-        ui->pushButtonMintzCCBC->setEnabled(true);
-        ui->pushButtonMintzCCBC->setToolTip(tr("PrivacyDialog", "Enter an amount of CCBC to convert to zCCBC", 0));
-
-        // Spend zCCBC
-        ui->pushButtonSpendzCCBC->setEnabled(true);
-        ui->pushButtonSpendzCCBC->setToolTip(tr("Spend Zerocoin. Without 'Pay To:' address creates payments to yourself."));
-    }
 }

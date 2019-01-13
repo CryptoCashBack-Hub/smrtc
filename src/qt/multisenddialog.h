@@ -1,9 +1,5 @@
-// Copyright (c) 2017 The CCBC developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
-#ifndef CCBC_QT_MULTISENDDIALOG_H
-#define CCBC_QT_MULTISENDDIALOG_H
+#ifndef MULTISENDDIALOG_H
+#define MULTISENDDIALOG_H
 
 #include <QDialog>
 
@@ -20,7 +16,7 @@ class MultiSendDialog : public QDialog
     void updateCheckBoxes();
 
 public:
-    explicit MultiSendDialog(QWidget* parent = nullptr);
+    explicit MultiSendDialog(QWidget* parent = 0);
     ~MultiSendDialog();
     void setModel(WalletModel* model);
     void setAddress(const QString& address);
@@ -38,4 +34,4 @@ private:
     WalletModel* model;
 };
 
-#endif // CCBC_QT_MULTISENDDIALOG_H
+#endif // MULTISENDDIALOG_H

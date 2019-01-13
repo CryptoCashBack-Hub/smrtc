@@ -1,8 +1,3 @@
-// Copyright (c) 2014-2016 The Dash Developers
-// Copyright (c) 2016-2017 The CCBC developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "obfuscationconfig.h"
 #include "ui_obfuscationconfig.h"
 
@@ -17,7 +12,7 @@
 #include <QPushButton>
 #include <QSettings>
 
-ObfuscationConfig::ObfuscationConfig(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
+ObfuscationConfig::ObfuscationConfig(QWidget* parent) : QDialog(parent),
                                                         ui(new Ui::ObfuscationConfig),
                                                         model(0)
 {
@@ -85,8 +80,8 @@ void ObfuscationConfig::configure(bool enabled, int coins, int rounds)
     QSettings settings;
 
     settings.setValue("nObfuscationRounds", rounds);
-    settings.setValue("nAnonymizeCcbcAmount", coins);
+    settings.setValue("nAnonymizeCCBCAmount", coins);
 
     nZeromintPercentage = rounds;
-    nAnonymizeCcbcAmount = coins;
+    nAnonymizeCCBCAmount = coins;
 }

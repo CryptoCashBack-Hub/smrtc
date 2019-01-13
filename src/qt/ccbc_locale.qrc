@@ -7,18 +7,13 @@
         <file alias="de">locale/ccbc_de.qm</file>
         <file alias="en">locale/ccbc_en.qm</file>
         <file alias="en_US">locale/ccbc_en_US.qm</file>
-        <file alias="eo">locale/ccbc_eo.qm</file>
         <file alias="es">locale/ccbc_es.qm</file>
-        <file alias="es_ES">locale/ccbc_es_ES.qm</file>
         <file alias="fi">locale/ccbc_fi.qm</file>
         <file alias="fr_FR">locale/ccbc_fr_FR.qm</file>
-        <file alias="hi_IN">locale/ccbc_hi_IN.qm</file>
         <file alias="hr">locale/ccbc_hr.qm</file>
-        <file alias="hr_HR">locale/ccbc_hr_HR.qm</file>
         <file alias="it">locale/ccbc_it.qm</file>
         <file alias="ja">locale/ccbc_ja.qm</file>
         <file alias="ko_KR">locale/ccbc_ko_KR.qm</file>
-        <file alias="lt_LT">locale/ccbc_lt_LT.qm</file>
         <file alias="nl">locale/ccbc_nl.qm</file>
         <file alias="pl">locale/ccbc_pl.qm</file>
         <file alias="pt">locale/ccbc_pt.qm</file>
@@ -29,7 +24,6 @@
         <file alias="sv">locale/ccbc_sv.qm</file>
         <file alias="tr">locale/ccbc_tr.qm</file>
         <file alias="uk">locale/ccbc_uk.qm</file>
-        <file alias="vi">locale/ccbc_vi.qm</file>
         <file alias="zh_CN">locale/ccbc_zh_CN.qm</file>
         <file alias="zh_TW">locale/ccbc_zh_TW.qm</file>
     </qresource>

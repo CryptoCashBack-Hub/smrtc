@@ -1,11 +1,10 @@
 // Copyright (c) 2014 The Bitcoin developers
-// Copyright (c) 2017 The CCBC developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "winshutdownmonitor.h"
 
-#if defined(Q_OS_WIN)
+#if defined(Q_OS_WIN) && QT_VERSION >= 0x050000
 #include "init.h"
 #include "util.h"
 

@@ -1,5 +1,4 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2017 The CCBC developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -68,9 +67,8 @@ public:
     enum ColumnIndex {
         Date = 0,
         Label = 1,
-        Address = 2,
-        Message = 3,
-        Amount = 4,
+        Message = 2,
+        Amount = 3,
         NUMBER_OF_COLUMNS
     };
 

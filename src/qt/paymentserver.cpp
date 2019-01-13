@@ -1,6 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The CCBC developers
+// Copyright (c) 2017 The CCBC developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,6 +19,7 @@
 
 #include <cstdlib>
 
+#include <openssl/x509.h>
 #include <openssl/x509_vfy.h>
 
 #include <QApplication>
@@ -40,7 +42,12 @@
 #include <QSslSocket>
 #include <QStringList>
 #include <QTextDocument>
+
+#if QT_VERSION < 0x050000
+#include <QUrl>
+#else
 #include <QUrlQuery>
+#endif
 
 using namespace boost;
 using namespace std;
@@ -100,7 +107,7 @@ static QList<QString> savedPaymentRequests;
 
 static void ReportInvalidCertificate(const QSslCertificate& cert)
 {
-    qDebug() << QString("%1: Payment server found an invalid certificate: ").arg(__func__) << cert.serialNumber() << cert.subjectInfo(QSslCertificate::CommonName) << cert.subjectInfo(QSslCertificate::DistinguishedNameQualifier) << cert.subjectInfo(QSslCertificate::OrganizationalUnitName);
+    qDebug() << "ReportInvalidCertificate : Payment server found an invalid certificate: " << cert.subjectInfo(QSslCertificate::CommonName);
 }
 
 //
@@ -140,12 +147,12 @@ void PaymentServer::LoadRootCAs(X509_STORE* _store)
             ReportInvalidCertificate(cert);
             continue;
         }
-
-        // Blacklisted certificate
+#if QT_VERSION >= 0x050000
         if (cert.isBlacklisted()) {
             ReportInvalidCertificate(cert);
             continue;
         }
+#endif
         QByteArray certData = cert.toDer();
         const unsigned char* data = (const unsigned char*)certData.data();
 
@@ -368,7 +375,11 @@ void PaymentServer::handleURIOrFile(const QString& s)
 
     if (s.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // ccbc: URI
     {
+#if QT_VERSION < 0x050000
+        QUrl uri(s);
+#else
         QUrlQuery uri((QUrl(s)));
+#endif
         if (uri.hasQueryItem("r")) // payment request URI
         {
             QByteArray temp;

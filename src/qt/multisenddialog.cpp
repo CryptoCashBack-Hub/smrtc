@@ -1,23 +1,22 @@
-// Copyright (c) 2017-2018 The CCBC developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "multisenddialog.h"
-#include "ui_multisenddialog.h"
-
 #include "addressbookpage.h"
-#include "addresstablemodel.h"
 #include "base58.h"
 #include "init.h"
+#include "ui_multisenddialog.h"
 #include "walletmodel.h"
+#include <QLineEdit>
+#include <QMessageBox>
+#include <boost/lexical_cast.hpp>
 
-#include <QStyle>
+using namespace std;
+using namespace boost;
 
-MultiSendDialog::MultiSendDialog(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
+MultiSendDialog::MultiSendDialog(QWidget* parent) : QDialog(parent),
                                                     ui(new Ui::MultiSendDialog),
-                                                    model(nullptr)
+                                                    model(0)
 {
     ui->setupUi(this);
+
     updateCheckBoxes();
 }
 
@@ -55,47 +54,32 @@ void MultiSendDialog::on_addressBookButton_clicked()
         dlg.setModel(model->getAddressTableModel());
         if (dlg.exec())
             setAddress(dlg.getReturnValue(), ui->multiSendAddressEdit);
-
-        // Update the label text box with the label in the addressbook
-        QString associatedLabel = model->getAddressTableModel()->labelForAddress(dlg.getReturnValue());
-        if (!associatedLabel.isEmpty())
-            ui->labelAddressLabelEdit->setText(associatedLabel);
-        else
-            ui->labelAddressLabelEdit->setText(tr("(no label)"));
     }
 }
 
 void MultiSendDialog::on_viewButton_clicked()
 {
     std::pair<std::string, int> pMultiSend;
-    std::string strMultiSendPrint;
-    QString strStatus;
+    std::string strMultiSendPrint = "";
     if (pwalletMain->isMultiSendEnabled()) {
-        if (pwalletMain->fMultiSendStake && pwalletMain->fMultiSendMasternodeReward)
-            strStatus += tr("MultiSend Active for Stakes and Masternode Rewards") + "\n";
+        if (pwalletMain->fMultiSendStake)
+            strMultiSendPrint += "MultiSend Active for Stakes\n";
         else if (pwalletMain->fMultiSendStake)
-            strStatus += tr("MultiSend Active for Stakes") + "\n";
-        else if (pwalletMain->fMultiSendMasternodeReward)
-            strStatus += tr("MultiSend Active for Masternode Rewards") + "\n";
+            strMultiSendPrint += "MultiSend Active for Masternode Rewards\n";
     } else
-        strStatus += tr("MultiSend Not Active") + "\n";
+        strMultiSendPrint += "MultiSend Not Active\n";
 
     for (int i = 0; i < (int)pwalletMain->vMultiSend.size(); i++) {
         pMultiSend = pwalletMain->vMultiSend[i];
-        if (model && model->getAddressTableModel()) {
-            std::string associatedLabel;
-            associatedLabel = model->getAddressTableModel()->labelForAddress(pMultiSend.first.c_str()).toStdString();
-            strMultiSendPrint += associatedLabel.c_str();
-            strMultiSendPrint += " - ";
-        }
         strMultiSendPrint += pMultiSend.first.c_str();
         strMultiSendPrint += " - ";
-        strMultiSendPrint += std::to_string(pMultiSend.second);
-        strMultiSendPrint += "%\n";
+        strMultiSendPrint += boost::lexical_cast<string>(pMultiSend.second);
+        strMultiSendPrint += "% \n";
     }
     ui->message->setProperty("status", "ok");
     ui->message->style()->polish(ui->message);
-    ui->message->setText(strStatus + QString(strMultiSendPrint.c_str()));
+    ui->message->setText(QString(strMultiSendPrint.c_str()));
+    return;
 }
 
 void MultiSendDialog::on_addButton_clicked()
@@ -105,7 +89,7 @@ void MultiSendDialog::on_addButton_clicked()
     if (!CBitcoinAddress(strAddress).IsValid()) {
         ui->message->setProperty("status", "error");
         ui->message->style()->polish(ui->message);
-        ui->message->setText(tr("The entered address: %1 is invalid.\nPlease check the address and try again.").arg(ui->multiSendAddressEdit->text()));
+        ui->message->setText(tr("The entered address:\n") + ui->multiSendAddressEdit->text() + tr(" is invalid.\nPlease check the address and try again."));
         ui->multiSendAddressEdit->setFocus();
         return;
     }
@@ -116,7 +100,7 @@ void MultiSendDialog::on_addButton_clicked()
     if (nSumMultiSend + nMultiSendPercent > 100) {
         ui->message->setProperty("status", "error");
         ui->message->style()->polish(ui->message);
-        ui->message->setText(tr("The total amount of your MultiSend vector is over 100% of your stake reward"));
+        ui->message->setText(tr("The total amount of your MultiSend vector is over 100% of your stake reward\n"));
         ui->multiSendAddressEdit->setFocus();
         return;
     }
@@ -133,34 +117,18 @@ void MultiSendDialog::on_addButton_clicked()
     pwalletMain->vMultiSend.push_back(pMultiSend);
     ui->message->setProperty("status", "ok");
     ui->message->style()->polish(ui->message);
-    std::string strMultiSendPrint;
+    std::string strMultiSendPrint = "";
     for (int i = 0; i < (int)pwalletMain->vMultiSend.size(); i++) {
         pMultiSend = pwalletMain->vMultiSend[i];
         strMultiSendPrint += pMultiSend.first.c_str();
         strMultiSendPrint += " - ";
-        strMultiSendPrint += std::to_string(pMultiSend.second);
-        strMultiSendPrint += "%\n";
+        strMultiSendPrint += boost::lexical_cast<string>(pMultiSend.second);
+        strMultiSendPrint += "% \n";
     }
-
-    if (model && model->getAddressTableModel()) {
-        // update the address book with the label given or no label if none was given.
-        CBitcoinAddress address(strAddress);
-        std::string userInputLabel = ui->labelAddressLabelEdit->text().toStdString();
-        if (!userInputLabel.empty())
-            model->updateAddressBookLabels(address.Get(), userInputLabel, "send");
-        else
-            model->updateAddressBookLabels(address.Get(), "(no label)", "send");
-    }
-
     CWalletDB walletdb(pwalletMain->strWalletFile);
-    if(!walletdb.WriteMultiSend(pwalletMain->vMultiSend)) {
-        ui->message->setProperty("status", "error");
-        ui->message->style()->polish(ui->message);
-        ui->message->setText(tr("Saved the MultiSend to memory, but failed saving properties to the database."));
-        ui->multiSendAddressEdit->setFocus();
-        return;
-    }
-    ui->message->setText(tr("MultiSend Vector") + "\n" + QString(strMultiSendPrint.c_str()));
+    walletdb.WriteMultiSend(pwalletMain->vMultiSend);
+    ui->message->setText(tr("MultiSend Vector\n") + QString(strMultiSendPrint.c_str()));
+    return;
 }
 
 void MultiSendDialog::on_deleteButton_clicked()
@@ -181,48 +149,50 @@ void MultiSendDialog::on_deleteButton_clicked()
         fRemoved = false;
 
     if (fRemoved)
-        ui->message->setText(tr("Removed %1").arg(QString(strAddress.c_str())));
+        ui->message->setText(tr("Removed ") + QString(strAddress.c_str()));
     else
-        ui->message->setText(tr("Could not locate address"));
+        ui->message->setText(tr("Could not locate address\n"));
 
     updateCheckBoxes();
+
+    return;
 }
 
 void MultiSendDialog::on_activateButton_clicked()
 {
-    QString strRet;
+    std::string strRet = "";
     if (pwalletMain->vMultiSend.size() < 1)
-        strRet = tr("Unable to activate MultiSend, check MultiSend vector");
+        strRet = "Unable to activate MultiSend, check MultiSend vector\n";
     else if (!(ui->multiSendStakeCheckBox->isChecked() || ui->multiSendMasternodeCheckBox->isChecked())) {
-        strRet = tr("Need to select to send on stake and/or masternode rewards");
+        strRet = "Need to select to send on stake and/or masternode rewards\n";
     } else if (CBitcoinAddress(pwalletMain->vMultiSend[0].first).IsValid()) {
         pwalletMain->fMultiSendStake = ui->multiSendStakeCheckBox->isChecked();
         pwalletMain->fMultiSendMasternodeReward = ui->multiSendMasternodeCheckBox->isChecked();
 
         CWalletDB walletdb(pwalletMain->strWalletFile);
         if (!walletdb.WriteMSettings(pwalletMain->fMultiSendStake, pwalletMain->fMultiSendMasternodeReward, pwalletMain->nLastMultiSendHeight))
-            strRet = tr("MultiSend activated but writing settings to DB failed");
+            strRet = "MultiSend activated but writing settings to DB failed";
         else
-            strRet = tr("MultiSend activated");
+            strRet = "MultiSend activated";
     } else
-        strRet = tr("First Address Not Valid");
+        strRet = "First Address Not Valid";
     ui->message->setProperty("status", "ok");
     ui->message->style()->polish(ui->message);
-    ui->message->setText(strRet);
+    ui->message->setText(tr(strRet.c_str()));
+    return;
 }
 
 void MultiSendDialog::on_disableButton_clicked()
 {
-    QString strRet;
+    std::string strRet = "";
     pwalletMain->setMultiSendDisabled();
     CWalletDB walletdb(pwalletMain->strWalletFile);
-
     if (!walletdb.WriteMSettings(false, false, pwalletMain->nLastMultiSendHeight))
-        strRet = tr("MultiSend deactivated but writing settings to DB failed");
+        strRet = "MultiSend deactivated but writing settings to DB failed";
     else
-        strRet = tr("MultiSend deactivated");
-
+        strRet = "MultiSend deactivated";
     ui->message->setProperty("status", "");
     ui->message->style()->polish(ui->message);
-    ui->message->setText(strRet);
+    ui->message->setText(tr(strRet.c_str()));
+    return;
 }

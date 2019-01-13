@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The CCBC developers
+// Copyright (c) 2015-2017 The CCBC developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,7 +18,6 @@
 #include "main.h"
 #include "net.h"
 #include "txdb.h" // for -dbcache defaults
-#include "util.h"
 
 #ifdef ENABLE_WALLET
 #include "masternodeconfig.h"
@@ -73,10 +72,6 @@ void OptionsModel::Init()
         settings.setValue("fHideZeroBalances", true);
     fHideZeroBalances = settings.value("fHideZeroBalances").toBool();
 
-    if (!settings.contains("fHideOrphans"))
-        settings.setValue("fHideOrphans", false);
-    fHideOrphans = settings.value("fHideOrphans").toBool();
-
     if (!settings.contains("fCoinControlFeatures"))
         settings.setValue("fCoinControlFeatures", false);
     fCoinControlFeatures = settings.value("fCoinControlFeatures", false).toBool();
@@ -93,10 +88,10 @@ void OptionsModel::Init()
         settings.setValue("nPreferredDenom", 0);
     nPreferredDenom = settings.value("nPreferredDenom", "0").toLongLong();
 
-    if (!settings.contains("nAnonymizeCcbcAmount"))
-        settings.setValue("nAnonymizeCcbcAmount", 1000);
+    if (!settings.contains("nAnonymizeCCBCAmount"))
+        settings.setValue("nAnonymizeCCBCAmount", 1000);
 
-    nAnonymizeCcbcAmount = settings.value("nAnonymizeCcbcAmount").toLongLong();
+    nAnonymizeCCBCAmount = settings.value("nAnonymizeCCBCAmount").toLongLong();
 
     if (!settings.contains("fShowMasternodesTab"))
         settings.setValue("fShowMasternodesTab", masternodeConfig.getCount());
@@ -129,7 +124,6 @@ void OptionsModel::Init()
 #endif
     if (!settings.contains("nStakeSplitThreshold"))
         settings.setValue("nStakeSplitThreshold", 1);
-
 
     // Network
     if (!settings.contains("fUseUPnP"))
@@ -170,8 +164,8 @@ void OptionsModel::Init()
         SoftSetArg("-zeromintpercentage", settings.value("nZeromintPercentage").toString().toStdString());
     if (settings.contains("nPreferredDenom"))
         SoftSetArg("-preferredDenom", settings.value("nPreferredDenom").toString().toStdString());
-    if (settings.contains("nAnonymizeCcbcAmount"))
-        SoftSetArg("-anonymizeccbcamount", settings.value("nAnonymizeCcbcAmount").toString().toStdString());
+    if (settings.contains("nAnonymizeCCBCAmount"))
+        SoftSetArg("-anonymizeccbcamount", settings.value("nAnonymizeCCBCAmount").toString().toStdString());
 
     language = settings.value("language").toString();
 }
@@ -256,16 +250,14 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
             return settings.value("nThreadsScriptVerif");
         case HideZeroBalances:
             return settings.value("fHideZeroBalances");
-        case HideOrphans:
-            return settings.value("fHideOrphans");
         case ZeromintEnable:
             return QVariant(fEnableZeromint);
         case ZeromintPercentage:
             return QVariant(nZeromintPercentage);
         case ZeromintPrefDenom:
             return QVariant(nPreferredDenom);
-        case AnonymizeCcbcAmount:
-            return QVariant(nAnonymizeCcbcAmount);
+        case AnonymizeCCBCAmount:
+            return QVariant(nAnonymizeCCBCAmount);
         case Listen:
             return settings.value("fListen");
         default:
@@ -345,6 +337,7 @@ bool OptionsModel::setData(const QModelIndex& index, const QVariant& value, int 
             settings.setValue("nStakeSplitThreshold", value.toInt());
             setStakeSplitThreshold(value.toInt());
             break;
+
         case DisplayUnit:
             setDisplayUnit(value);
             break;
@@ -393,15 +386,11 @@ bool OptionsModel::setData(const QModelIndex& index, const QVariant& value, int 
             settings.setValue("fHideZeroBalances", fHideZeroBalances);
             emit hideZeroBalancesChanged(fHideZeroBalances);
             break;
-        case HideOrphans:
-            fHideOrphans = value.toBool();
-            settings.setValue("fHideOrphans", fHideOrphans);
-            emit hideOrphansChanged(fHideOrphans);
-            break;
-        case AnonymizeCcbcAmount:
-            nAnonymizeCcbcAmount = value.toInt();
-            settings.setValue("nAnonymizeCcbcAmount", nAnonymizeCcbcAmount);
-            emit anonymizeCcbcAmountChanged(nAnonymizeCcbcAmount);
+
+        case AnonymizeCCBCAmount:
+            nAnonymizeCCBCAmount = value.toInt();
+            settings.setValue("nAnonymizeCCBCAmount", nAnonymizeCCBCAmount);
+            emit anonymizeCCBCAmountChanged(nAnonymizeCCBCAmount);
             break;
         case CoinControlFeatures:
             fCoinControlFeatures = value.toBool();
