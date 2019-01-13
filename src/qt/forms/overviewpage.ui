@@ -333,7 +333,7 @@
                           <string>Your current spendable balance</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -365,7 +365,7 @@
                           <string>Total Balance, including all unavailable coins.</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -433,14 +433,7 @@
                           </font>
                          </property>
                          <property name="text">
-                          <string>PIV Balance</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="labelPIVPercent">
-                         <property name="text">
-                          <string notr="true">0 %</string>
+                          <string>CCBC Balance</string>
                          </property>
                         </widget>
                        </item>
@@ -525,7 +518,7 @@
                           <string>Your current spendable balance</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -550,7 +543,7 @@
                           <string>Your current balance in watch-only addresses</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -582,7 +575,7 @@
                           <string>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -607,7 +600,7 @@
                           <string>Unconfirmed transactions to watch-only addresses</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -639,7 +632,7 @@
                           <string>Staked or masternode rewards that has not yet matured</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -664,7 +657,7 @@
                           <string>Staked or masternode rewards in watch-only addresses that has not yet matured</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -677,7 +670,7 @@
                        <item row="4" column="0">
                         <widget class="QLabel" name="labelLockedBalanceText">
                          <property name="toolTip">
-                          <string>Locked PIV or Masternode collaterals. These are excluded from zCCBC minting.</string>
+                          <string>Locked CCBC or Masternode collaterals. These are excluded from zCCBC minting.</string>
                          </property>
                          <property name="text">
                           <string>Locked:</string>
@@ -696,35 +689,10 @@
                           <cursorShape>IBeamCursor</cursorShape>
                          </property>
                          <property name="toolTip">
-                          <string>Locked PIV or Masternode collaterals. These are excluded from zCCBC minting.</string>
+                          <string>Locked CCBC or Masternode collaterals. These are excluded from zCCBC minting.</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="textInteractionFlags">
-                          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="4" column="2">
-                        <widget class="QLabel" name="labelWatchLocked">
-                         <property name="font">
-                          <font>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="cursor">
-                          <cursorShape>IBeamCursor</cursorShape>
-                         </property>
-                         <property name="toolTip">
-                          <string>Current locked balance in watch-only addresses</string>
-                         </property>
-                         <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -759,7 +727,7 @@
                           <string>Your current CCBC balance, unconfirmed and immature transactions included</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -784,7 +752,7 @@
                           <string>Current total balance in watch-only addresses</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -857,13 +825,6 @@
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLabel" name="labelzCCBCPercent">
-                         <property name="text">
-                          <string notr="true">0 %</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
                         <spacer name="horizontalSpacer_11">
                          <property name="orientation">
                           <enum>Qt::Horizontal</enum>
@@ -926,7 +887,7 @@ These zCCBC are spendable.</string>
 These zCCBC are spendable.</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -957,7 +918,7 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
 Immature: confirmed, but less than 1 mint of the same denomination after it was minted</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -988,7 +949,7 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
 Immature: confirmed, but less than 1 mint of the same denomination after it was minted</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1020,7 +981,7 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
                           <string>Your current zCCBC balance, unconfirmed and immature zCCBC included.</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PIV</string>
+                          <string notr="true">0.000 000 00 CCBC</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
