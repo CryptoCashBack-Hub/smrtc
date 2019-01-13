@@ -797,8 +797,8 @@
                                       Show the current status of automatic zCCBC minting.
 
                                       To change the status (restart required):
-                                      - enable: add 'enablezeromint=1' to pivx.conf
-                                      - disable: add 'enablezeromint=0' to pivx.conf
+                                      - enable: add 'enablezeromint=1' to ccbc.conf
+                                      - disable: add 'enablezeromint=0' to ccbc.conf
 
                                       To change the percentage (no restart required):
                                       - menu Settings-&gt;Options-&gt;Percentage of autominted zCCBC

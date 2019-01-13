@@ -20,7 +20,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="tabMain">
       <attribute name="title">
@@ -131,21 +131,34 @@
         </spacer>
        </item>
        <item>
+        <widget class="QCheckBox" name="checkBoxZeromintEnable">
+         <property name="toolTip">
+          <string>Enable automatic minting of PIV units to zPIV</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Enable zPIV Automint</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLabel" name="percentage_label">
            <property name="toolTip">
-            <string>Percentage of incoming CCBC which get automatically converted to zCCBC via Zerocoin Protocol (min: 10%)</string>
+            <string>Percentage of incoming PIV which get automatically converted to zPIV via Zerocoin Protocol (min: 10%)</string>
            </property>
            <property name="text">
-            <string>Percentage of autominted zCCBC</string>
+            <string>Percentage of autominted zPIV</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QSpinBox" name="zeromintPercentage">
            <property name="minimum">
-            <number>10</number>
+            <number>1</number>
            </property>
            <property name="maximum">
             <number>100</number>
@@ -168,10 +181,10 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>Wait with automatic conversion to Zerocoin until enough CCBC for this denomination is available</string>
+            <string>Wait with automatic conversion to Zerocoin until enough PIV for this denomination is available</string>
            </property>
            <property name="text">
-            <string>Preferred Automint zCCBC Denomination</string>
+            <string>Preferred Automint zPIV Denomination</string>
            </property>
           </widget>
          </item>
@@ -184,7 +197,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>Wait with automatic conversion to Zerocoin until enough CCBC for this denomination is available</string>
+            <string>Wait with automatic conversion to Zerocoin until enough PIV for this denomination is available</string>
            </property>
            <property name="maxVisibleItems">
             <number>9</number>
@@ -203,6 +216,27 @@
        <string>W&amp;allet</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_Wallet">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2_Wallet">
+         <item>
+          <widget class="QLabel" name="labelStakeSplitThresholdText">
+           <property name="text">
+            <string>Stake split threshold:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spinBoxStakeSplitThreshold">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>999999</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
        <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
@@ -487,7 +521,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</string>
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4_Display" stretch="0,0">
+        <layout class="QHBoxLayout" name="horizontalLayout_2_Display" stretch="0,0">
          <item>
           <widget class="QLabel" name="themeLabel">
            <property name="text">
@@ -508,7 +542,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</string>
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2_Display">
+        <layout class="QHBoxLayout" name="horizontalLayout_3_Display">
          <item>
           <widget class="QLabel" name="unitLabel">
            <property name="text">
@@ -532,7 +566,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</string>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5_Display">
+        <layout class="QHBoxLayout" name="horizontalLayout_4_Display">
          <item>
           <widget class="QLabel" name="digitsLabel">
            <property name="text">
@@ -546,7 +580,47 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</string>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3_Display">
+        <layout class="QHBoxLayout" name="horizontalLayout_5_Display">
+         <item>
+          <widget class="QCheckBox" name="checkBoxHideZeroBalances">
+           <property name="toolTip">
+            <string>Hide empty balances</string>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="text">
+            <string>Hide empty balances</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBoxHideOrphans">
+           <property name="toolTip">
+            <string>Hide orphan stakes in transaction lists</string>
+           </property>
+           <property name="text">
+            <string>Hide orphan stakes</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6_Display">
          <item>
           <widget class="QLabel" name="thirdPartyTxUrlsLabel">
            <property name="toolTip">
