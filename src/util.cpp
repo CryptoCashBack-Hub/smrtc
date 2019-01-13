@@ -105,7 +105,7 @@ std::string to_internal(const std::string&);
 
 using namespace std;
 
-// Ccbc only features
+// CCBC only features
 // Masternode
 bool fMasterNode = false;
 string strMasterNodePrivKey = "";
@@ -120,7 +120,7 @@ int nZeromintPercentage = 10;
 int nPreferredDenom = 0;
 const int64_t AUTOMINT_DELAY = (60 * 5); // Wait at least 5 minutes until Automint starts
 
-int nAnonymizeCcbcAmount = 1000;
+int nAnonymizeCCBCAmount = 1000;
 int nLiquidityProvider = 0;
 /** Spork enforcement enabled time */
 int64_t enforceMasternodePaymentsTime = 4085657524;
@@ -237,7 +237,7 @@ bool LogAcceptCategory(const char* category)
             const vector<string>& categories = mapMultiArgs["-debug"];
             ptrCategory.reset(new set<string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
-            // "ccbc" is a composite category enabling all Ccbc-related debug output
+            // "ccbc" is a composite category enabling all CCBC-related debug output
             if (ptrCategory->count(string("ccbc"))) {
                 ptrCategory->insert(string("obfuscation"));
                 ptrCategory->insert(string("swiftx"));
@@ -306,7 +306,7 @@ static bool InterpretBool(const std::string& strValue)
 /** Turn -noX into -X=0 */
 static void InterpretNegativeSetting(std::string& strKey, std::string& strValue)
 {
-    if (strKey.length()>3 && strKey[0]=='-' && strKey[1]=='n' && strKey[2]=='o') {
+    if (strKey.length() > 3 && strKey[0] == '-' && strKey[1] == 'n' && strKey[2] == 'o') {
         strKey = "-" + strKey.substr(3);
         strValue = InterpretBool(strValue) ? "0" : "1";
     }
@@ -386,13 +386,15 @@ static const int screenWidth = 79;
 static const int optIndent = 2;
 static const int msgIndent = 7;
 
-std::string HelpMessageGroup(const std::string &message) {
+std::string HelpMessageGroup(const std::string& message)
+{
     return std::string(message) + std::string("\n\n");
 }
 
-std::string HelpMessageOpt(const std::string &option, const std::string &message) {
-    return std::string(optIndent,' ') + std::string(option) +
-           std::string("\n") + std::string(msgIndent,' ') +
+std::string HelpMessageOpt(const std::string& option, const std::string& message)
+{
+    return std::string(optIndent, ' ') + std::string(option) +
+           std::string("\n") + std::string(msgIndent, ' ') +
            FormatParagraph(message, screenWidth - msgIndent, msgIndent) +
            std::string("\n\n");
 }
@@ -424,13 +426,13 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-// Windows < Vista: C:\Documents and Settings\Username\Application Data\Ccbc
-// Windows >= Vista: C:\Users\Username\AppData\Roaming\Ccbc
-// Mac: ~/Library/Application Support/Ccbc
+// Windows < Vista: C:\Documents and Settings\Username\Application Data\CCBC
+// Windows >= Vista: C:\Users\Username\AppData\Roaming\CCBC
+// Mac: ~/Library/Application Support/CCBC
 // Unix: ~/.ccbc
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Ccbc";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "CCBC";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -442,7 +444,7 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / "Ccbc";
+    return pathRet / "CCBC";
 #else
     // Unix
     return pathRet / ".ccbc";
