@@ -1616,7 +1616,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
         fVerifyingBlocks = false;
 
         bool fEnableZCCBCBackups = GetBoolArg("-backupzccbc", true);
-        pwalletMain->setZCCBCAutoBackups(fEnableZCCBCBackups);
+        pwalletMain->setZCcbcAutoBackups(fEnableZCCBCBackups);
     }  // (!fDisableWallet)
 #else  // ENABLE_WALLET
     LogPrintf("No wallet compiled in!\n");
