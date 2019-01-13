@@ -6,8 +6,8 @@
 
 #include "clientmodel.h"
 
-#include "guiconstants.h"
 #include "bantablemodel.h"
+#include "guiconstants.h"
 #include "peertablemodel.h"
 
 #include "alert.h"
@@ -76,7 +76,7 @@ QString ClientModel::getMasternodeCountString() const
     int ipv4 = 0, ipv6 = 0, onion = 0;
     mnodeman.CountNetworks(ActiveProtocol(), ipv4, ipv6, onion);
     int nUnknown = mnodeman.size() - ipv4 - ipv6 - onion;
-    if(nUnknown < 0) nUnknown = 0;
+    if (nUnknown < 0) nUnknown = 0;
     return tr("Total: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Unknown: %5)").arg(QString::number((int)mnodeman.size())).arg(QString::number((int)ipv4)).arg(QString::number((int)ipv6)).arg(QString::number((int)onion)).arg(QString::number((int)nUnknown));
 }
 
@@ -222,6 +222,7 @@ BanTableModel* ClientModel::getBanTableModel()
     return banTableModel;
 }
 
+
 QString ClientModel::formatFullVersion() const
 {
     return QString::fromStdString(FormatFullVersion());
@@ -252,6 +253,7 @@ void ClientModel::updateBanlist()
     banTableModel->refresh();
 }
 
+
 // Handlers for core signals
 static void ShowProgress(ClientModel* clientmodel, const std::string& title, int nProgress)
 {
@@ -281,6 +283,7 @@ static void BannedListChanged(ClientModel* clientmodel)
     qDebug() << QString("%1: Requesting update for peer banlist").arg(__func__);
     QMetaObject::invokeMethod(clientmodel, "updateBanlist", Qt::QueuedConnection);
 }
+
 
 void ClientModel::subscribeToCoreSignals()
 {

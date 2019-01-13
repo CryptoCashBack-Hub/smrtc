@@ -101,11 +101,12 @@ public:
 
     /** New block has been accepted */
     boost::signals2::signal<void(const uint256& hash)> NotifyBlockTip;
+
+    /** Banlist did change. */
+    boost::signals2::signal<void(void)> BannedListChanged;
 };
 
 extern CClientUIInterface uiInterface;
-/** Banlist did change. */
-boost::signals2::signal<void(void)> BannedListChanged;
 
 /**
  * Translation function: Call Translate signal on UI interface, which returns a boost::optional result.
