@@ -20,8 +20,11 @@
 #include "rpcconsole.h"
 #include "utilitydialog.h"
 
+#ifdef ENABLE_WALLET
+#include "blockexplorer.h"
+#include "walletframe.h"
+#include "walletmodel.h"
 #endif // ENABLE_WALLET
-
 
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
@@ -1263,7 +1266,6 @@ void BitcoinGUI::setEncryptionStatus(int status)
 {
     std::string ip_port;
     bool tor_enabled = clientModel->getTorInfo(ip_port);
-
     if (tor_enabled) {
         if (labelTorIcon->pixmap() == 0) {
             QString ip_port_q = QString::fromStdString(ip_port);
