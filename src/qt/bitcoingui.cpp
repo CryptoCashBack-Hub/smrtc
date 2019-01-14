@@ -20,11 +20,8 @@
 #include "rpcconsole.h"
 #include "utilitydialog.h"
 
-#ifdef ENABLE_WALLET
-#include "blockexplorer.h"
-#include "walletframe.h"
-#include "walletmodel.h"
 #endif // ENABLE_WALLET
+
 
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
@@ -419,8 +416,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     encryptWalletAction->setCheckable(true);
     backupWalletAction = new QAction(QIcon(":/icons/filesave"), tr("&Backup Wallet..."), this);
     backupWalletAction->setStatusTip(tr("Backup wallet to another location"));
-    changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);   
-    changePassphraseAction->setStatusTip(tr("Change the passphrase used for wallet encryption"));    
+    changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);
+    changePassphraseAction->setStatusTip(tr("Change the passphrase used for wallet encryption"));
     unlockWalletAction = new QAction(QIcon(":/icons/lock_open"), tr("&Unlock Wallet..."), this);
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
     lockWalletAction = new QAction(tr("&Lock Wallet"), this);
@@ -566,10 +563,10 @@ void BitcoinGUI::createToolBars()
         QToolBar* toolbar = new QToolBar(tr("Tabs toolbar"));
         toolbar->setObjectName("Main-Toolbar"); // Name for CSS addressing
         toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-//        // Add some empty space at the top of the toolbars
-//        QAction* spacer = new QAction(this);
-//        toolbar->addAction(spacer);
-//        toolbar->widgetForAction(spacer)->setObjectName("ToolbarSpacer");
+        //        // Add some empty space at the top of the toolbars
+        //        QAction* spacer = new QAction(this);
+        //        toolbar->addAction(spacer);
+        //        toolbar->widgetForAction(spacer)->setObjectName("ToolbarSpacer");
 
         toolbar->addAction(overviewAction);
         toolbar->addAction(sendCoinsAction);
@@ -583,7 +580,7 @@ void BitcoinGUI::createToolBars()
         }
         toolbar->setMovable(false); // remove unused icon in upper left corner
         toolbar->setOrientation(Qt::Vertical);
-        toolbar->setIconSize(QSize(40,40));
+        toolbar->setIconSize(QSize(40, 40));
         overviewAction->setChecked(true);
 
         /** Create additional container for toolbar and walletFrame and make it the central widget.
@@ -635,9 +632,8 @@ void BitcoinGUI::setClientModel(ClientModel* clientModel)
         connect(clientModel->getOptionsModel(), SIGNAL(zeromintEnableChanged(bool)), this, SLOT(setAutoMintStatus()));
 
         //Show trayIcon
-        if (trayIcon)
-        {
-          trayIcon->show();
+        if (trayIcon) {
+            trayIcon->show();
         }
     } else {
         // Disable possibility to show main window via action
@@ -856,17 +852,17 @@ void BitcoinGUI::gotoVerifyMessageTab(QString addr)
 
 void BitcoinGUI::gotoMultisigCreate()
 {
-    if(walletFrame) walletFrame->gotoMultisigDialog(0);
+    if (walletFrame) walletFrame->gotoMultisigDialog(0);
 }
 
 void BitcoinGUI::gotoMultisigSpend()
 {
-    if(walletFrame) walletFrame->gotoMultisigDialog(1);
+    if (walletFrame) walletFrame->gotoMultisigDialog(1);
 }
 
 void BitcoinGUI::gotoMultisigSign()
 {
-    if(walletFrame) walletFrame->gotoMultisigDialog(2);
+    if (walletFrame) walletFrame->gotoMultisigDialog(2);
 }
 
 void BitcoinGUI::gotoBip38Tool()
@@ -1131,7 +1127,7 @@ void BitcoinGUI::closeEvent(QCloseEvent* event)
 void BitcoinGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address)
 {
     // Only send notifications when not disabled
-    if(!bdisableSystemnotifications){
+    if (!bdisableSystemnotifications) {
         // On new transaction, make an info balloon
         message((amount) < 0 ? (pwalletMain->fMultiSendNotify == true ? tr("Sent MultiSend transaction") : tr("Sent transaction")) : tr("Incoming transaction"),
             tr("Date: %1\n"
