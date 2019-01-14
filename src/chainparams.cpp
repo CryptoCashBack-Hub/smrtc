@@ -129,7 +129,7 @@ public:
 		nMinerThreads = 0;
 		nTargetTimespan = 1 * 60;                           // CCCBC: 1 day
 		nTargetSpacing = 1 * 60;                           // CCBC: 1 minute PoW time
-        nPOSTargetSpacing = 60;			                  // CCBC: 1 minute PoS time
+        nPOSTargetSpacing = 1 * 60;			                  // CCBC: 1 minute PoS time
         nPOSDGWForkBlock = 220000;                       // Block where Dark Gravity Wave is enabled for POS 220k
 		nMaturity = 10;                                 // 10 Confirmations to mature coins
 		nMasternodeCountDrift = 20;                    // Drift is set to 20

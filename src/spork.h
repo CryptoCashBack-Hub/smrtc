@@ -62,7 +62,7 @@ Sporks 11,12, and 16 to be removed with 1st zerocoin release
 #define SPORK_16_ZEROCOIN_MAINTENANCE_MODE_DEFAULT 4070908800     //OFF 01/01/2099 @ 12:00am (UTC)
 #define SPORK_17_TREASURY_PAYMENT_ENFORCEMENT_DEFAULT 4070908800  //OFF 01/01/2099 @ 12:00am (UTC)
 #define SPORK_18_REVIVE_PAYMENT_ENFORCEMENT_DEFAULT 4070908800    //OFF This will be turned on if Admin in AQX is not active on 1/1/2019
-#define SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3_DEFAULT 4070908800    //OFF 01/01/2099 @ 12:00am (UTC)
+#define SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3_DEFAULT 0             //Turned on during version 1.1.0.1
 #define SPORK_20_DGW_ENFORCEMENT_DEFAULT 4070908800               //Will only be used to enforce DGW fork and thats it.
 
 class CSporkMessage;
