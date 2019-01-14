@@ -16,9 +16,9 @@
 
 #include <math.h>
 
-unsigned int static DarkGravityWave(const CBlockIndex* pindexLast) 
+unsigned int GetDGWNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader* pblock, int64_t targetSpacing, uint256 workLimit)
 {
-    /* current difficulty formula, ccbc - DarkGravity v3, written by Evan Duffield - evan@dashpay.io */
+    /* current difficulty formula, kyd - DarkGravity v3, written by Evan Duffield - evan@dashpay.io */
     const CBlockIndex* BlockLastSolved = pindexLast;
     const CBlockIndex* BlockReading = pindexLast;
     int64_t nActualTimespan = 0;
@@ -28,38 +28,6 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast)
     int64_t CountBlocks = 0;
     uint256 PastDifficultyAverage;
     uint256 PastDifficultyAveragePrev;
-
-    if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || BlockLastSolved->nHeight < PastBlocksMin) {
-        return Params().ProofOfWorkLimit().GetCompact();
-    }
-
-    if (pindexLast->nHeight > Params().LAST_POW_BLOCK()) {
-        uint256 bnTargetLimit = (~uint256(0) >> 24);
-        int64_t nTargetSpacing = 60;
-        int64_t nTargetTimespan = 60 * 40;
-
-        int64_t nActualSpacing = 0;
-        if (pindexLast->nHeight != 0)
-            nActualSpacing = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
-
-        if (nActualSpacing < 0)
-            nActualSpacing = 1;
-
-        // ppcoin: target change every block
-        // ppcoin: retarget with exponential moving toward target spacing
-        uint256 bnNew;
-        bnNew.SetCompact(pindexLast->nBits);
-
-        int64_t nInterval = nTargetTimespan / nTargetSpacing;
-        bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
-        bnNew /= ((nInterval + 1) * nTargetSpacing);
-
-        if (bnNew <= 0 || bnNew > bnTargetLimit)
-            bnNew = bnTargetLimit;
-
-        return bnNew.GetCompact();
-    }
-
     for (unsigned int i = 1; BlockReading && BlockReading->nHeight > 0; i++) {
         if (PastBlocksMax > 0 && i > PastBlocksMax) {
             break;
@@ -90,7 +58,7 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast)
 
     uint256 bnNew(PastDifficultyAverage);
 
-    int64_t _nTargetTimespan = CountBlocks * Params().TargetSpacing();
+    int64_t _nTargetTimespan = CountBlocks * targetSpacing;
 
     if (nActualTimespan < _nTargetTimespan / 3)
         nActualTimespan = _nTargetTimespan / 3;
@@ -101,16 +69,53 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast)
     bnNew *= nActualTimespan;
     bnNew /= _nTargetTimespan;
 
-    if (bnNew > Params().ProofOfWorkLimit()) {
-        bnNew = Params().ProofOfWorkLimit();
+    if (bnNew > workLimit) {
+        bnNew = workLimit;
     }
 
-    return bnNew.GetCompact();	
+    return bnNew.GetCompact();
 }
-	
+unsigned int Get2BlocksNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader* pblock)
+{
+    uint256 bnTargetLimit = (~uint256(0) >> 24);
+    int64_t nTargetSpacing = 60;
+    int64_t nTargetTimespan = 60 * 40;
+
+    int64_t nActualSpacing = 0;
+    if (pindexLast->nHeight != 0)
+        nActualSpacing = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
+
+    if (nActualSpacing < 0)
+        nActualSpacing = 1;
+
+    // ppcoin: target change every block
+    // ppcoin: retarget with exponential moving toward target spacing
+    uint256 bnNew;
+    bnNew.SetCompact(pindexLast->nBits);
+
+    int64_t nInterval = nTargetTimespan / nTargetSpacing;
+    bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
+    bnNew /= ((nInterval + 1) * nTargetSpacing);
+
+    if (bnNew <= 0 || bnNew > bnTargetLimit)
+        bnNew = bnTargetLimit;
+
+    return bnNew.GetCompact();
+}
+
+
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader* pblock)
 {
-	return DarkGravityWave(pindexLast);
+    if (pindexLast == NULL || pindexLast->nHeight == 0 || pindexLast->nHeight < 24) {
+        return Params().ProofOfWorkLimit().GetCompact();
+    }
+    if (pindexLast->nHeight > Params().DGW_POS_FORK_BLOCK()) {
+        return GetDGWNextWorkRequired(pindexLast, pblock, Params().getPOSTargetSpacing(), Params().getPOSWorkLimit());
+    } else if (pindexLast->nHeight > Params().LAST_POW_BLOCK()) {
+        return Get2BlocksNextWorkRequired(pindexLast, pblock);
+    }
+
+    return GetDGWNextWorkRequired(pindexLast, pblock, Params().TargetSpacing(), Params().ProofOfWorkLimit());
 }
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)

@@ -117,6 +117,9 @@ public:
     /** Height or Time Based Activations **/
     int ModifierUpgradeBlock() const { return nModifierUpdateBlock; }
     int LAST_POW_BLOCK() const { return nLastPOWBlock; }
+    int DGW_POS_FORK_BLOCK() const { return nPOSDGWForkBlock; }
+    int64_t getPOSTargetSpacing() const { return nPOSTargetSpacing; }
+    const uint256& getPOSWorkLimit() const { return bnPOSWorkLimit; }
     int Zerocoin_StartHeight() const { return nZerocoinStartHeight; }
     int Zerocoin_Block_EnforceSerialRange() const { return nBlockEnforceSerialRange; }
     int Zerocoin_Block_RecalculateAccumulators() const { return nBlockRecalculateAccumulators; }
@@ -142,6 +145,7 @@ protected:
     //! Raw pub key bytes for the broadcast alert signing key.
     std::vector<unsigned char> vAlertPubKey;
     int nDefaultPort;
+    uint256 bnPOSWorkLimit;
 	int nMasternodeCollateralAmt;
     uint256 bnProofOfWorkLimit;
     int nMaxReorganizationDepth;
@@ -151,6 +155,8 @@ protected:
     int nToCheckBlockUpgradeMajority;
     int64_t nTargetTimespan;
     int64_t nTargetSpacing;
+    int64_t nPOSTargetSpacing;
+    int nPOSDGWForkBlock;
     int nLastPOWBlock;
     int nMasternodeCountDrift;
     int nMaturity;
