@@ -81,7 +81,7 @@ bool fVerifyingBlocks = false;
 unsigned int nCoinCacheSize = 5000;
 bool fAlerts = DEFAULT_ALERTS;
 
-unsigned int nStakeMinAge = 3 * 60 * 60; // 3 Hours
+unsigned int nStakeMinAge = 1 * 60 * 60; // 1 Hours
 int64_t nReserveBalance = 0;
 
 /** Fees smaller than this (in duffs) are considered zero fee (for relaying and mining)

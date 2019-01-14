@@ -9,7 +9,7 @@
 #include "base58.h"
 #include "chainparams.h"
 #include "libzerocoin/Params.h"
-#include "net.h" a
+#include "net.h"
 #include "random.h"
 #include "util.h"
 #include "utilstrencodings.h"
