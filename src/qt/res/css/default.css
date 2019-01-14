@@ -2,7 +2,7 @@
 /* Global color codes:                                                                  */
 /*   main-orange:       #fab43b                                                           */
 /*                                                                                      */
-/* lighter blue:      #077aba                                                           */
+/* lighter blue:      #fab43b                                                           */
 /*                                                                                      */                                         
 /****************************************************************************************/
 
@@ -49,7 +49,7 @@ color:#000;
 }
 
 QToolBar {
-background-color: qlineargradient(y1:0, y2: 1, stop: 0 #fab43b, stop: 0.75 #077aba, stop: 0.99 #b9d7e7, stop: 1 #ffffff);
+background-color: qlineargradient(y1:0, y2: 1, stop: 0 #fab43b, stop: 0.75 #fab43b, stop: 0.99 #b9d7e7, stop: 1 #ffffff);
 border:0px solid #333;
 padding:1;
 margin:0;
