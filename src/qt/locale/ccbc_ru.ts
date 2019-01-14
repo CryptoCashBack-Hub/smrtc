@@ -62,12 +62,12 @@
         <translation>Адреса получения</translation>
     </message>
     <message>
-        <source>These are your Ccbc addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Это ваши Ccbc-адреса для отправки платежей. Перед отправкой монет всегда проверяйте сумму и адрес получателя.</translation>
+        <source>These are your CCBC addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Это ваши CCBC-адреса для отправки платежей. Перед отправкой монет всегда проверяйте сумму и адрес получателя.</translation>
     </message>
     <message>
-        <source>These are your Ccbc addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Это ваши Ccbc-адреса для получения платежей. Для каждой транзакции рекомендуется использовать новый адрес получения.</translation>
+        <source>These are your CCBC addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Это ваши CCBC-адреса для получения платежей. Для каждой транзакции рекомендуется использовать новый адрес получения.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -172,8 +172,8 @@
         <translation>Подтверждение шифрования кошелька</translation>
     </message>
     <message>
-        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
-        <translation>Ccbc сейчас закроется, чтобы завершить процесс шифрования. Помните, что шифрование вашего кошелька не может полностью защитить ваши Ccbc от кражи с использованием вредоносного ПО.</translation>
+        <source>CCBC will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
+        <translation>CCBC сейчас закроется, чтобы завершить процесс шифрования. Помните, что шифрование вашего кошелька не может полностью защитить ваши CCBC от кражи с использованием вредоносного ПО.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -235,16 +235,16 @@
         <translation>&amp;BIP 38 Шифрование</translation>
     </message>
     <message>
-        <source>Enter a Ccbc Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Введите Ccbc адрес, которым вы хотите зашифровать, используя BIP 38. Введите пароль в среднем поле. Нажмите "Зашифровать", чтобы создать зашиврованный секретный ключ.</translation>
+        <source>Enter a CCBC Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <translation>Введите CCBC адрес, которым вы хотите зашифровать, используя BIP 38. Введите пароль в среднем поле. Нажмите "Зашифровать", чтобы создать зашиврованный секретный ключ.</translation>
     </message>
     <message>
         <source>Address:</source>
         <translation>Адрес:</translation>
     </message>
     <message>
-        <source>The Ccbc address to sign the message with</source>
-        <translation>Адрес Ccbc для подписи сообщения с помощью</translation>
+        <source>The CCBC address to sign the message with</source>
+        <translation>Адрес CCBC для подписи сообщения с помощью</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -275,8 +275,8 @@
         <translation>Копировать текущую подпись в системный буфер обмена</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Ccbc address</source>
-        <translation>Подпишите сообщение, чтобы подтвердить свой адрес Ccbc</translation>
+        <source>Sign the message to prove you own this CCBC address</source>
+        <translation>Подпишите сообщение, чтобы подтвердить свой адрес CCBC</translation>
     </message>
     <message>
         <source>Encrypt &amp;Key</source>
@@ -299,12 +299,12 @@
         <translation>Введите зашифрованный с помощью BIP 38 секретный ключ. Введите секретную фразу в среднем окне. Нажмите Дешифровать Ключ чтобы создать секретный ключ. Нажав на Импортировать Адрес после дешифровки, вы добавите секретный ключ к кошельку.</translation>
     </message>
     <message>
-        <source>The Ccbc address the message was signed with</source>
-        <translation>Адрес Ccbc, которым подписано сообщение</translation>
+        <source>The CCBC address the message was signed with</source>
+        <translation>Адрес CCBC, которым подписано сообщение</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
-        <translation>Проверте сообщение, чтобы убедиться, что оно было подписано указанным Ccbc адресом </translation>
+        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
+        <translation>Проверте сообщение, чтобы убедиться, что оно было подписано указанным CCBC адресом </translation>
     </message>
     <message>
         <source>Decrypt &amp;Key</source>
@@ -594,16 +594,16 @@
         <translation>Панель вкладок</translation>
     </message>
     <message>
-        <source>Ccbc Core</source>
-        <translation>Ccbc Core</translation>
+        <source>CCBC Core</source>
+        <translation>CCBC Core</translation>
     </message>
     <message>
-        <source>Send coins to a Ccbc address</source>
-        <translation>Отправить монеты на Ccbc адрес</translation>
+        <source>Send coins to a CCBC address</source>
+        <translation>Отправить монеты на CCBC адрес</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and ccbc: URIs)</source>
-        <translation>Запросить платежи (генерирует QR-код и Ccbc: URI)</translation>
+        <translation>Запросить платежи (генерирует QR-код и CCBC: URI)</translation>
     </message>
     <message>
         <source>&amp;Privacy</source>
@@ -622,24 +622,24 @@
         <translation>Обзор мастернод</translation>
     </message>
     <message>
-        <source>&amp;About Ccbc Core</source>
-        <translation>&amp;О Ccbc Core</translation>
+        <source>&amp;About CCBC Core</source>
+        <translation>&amp;О CCBC Core</translation>
     </message>
     <message>
-        <source>Show information about Ccbc Core</source>
-        <translation>Показать информацию о Ccbc Core</translation>
+        <source>Show information about CCBC Core</source>
+        <translation>Показать информацию о CCBC Core</translation>
     </message>
     <message>
-        <source>Modify configuration options for Ccbc</source>
-        <translation>Изменение параметров конфигурации Ccbc</translation>
+        <source>Modify configuration options for CCBC</source>
+        <translation>Изменение параметров конфигурации CCBC</translation>
     </message>
     <message>
-        <source>Sign messages with your Ccbc addresses to prove you own them</source>
-        <translation>Подписывайте сообщения вашими Ccbc адресами, чтобы доказать, что вы их владелец</translation>
+        <source>Sign messages with your CCBC addresses to prove you own them</source>
+        <translation>Подписывайте сообщения вашими CCBC адресами, чтобы доказать, что вы их владелец</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Ccbc addresses</source>
-        <translation>Проверте сообщения, чтобы убедиться, что они были подписаны указанным Ccbc адресом </translation>
+        <source>Verify messages to ensure they were signed with specified CCBC addresses</source>
+        <translation>Проверте сообщения, чтобы убедиться, что они были подписаны указанным CCBC адресом </translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -670,8 +670,8 @@
         <translation>Открыть файл настроек мастернод</translation>
     </message>
     <message>
-        <source>Open a Ccbc: URI or payment request</source>
-        <translation>Открыть Ccbc: URI или запрос платежа</translation>
+        <source>Open a CCBC: URI or payment request</source>
+        <translation>Открыть CCBC: URI или запрос платежа</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -682,12 +682,12 @@
         <translation>Окно обзора блока</translation>
     </message>
     <message>
-        <source>Show the Ccbc Core help message to get a list with possible Ccbc command-line options</source>
-        <translation>Смотрите помощь к программе, чтобы получить документацию ко всем возможным опциям комманды Ccbc</translation>
+        <source>Show the CCBC Core help message to get a list with possible CCBC command-line options</source>
+        <translation>Смотрите помощь к программе, чтобы получить документацию ко всем возможным опциям комманды CCBC</translation>
     </message>
     <message>
-        <source>Ccbc Core client</source>
-        <translation>Клиент Ccbc Core</translation>
+        <source>CCBC Core client</source>
+        <translation>Клиент CCBC Core</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -1110,8 +1110,8 @@ MultiSend: %1</translation>
         <translation>Изменить адрес отправки</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Ccbc address.</source>
-        <translation>Введенный адрес "%1" не является Ccbc адресом.</translation>
+        <source>The entered address "%1" is not a valid CCBC address.</source>
+        <translation>Введенный адрес "%1" не является CCBC адресом.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1156,16 +1156,16 @@ MultiSend: %1</translation>
         <translation>версия</translation>
     </message>
     <message>
-        <source>Ccbc Core</source>
-        <translation>Ccbc Core</translation>
+        <source>CCBC Core</source>
+        <translation>CCBC Core</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-бит)</translation>
     </message>
     <message>
-        <source>About Ccbc Core</source>
-        <translation>О Ccbc Core</translation>
+        <source>About CCBC Core</source>
+        <translation>О CCBC Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1211,16 +1211,16 @@ MultiSend: %1</translation>
         <translation>Добро пожаловать</translation>
     </message>
     <message>
-        <source>Welcome to Ccbc Core.</source>
-        <translation>Добро пожаловать в Ccbc Core.</translation>
+        <source>Welcome to CCBC Core.</source>
+        <translation>Добро пожаловать в CCBC Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where Ccbc Core will store its data.</source>
-        <translation>Поскольку это первый запуск программы, вы можете выбрать, где будут храниться данные Ccbc Core.</translation>
+        <source>As this is the first time the program is launched, you can choose where CCBC Core will store its data.</source>
+        <translation>Поскольку это первый запуск программы, вы можете выбрать, где будут храниться данные CCBC Core.</translation>
     </message>
     <message>
-        <source>Ccbc Core will download and store a copy of the Ccbc block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>Ccbc Core загрузит и сохранит копию цепочки блоков Ccbc. Каталог будет занимать около %1GB и со временем размер будет увеличиваться. Кроме того, в этом каталоге будет храниться кошелек.</translation>
+        <source>CCBC Core will download and store a copy of the CCBC block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>CCBC Core загрузит и сохранит копию цепочки блоков CCBC. Каталог будет занимать около %1GB и со временем размер будет увеличиваться. Кроме того, в этом каталоге будет храниться кошелек.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1231,8 +1231,8 @@ MultiSend: %1</translation>
         <translation>Использовать другой каталог данных:</translation>
     </message>
     <message>
-        <source>Ccbc Core</source>
-        <translation>Ccbc Core</translation>
+        <source>CCBC Core</source>
+        <translation>CCBC Core</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1373,12 +1373,12 @@ MultiSend: %1</translation>
         <translation>Введите адрес для отправки</translation>
     </message>
     <message>
-        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other Ccbc addresses after it matures.
-To Add: enter percentage to give and Ccbc address to add to the MultiSend vector.
+        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other CCBC addresses after it matures.
+To Add: enter percentage to give and CCBC address to add to the MultiSend vector.
 To Delete: Enter address to delete and press delete.
 MultiSend will not be activated unless you have clicked Activate</source>
-        <translation>MultiSend позволяет вам автоматически отправлять до 100% вознаграждения за мастерноды и хранение, после их созревания, на другие Ccbc адреса.
-Для добавления: введите передаваемый процент и Ccbc адрес для добавления к вектору MultiSend.
+        <translation>MultiSend позволяет вам автоматически отправлять до 100% вознаграждения за мастерноды и хранение, после их созревания, на другие CCBC адреса.
+Для добавления: введите передаваемый процент и CCBC адрес для добавления к вектору MultiSend.
 Для удаления: введите удаляемый адрес и нажмите удалить.
 MultiSend будет неактивен до тех пор, пока вы не нажмете Включить</translation>
     </message>
@@ -1548,16 +1548,16 @@ Please check the address and try again.</source>
         <translation>Настройка Перемешивания</translation>
     </message>
     <message>
-        <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Ccbc's configuration screen.</source>
-        <translation>Перемешивание было успешно выставлено на стандартные значения (%1 и 2 цикла). Вы в любой момент можете это изменить, открыв окно настройки Ccbc.</translation>
+        <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening CCBC's configuration screen.</source>
+        <translation>Перемешивание было успешно выставлено на стандартные значения (%1 и 2 цикла). Вы в любой момент можете это изменить, открыв окно настройки CCBC.</translation>
     </message>
     <message>
-        <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Ccbc's configuration screen.</source>
-        <translation>Перемешивание было успешно выбрано как высокое (%1 и 8 циклов). Вы в любой момент можете это изменить, открыв окно настройки Ccbc.</translation>
+        <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening CCBC's configuration screen.</source>
+        <translation>Перемешивание было успешно выбрано как высокое (%1 и 8 циклов). Вы в любой момент можете это изменить, открыв окно настройки CCBC.</translation>
     </message>
     <message>
-        <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Ccbc's configuration screen.</source>
-        <translation>Перемешивание было успешно выставлено на максимальное (%1 и 16 циклов). Вы в любой момент можете это изменить, открыв окно настройки Ccbc.</translation>
+        <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening CCBC's configuration screen.</source>
+        <translation>Перемешивание было успешно выставлено на максимальное (%1 и 16 циклов). Вы в любой момент можете это изменить, открыв окно настройки CCBC.</translation>
     </message>
 </context>
 <context>
@@ -1618,8 +1618,8 @@ Please check the address and try again.</source>
         <translation>Отключив проведение неподтвержденных изменений все изменения о транзакции &lt;br/&gt;не будут использованы пока транзакция не получит хотя бы одно подтверждение.&lt;br/&gt;Также это влияет на расчет вашего баланса.</translation>
     </message>
     <message>
-        <source>Automatically open the Ccbc client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматически открыть клиентский порт Ccbc через роутер. Ваш роутер должен поддерживать UPnP, а сам сервис должен быть включен.</translation>
+        <source>Automatically open the CCBC client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Автоматически открыть клиентский порт CCBC через роутер. Ваш роутер должен поддерживать UPnP, а сам сервис должен быть включен.</translation>
     </message>
     <message>
         <source>Accept connections from outside</source>
@@ -1638,12 +1638,12 @@ Please check the address and try again.</source>
         <translation>Эксперт</translation>
     </message>
     <message>
-        <source>Automatically start Ccbc after logging in to the system.</source>
-        <translation>Автоматически запускать Ccbc после входа в систему.</translation>
+        <source>Automatically start CCBC after logging in to the system.</source>
+        <translation>Автоматически запускать CCBC после входа в систему.</translation>
     </message>
     <message>
-        <source>&amp;Start Ccbc on system login</source>
-        <translation>&amp;Запускать Ccbc при входе в систему</translation>
+        <source>&amp;Start CCBC on system login</source>
+        <translation>&amp;Запускать CCBC при входе в систему</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1670,8 +1670,8 @@ Please check the address and try again.</source>
         <translation>&amp;Сеть</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting Ccbc.</source>
-        <translation>Здесь можно выставить язык интерфейса. Изменения вступят в силу после перезапуска Ccbc.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting CCBC.</source>
+        <translation>Здесь можно выставить язык интерфейса. Изменения вступят в силу после перезапуска CCBC.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
@@ -1696,8 +1696,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Предпочитаемый номинал авточеканной  монеты  zCCBC</translation>
     </message>
     <message>
-        <source>Connect to the Ccbc network through a SOCKS5 proxy.</source>
-        <translation>Подключиться к сети Ccbc через SOCKS5 прокси.</translation>
+        <source>Connect to the CCBC network through a SOCKS5 proxy.</source>
+        <translation>Подключиться к сети CCBC через SOCKS5 прокси.</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1855,8 +1855,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Награды за хранение и мастерноды, которые еще не *созрели*</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Ccbc network after a connection is established, but this process has not completed yet.</source>
-        <translation>Возможно отображаемая информация устарела. Ваш кошелек автоматически синхронизируется с сетью Ccbc после установки соединения, но этот процесс еще не завершен. </translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the CCBC network after a connection is established, but this process has not completed yet.</source>
+        <translation>Возможно отображаемая информация устарела. Ваш кошелек автоматически синхронизируется с сетью CCBC после установки соединения, но этот процесс еще не завершен. </translation>
     </message>
     <message>
         <source>Unconfirmed transactions to watch-only addresses</source>
@@ -1938,8 +1938,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Не удалось запустить ccbc: обработчик click-to-pay </translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Ccbc address or malformed URI parameters.</source>
-        <translation>URI не интерпретируется! Причиной этому может быть неверный Ccbc адрес или неверные параметеры URI.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid CCBC address or malformed URI parameters.</source>
+        <translation>URI не интерпретируется! Причиной этому может быть неверный CCBC адрес или неверные параметеры URI.</translation>
     </message>
     <message>
         <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
@@ -2028,8 +2028,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Действия Zerocoin </translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Ccbc network after a connection is established, but this process has not completed yet.</source>
-        <translation>Возможно отображаемая информация устарела. Ваш кошелек автоматически синхронизируется с сетью Ccbc после установки соединения, но этот процесс еще не завершен. </translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the CCBC network after a connection is established, but this process has not completed yet.</source>
+        <translation>Возможно отображаемая информация устарела. Ваш кошелек автоматически синхронизируется с сетью CCBC после установки соединения, но этот процесс еще не завершен. </translation>
     </message>
     <message>
         <source>Enter an amount of Phr to convert to zPhr</source>
@@ -2191,8 +2191,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Сумма</translation>
     </message>
     <message>
-        <source>Enter a Ccbc address (e.g. %1)</source>
-        <translation>Введите адрес Ccbc (например %1)</translation>
+        <source>Enter a CCBC address (e.g. %1)</source>
+        <translation>Введите адрес CCBC (например %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -2325,8 +2325,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Блокчейн</translation>
     </message>
     <message>
-        <source>Open the Ccbc debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Открыть протокол отладки Ccbc. Это может занять некоторе время, если файл протокола очень большой.</translation>
+        <source>Open the CCBC debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Открыть протокол отладки CCBC. Это может занять некоторе время, если файл протокола очень большой.</translation>
     </message>
     <message>
         <source>Number of Masternodes</source>
@@ -2486,8 +2486,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Вывод:</translation>
     </message>
     <message>
-        <source>Welcome to the Ccbc RPC console.</source>
-        <translation>Добро пожаловать в окружение Ccbc RPC.</translation>
+        <source>Welcome to the CCBC RPC console.</source>
+        <translation>Добро пожаловать в окружение CCBC RPC.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -2786,8 +2786,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Копировать изменение</translation>
     </message>
     <message>
-        <source>Warning: Invalid Ccbc address</source>
-        <translation>Предупреждение: неправильный Ccbc адрес</translation>
+        <source>Warning: Invalid CCBC address</source>
+        <translation>Предупреждение: неправильный CCBC адрес</translation>
     </message>
     <message>
         <source>and SwiftTX</source>
@@ -2840,8 +2840,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>Ccbc Core is shutting down...</source>
-        <translation>Ccbc Core выключается...</translation>
+        <source>CCBC Core is shutting down...</source>
+        <translation>CCBC Core выключается...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -2851,8 +2851,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <source>The Ccbc address to sign the message with</source>
-        <translation>Адрес Ccbc для подписи сообщения с помощью</translation>
+        <source>The CCBC address to sign the message with</source>
+        <translation>Адрес CCBC для подписи сообщения с помощью</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2875,16 +2875,16 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Копировать текущую подпись в системный буфер обмена</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Ccbc address</source>
-        <translation>Подпишите сообщение, чтобы подтвердить свой адрес Ccbc</translation>
+        <source>Sign the message to prove you own this CCBC address</source>
+        <translation>Подпишите сообщение, чтобы подтвердить свой адрес CCBC</translation>
     </message>
     <message>
-        <source>The Ccbc address the message was signed with</source>
-        <translation>Адрес Ccbc, которым подписано сообщение</translation>
+        <source>The CCBC address the message was signed with</source>
+        <translation>Адрес CCBC, которым подписано сообщение</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
-        <translation>Проверте сообщение, чтобы убедиться, что оно было подписано указанным Ccbc адресом </translation>
+        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
+        <translation>Проверте сообщение, чтобы убедиться, что оно было подписано указанным CCBC адресом </translation>
     </message>
     <message>
         <source>Reset all sign message fields</source>
@@ -2930,8 +2930,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Ccbc Core</source>
-        <translation>Ccbc Core</translation>
+        <source>CCBC Core</source>
+        <translation>CCBC Core</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -2946,8 +2946,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Разработчики Dash Core</translation>
     </message>
     <message>
-        <source>The Ccbc Core developers</source>
-        <translation>Разработчики Ccbc Core</translation>
+        <source>The CCBC Core developers</source>
+        <translation>Разработчики CCBC Core</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -3239,8 +3239,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Copyright (C) 2014-%i Разработчики Dash Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The Ccbc Core Developers</source>
-        <translation>Copyright (C) 2015-%i Разработчики Ccbc Core</translation>
+        <source>Copyright (C) 2015-%i The CCBC Core Developers</source>
+        <translation>Copyright (C) 2015-%i Разработчики CCBC Core</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>

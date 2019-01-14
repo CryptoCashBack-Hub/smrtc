@@ -42,8 +42,8 @@ void CScheduler::serviceQueue()
                 newTaskScheduled.wait(lock);
             }
 
-                // Wait until either there is a new task, or until
-                // the time of the first item on the queue:
+            // Wait until either there is a new task, or until
+            // the time of the first item on the queue:
 
 // wait_until needs boost 1.50 or later; older versions have timed_wait:
 #if BOOST_VERSION < 105000
@@ -119,8 +119,8 @@ void CScheduler::scheduleEvery(CScheduler::Function f, int64_t deltaSeconds)
     scheduleFromNow(boost::bind(&Repeat, this, f, deltaSeconds), deltaSeconds);
 }
 
-size_t CScheduler::getQueueInfo(boost::chrono::system_clock::time_point& first,
-    boost::chrono::system_clock::time_point& last) const
+size_t CScheduler::getQueueInfo(boost::chrono::system_clock::time_point &first,
+                             boost::chrono::system_clock::time_point &last) const
 {
     boost::unique_lock<boost::mutex> lock(newTaskMutex);
     size_t result = taskQueue.size();

@@ -115,8 +115,8 @@
         <translation>Alt+P</translation>
     </message>
     <message>
-        <source>The Ccbc address the message was signed with</source>
-        <translation>Ccbc adresa s kojom je potpisana poruka</translation>
+        <source>The CCBC address the message was signed with</source>
+        <translation>CCBC adresa s kojom je potpisana poruka</translation>
     </message>
     <message>
         <source>Allowed: 0-9,a-z,A-Z,</source>
@@ -150,8 +150,8 @@
         <translation>Otvori konfiguracijsku datoteku</translation>
     </message>
     <message>
-        <source>Ccbc Core</source>
-        <translation>Ccbc Core</translation>
+        <source>CCBC Core</source>
+        <translation>CCBC Core</translation>
     </message>
     <message>
         <source>&amp;Privacy</source>
@@ -162,8 +162,8 @@
         <translation>&amp;BIP38 alat</translation>
     </message>
     <message>
-        <source>Ccbc Core client</source>
-        <translation>Ccbc Core klijent</translation>
+        <source>CCBC Core client</source>
+        <translation>CCBC Core klijent</translation>
     </message>
     <message>
         <source>Error</source>
@@ -256,15 +256,15 @@
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>Ccbc Core</source>
-        <translation>Ccbc Core</translation>
+        <source>CCBC Core</source>
+        <translation>CCBC Core</translation>
     </message>
     </context>
 <context>
     <name>Intro</name>
     <message>
-        <source>Ccbc Core</source>
-        <translation>Ccbc Core</translation>
+        <source>CCBC Core</source>
+        <translation>CCBC Core</translation>
     </message>
     <message>
         <source>Error</source>
@@ -597,8 +597,8 @@
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>Ccbc Core is shutting down...</source>
-        <translation>Ccbc Core se gasi...</translation>
+        <source>CCBC Core is shutting down...</source>
+        <translation>CCBC Core se gasi...</translation>
     </message>
     </context>
 <context>
@@ -620,8 +620,8 @@
         <translation>Alt+P</translation>
     </message>
     <message>
-        <source>The Ccbc address the message was signed with</source>
-        <translation>Ccbc adresa s kojom je potpisana poruka</translation>
+        <source>The CCBC address the message was signed with</source>
+        <translation>CCBC adresa s kojom je potpisana poruka</translation>
     </message>
     <message>
         <source>Message signed.</source>
@@ -635,8 +635,8 @@
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Ccbc Core</source>
-        <translation>Ccbc Core</translation>
+        <source>CCBC Core</source>
+        <translation>CCBC Core</translation>
     </message>
     <message>
         <source>Version %1</source>

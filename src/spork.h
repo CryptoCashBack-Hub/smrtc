@@ -1,5 +1,6 @@
-// Copyright (c) 2014-2016 The Dash developers
-// Copyright (c) 2016-2017 The CCBC developers
+// Copyright (c) 2014-2015 The Dash developers
+// Copyright (c) 2015-2018 The PIVX developers
+// Copyright (c) 2018-2019 The CCBC developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -59,8 +60,8 @@ Sporks 11,12, and 16 to be removed with 1st zerocoin release
 #define SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2_DEFAULT 4070908800    //This was turned on by TFinch
 #define SPORK_16_ZEROCOIN_MAINTENANCE_MODE_DEFAULT 4070908800     //OFF 01/01/2099 @ 12:00am (UTC)
 #define SPORK_17_TREASURY_PAYMENT_ENFORCEMENT_DEFAULT 4070908800  //OFF 01/01/2099 @ 12:00am (UTC)
-#define SPORK_18_REVIVE_PAYMENT_ENFORCEMENT_DEFAULT 4070908800    //Turned on by TFinch 1/2/2019 block 148917 and checkpoint made
-#define SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3_DEFAULT 4070908800    //Turned on by TFinch at block 145k
+#define SPORK_18_REVIVE_PAYMENT_ENFORCEMENT_DEFAULT 4070908800    //OFF This will be turned on if Admin in AQX is not active on 1/1/2019
+#define SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3_DEFAULT 4070908800    //OFF 01/01/2099 @ 12:00am (UTC)
 
 class CSporkMessage;
 class CSporkManager;

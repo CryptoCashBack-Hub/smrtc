@@ -1,13 +1,14 @@
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2015-2018 The PIVX developers
+// Copyright (c) 2018-2019 The CCBC developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "obfuscation.h"
 #include "coincontrol.h"
 #include "init.h"
 #include "main.h"
 #include "masternodeman.h"
-#include "obfuscation.h"
 #include "script/sign.h"
 #include "swifttx.h"
 #include "ui_interface.h"
@@ -1380,7 +1381,7 @@ void CObfuscationPool::ClearLastMessage()
 //
 bool CObfuscationPool::DoAutomaticDenominating(bool fDryRun)
 {
-    return false; // Disabled until Obfuscation is completely removed
+    return false;  // Disabled until Obfuscation is completely removed
 
     if (!fEnableZeromint) return false;
     if (fMasterNode) return false;
@@ -2111,7 +2112,7 @@ bool CObfuScationSigner::IsVinAssociatedWithPubkey(CTxIn& vin, CPubKey& pubkey)
     uint256 hash;
     if (GetTransaction(vin.prevout.hash, txVin, hash, true)) {
         BOOST_FOREACH (CTxOut out, txVin.vout) {
-            if (out.nValue == 5000 * COIN) { // Was 5000
+            if (out.nValue == 25000 * COIN) { // Was 5000
                 if (out.scriptPubKey == payee2) return true;
             }
         }

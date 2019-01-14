@@ -8,18 +8,17 @@
 /**
  * An RAII-style reverse lock. Unlocks on construction and locks on destruction.
  */
-template <typename Lock>
+template<typename Lock>
 class reverse_lock
 {
 public:
-    explicit reverse_lock(Lock& lock) : lock(lock)
-    {
+
+    explicit reverse_lock(Lock& lock) : lock(lock) {
         lock.unlock();
         lock.swap(templock);
     }
 
-    ~reverse_lock()
-    {
+    ~reverse_lock() {
         templock.lock();
         templock.swap(lock);
     }

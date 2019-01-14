@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#  ccbcd The Ccbc core server.
+#  ccbcd The CCBC core server.
 #
 #
 # chkconfig: 345 80 20

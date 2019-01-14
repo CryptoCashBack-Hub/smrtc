@@ -226,10 +226,10 @@ QT_TRANSLATE_NOOP("ccbc-core", ""
 QT_TRANSLATE_NOOP("ccbc-core", ""
 "You must specify a masternodeprivkey in the configuration. Please see "
 "documentation for help."),
-QT_TRANSLATE_NOOP("ccbc-core", "(5510 could be used only on mainnet)"),
+QT_TRANSLATE_NOOP("ccbc-core", "(5520 could be used only on mainnet)"),
 QT_TRANSLATE_NOOP("ccbc-core", "(default: %s)"),
 QT_TRANSLATE_NOOP("ccbc-core", "(default: 1)"),
-QT_TRANSLATE_NOOP("ccbc-core", "(must be 5510 for mainnet)"),
+QT_TRANSLATE_NOOP("ccbc-core", "(must be 5520 for mainnet)"),
 QT_TRANSLATE_NOOP("ccbc-core", "<category> can be:"),
 QT_TRANSLATE_NOOP("ccbc-core", "Accept command line and JSON-RPC commands"),
 QT_TRANSLATE_NOOP("ccbc-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),

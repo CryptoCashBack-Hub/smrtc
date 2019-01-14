@@ -1,8 +1,8 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 The CCBC developers
+// Copyright (c) 2015-2018 The PIVX developers
+// Copyright (c) 2018-2019 The CCBC developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -55,18 +55,18 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 //    timestamp before)
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
-    boost::assign::map_list_of
+boost::assign::map_list_of
 
-    (0, uint256("0xa9f081734c579a25872ce366d5520482755d26ff3db73fbe7bdd4e973bc0e173"))
-	(100000, uint256("0x743cd780b4ab590106ca9855a90e3ce75eec935f2727e407bfe0777181e7e400"))
-	(150000, uint256("0xe2ab1c328e6445dd34ce2211b022bbe665a7e9c7173f1921660e7c8297c52565")); //When spork 18 was turned on
+(0, uint256("0xa9f081734c579a25872ce366d5520482755d26ff3db73fbe7bdd4e973bc0e173"))
+(100000, uint256("0x743cd780b4ab590106ca9855a90e3ce75eec935f2727e407bfe0777181e7e400"))
+(150000, uint256("0xe2ab1c328e6445dd34ce2211b022bbe665a7e9c7173f1921660e7c8297c52565")); //When spork 18 was turned on
 
-	static const Checkpoints::CCheckpointData data = {
+static const Checkpoints::CCheckpointData data = {
 	&mapCheckpoints,
-    1546789413, // * UNIX timestamp of last checkpoint block
-    306249,     // * total number of transactions between genesis and last checkpoint
+	1546789413, // * UNIX timestamp of last checkpoint block
+	306249,     // * total number of transactions between genesis and last checkpoint
 				//   (the tx=... number in the SetBestChain debug.log lines)
-	2000        // * estimated number of transactions per day after checkpoint, was 2000
+				2000        // * estimated number of transactions per day after checkpoint, was 2000
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
@@ -160,7 +160,7 @@ public:
 		genesis.nNonce = 647688;
 
 		nEnforceNewSporkKey = 1546300800; //!> Sporks signed after (GMT): Tuesday, Jan 1, 2018 12:00:00 AM GMT must use the new spork key
-        nRejectOldSporkKey = 1548979200;  //!> Fully reject old spork key after (GMT): Friday, Feb 1, 2018 12:00:00 AM
+		nRejectOldSporkKey = 1548979200;  //!> Fully reject old spork key after (GMT): Friday, Feb 1, 2018 12:00:00 AM
 
 
 		hashGenesisBlock = genesis.GetHash();
@@ -195,8 +195,8 @@ public:
 
 		nPoolMaxTransactions = 3;
 
-        strSporkKey = "0257aa5bdba5b2458ac8acb5eb80277cee5c69e21a55299b5d7ac506c49d958984";
-        strSporkKeyOld = "030262a2a0679d01ab026d375c42b0a4122477123631b870e09665526c322c8899";
+		strSporkKey = "0257aa5bdba5b2458ac8acb5eb80277cee5c69e21a55299b5d7ac506c49d958984";
+		strSporkKeyOld = "030262a2a0679d01ab026d375c42b0a4122477123631b870e09665526c322c8899";
 
 		strObfuscationPoolDummyAddress = "XCNAsFGy8k7amqRG26ikKyfVDwK8585Z6b";
 		nStartMasternodePayments = 1534438799;

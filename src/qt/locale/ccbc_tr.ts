@@ -62,12 +62,12 @@
         <translation>Alıcı Adres</translation>
     </message>
     <message>
-        <source>These are your Ccbc addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Bunlar ödemeleri göndermek için olan Ccbc adreslerinizdir.Coinleri göndermeden önce her zaman gönderilen miktarı ve adresi kontrol edin</translation>
+        <source>These are your CCBC addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Bunlar ödemeleri göndermek için olan CCBC adreslerinizdir.Coinleri göndermeden önce her zaman gönderilen miktarı ve adresi kontrol edin</translation>
     </message>
     <message>
-        <source>These are your Ccbc addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Bunlar ödemeleri almak için olan Ccbc adreslerinizdirHer işlem için yeni bir adres kullanmanız önerilir.</translation>
+        <source>These are your CCBC addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Bunlar ödemeleri almak için olan CCBC adreslerinizdirHer işlem için yeni bir adres kullanmanız önerilir.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -176,8 +176,8 @@
         <translation>cüzdan şifrelemesini onayla</translation>
     </message>
     <message>
-        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
-        <translation>Ccbc şifreleme işlemini tamamlamak için şimdi kapanacaktır. Cüzdanınızı şifrelemenin, CCBC'lerinizi bilgisayarınıza bulaşan kötücül yazılımlar tarafından çalınmasına tamamen engelleyemediğini unutmayın</translation>
+        <source>CCBC will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
+        <translation>CCBC şifreleme işlemini tamamlamak için şimdi kapanacaktır. Cüzdanınızı şifrelemenin, CCBC'lerinizi bilgisayarınıza bulaşan kötücül yazılımlar tarafından çalınmasına tamamen engelleyemediğini unutmayın</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -242,8 +242,8 @@
         <translation>&amp;BIP 38 şifrele</translation>
     </message>
     <message>
-        <source>Enter a Ccbc Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>BIP 38'i kullanarak şifrelemek istediğiniz bir Ccbc Adresi girin. Orta kutuya bir parola girin. Şifreli özel anahtarı hesaplamak için şifreleme tuşuna basın.
+        <source>Enter a CCBC Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <translation>BIP 38'i kullanarak şifrelemek istediğiniz bir CCBC Adresi girin. Orta kutuya bir parola girin. Şifreli özel anahtarı hesaplamak için şifreleme tuşuna basın.
 </translation>
     </message>
     <message>
@@ -251,8 +251,8 @@
         <translation>adres</translation>
     </message>
     <message>
-        <source>The Ccbc address to sign the message with</source>
-        <translation>Ile mesaj imzalamak için Ccbc adresi
+        <source>The CCBC address to sign the message with</source>
+        <translation>Ile mesaj imzalamak için CCBC adresi
 </translation>
     </message>
     <message>
@@ -289,8 +289,8 @@
 </translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Ccbc address</source>
-        <translation>Bu Ccbc adresinin sahibi olduğunuzu kanıtlamak için mesajı imzala
+        <source>Sign the message to prove you own this CCBC address</source>
+        <translation>Bu CCBC adresinin sahibi olduğunuzu kanıtlamak için mesajı imzala
 </translation>
     </message>
     <message>
@@ -316,12 +316,12 @@
         <translation>BIP 38 şifreli özel anahtarını girin. Orta kutuya şifreyi  girin. Özel anahtarı hesaplamak için Anahtarın Çözülmesini tıklayın. Anahtar çözüldükten sonra 'Alma Adresi'ni tıklamak, bu özel anahtarı cüzdana ekleyecektir.</translation>
     </message>
     <message>
-        <source>The Ccbc address the message was signed with</source>
-        <translation>Mesajın imzalandığı Ccbc adresi</translation>
+        <source>The CCBC address the message was signed with</source>
+        <translation>Mesajın imzalandığı CCBC adresi</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
-        <translation>Belirtilen Ccbc adresi ile imzalanmış olduğundan emin olmak için iletiyi doğrulayın</translation>
+        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
+        <translation>Belirtilen CCBC adresi ile imzalanmış olduğundan emin olmak için iletiyi doğrulayın</translation>
     </message>
     <message>
         <source>Decrypt &amp;Key</source>
@@ -613,12 +613,12 @@
         <translation>Sekme tablosu</translation>
     </message>
     <message>
-        <source>Ccbc Core</source>
-        <translation>Ccbc CORE</translation>
+        <source>CCBC Core</source>
+        <translation>CCBC CORE</translation>
     </message>
     <message>
-        <source>Send coins to a Ccbc address</source>
-        <translation>Koinleri Ccbc adresine gönder</translation>
+        <source>Send coins to a CCBC address</source>
+        <translation>Koinleri CCBC adresine gönder</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and ccbc: URIs)</source>
@@ -637,24 +637,24 @@
         <translation>Masternodları ara</translation>
     </message>
     <message>
-        <source>&amp;About Ccbc Core</source>
+        <source>&amp;About CCBC Core</source>
         <translation>Pıvx core Hakkında</translation>
     </message>
     <message>
-        <source>Show information about Ccbc Core</source>
+        <source>Show information about CCBC Core</source>
         <translation>Pıvx Core hakkında bilgi göster</translation>
     </message>
     <message>
-        <source>Modify configuration options for Ccbc</source>
-        <translation>Ccbc için yapılandırma seçeneklerini değiştirin</translation>
+        <source>Modify configuration options for CCBC</source>
+        <translation>CCBC için yapılandırma seçeneklerini değiştirin</translation>
     </message>
     <message>
-        <source>Sign messages with your Ccbc addresses to prove you own them</source>
-        <translation>Sahip olduğunuzu kanıtlamak için mesajlarınızı Ccbc adresleriyle imzalayın</translation>
+        <source>Sign messages with your CCBC addresses to prove you own them</source>
+        <translation>Sahip olduğunuzu kanıtlamak için mesajlarınızı CCBC adresleriyle imzalayın</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Ccbc addresses</source>
-        <translation>Belirtilen Ccbc adresleriyle imzalanmış olduklarından emin olmak için iletileri doğrulayın</translation>
+        <source>Verify messages to ensure they were signed with specified CCBC addresses</source>
+        <translation>Belirtilen CCBC adresleriyle imzalanmış olduklarından emin olmak için iletileri doğrulayın</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -686,8 +686,8 @@
         <translation>Açık Masternode yapılandırma dosyası</translation>
     </message>
     <message>
-        <source>Open a Ccbc: URI or payment request</source>
-        <translation>Bir Ccbc: URI veya ödeme isteği açın</translation>
+        <source>Open a CCBC: URI or payment request</source>
+        <translation>Bir CCBC: URI veya ödeme isteği açın</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -698,12 +698,12 @@
         <translation>Kaşif penceresini engelle</translation>
     </message>
     <message>
-        <source>Show the Ccbc Core help message to get a list with possible Ccbc command-line options</source>
-        <translation>Olası Ccbc komut satırı seçeneklerine sahip bir liste almak için Ccbc Core yardım mesajını gösterin</translation>
+        <source>Show the CCBC Core help message to get a list with possible CCBC command-line options</source>
+        <translation>Olası CCBC komut satırı seçeneklerine sahip bir liste almak için CCBC Core yardım mesajını gösterin</translation>
     </message>
     <message>
-        <source>Ccbc Core client</source>
-        <translation>Ccbc Core istemci</translation>
+        <source>CCBC Core client</source>
+        <translation>CCBC Core istemci</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -1121,8 +1121,8 @@ Adres: %4</translation>
         <translation>versiyon</translation>
     </message>
     <message>
-        <source>Ccbc Core</source>
-        <translation>Ccbc CORE</translation>
+        <source>CCBC Core</source>
+        <translation>CCBC CORE</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -1144,16 +1144,16 @@ Adres: %4</translation>
         <translation>Hoşgeldiniz</translation>
     </message>
     <message>
-        <source>Welcome to Ccbc Core.</source>
-        <translation>Ccbc Core'a hoşgeldiniz.</translation>
+        <source>Welcome to CCBC Core.</source>
+        <translation>CCBC Core'a hoşgeldiniz.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
         <translation>Varsayılan veri dosyasını kullanınız</translation>
     </message>
     <message>
-        <source>Ccbc Core</source>
-        <translation>Ccbc CORE</translation>
+        <source>CCBC Core</source>
+        <translation>CCBC CORE</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1508,8 +1508,8 @@ Adres: %4</translation>
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <source>The Ccbc address to sign the message with</source>
-        <translation>Ile mesaj imzalamak için Ccbc adresi
+        <source>The CCBC address to sign the message with</source>
+        <translation>Ile mesaj imzalamak için CCBC adresi
 </translation>
     </message>
     <message>
@@ -1538,17 +1538,17 @@ Adres: %4</translation>
 </translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Ccbc address</source>
-        <translation>Bu Ccbc adresinin sahibi olduğunuzu kanıtlamak için mesajı imzala
+        <source>Sign the message to prove you own this CCBC address</source>
+        <translation>Bu CCBC adresinin sahibi olduğunuzu kanıtlamak için mesajı imzala
 </translation>
     </message>
     <message>
-        <source>The Ccbc address the message was signed with</source>
-        <translation>Mesajın imzalandığı Ccbc adresi</translation>
+        <source>The CCBC address the message was signed with</source>
+        <translation>Mesajın imzalandığı CCBC adresi</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
-        <translation>Belirtilen Ccbc adresi ile imzalanmış olduğundan emin olmak için iletiyi doğrulayın</translation>
+        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
+        <translation>Belirtilen CCBC adresi ile imzalanmış olduğundan emin olmak için iletiyi doğrulayın</translation>
     </message>
     <message>
         <source>Reset all sign message fields</source>
@@ -1587,8 +1587,8 @@ Adres: %4</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Ccbc Core</source>
-        <translation>Ccbc CORE</translation>
+        <source>CCBC Core</source>
+        <translation>CCBC CORE</translation>
     </message>
     </context>
 <context>

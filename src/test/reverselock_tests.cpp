@@ -7,8 +7,8 @@
 #include <boost/bind.hpp>
 #include <boost/random/mersenne_twister.hpp>
 #include <boost/random/uniform_int_distribution.hpp>
-#include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
+#include <boost/test/unit_test.hpp>
 
 BOOST_AUTO_TEST_SUITE(reverselock_tests)
 
@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_CASE(reverselock_errors)
     bool failed = false;
     try {
         reverse_lock<boost::unique_lock<boost::mutex> > rlock(lock);
-    } catch (...) {
+    } catch(...) {
         failed = true;
     }
 

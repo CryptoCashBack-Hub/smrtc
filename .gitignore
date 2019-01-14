@@ -6,12 +6,12 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/adultchain
-src/adultchaind
-src/adultchain-cli
-src/adultchain-tx
-src/test/test_adultchain
-src/qt/test/test_adultchain-qt
+src/poseidon
+src/poseidond
+src/poseidon-cli
+src/poseidon-tx
+src/test/test_poseidon
+src/qt/test/test_poseidon-qt
 
 # autoreconf
 Makefile.in
@@ -37,8 +37,8 @@ confdefs.h
 conftest.cpp
 conftest.err
 libtool
-src/config/adultchain-config.h
-src/config/adultchain-config.h.in
+src/config/poseidon-config.h
+src/config/poseidon-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -63,7 +63,7 @@ src/qt/test/moc*.cpp
 *.pyc
 *.o
 *.o-*
-.adultchain
+.poseidon
 *.a
 *.pb.cc
 *.pb.h
@@ -82,12 +82,12 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-adultchain-qt
-adultchain-Qt.app
+poseidon-qt
+poseidon-Qt.app
 
 # Unit-tests
 Makefile.test
-adultchain-qt_test
+poseidon-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -103,7 +103,7 @@ build
 #lcov
 *.gcno
 /*.info
-test_adultchain.coverage/
+test_poseidon.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -128,73 +128,11 @@ CMakeLists.txt
 cmake-build-debug
 config.log
 config.status
-/.vs/ccbc/v15/Browse.VC.db
-/.vs/ccbc/v15/Browse.VC.opendb
-/.vs/ProjectSettings.json
-/.vs/slnx.sqlite
-/.vs/ccbc/v15/.suo
-/.vs/VSWorkspaceState.json
-.vs/ccbc/v15/ipch/AutoPCH/265c25126fc6063c/GUIUTIL.ipch
-.vs/ccbc/v15/ipch/AutoPCH/3fc496d53ea39c11/BLOCKEXPLORER.ipch
-.vs/ccbc/v15/ipch/AutoPCH/5296bec56a7191ec/MASTERNODEMAN.ipch
-.vs/ccbc/v15/ipch/AutoPCH/6883191c1916ca26/AMOUNT.ipch
-.vs/ccbc/v15/ipch/AutoPCH/8d46eca7c6902300/INIT.ipch
-.vs/CCBC/v15/.suo
-.vs/CCBC/v15/Browse.VC.db
-.vs/CCBC/v15/Browse.VC.opendb
-.vs/CCBC/v15/ipch/AutoPCH/9a0c471bdb4f68f4/BITCOINGUI.ipch
-.vs/CCBC/v15/ipch/AutoPCH/1d92aff8c171a719/PARAMGENERATION.ipch
-.vs/CCBC/v15/ipch/AutoPCH/41c8d4b10f5772ab/PARAMGEN.ipch
-.vs/slnx.sqlite-journal
-.vs/CCBC/v15/ipch/AutoPCH/7a053cc9182e9c0c/GUIUTIL.ipch
-.vs/CCBC/v15/ipch/AutoPCH/7b7311dfb0c553fa/TRANSACTIONRECORD.ipch
-.vs/CCBC/v15/ipch/AutoPCH/d6fbcfae9fa9feb4/PAYMENTSERVER.ipch
-.vs/CCBC/v15/ipch/AutoPCH/aee126f7c87e321c/MASTERNODEMAN.ipch
-.vs/CCBC/v15/ipch/AutoPCH/40dadb20cea31fa0/BITCOINCONSENSUS.ipch
-.vs/CCBC/v15/ipch/AutoPCH/713ff23d09b32455/RPCDUMP.ipch
-.vs/CCBC/v15/ipch/AutoPCH/78d5b3ed1536249e/BITCOINGUI.ipch
-.vs/CCBC/v15/ipch/AutoPCH/cf13db34be1232da/INIT.ipch
-.vs/CCBC/v15/ipch/AutoPCH/fb4db16ec65083b9/OVERVIEWPAGE.ipch
-.vs/config/applicationhost.config
-.vs/CCBC/v15/ipch/AutoPCH/3e4badd4568fd837/NET.ipch
-.vs/CCBC/v15/ipch/AutoPCH/afae31017abe89a9/CLIENTVERSION.ipch
-.vs/CCBC/v15/ipch/AutoPCH/61ec4997d723899f/PRIVACYDIALOG.ipch
-.vs/CCBC/v15/ipch/AutoPCH/ca6d783b7809f7b3/CLIENTVERSION.ipch
-.vs/CCBC/v15/ipch/AutoPCH/f23d24a681de1e86/INFOPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/ef6b69bb996d1ba4/INFORMATIONPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/de790643649912e3/OVERVIEWPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/d86baddcca175037/OVERVIEWPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/d1ef3eb8a21365f3/BITCOINGUI.ipch
-.vs/CCBC/v15/ipch/AutoPCH/cea00ee08fcf5234/BITCOINGUI.ipch
-.vs/CCBC/v15/ipch/AutoPCH/ca08e325c2dfb89e/BITCOINGUI.ipch
-.vs/CCBC/v15/ipch/AutoPCH/b8977c721c017288/BITCOINGUI.ipch
-.vs/CCBC/v15/ipch/AutoPCH/8270e7731e7c780b/OVERVIEWPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/68386e8ece743ee3/OVERVIEWPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/17a9e86b3fc8b7b0/BITCOINGUI.ipch
-.vs/CCBC/v15/ipch/AutoPCH/177e9d87b59f1805/PRIVACYDIALOG.ipch
-.vs/CCBC/v15/ipch/AutoPCH/97cdf6ca85efe74/PROTOCOL.ipch
-.vs/CCBC/v15/ipch/AutoPCH/f836824dc3c97f9a/CCBC-CLI.ipch
-.vs/CCBC/v15/ipch/AutoPCH/9303b40c10f48ee/PROTOCOL.ipch
-.vs/CCBC/v15/ipch/AutoPCH/8e27fc15d56f71b3/STATSPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/8e27fc15d56f71b3/STATSPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/825640fe6bc8e9a9/STATSPAGE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/afe6a5de1e24fc45/PRIVACYDIALOG.ipch
-.vs/CCBC/v15/ipch/AutoPCH/5acf5b26d7b06fe7/RPCCONSOLE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/5bd79ca3052e20c2/NETBASE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/bac51a75c75f068e/RPCNET.ipch
-.vs/CCBC/v15/ipch/AutoPCH/e71fa6fdd808a0a6/GUIUTIL.ipch
-.vs/CCBC/v15/ipch/AutoPCH/47ea7bab20a03820/RPCCLIENT.ipch
-.vs/CCBC/v15/ipch/AutoPCH/da9e7932fe7625fd/SCHEDULER.ipch
-.vs/CCBC/v15/ipch/AutoPCH/ae49745d491d791d/NET.ipch
-.vs/CCBC/v15/ipch/AutoPCH/71712c4febe8e588/NETBASE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/e9765b8c98ac26f0/INIT.ipch
-.vs/CCBC/v15/ipch/AutoPCH/1006f8ed7350b444/RPCNET.ipch
-.vs/CCBC/v15/ipch/AutoPCH/68292eaeca98818a/RPCCLIENT.ipch
-.vs/CCBC/v15/ipch/AutoPCH/6d84e643a43936ed/RPCCONSOLE.ipch
-.vs/CCBC/v15/ipch/AutoPCH/39e800a96980bfb0/TRANSACTIONRECORD.ipch
-.vs/CCBC/v15/ipch/AutoPCH/9e59def887d3f8e9/NOTIFICATOR.ipch
-.vs/CCBC/v15/ipch/AutoPCH/cd51b7a38a10eaac/TRAFFICGRAPHWIDGET.ipch
-.vs/CCBC/v15/ipch/AutoPCH/d04b48ec25101b9c/TRANSACTIONDESC.ipch
-.vs/CCBC/v15/ipch/AutoPCH/db308ae62eb1061d/WALLETMODELTRANSACTION.ipch
-.vs/CCBC/v15/ipch/AutoPCH/e391866a0dc9dccb/BLOCKEXPLORER.ipch
-.vs/CCBC/v15/ipch/AutoPCH/dbdd799cdbf5c2b3/ABITCOINGUI.ipch
+.vs/ccbc/v15/.suo
+.vs/ccbc/v15/Browse.VC.db
+.vs/ccbc/v15/Browse.VC.opendb
+.vs/ccbc/v15/ipch/AutoPCH/6128fda3004a16a7/HISTOGRAM.ipch
+.vs/ccbc/v15/ipch/AutoPCH/867168a137692ac6/MASTERNODEMAN.ipch
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
