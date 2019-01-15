@@ -224,6 +224,7 @@ bool IsBlockValueValid(const CBlock& block, CAmount nExpectedValue, CAmount nMin
     return true;
 }
 
+//Current Working 1.1.0.1
 /*
 bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
 {
@@ -319,7 +320,7 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
 */
 
 // Current Production working code
-/*
+
 bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
 {
     if (!masternodeSync.IsSynced()) { //there is no budget data to use to check anything -- find the longest chain
@@ -409,8 +410,8 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
         return true;
     }
 }
-*/
 
+/*
 bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
 {
     if (!masternodeSync.IsSynced()) { //there is no budget data to use to check anything -- find the longest chain
@@ -553,6 +554,7 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
                 return true;
 	
 }
+*/
 
 
 void FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool fProofOfStake)
