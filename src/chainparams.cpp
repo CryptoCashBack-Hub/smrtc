@@ -257,10 +257,6 @@ public:
     CTestNetParams()
     {
         networkID = CBaseChainParams::TESTNET;
-        vReviveRewardAddress = "SgMdQaxB7woK4dtudTCWcVizCYhBjzcfuv";                                                       //This address will be depreicated when spork 18 is turned on and coins will be burned.
-        vBurnAddress = "SbUrNmfY8pfDVLNtXsedwLTz1QY481hEBn"; 
-		vTreasuryRewardAddress = "SdkfmdG4b3uUt6cFZhXvbyPyAVM6GGmxr9"; //This address is held by Tfinch and will be paying out coins to team and funding of projects.
-
         strNetworkID = "test";
         pchMessageStart[0] = 0x1d;
         pchMessageStart[1] = 0xba;
@@ -274,10 +270,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // Ccbc: 1 day
         nTargetSpacing = 1 * 30;  // Ccbc: 30 sec
-        nPOSTargetSpacing = 1 * 30; // CCBC: 30 sec PoS time
         nLastPOWBlock = 200;
-        nPOSDGWForkBlock = 220000;     // Block where Dark Gravity Wave is enabled for POS 220k
-        nEndOfReviveFailSafe = 3000; // Block where revive address changes.
         nMaturity = 10;
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
@@ -315,7 +308,7 @@ public:
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
 
         fRequireRPCPassword = true;
-        fMiningRequiresPeers = false;
+        fMiningRequiresPeers = true;
         fAllowMinDifficultyBlocks = true;
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
@@ -328,10 +321,6 @@ public:
         nStartMasternodePayments = 1534438799;
         nBudget_Fee_Confirmations = 3; // Number of confirmations for the finalization fee. We have to make this very short
                                        // here because we only have a 8 block finalization window on testnet
-    }
-    const Checkpoints::CCheckpointData& Checkpoints() const
-    {
-        return dataTestnet;
     }
 };
 
