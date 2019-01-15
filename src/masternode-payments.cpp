@@ -537,8 +537,10 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
                 LogPrint("masternode", "Valid revive payment detected %s\n", txNew.ToString().c_str());
                 return true;
             }
+		}
 
-		} else {
+	} 
+		else {
 			//check for masternode payee
 			if (masternodePayments.IsTransactionValid(txNew, nBlockHeight))
 				return true;
@@ -549,7 +551,7 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
 				LogPrint("masternode", "Masternode payment enforcement is disabled, accepting block\n");
 		}
                 return true;
-	}
+	
 }
 
 
