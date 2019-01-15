@@ -33,7 +33,7 @@ static const int GETHEADERS_VERSION = 70000;
 
 
 //Testing purpose
-static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70007
+static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70007;
 static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT = 70008;
 
 //! nTime field added to CAddress, starting with this version;
