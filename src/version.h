@@ -20,9 +20,15 @@ static const int INIT_PROTO_VERSION = 209;
 //! In this version, 'getheaders' was introduced.
 static const int GETHEADERS_VERSION = 70000;
 
-//! disconnect from peers older than this proto version
-static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70007;
-static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT = 70008;
+// Old Protocols To Disconnect
+static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_15 = 70002;
+static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_19 = 70005;
+static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_DGW_20 = 70007;
+
+// Old Protocols After Enforcement Go Here
+static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_15 = 70005;
+static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_19 = 70007;
+static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_DGW_20 = 70008;
 
 //! nTime field added to CAddress, starting with this version;
 //! if possible, avoid requesting addresses nodes older than this

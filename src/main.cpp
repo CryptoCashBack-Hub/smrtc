@@ -6603,39 +6603,27 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 //       it was the one which was commented out
 int ActiveProtocol()
 {
-    // SPORK_14 will remove early wallet adopters of protocol 70002 where max supply didnt have cap and
-    // seesaw masternode amount was set to 5k instead of 25k collateral
-    /*
-	if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
-	return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-	return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
-	*/
-
-    // SPORK_15 will be used after SPORK_14 is used and commented out from being turned off.
-    // SPORK_15 has been turned on and will be commented out to prevent from being turned off.
-    // Approved by TFinch 11/29/2018
-    /*
+    // Version 1.0.0.5
+    // Approved by TFinch 11/29/2018    
 	if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
-	return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-	return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
-	*/
+        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_15;
+        return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_15;
+	
 
-    // SPORK_19 will be used after SPORK_15 is used and commented out from being turned off.
-    // This will be turned on after first of the year to enforce me spork privkey!
-    /*
+    // Version 1.1.0.1
+    // This will be turned on after first of the year to enforce new spork privkey!    
     if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
-        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-    return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
-	*/
+        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_19;
+		return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_19;
+	
 
+	//Version 1.2.0.0
     // Spork 20 is to enforce the fork of DGW and PoS difficulty.
     // This spork has no other use than just another Protocol Enforcement but for sake of
     // Documentation this will be its own spork.
-    if (IsSporkActive(SPORK_20_DGW_ENFORCEMENT) || chainActive.Height() >= Params().DGW_POS_FORK_BLOCK()) {
-        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-    }
-
-    return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+    if (IsSporkActive(SPORK_20_DGW_ENFORCEMENT) || chainActive.Height() >= Params().DGW_POS_FORK_BLOCK()) 
+        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_DGW_20;
+		return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_DGW_20;
 }
 
 // requires LOCK(cs_vRecvMsg)
