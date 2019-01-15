@@ -6663,6 +6663,9 @@ int ActiveProtocol()
         return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
     }
 
+		return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+    }
+
 // requires LOCK(cs_vRecvMsg)
 bool ProcessMessages(CNode* pfrom)
 {
