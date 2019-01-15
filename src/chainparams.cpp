@@ -335,36 +335,6 @@ public:
     }
 };
 
-std::string CChainParams::GetTreasuryRewardAddressAtHeight(int nHeight) const
-{
-    return vTreasuryRewardAddress;
-}
-
-CScript CChainParams::GetTreasuryRewardScriptAtHeight(int nHeight) const
-{
-    CBitcoinAddress address(GetTreasuryRewardAddressAtHeight(nHeight).c_str());
-    assert(address.IsValid());
-    CScript script = GetScriptForDestination(address.Get());
-    return script;
-}
-
-// At the set block revive dev fee address will change to the burn address.
-std::string CChainParams::GetReviveRewardAddressAtHeight(int nHeight) const
-{
-    if (nHeight >= Params().REVIVE_DEV_FEE_CHANGE())
-        return vBurnAddress;
-    else
-        return vReviveRewardAddress;
-}
-
-CScript CChainParams::GetReviveRewardScriptAtHeight(int nHeight) const
-{
-    CBitcoinAddress address(GetReviveRewardAddressAtHeight(nHeight).c_str());
-    assert(address.IsValid());
-    CScript script = GetScriptForDestination(address.Get());
-    return script;
-}
-
 static CTestNetParams testNetParams;
 
 class CRegTestParams : public CTestNetParams
