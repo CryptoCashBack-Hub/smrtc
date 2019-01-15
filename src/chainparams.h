@@ -118,6 +118,7 @@ public:
     int ModifierUpgradeBlock() const { return nModifierUpdateBlock; }
     int LAST_POW_BLOCK() const { return nLastPOWBlock; }
     int DGW_POS_FORK_BLOCK() const { return nPOSDGWForkBlock; }
+
     int64_t getPOSTargetSpacing() const { return nPOSTargetSpacing; }
     const uint256& getPOSWorkLimit() const { return bnPOSWorkLimit; }
     int Zerocoin_StartHeight() const { return nZerocoinStartHeight; }
@@ -129,13 +130,16 @@ public:
     int Zerocoin_AccumulatorStartHeight() const { return nAccumulatorStartHeight; }
 	//Central Collateral Amount
 	int MasternodeCollateralAmt() const { return nMasternodeCollateralAmt; }
+
 	//Treasury Code
 	std::string vTreasuryRewardAddress;
     std::string vReviveRewardAddress;
+    std::string vBurnAddress;        
     std::string GetTreasuryRewardAddressAtHeight(int height) const;
     CScript GetTreasuryRewardScriptAtHeight(int height) const;
     std::string GetReviveRewardAddressAtHeight(int height) const;
     CScript GetReviveRewardScriptAtHeight(int height) const;
+    int REVIVE_DEV_FEE_CHANGE() const { return nEndOfReviveFailSafe; }
 
 protected:
     CChainParams() {}
@@ -157,6 +161,7 @@ protected:
     int64_t nTargetSpacing;
     int64_t nPOSTargetSpacing;
     int nPOSDGWForkBlock;
+    int nEndOfReviveFailSafe;
     int nLastPOWBlock;
     int nMasternodeCountDrift;
     int nMaturity;

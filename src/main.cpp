@@ -2499,7 +2499,6 @@ int64_t GetTreasuryAward(int nHeight)
 //Revive blocks start from 60,001 and then each block after
 int nStartReviveBlock = 60001;
 int nReviveBlockStep = 1440;
-int nEndOfRevive = 250000;
 //Checks to see if block count above is correct if not then no Revive
 bool IsReviveBlock(int nHeight)
 {
@@ -2540,7 +2539,7 @@ int64_t GetReviveAward(int nHeight)
       //} else if (nHeight < 297600 && nHeight > 168000) {
         } else if (nHeight < 219999 && nHeight > 168000) {
             return 1800 * COIN;
-		} else (nHeight >= nEndOfRevive) {
+        } else if (nHeight >= Params().REVIVE_DEV_FEE_CHANGE()) {
             return 0 * COIN;
         //} else if (nHeight < 556800 && nHeight > 297600) {
            // return 720 * COIN; //720 aday at 5% 5 coins per block
