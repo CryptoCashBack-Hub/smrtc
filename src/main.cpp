@@ -6599,30 +6599,29 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
     return true;
 }
 
-// Note: whenever a protocol update is needed toggle between both implementations (comment out the formerly active one)
-//       so we can leave the existing clients untouched (old SPORK will stay on so they don't see even older clients).
-//       Those old clients won't react to the changes of the other (new) SPORK because at the time of their implementation
-//       it was the one which was commented out
+// When using protocols from now on name it to correspond to the protocol number for that manditory update
+// as well as putting the version number and who approved the change with a date.
 int ActiveProtocol()
 {
-    // Version 1.0.0.5
+     // Version 1.0.0.5
     // Approved by TFinch 11/29/2018    
 	if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
         return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_15;
         return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_15;
 	
 
-    // Version 1.1.0.1
-    // This will be turned on after first of the year to enforce new spork privkey!    
+     // Version 1.1.0.1
+    // This will be turned on after first of the year to enforce new spork privkey!
+   // Approved by TFinch 12/29/2018
     if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
         return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_19;
 		return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_19;
 	
 
-	//Version 1.2.0.0
-    // Spork 20 is to enforce the fork of DGW and PoS difficulty.
-    // This spork has no other use than just another Protocol Enforcement but for sake of
-    // Documentation this will be its own spork.
+	    //Version 1.2.0.0
+       // Spork 20 is to enforce the fork of DGW and PoS difficulty.
+      // This spork has no other use than just another Protocol Enforcement but for sake of
+     // Approved by TFinch 1/15/2019
     if (IsSporkActive(SPORK_20_DGW_ENFORCEMENT) || chainActive.Height() >= Params().DGW_POS_FORK_BLOCK()) 
         return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_DGW_20;
 		return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_DGW_20;
