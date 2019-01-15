@@ -13,7 +13,7 @@
 #include "random.h"
 #include "util.h"
 #include "utilstrencodings.h"
-#include "main.cpp"
+#include "main.h"
 
 #include <assert.h>
 
@@ -234,7 +234,8 @@ CScript CChainParams::GetTreasuryRewardScriptAtHeight(int nHeight) const
 // At the set block revive dev fee address will change to the burn address.
 std::string CChainParams::GetReviveRewardAddressAtHeight(int nHeight) const
 {
-    if (nHeight >= Params().REVIVE_DEV_FEE_CHANGE())
+    //if (nHeight >= Params().REVIVE_DEV_FEE_CHANGE())
+    if (nHeight > Params().REVIVE_DEV_FEE_CHANGE())
         return vBurnAddress;
     else 
 		return vReviveRewardAddress;
