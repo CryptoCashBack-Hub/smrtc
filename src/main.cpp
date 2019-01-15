@@ -2455,9 +2455,12 @@ bool IsTreasuryBlock(int nHeight)
     //This is put in for when dev fee is turned off.
     if (nHeight < nStartTreasuryBlock)
         return false;
-    / else if (IsSporkActive(SPORK_17_TREASURY_PAYMENT_ENFORCEMENT)) return false;
-    else if ((nHeight - nStartTreasuryBlock) % nTreasuryBlockStep == 0) return true;
-    else return false;
+    //else if (IsSporkActive(SPORK_17_TREASURY_PAYMENT_ENFORCEMENT)) 
+		//return false;
+    else if ((nHeight - nStartTreasuryBlock) % nTreasuryBlockStep == 0) 
+		return true;
+    else 
+		return false;
 
     /*
 	if (nHeight < nStartTreasuryBlock)
@@ -2506,8 +2509,8 @@ bool IsReviveBlock(int nHeight)
 
     if (nHeight < nStartReviveBlock)
         return false;
-    else if (IsSporkActive(SPORK_18_REVIVE_PAYMENT_ENFORCEMENT))
-        return false;
+    //else if (IsSporkActive(SPORK_18_REVIVE_PAYMENT_ENFORCEMENT))
+        //return false;
     else if ((nHeight - nStartReviveBlock) % nReviveBlockStep == 0)
         return true;
     else
