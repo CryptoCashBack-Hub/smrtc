@@ -6605,15 +6605,15 @@ int ActiveProtocol()
 {
      // Version 1.0.0.5
     // Approved by TFinch 11/29/2018    
-	if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
-        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_15;
+	//if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
+        //return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_15;
 	
 
      // Version 1.1.0.1
     // This will be turned on after first of the year to enforce new spork privkey!
    // Approved by TFinch 12/29/2018
-    if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
-        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_19;
+    //if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
+        //return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_19;
 	
 
 	    //Version 1.2.0.0

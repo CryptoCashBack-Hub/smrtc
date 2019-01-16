@@ -24,13 +24,13 @@ static const int INIT_PROTO_VERSION = 209;
 static const int GETHEADERS_VERSION = 70000;
 
 // Protocol before enforcement
-//static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70002; // v1.0.0.1
-//static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70005; // v1.0.0.5
+//static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70001; // v1.0.0.0
+//static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70005; // v1.0.0.1
 static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70007; // v1.1.0.1
 
 // Add a new protocol enforcement for each update
-static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_15 = 70005;
-static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_19 = 70007;
+//static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_15 = 70005; // v1.0.0.5
+//static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_19 = 70007; // v1.1.0.1
 static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_DGW_20 = 70008;
 
 
