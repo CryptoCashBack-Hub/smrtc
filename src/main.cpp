@@ -2151,7 +2151,7 @@ int64_t GetBlockValue(int nHeight)
             nSubsidy = 25 * COIN;
         } else if (nHeight <= 556800 && nHeight > 297600) { //180 days            2,592,000 coins
             nSubsidy = 10 * COIN;
-        } else if (nHeight <= 556800) { //Till max supply           Total coins used 17,882,000
+        } else if (nHeight >= 556800) { //Till max supply           Total coins used 17,882,000
             nSubsidy = 5 * COIN;        //57,026.38 days will max supply is reached
         }
 
@@ -6621,7 +6621,7 @@ int ActiveProtocol()
       // This spork has no other use than just another Protocol Enforcement but for sake of
      // Approved by TFinch 1/15/2019
     if (IsSporkActive(SPORK_20_DGW_ENFORCEMENT) || chainActive.Height() >= Params().DGW_POS_FORK_BLOCK()) 
-        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_DGW_20;
+        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
 
 	// Return the current protocol version if no spork is active.
 	return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
