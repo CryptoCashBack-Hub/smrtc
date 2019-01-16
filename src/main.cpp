@@ -6605,31 +6605,31 @@ int ActiveProtocol()
 {
      // Version 1.0.0.5
     // Approved by TFinch 11/29/2018    
-	//if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
-        //return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_15;
-        //return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_15;
+	if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
+        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_15;
 	
 
      // Version 1.1.0.1
     // This will be turned on after first of the year to enforce new spork privkey!
    // Approved by TFinch 12/29/2018
-    //if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
-        //return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_19;
-		//return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_19;
+    if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
+        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_19;
 	
 
 	    //Version 1.2.0.0
        // Spork 20 is to enforce the fork of DGW and PoS difficulty.
       // This spork has no other use than just another Protocol Enforcement but for sake of
      // Approved by TFinch 1/15/2019
-    //if (IsSporkActive(SPORK_20_DGW_ENFORCEMENT) || chainActive.Height() >= Params().DGW_POS_FORK_BLOCK()) 
-        //return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_DGW_20;
-		//return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_DGW_20;
+    if (IsSporkActive(SPORK_20_DGW_ENFORCEMENT) || chainActive.Height() >= Params().DGW_POS_FORK_BLOCK()) 
+        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_DGW_20;
+
+	// Return the current protocol version if no spork is active.
+	return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 
 	//Testing purpose.
-	    if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
-         return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+	    //if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
+         //return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+		 //return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }
 
 // requires LOCK(cs_vRecvMsg)

@@ -12,7 +12,10 @@
  * network protocol versioning
  */
 
-static const int PROTOCOL_VERSION = 70008;
+//static const int PROTOCOL_VERSION = 70002; // v1.0.0.1
+//static const int PROTOCOL_VERSION = 70005; // v1.0.0.5
+//static const int PROTOCOL_VERSION = 70007; // v1.1.0.1
+static const int PROTOCOL_VERSION = 70008; // v1.2.0.0
 
 //! initial proto version, to be increased after version/verack negotiation
 static const int INIT_PROTO_VERSION = 209;
@@ -20,21 +23,20 @@ static const int INIT_PROTO_VERSION = 209;
 //! In this version, 'getheaders' was introduced.
 static const int GETHEADERS_VERSION = 70000;
 
-// Old Protocols To Disconnect
+// Protocol before enforcement
+//static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70002; // v1.0.0.1
+//static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70005; // v1.0.0.5
+static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70007; // v1.1.0.1
 
-//static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_15 = 70002;
-//static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_19 = 70005;
-//static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT_DGW_20 = 70007;
-
-// Old Protocols After Enforcement Go Here
-//static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_15 = 70005;
-//static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_19 = 70007;
-//static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_DGW_20 = 70008;
+// Add a new protocol enforcement for each update
+static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_15 = 70005;
+static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_19 = 70007;
+static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_DGW_20 = 70008;
 
 
 //Testing purpose
-static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70007;
-static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT = 70008;
+//static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70007;
+//static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT = 70008;
 
 //! nTime field added to CAddress, starting with this version;
 //! if possible, avoid requesting addresses nodes older than this
