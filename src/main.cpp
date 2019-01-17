@@ -1,11 +1,10 @@
-// Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2011-2014 The Bitcoin developers
+// Copyright (c) 2009-2010 Satoshi Nakamoto
+// Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The CCBC developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2018 The CCBC developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 
 #include "main.h"
 
@@ -49,7 +48,7 @@ using namespace std;
 using namespace libzerocoin;
 
 #if defined(NDEBUG)
-#error "CCBC cannot be compiled without assertions."
+#error "Ccbc cannot be compiled without assertions."
 #endif
 
 // 6 comes from OPCODE (1) + vch.size() (1) + BIGNUM size (4)
@@ -81,7 +80,7 @@ bool fVerifyingBlocks = false;
 unsigned int nCoinCacheSize = 5000;
 bool fAlerts = DEFAULT_ALERTS;
 
-unsigned int nStakeMinAge = 1 * 60 * 60; // 1 Hours
+unsigned int nStakeMinAge = 60 * 60; // 1 Hour
 int64_t nReserveBalance = 0;
 
 /** Fees smaller than this (in duffs) are considered zero fee (for relaying and mining)
@@ -1620,7 +1619,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
             //Check that txid is not already in the chain
             int nHeightTx = 0;
             if (IsTransactionInChain(tx.GetHash(), nHeightTx))
-                return state.Invalid(error("AcceptToMemoryPool : zCCBC spend tx %s already in block %d", tx.GetHash().GetHex(), nHeightTx),
+                return state.Invalid(error("AcceptToMemoryPool : zCcbc spend tx %s already in block %d", tx.GetHash().GetHex(), nHeightTx),
                     REJECT_DUPLICATE, "bad-txns-inputs-spent");
 
             //Check for double spending of serial #'s
@@ -1630,12 +1629,12 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
                 CoinSpend spend = TxInToZerocoinSpend(txIn);
                 int nHeightTx = 0;
                 if (IsSerialInBlockchain(spend.getCoinSerialNumber(), nHeightTx))
-                    return state.Invalid(error("%s : zCCBC spend with serial %s is already in block %d\n",
+                    return state.Invalid(error("%s : zCcbc spend with serial %s is already in block %d\n",
                         __func__, spend.getCoinSerialNumber().GetHex(), nHeightTx));
 
                 //Is serial in the acceptable range
                 if (!spend.HasValidSerial(Params().Zerocoin_Params()))
-                    return state.Invalid(error("%s : zCCBC spend with serial %s from tx %s is not in valid range\n",
+                    return state.Invalid(error("%s : zCcbc spend with serial %s from tx %s is not in valid range\n",
                         __func__, spend.getCoinSerialNumber().GetHex(), tx.GetHash().GetHex()));
             }
         } else {
@@ -2408,6 +2407,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
     //       return 0;
     // }
 
+    // Changes alot and levels out to seesaw at end.
     if (nHeight == 0) {
         ret = blockValue * 0;
     } else if (nHeight <= 25000 && nHeight > 200) {
@@ -2455,12 +2455,12 @@ bool IsTreasuryBlock(int nHeight)
     //This is put in for when dev fee is turned off.
     if (nHeight < nStartTreasuryBlock)
         return false;
-    //else if (IsSporkActive(SPORK_17_TREASURY_PAYMENT_ENFORCEMENT)) 
-		//return false;
-    else if ((nHeight - nStartTreasuryBlock) % nTreasuryBlockStep == 0) 
-		return true;
-    else 
-		return false;
+    else if (IsSporkActive(SPORK_17_TREASURY_PAYMENT_ENFORCEMENT))
+        return false;
+    else if ((nHeight - nStartTreasuryBlock) % nTreasuryBlockStep == 0)
+        return true;
+    else
+        return false;
 
     /*
 	if (nHeight < nStartTreasuryBlock)
@@ -2508,8 +2508,8 @@ bool IsReviveBlock(int nHeight)
 
     if (nHeight < nStartReviveBlock)
         return false;
-    //else if (IsSporkActive(SPORK_18_REVIVE_PAYMENT_ENFORCEMENT))
-        //return false;
+    else if (IsSporkActive(SPORK_18_REVIVE_PAYMENT_ENFORCEMENT))
+        return false;
     else if ((nHeight - nStartReviveBlock) % nReviveBlockStep == 0)
         return true;
     else
@@ -2527,37 +2527,8 @@ bool IsReviveBlock(int nHeight)
 
 int64_t GetReviveAward(int nHeight)
 {
-    /*
     if (IsReviveBlock(nHeight)) {
         if (nHeight < 75000 && nHeight > 60000) {
-            return 3600 * COIN; //3,600 aday at 5% 25 coins per block
-        } else if (nHeight < 100000 && nHeight > 75000) {
-            return 6120 * COIN; //6,120 aday at 5% 42.5 coins per block
-        } else if (nHeight < 125000 && nHeight > 100000) {
-            return 5400 * COIN; //5,400 aday at 5% 37.5 coins per block
-        } else if (nHeight < 168000 && nHeight > 125000) {
-            return 3600 * COIN; //3,600 aday at 5% 25 coins per block
-        } else if (nHeight < 297600 && nHeight > 168000) {
-        //} else if (nHeight < 219999 && nHeight > 168000) {
-            return 1800 * COIN;
-        //} else if (nHeight >= Params().REVIVE_DEV_FEE_CHANGE()) {
-           // return 0 * COIN;
-        } else if (nHeight < 556800 && nHeight > 297600) {
-            return 720 * COIN; //720 aday at 5% 5 coins per block
-        } else if (nHeight >= 556800) {
-            return 360 * COIN; //720 aday at 5% 2.5 coins per block
-        } else {
-            return 360;
-        }
-    } else
-        return 0;
-	*/
-
-    if (IsReviveBlock(nHeight)) {
-        //if (nHeight == 60001) {
-            //return 350 * COIN;
-        //} else 
-		if (nHeight < 75000 && nHeight > 60000) {
             return 3600 * COIN; //3,600 aday at 5% 25 coins per block
         } else if (nHeight < 100000 && nHeight > 75000) {
             return 6120 * COIN; //6,120 aday at 5% 42.5 coins per block
@@ -2569,7 +2540,7 @@ int64_t GetReviveAward(int nHeight)
             return 1800 * COIN; //1,800 aday at 5% 12.5 coins per block
         } else if (nHeight < 556800 && nHeight > 297600) {
             return 720 * COIN; //720 aday at 5% 5 coins per block
-        } else if (nHeight < 556800) {
+        } else if (nHeight >= 556800) {
             return 360 * COIN; //720 aday at 5% 2.5 coins per block
         } else {
             return 3600;
@@ -2577,7 +2548,6 @@ int64_t GetReviveAward(int nHeight)
     } else
         return 0;
 }
-
 
 bool IsInitialBlockDownload()
 {
@@ -2869,7 +2839,7 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
         const CTransaction& tx = block.vtx[i];
 
         /** UNDO ZEROCOIN DATABASING
-         * note we only undo zerocoin databasing in the following statement, value to and from CCBC
+         * note we only undo zerocoin databasing in the following statement, value to and from Ccbc
          * addresses should still be handled by the typical bitcoin based undo code
          * */
         if (tx.ContainsZerocoins()) {
@@ -3261,7 +3231,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                 if (zerocoinDB->ReadCoinSpend(spend.getCoinSerialNumber(), hashTxFromDB)) {
                     if (IsSerialInBlockchain(spend.getCoinSerialNumber(), nHeightTxSpend)) {
                         if (!fVerifyingBlocks || (fVerifyingBlocks && pindex->nHeight > nHeightTxSpend))
-                            return state.DoS(100, error("%s : zCCBC with serial %s is already in the block %d\n",
+                            return state.DoS(100, error("%s : zCcbc with serial %s is already in the block %d\n",
                                                       __func__, spend.getCoinSerialNumber().GetHex(), nHeightTxSpend));
                     }
                 }
@@ -3354,7 +3324,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     pindex->nMoneySupply = nMoneySupplyPrev + nValueOut - nValueIn;
     pindex->nMint = pindex->nMoneySupply - nMoneySupplyPrev + nFees;
 
-    //    LogPrintf("XX69----------> ConnectBlock(): nValueOut: %s, nValueIn: %s, nFees: %s, nMint: %s zCCBCSpent: %s\n",
+    //    LogPrintf("XX69----------> ConnectBlock(): nValueOut: %s, nValueIn: %s, nFees: %s, nMint: %s zCcbcSpent: %s\n",
     //              FormatMoney(nValueOut), FormatMoney(nValueIn),
     //              FormatMoney(nFees), FormatMoney(pindex->nMint), FormatMoney(nAmountZerocoinSpent));
 
@@ -4342,7 +4312,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                     REJECT_INVALID, "block-version");
         }
 
-        // CCBC
+        // Ccbc
         // It is entierly possible that we don't have enough data and this could fail
         // (i.e. the block could indeed be valid). Store the block for later consideration
         // but issue an initial reject message.
@@ -4367,13 +4337,13 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
         if (!CheckTransaction(tx, fZerocoinActive, chainActive.Height() + 1 >= Params().Zerocoin_StartHeight(), state))
             return error("CheckBlock() : CheckTransaction failed");
 
-        // double check that there are no double spent zCCBC spends in this block
+        // double check that there are no double spent zCcbc spends in this block
         if (tx.IsZerocoinSpend()) {
             for (const CTxIn txIn : tx.vin) {
                 if (txIn.scriptSig.IsZerocoinSpend()) {
                     libzerocoin::CoinSpend spend = TxInToZerocoinSpend(txIn);
                     if (count(vBlockSerials.begin(), vBlockSerials.end(), spend.getCoinSerialNumber()))
-                        return state.DoS(100, error("%s : Double spending of zCCBC serial %s in block\n Block: %s",
+                        return state.DoS(100, error("%s : Double spending of zCcbc serial %s in block\n Block: %s",
                                                   __func__, spend.getCoinSerialNumber().GetHex(), block.ToString()));
                     vBlockSerials.emplace_back(spend.getCoinSerialNumber());
                 }
@@ -4698,7 +4668,7 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
     //if (pblock->IsProofOfStake() && setStakeSeen.count(pblock->GetProofOfStake())/* && !mapOrphanBlocksByPrev.count(hash)*/)
     //    return error("ProcessNewBlock() : duplicate proof-of-stake (%s, %d) for block %s", pblock->GetProofOfStake().first.ToString().c_str(), pblock->GetProofOfStake().second, pblock->GetHash().ToString().c_str());
 
-    // NovaCoin: check proof-of-stake block signature
+    // Provided from NovaCoin: check proof-of-stake block signature
     if (!pblock->CheckBlockSignature())
         return error("ProcessNewBlock() : bad proof-of-stake block signature");
 
@@ -5812,12 +5782,10 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             return false;
         }
 
-        // CCBC: We use certain sporks during IBD, so check to see if they are
+        // Ccbc: We use certain sporks during IBD, so check to see if they are
         // available. If not, ask the first peer connected for them.
         if (!pSporkDB->SporkExists(SPORK_14_NEW_PROTOCOL_ENFORCEMENT) &&
             !pSporkDB->SporkExists(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2) &&
-            !pSporkDB->SporkExists(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3) &&
-            !pSporkDB->SporkExists(SPORK_20_DGW_ENFORCEMENT) &&
             !pSporkDB->SporkExists(SPORK_11_LOCK_INVALID_UTXO) &&
             !pSporkDB->SporkExists(SPORK_16_ZEROCOIN_MAINTENANCE_MODE)) {
             LogPrintf("Required sporks not found, asking peer to send them\n");
@@ -6625,37 +6593,34 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
     return true;
 }
 
-// When using protocols from now on name it to correspond to the protocol number for that manditory update
-// as well as putting the version number and who approved the change with a date.
+// Note: whenever a protocol update is needed toggle between both implementations (comment out the formerly active one)
+//       so we can leave the existing clients untouched (old SPORK will stay on so they don't see even older clients).
+//       Those old clients won't react to the changes of the other (new) SPORK because at the time of their implementation
+//       it was the one which was commented out
 int ActiveProtocol()
 {
-     // Version 1.0.0.5
-    // Approved by TFinch 11/29/2018    
-	//if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
-        //return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_15;
-	
-
-     // Version 1.1.0.1
-    // This will be turned on after first of the year to enforce new spork privkey!
-   // Approved by TFinch 12/29/2018
-    //if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
-        //return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_19;
-	
-
-	    //Version 1.2.0.0
-       // Spork 20 is to enforce the fork of DGW and PoS difficulty.
-      // This spork has no other use than just another Protocol Enforcement but for sake of
-     // Approved by TFinch 1/15/2019
-    if (IsSporkActive(SPORK_20_DGW_ENFORCEMENT) || chainActive.Height() >= Params().DGW_POS_FORK_BLOCK()) 
-        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-
-	// Return the current protocol version if no spork is active.
+    // SPORK_14 will remove early wallet adopters of protocol 70002 where max supply didnt have cap and
+    // seesaw masternode amount was set to 5k instead of 25k collateral
+    /*
+	if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
+	return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
 	return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+	*/
 
-	//Testing purpose.
-	    //if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
-         //return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-		 //return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+    // SPORK_15 will be used after SPORK_14 is used and commented out from being turned off.
+    // SPORK_15 has been turned on and will be commented out to prevent from being turned off.
+    // Approved by TFinch 11/29/2018
+    /*
+	if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
+	return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+	return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+	*/
+
+    // SPORK_19 will be used after SPORK_15 is used and commented out from being turned off.
+    // This will be turned on after first of the year to enforce me spork privkey!
+    if (IsSporkActive(SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3))
+        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+    return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }
 
 // requires LOCK(cs_vRecvMsg)
@@ -6855,7 +6820,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
                 if (pto->addr.IsLocal())
                     LogPrintf("Warning: not banning local peer %s!\n", pto->addr.ToString());
                 else {
-                    CNode::Ban(pto->addr, BanReasonNodeMisbehaving);
+                    CNode::Ban(pto->addr);
                 }
             }
             state.fShouldBan = false;
