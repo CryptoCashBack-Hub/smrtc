@@ -2554,7 +2554,10 @@ int64_t GetReviveAward(int nHeight)
 	*/
 
     if (IsReviveBlock(nHeight)) {
-        if (nHeight < 75000 && nHeight > 60000) {
+        //if (nHeight == 60001) {
+            //return 350 * COIN;
+        //} else 
+		if (nHeight < 75000 && nHeight > 60000) {
             return 3600 * COIN; //3,600 aday at 5% 25 coins per block
         } else if (nHeight < 100000 && nHeight > 75000) {
             return 6120 * COIN; //6,120 aday at 5% 42.5 coins per block
