@@ -58,7 +58,9 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
 
-    (0, uint256("0xa9f081734c579a25872ce366d5520482755d26ff3db73fbe7bdd4e973bc0e173"))(100000, uint256("0x743cd780b4ab590106ca9855a90e3ce75eec935f2727e407bfe0777181e7e400"))(150000, uint256("0xe2ab1c328e6445dd34ce2211b022bbe665a7e9c7173f1921660e7c8297c52565"));
+    (0, uint256("0xa9f081734c579a25872ce366d5520482755d26ff3db73fbe7bdd4e973bc0e173"))
+	(100000, uint256("0x743cd780b4ab590106ca9855a90e3ce75eec935f2727e407bfe0777181e7e400"))
+	(150000, uint256("0xe2ab1c328e6445dd34ce2211b022bbe665a7e9c7173f1921660e7c8297c52565"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
@@ -69,7 +71,8 @@ static const Checkpoints::CCheckpointData data = {
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
-    boost::assign::map_list_of(0, uint256("0xa9f081734c579a25872ce366d5520482755d26ff3db73fbe7bdd4e973bc0e173"));
+    boost::assign::map_list_of
+	(0, uint256("0xa9f081734c579a25872ce366d5520482755d26ff3db73fbe7bdd4e973bc0e173"));
 static const Checkpoints::CCheckpointData dataTestnet = {
     &mapCheckpointsTestnet,
     1534438799,
@@ -77,7 +80,8 @@ static const Checkpoints::CCheckpointData dataTestnet = {
     250};
 
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
-    boost::assign::map_list_of(0, uint256("0xa9f081734c579a25872ce366d5520482755d26ff3db73fbe7bdd4e973bc0e173"));
+    boost::assign::map_list_of
+	(0, uint256("0xa9f081734c579a25872ce366d5520482755d26ff3db73fbe7bdd4e973bc0e173"));
 static const Checkpoints::CCheckpointData dataRegtest = {
     &mapCheckpointsRegtest,
     1534438799,
@@ -187,7 +191,7 @@ public:
         fMiningRequiresPeers = false;
         fAllowMinDifficultyBlocks = true;
         fDefaultConsistencyChecks = false;
-        fRequireStandard = true;
+        fRequireStandard = false; //Was true
         fMineBlocksOnDemand = false;
         fSkipProofOfWorkCheck = false;
         fTestnetToBeDeprecatedFieldRPC = false;
