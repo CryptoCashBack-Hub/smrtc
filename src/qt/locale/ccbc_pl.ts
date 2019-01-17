@@ -227,8 +227,8 @@
         <translation>Zakodowany klucz:</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Ccbc address</source>
-        <translation>Zatwierdź wiadomość, aby udowodnić, że podany adres Ccbc jest w twoim posiadaniu</translation>
+        <source>Sign the message to prove you own this CCBC address</source>
+        <translation>Zatwierdź wiadomość, aby udowodnić, że podany adres CCBC jest w twoim posiadaniu</translation>
     </message>
     <message>
         <source>Encrypt &amp;Key</source>
@@ -518,12 +518,12 @@
         <translation>&amp;Pomoc</translation>
     </message>
     <message>
-        <source>Ccbc Core</source>
-        <translation>&amp;Rdzeń Ccbc</translation>
+        <source>CCBC Core</source>
+        <translation>&amp;Rdzeń CCBC</translation>
     </message>
     <message>
-        <source>Send coins to a Ccbc address</source>
-        <translation>Wyślij monety do adresu Ccbc</translation>
+        <source>Send coins to a CCBC address</source>
+        <translation>Wyślij monety do adresu CCBC</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and ccbc: URIs)</source>
@@ -538,24 +538,24 @@
         <translation>Przeglądaj masternodes</translation>
     </message>
     <message>
-        <source>&amp;About Ccbc Core</source>
+        <source>&amp;About CCBC Core</source>
         <translation>&amp;O rdzeniu bitcoina</translation>
     </message>
     <message>
-        <source>Show information about Ccbc Core</source>
+        <source>Show information about CCBC Core</source>
         <translation>Pokaż informacje o rdzeniu bitcoina</translation>
     </message>
     <message>
-        <source>Modify configuration options for Ccbc</source>
-        <translation>Modyfikuj opcje konfiguracji Ccbc</translation>
+        <source>Modify configuration options for CCBC</source>
+        <translation>Modyfikuj opcje konfiguracji CCBC</translation>
     </message>
     <message>
-        <source>Sign messages with your Ccbc addresses to prove you own them</source>
-        <translation>Zatwierdź wiadomość z twoimi adresami Ccbc, by udowodnić, że jesteś w ich posiadaniu</translation>
+        <source>Sign messages with your CCBC addresses to prove you own them</source>
+        <translation>Zatwierdź wiadomość z twoimi adresami CCBC, by udowodnić, że jesteś w ich posiadaniu</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Ccbc addresses</source>
-        <translation>Zweryfikuj wiadomości by upewnić się, że zostały zatwierdzone z podanego adresu Ccbc</translation>
+        <source>Verify messages to ensure they were signed with specified CCBC addresses</source>
+        <translation>Zweryfikuj wiadomości by upewnić się, że zostały zatwierdzone z podanego adresu CCBC</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -582,8 +582,8 @@
         <translation>Otwórz &amp;Plik konfiguracji Masternode</translation>
     </message>
     <message>
-        <source>Open a Ccbc: URI or payment request</source>
-        <translation>OtwórzCCBC: URI i żądanie zapłaty</translation>
+        <source>Open a CCBC: URI or payment request</source>
+        <translation>OtwórzCCBCX: URI i żądanie zapłaty</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -594,12 +594,12 @@
         <translation>Okno eksplorera bloków</translation>
     </message>
     <message>
-        <source>Show the Ccbc Core help message to get a list with possible Ccbc command-line options</source>
-        <translation>Pokaż wiadomość pomocy rdzenia Ccbc, aby dostać listę możliwych opcji Ccbc command-line</translation>
+        <source>Show the CCBC Core help message to get a list with possible CCBC command-line options</source>
+        <translation>Pokaż wiadomość pomocy rdzenia CCBC, aby dostać listę możliwych opcji CCBC command-line</translation>
     </message>
     <message>
-        <source>Ccbc Core client</source>
-        <translation>Rdzeń Ccbc klient</translation>
+        <source>CCBC Core client</source>
+        <translation>Rdzeń CCBC klient</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -660,7 +660,7 @@ Type: %3
 Address: %4
 </source>
         <translation>Data: %1
-Liczba: %2
+Licccbc: %2
 Typ: %3
 Adres: %4
 </translation>
@@ -724,7 +724,7 @@ MultiWysyłlka: %1</translation>
     <name>CoinControlDialog</name>
     <message>
         <source>Amount:</source>
-        <translation>Liczba:</translation>
+        <translation>Licccbc:</translation>
     </message>
     <message>
         <source>Priority:</source>
@@ -764,7 +764,7 @@ MultiWysyłlka: %1</translation>
     </message>
     <message>
         <source>Amount</source>
-        <translation>Liczba</translation>
+        <translation>Licccbc</translation>
     </message>
     <message>
         <source>Received with label</source>
@@ -912,8 +912,8 @@ MultiWysyłlka: %1</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>Ccbc Core</source>
-        <translation>&amp;Rdzeń Ccbc</translation>
+        <source>CCBC Core</source>
+        <translation>&amp;Rdzeń CCBC</translation>
     </message>
     </context>
 <context>
@@ -927,8 +927,8 @@ MultiWysyłlka: %1</translation>
         <translation>Użyj niestandardowej ścieżki danych</translation>
     </message>
     <message>
-        <source>Ccbc Core</source>
-        <translation>&amp;Rdzeń Ccbc</translation>
+        <source>CCBC Core</source>
+        <translation>&amp;Rdzeń CCBC</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1188,12 +1188,12 @@ Proszę sprawdzić adres i spróbować ponownie</translation>
         <translation>Zezwól na przychodzące połączenia</translation>
     </message>
     <message>
-        <source>Automatically start Ccbc after logging in to the system.</source>
-        <translation>Automatycznie uruchom Ccbc po zalogowaniu do systemu</translation>
+        <source>Automatically start CCBC after logging in to the system.</source>
+        <translation>Automatycznie uruchom CCBC po zalogowaniu do systemu</translation>
     </message>
     <message>
-        <source>&amp;Start Ccbc on system login</source>
-        <translation>&amp;Uruchom Ccbc podczas logowania do systemu</translation>
+        <source>&amp;Start CCBC on system login</source>
+        <translation>&amp;Uruchom CCBC podczas logowania do systemu</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1212,8 +1212,8 @@ Proszę sprawdzić adres i spróbować ponownie</translation>
         <translation>&amp;Sieć</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting Ccbc.</source>
-        <translation>Język interfejsu użytkownika może być wybrany tutaj. Ustawienia ulegną zmianie po restarcie Ccbc</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting CCBC.</source>
+        <translation>Język interfejsu użytkownika może być wybrany tutaj. Ustawienia ulegną zmianie po restarcie CCBC</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
@@ -1222,8 +1222,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</source>
 https://www.transifex.com/ccbc-project/ccbc-project-translations </translation>
     </message>
     <message>
-        <source>Connect to the Ccbc network through a SOCKS5 proxy.</source>
-        <translation>Połącz z siecią Ccbc poprzez SOCKS5 proxy.</translation>
+        <source>Connect to the CCBC network through a SOCKS5 proxy.</source>
+        <translation>Połącz z siecią CCBC poprzez SOCKS5 proxy.</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1403,7 +1403,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations </translation>
     </message>
     <message>
         <source>Amount:</source>
-        <translation>Liczba:</translation>
+        <translation>Licccbc:</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1458,11 +1458,11 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations </translation>
     <name>QObject</name>
     <message>
         <source>Amount</source>
-        <translation>Liczba</translation>
+        <translation>Licccbc</translation>
     </message>
     <message>
-        <source>Enter a Ccbc address (e.g. %1)</source>
-        <translation>Wprowadź adres Ccbc (np. %1)</translation>
+        <source>Enter a CCBC address (e.g. %1)</source>
+        <translation>Wprowadź adres CCBC (np. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1544,7 +1544,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations </translation>
     </message>
     <message>
         <source>Number of connections</source>
-        <translation>Liczba połączeń</translation>
+        <translation>Licccbc połączeń</translation>
     </message>
     <message>
         <source>&amp;Open</source>
@@ -1576,7 +1576,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations </translation>
     </message>
     <message>
         <source>Current number of blocks</source>
-        <translation>Bieżąca liczba bloków</translation>
+        <translation>Bieżąca licccbc bloków</translation>
     </message>
     <message>
         <source>Client version</source>
@@ -1592,7 +1592,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations </translation>
     </message>
     <message>
         <source>Number of Masternodes</source>
-        <translation>Liczba Masternode</translation>
+        <translation>Licccbc Masternode</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -1770,7 +1770,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations </translation>
     </message>
     <message>
         <source>Amount</source>
-        <translation>Liczba</translation>
+        <translation>Licccbc</translation>
     </message>
     <message>
         <source>Label</source>
@@ -1789,7 +1789,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations </translation>
     </message>
     <message>
         <source>Amount</source>
-        <translation>Liczba</translation>
+        <translation>Licccbc</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1800,7 +1800,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations </translation>
     <name>SendCoinsDialog</name>
     <message>
         <source>Amount:</source>
-        <translation>Liczba:</translation>
+        <translation>Licccbc:</translation>
     </message>
     <message>
         <source>Priority:</source>
@@ -1900,8 +1900,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations </translation>
         <translation>Alt+P</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Ccbc address</source>
-        <translation>Zatwierdź wiadomość, aby udowodnić, że podany adres Ccbc jest w twoim posiadaniu</translation>
+        <source>Sign the message to prove you own this CCBC address</source>
+        <translation>Zatwierdź wiadomość, aby udowodnić, że podany adres CCBC jest w twoim posiadaniu</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
@@ -1935,8 +1935,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations </translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Ccbc Core</source>
-        <translation>&amp;Rdzeń Ccbc</translation>
+        <source>CCBC Core</source>
+        <translation>&amp;Rdzeń CCBC</translation>
     </message>
     </context>
 <context>
@@ -1954,7 +1954,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations </translation>
     </message>
     <message>
         <source>Amount</source>
-        <translation>Liczba</translation>
+        <translation>Licccbc</translation>
     </message>
     </context>
 <context>

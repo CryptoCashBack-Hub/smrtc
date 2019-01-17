@@ -1,3 +1,8 @@
+// Copyright (c) 2015-2018 The PIVX developers
+// Copyright (c) 2018-2019 The CCBC developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef BLOCKEXPLORER_H
 #define BLOCKEXPLORER_H
 

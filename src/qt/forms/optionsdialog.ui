@@ -131,6 +131,19 @@
         </spacer>
        </item>
        <item>
+        <widget class="QCheckBox" name="checkBoxZeromintEnable">
+         <property name="toolTip">
+          <string>Enable automatic minting of CCBC units to zCCBC</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Enable zCCBC Automint</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLabel" name="percentage_label">
@@ -145,7 +158,7 @@
          <item>
           <widget class="QSpinBox" name="zeromintPercentage">
            <property name="minimum">
-            <number>10</number>
+            <number>1</number>
            </property>
            <property name="maximum">
             <number>100</number>
@@ -203,6 +216,27 @@
        <string>W&amp;allet</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_Wallet">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2_Wallet">
+         <item>
+          <widget class="QLabel" name="labelStakeSplitThresholdText">
+           <property name="text">
+            <string>Stake split threshold:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spinBoxStakeSplitThreshold">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>999999</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
        <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
@@ -472,8 +506,6 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/ccbc-project/ccbc-project-translations</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -544,6 +576,19 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</string>
           <widget class="QValueComboBox" name="digits"/>
          </item>
         </layout>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkBoxHideZeroBalances">
+         <property name="toolTip">
+          <string>Hide empty balances</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Hide empty balances</string>
+         </property>
+        </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3_Display">

@@ -1,9 +1,9 @@
-// Copyright (c) 2009-2014 The Bitcoin developers
+// Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2015-2018 The PIVX developers
+// Copyright (c) 2018-2019 The CCBC developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #if defined(HAVE_CONFIG_H)
 #include "config/ccbc-config.h"
 #endif
@@ -30,6 +30,7 @@
 #include "init.h"
 #include "main.h"
 #include "rpcserver.h"
+#include "scheduler.h"
 #include "ui_interface.h"
 #include "util.h"
 
@@ -165,7 +166,7 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 }
 #endif
 
-/** Class encapsulating Ccbc Core startup and shutdown.
+/** Class encapsulating CCBC Core startup and shutdown.
  * Allows running startup and shutdown in a different thread from the UI thread.
  */
 class BitcoinCore : public QObject
@@ -186,6 +187,7 @@ signals:
 
 private:
     boost::thread_group threadGroup;
+    CScheduler scheduler;
 
     /// Flag indicating a restart
     bool execute_restart;
@@ -194,7 +196,7 @@ private:
     void handleRunawayException(std::exception* e);
 };
 
-/** Main Ccbc application object */
+/** Main CCBC application object */
 class BitcoinApplication : public QApplication
 {
     Q_OBJECT
@@ -270,7 +272,7 @@ void BitcoinCore::initialize()
 
     try {
         qDebug() << __func__ << ": Running AppInit2 in thread";
-        int rv = AppInit2(threadGroup);
+        int rv = AppInit2(threadGroup, scheduler);
         if (rv) {
             /* Start a dummy RPC thread if no RPC thread is active yet
              * to handle timeouts.
@@ -483,7 +485,7 @@ void BitcoinApplication::initializeResult(int retval)
 
 #ifdef ENABLE_WALLET
         // Now that initialization/startup is done, process any command-line
-        // Ccbc: URIs or payment requests:
+        // CCBC: URIs or payment requests:
         connect(paymentServer, SIGNAL(receivedPaymentRequest(SendCoinsRecipient)),
             window, SLOT(handlePaymentRequest(SendCoinsRecipient)));
         connect(window, SIGNAL(receivedURI(QString)),
@@ -505,7 +507,7 @@ void BitcoinApplication::shutdownResult(int retval)
 
 void BitcoinApplication::handleRunawayException(const QString& message)
 {
-    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. Ccbc can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. CCBC can no longer continue safely and will quit.") + QString("\n\n") + message);
     ::exit(1);
 }
 
@@ -598,14 +600,14 @@ int main(int argc, char* argv[])
     /// 6. Determine availability of data directory and parse ccbc.conf
     /// - Do not call GetDataDir(true) before this step finishes
     if (!boost::filesystem::is_directory(GetDataDir(false))) {
-        QMessageBox::critical(0, QObject::tr("Ccbc Core"),
+        QMessageBox::critical(0, QObject::tr("CCBC Core"),
             QObject::tr("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])));
         return 1;
     }
     try {
         ReadConfigFile(mapArgs, mapMultiArgs);
     } catch (std::exception& e) {
-        QMessageBox::critical(0, QObject::tr("Ccbc Core"),
+        QMessageBox::critical(0, QObject::tr("CCBC Core"),
             QObject::tr("Error: Cannot parse configuration file: %1. Only use key=value syntax.").arg(e.what()));
         return 0;
     }
@@ -618,7 +620,7 @@ int main(int argc, char* argv[])
 
     // Check for -testnet or -regtest parameter (Params() calls are only valid after this clause)
     if (!SelectParamsFromCommandLine()) {
-        QMessageBox::critical(0, QObject::tr("Ccbc Core"), QObject::tr("Error: Invalid combination of -regtest and -testnet."));
+        QMessageBox::critical(0, QObject::tr("CCBC Core"), QObject::tr("Error: Invalid combination of -regtest and -testnet."));
         return 1;
     }
 #ifdef ENABLE_WALLET
@@ -637,7 +639,7 @@ int main(int argc, char* argv[])
     /// 7a. parse masternode.conf
     string strErr;
     if (!masternodeConfig.read(strErr)) {
-        QMessageBox::critical(0, QObject::tr("Ccbc Core"),
+        QMessageBox::critical(0, QObject::tr("CCBC Core"),
             QObject::tr("Error reading masternode configuration file: %1").arg(strErr.c_str()));
         return 0;
     }
@@ -683,7 +685,7 @@ int main(int argc, char* argv[])
         app.createWindow(networkStyle.data());
         app.requestInitialize();
 #if defined(Q_OS_WIN) && QT_VERSION >= 0x050000
-        WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("Ccbc Core didn't yet exit safely..."), (HWND)app.getMainWinId());
+        WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("CCBC Core didn't yet exit safely..."), (HWND)app.getMainWinId());
 #endif
         app.exec();
         app.requestShutdown();
