@@ -1,6 +1,5 @@
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The CCBC developers
+// Copyright (c) 2015-2017 The PIVX developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -988,7 +987,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         CValidationState state;
         CMutableTransaction tx = CMutableTransaction();
         //CTxOut vout = CTxOut(4999.99 * COIN, obfuScationPool.collateralPubKey);
-		CTxOut vout = CTxOut(4999.99 * COIN, obfuScationPool.collateralPubKey);
+		CTxOut vout = CTxOut(24999.99 * COIN, obfuScationPool.collateralPubKey);
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
 

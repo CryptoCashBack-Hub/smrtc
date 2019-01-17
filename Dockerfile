@@ -17,7 +17,7 @@ RUN deps="alpine-sdk curl autoconf automake libtool boost-dev openssl-dev libeve
     make install && \
     mkdir /wallet &&\
     cd /wallet && \
-    git clone https://github.com/Poseidon-CCBC/CCBC.git . &&\   
+    git clone https://github.com/CryptoCashBack-Hub/CCBC.git . &&\   
     ./autogen.sh && \
     ./configure LDFLAGS=-L/opt/db/lib CPPFLAGS=-I/opt/db/include \
       && \

@@ -1,7 +1,6 @@
-// Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The CCBC developers
+// Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2017-2018 The Ccbc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -560,9 +559,9 @@ void CBudgetManager::FillTreasuryBlockPayee(CMutableTransaction& txNew, CAmount 
     CBlockIndex* pindexPrev = chainActive.Tip();
     if (!pindexPrev) return;
     CScript payee;
-    CAmount blockValue = GetBlockValue(pindexPrev->nHeight + 1);
+    CAmount blockValue = GetBlockValue(pindexPrev->nHeight);
     payee = Params().GetTreasuryRewardScriptAtHeight(pindexPrev->nHeight);
-    CAmount treasurePayment = blockValue - 1 * COIN;
+    CAmount treasurePayment = blockValue - 10 * COIN;
     if (fProofOfStake)
     {
         /**For Proof Of Stake vout[0] must be null

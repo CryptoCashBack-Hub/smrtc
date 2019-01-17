@@ -10,7 +10,7 @@
 
 /**
  * CBaseChainParams defines the base parameters (shared between ccbc-cli and ccbcd)
- * of a given instance of the CCBC system.
+ * of a given instance of the Ccbc system.
  */
 class CBaseChainParams
 {

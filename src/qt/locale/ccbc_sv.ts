@@ -58,12 +58,12 @@
         <translation>Mottagar adresser</translation>
     </message>
     <message>
-        <source>These are your CCBC addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Det här är dina CCBC adresser för att sända betalningar. Kontrollera alltid summan och mottagaradressen före du sänder mynt.</translation>
+        <source>These are your Ccbc addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Det här är dina Ccbc adresser för att sända betalningar. Kontrollera alltid summan och mottagaradressen före du sänder mynt.</translation>
     </message>
     <message>
-        <source>These are your CCBC addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Det här är dina CCBC adresser för att ta emot betalningar. Det är rekomenderat att använda en ny mottagaradress för varje transaktion.</translation>
+        <source>These are your Ccbc addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Det här är dina Ccbc adresser för att ta emot betalningar. Det är rekomenderat att använda en ny mottagaradress för varje transaktion.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -160,8 +160,8 @@
         <translation>Bekräfta plånboks krypering</translation>
     </message>
     <message>
-        <source>CCBC will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
-        <translation>CCBC kommer att stängas ner nu för att färdigställa kryperingsprocessen. Kom ihåg att kryptering av din plånbok inte kan säkerställa dina CCBCs från att bli stulna av skadeprogram som infekterat din dator.</translation>
+        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
+        <translation>Ccbc kommer att stängas ner nu för att färdigställa kryperingsprocessen. Kom ihåg att kryptering av din plånbok inte kan säkerställa dina CCBCs från att bli stulna av skadeprogram som infekterat din dator.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -223,8 +223,8 @@
         <translation>BIP 38 Kryptering</translation>
     </message>
     <message>
-        <source>Enter a CCBC Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Ange en CCBC adress som du vill kryptera med BIP 38.
+        <source>Enter a Ccbc Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <translation>Ange en Ccbc adress som du vill kryptera med BIP 38.
 Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den krypterade privata nyckeln.</translation>
     </message>
     <message>
@@ -232,8 +232,8 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
         <translation>Adress:</translation>
     </message>
     <message>
-        <source>The CCBC address to sign the message with</source>
-        <translation>CCBC adressen för signera meddelandet med</translation>
+        <source>The Ccbc address to sign the message with</source>
+        <translation>Ccbc adressen för signera meddelandet med</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -264,8 +264,8 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
         <translation>Kopiera den nuvarande signaturen till systemets urklipp</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this CCBC address</source>
-        <translation>Signera meddelandet för att bevisa att du äger denna CCBC adress</translation>
+        <source>Sign the message to prove you own this Ccbc address</source>
+        <translation>Signera meddelandet för att bevisa att du äger denna Ccbc adress</translation>
     </message>
     <message>
         <source>Encrypt &amp;Key</source>
@@ -288,12 +288,12 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
         <translation>Ange BIP 38 krypterade privata nyckeln. Ange lösenfrasen i med mittersta boxen. Tryck på krypetra nyckel för att beräkna den privata nyckeln. Efter att nyckeln är avkrypterad, Tryck på 'Importera Adress' kommer att lägga till denna privata nyckel till plånboken.</translation>
     </message>
     <message>
-        <source>The CCBC address the message was signed with</source>
-        <translation>CCBC adressen meddelandet blev signerat med</translation>
+        <source>The Ccbc address the message was signed with</source>
+        <translation>Ccbc adressen meddelandet blev signerat med</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
-        <translation>Verifiera meddelandet för att säkerställa att de blev signerat med den specifika CCBC adressen.</translation>
+        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
+        <translation>Verifiera meddelandet för att säkerställa att de blev signerat med den specifika Ccbc adressen.</translation>
     </message>
     <message>
         <source>Decrypt &amp;Key</source>
@@ -583,12 +583,12 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
         <translation>flik vertygsrad</translation>
     </message>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Kärna</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Kärna</translation>
     </message>
     <message>
-        <source>Send coins to a CCBC address</source>
-        <translation>Skicka mynt till en CCBC adress</translation>
+        <source>Send coins to a Ccbc address</source>
+        <translation>Skicka mynt till en Ccbc adress</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and ccbc: URIs)</source>
@@ -603,24 +603,24 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
         <translation>Utforska masternoder</translation>
     </message>
     <message>
-        <source>&amp;About CCBC Core</source>
-        <translation>Om CCBC Kärnan</translation>
+        <source>&amp;About Ccbc Core</source>
+        <translation>Om Ccbc Kärnan</translation>
     </message>
     <message>
-        <source>Show information about CCBC Core</source>
-        <translation>Visa information om CCBC Kärnan</translation>
+        <source>Show information about Ccbc Core</source>
+        <translation>Visa information om Ccbc Kärnan</translation>
     </message>
     <message>
-        <source>Modify configuration options for CCBC</source>
-        <translation>Ändra konfigurationsval för CCBC</translation>
+        <source>Modify configuration options for Ccbc</source>
+        <translation>Ändra konfigurationsval för Ccbc</translation>
     </message>
     <message>
-        <source>Sign messages with your CCBC addresses to prove you own them</source>
-        <translation>Signera meddelanden med din CCBC adress för att visa att du äger dem</translation>
+        <source>Sign messages with your Ccbc addresses to prove you own them</source>
+        <translation>Signera meddelanden med din Ccbc adress för att visa att du äger dem</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified CCBC addresses</source>
-        <translation>Verifiera meddelandet för att säkerställa att de blev signerat med den specifika CCBC adressen.</translation>
+        <source>Verify messages to ensure they were signed with specified Ccbc addresses</source>
+        <translation>Verifiera meddelandet för att säkerställa att de blev signerat med den specifika Ccbc adressen.</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -631,8 +631,8 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
         <translation>Kryptera och avkryptera privata nycklar genom användning av lösenfras</translation>
     </message>
     <message>
-        <source>CCBC Core client</source>
-        <translation>CCBC kärn klient</translation>
+        <source>Ccbc Core client</source>
+        <translation>Ccbc kärn klient</translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -837,15 +837,15 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Kärna</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Kärna</translation>
     </message>
     </context>
 <context>
     <name>Intro</name>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Kärna</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Kärna</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1157,8 +1157,8 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <source>The CCBC address to sign the message with</source>
-        <translation>CCBC adressen för signera meddelandet med</translation>
+        <source>The Ccbc address to sign the message with</source>
+        <translation>Ccbc adressen för signera meddelandet med</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1181,16 +1181,16 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
         <translation>Kopiera den nuvarande signaturen till systemets urklipp</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this CCBC address</source>
-        <translation>Signera meddelandet för att bevisa att du äger denna CCBC adress</translation>
+        <source>Sign the message to prove you own this Ccbc address</source>
+        <translation>Signera meddelandet för att bevisa att du äger denna Ccbc adress</translation>
     </message>
     <message>
-        <source>The CCBC address the message was signed with</source>
-        <translation>CCBC adressen meddelandet blev signerat med</translation>
+        <source>The Ccbc address the message was signed with</source>
+        <translation>Ccbc adressen meddelandet blev signerat med</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
-        <translation>Verifiera meddelandet för att säkerställa att de blev signerat med den specifika CCBC adressen.</translation>
+        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
+        <translation>Verifiera meddelandet för att säkerställa att de blev signerat med den specifika Ccbc adressen.</translation>
     </message>
     <message>
         <source>Reset all sign message fields</source>
@@ -1232,8 +1232,8 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Kärna</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Kärna</translation>
     </message>
     </context>
 <context>

@@ -43,11 +43,11 @@
     </message>
     <message>
         <source>Choose the address to send coins to</source>
-        <translation>選擇要匯出CCBC幣的位址</translation>
+        <translation>選擇要匯出Ccbc幣的位址</translation>
     </message>
     <message>
         <source>Choose the address to receive coins with</source>
-        <translation>選擇要接收CCBC幣的位址</translation>
+        <translation>選擇要接收Ccbc幣的位址</translation>
     </message>
     <message>
         <source>C&amp;hoose</source>
@@ -62,12 +62,12 @@
         <translation>接收的位址</translation>
     </message>
     <message>
-        <source>These are your CCBC addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>這是你用來付款的 CCBC 位址, 送出前, 請務必確認金額及接收位址是否正確.</translation>
+        <source>These are your Ccbc addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>這是你用來付款的 Ccbc 位址, 送出前, 請務必確認金額及接收位址是否正確.</translation>
     </message>
     <message>
-        <source>These are your CCBC addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>這是你用來接收款項的 CCBC 位址, 建議你每次付款都使用新的位址.</translation>
+        <source>These are your Ccbc addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>這是你用來接收款項的 Ccbc 位址, 建議你每次付款都使用新的位址.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -164,8 +164,8 @@
         <translation>錢包確認加密</translation>
     </message>
     <message>
-        <source>CCBC will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
-        <translation>CCBC 現在會關閉程式來處理加密流程, 請注意, 僅僅是加密你的錢包並不能完全保護你的 CCBC 幣被可疑軟體或病毒偷走的風險.</translation>
+        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
+        <translation>Ccbc 現在會關閉程式來處理加密流程, 請注意, 僅僅是加密你的錢包並不能完全保護你的 CCBC 幣被可疑軟體或病毒偷走的風險.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -227,16 +227,16 @@
         <translation>&amp;BIP 38 加密</translation>
     </message>
     <message>
-        <source>Enter a CCBC Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>輸入你想 BIP 38 加密的 CCBC 位址, 輸入密碼在中間欄, 按下加密按鈕來產生加密私鑰.</translation>
+        <source>Enter a Ccbc Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <translation>輸入你想 BIP 38 加密的 Ccbc 位址, 輸入密碼在中間欄, 按下加密按鈕來產生加密私鑰.</translation>
     </message>
     <message>
         <source>Address:</source>
         <translation>位址:</translation>
     </message>
     <message>
-        <source>The CCBC address to sign the message with</source>
-        <translation>對訊息簽名的 CCBC 位址</translation>
+        <source>The Ccbc address to sign the message with</source>
+        <translation>對訊息簽名的 Ccbc 位址</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -267,8 +267,8 @@
         <translation>拷貝目前的簽章到系統剪貼簿</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this CCBC address</source>
-        <translation>使用簽章來證明你是該  CCBC 位址的擁有者,</translation>
+        <source>Sign the message to prove you own this Ccbc address</source>
+        <translation>使用簽章來證明你是該  Ccbc 位址的擁有者,</translation>
     </message>
     <message>
         <source>Encrypt &amp;Key</source>
@@ -287,12 +287,12 @@
         <translation>&amp;BIP 38 解密</translation>
     </message>
     <message>
-        <source>The CCBC address the message was signed with</source>
-        <translation>此訊息之 CCBC 位址已簽章於</translation>
+        <source>The Ccbc address the message was signed with</source>
+        <translation>此訊息之 Ccbc 位址已簽章於</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
-        <translation>驗證訊息以確保該  CCBC 位址已被簽章</translation>
+        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
+        <translation>驗證訊息以確保該  Ccbc 位址已被簽章</translation>
     </message>
     <message>
         <source>Decrypt &amp;Key</source>
@@ -582,12 +582,12 @@
         <translation>Tabs 工具列</translation>
     </message>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     <message>
-        <source>Send coins to a CCBC address</source>
-        <translation>送出錢幣到 CCBC 地址</translation>
+        <source>Send coins to a Ccbc address</source>
+        <translation>送出錢幣到 Ccbc 地址</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and ccbc: URIs)</source>
@@ -602,24 +602,24 @@
         <translation>瀏覽 Masternodes</translation>
     </message>
     <message>
-        <source>&amp;About CCBC Core</source>
-        <translation>&amp;關於 CCBC Core</translation>
+        <source>&amp;About Ccbc Core</source>
+        <translation>&amp;關於 Ccbc Core</translation>
     </message>
     <message>
-        <source>Show information about CCBC Core</source>
-        <translation>顯示 CCBC Core 相關資訊</translation>
+        <source>Show information about Ccbc Core</source>
+        <translation>顯示 Ccbc Core 相關資訊</translation>
     </message>
     <message>
-        <source>Modify configuration options for CCBC</source>
-        <translation>修改 CCBC 設定</translation>
+        <source>Modify configuration options for Ccbc</source>
+        <translation>修改 Ccbc 設定</translation>
     </message>
     <message>
-        <source>Sign messages with your CCBC addresses to prove you own them</source>
-        <translation>使用你的 CCBC 位址對訊息簽章, 來證明你是擁有者</translation>
+        <source>Sign messages with your Ccbc addresses to prove you own them</source>
+        <translation>使用你的 Ccbc 位址對訊息簽章, 來證明你是擁有者</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified CCBC addresses</source>
-        <translation>驗證訊息簽章與 CCBC 位址吻合</translation>
+        <source>Verify messages to ensure they were signed with specified Ccbc addresses</source>
+        <translation>驗證訊息簽章與 Ccbc 位址吻合</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -650,8 +650,8 @@
         <translation>打開Masternode設定檔</translation>
     </message>
     <message>
-        <source>Open a CCBC: URI or payment request</source>
-        <translation>打開CCBC: 位址或付款請求 </translation>
+        <source>Open a Ccbc: URI or payment request</source>
+        <translation>打開Ccbc: 位址或付款請求 </translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -662,12 +662,12 @@
         <translation>區塊鏈瀏覽視窗</translation>
     </message>
     <message>
-        <source>Show the CCBC Core help message to get a list with possible CCBC command-line options</source>
-        <translation>顯示 CCBC Core 幫助訊息以取得 CCBC 命令列表選項</translation>
+        <source>Show the Ccbc Core help message to get a list with possible Ccbc command-line options</source>
+        <translation>顯示 Ccbc Core 幫助訊息以取得 Ccbc 命令列表選項</translation>
     </message>
     <message>
-        <source>CCBC Core client</source>
-        <translation>CCBC Core 客戶端</translation>
+        <source>Ccbc Core client</source>
+        <translation>Ccbc Core 客戶端</translation>
     </message>
     </context>
 <context>
@@ -696,15 +696,15 @@
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     </context>
 <context>
     <name>Intro</name>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     </context>
 <context>
@@ -836,8 +836,8 @@
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <source>The CCBC address to sign the message with</source>
-        <translation>對訊息簽名的 CCBC 位址</translation>
+        <source>The Ccbc address to sign the message with</source>
+        <translation>對訊息簽名的 Ccbc 位址</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -860,16 +860,16 @@
         <translation>拷貝目前的簽章到系統剪貼簿</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this CCBC address</source>
-        <translation>使用簽章來證明你是該  CCBC 位址的擁有者,</translation>
+        <source>Sign the message to prove you own this Ccbc address</source>
+        <translation>使用簽章來證明你是該  Ccbc 位址的擁有者,</translation>
     </message>
     <message>
-        <source>The CCBC address the message was signed with</source>
-        <translation>此訊息之 CCBC 位址已簽章於</translation>
+        <source>The Ccbc address the message was signed with</source>
+        <translation>此訊息之 Ccbc 位址已簽章於</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
-        <translation>驗證訊息以確保該  CCBC 位址已被簽章</translation>
+        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
+        <translation>驗證訊息以確保該  Ccbc 位址已被簽章</translation>
     </message>
     <message>
         <source>Reset all sign message fields</source>
@@ -907,8 +907,8 @@
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     </context>
 <context>

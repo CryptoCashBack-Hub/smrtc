@@ -80,12 +80,12 @@
     </message>
     <message>
         <location line="+7"/>
-        <source>These are your CCBC addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Ccbc addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>These are your CCBC addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Ccbc addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -221,7 +221,7 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>CCBC will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
+        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -307,7 +307,7 @@
     </message>
     <message>
         <location line="+6"/>
-        <source>Enter a CCBC Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <source>Enter a Ccbc Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -318,7 +318,7 @@
     </message>
     <message>
         <location line="-355"/>
-        <source>The CCBC address to sign the message with</source>
+        <source>The Ccbc address to sign the message with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -360,7 +360,7 @@
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this CCBC address</source>
+        <source>Sign the message to prove you own this Ccbc address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -391,12 +391,12 @@
     </message>
     <message>
         <location line="+25"/>
-        <source>The CCBC address the message was signed with</source>
+        <source>The Ccbc address the message was signed with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+29"/>
-        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
+        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -776,12 +776,12 @@
     <message>
         <location line="-413"/>
         <location line="+858"/>
-        <source>CCBC Core</source>
+        <source>Ccbc Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-675"/>
-        <source>Send coins to a CCBC address</source>
+        <source>Send coins to a Ccbc address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -806,27 +806,27 @@
     </message>
     <message>
         <location line="+31"/>
-        <source>&amp;About CCBC Core</source>
+        <source>&amp;About Ccbc Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Show information about CCBC Core</source>
+        <source>Show information about Ccbc Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>Modify configuration options for CCBC</source>
+        <source>Modify configuration options for Ccbc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>Sign messages with your CCBC addresses to prove you own them</source>
+        <source>Sign messages with your Ccbc addresses to prove you own them</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Verify messages to ensure they were signed with specified CCBC addresses</source>
+        <source>Verify messages to ensure they were signed with specified Ccbc addresses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -866,7 +866,7 @@
     </message>
     <message>
         <location line="+10"/>
-        <source>Open a CCBC: URI or payment request</source>
+        <source>Open a Ccbc: URI or payment request</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -881,17 +881,17 @@
     </message>
     <message>
         <location line="+4"/>
-        <source>Show the CCBC Core help message to get a list with possible CCBC command-line options</source>
+        <source>Show the Ccbc Core help message to get a list with possible Ccbc command-line options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+204"/>
-        <source>CCBC Core client</source>
+        <source>Ccbc Core client</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <location line="+197"/>
-        <source>%n active connection(s) to CCBC network</source>
+        <source>%n active connection(s) to Ccbc network</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
@@ -1461,7 +1461,7 @@ Address: %4
     </message>
     <message>
         <location line="+67"/>
-        <source>The entered address &quot;%1&quot; is not a valid CCBC address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Ccbc address.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1517,7 +1517,7 @@ Address: %4
     </message>
     <message>
         <location line="+0"/>
-        <source>CCBC Core</source>
+        <source>Ccbc Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1528,7 +1528,7 @@ Address: %4
     </message>
     <message>
         <location line="+4"/>
-        <source>About CCBC Core</source>
+        <source>About Ccbc Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1586,17 +1586,17 @@ Address: %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Welcome to CCBC Core.</source>
+        <source>Welcome to Ccbc Core.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+26"/>
-        <source>As this is the first time the program is launched, you can choose where CCBC Core will store its data.</source>
+        <source>As this is the first time the program is launched, you can choose where Ccbc Core will store its data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>CCBC Core will download and store a copy of the CCBC block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>Ccbc Core will download and store a copy of the Ccbc block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1611,7 +1611,7 @@ Address: %4
     </message>
     <message>
         <location filename="../intro.cpp" line="+77"/>
-        <source>CCBC Core</source>
+        <source>Ccbc Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1787,8 +1787,8 @@ Address: %4
     </message>
     <message>
         <location line="+16"/>
-        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other CCBC addresses after it matures.
-To Add: enter percentage to give and CCBC address to add to the MultiSend vector.
+        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other Ccbc addresses after it matures.
+To Add: enter percentage to give and Ccbc address to add to the MultiSend vector.
 To Delete: Enter address to delete and press delete.
 MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished"></translation>
@@ -1995,17 +1995,17 @@ Please check the address and try again.</source>
     </message>
     <message>
         <location line="-27"/>
-        <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening CCBC&apos;s configuration screen.</source>
+        <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Ccbc&apos;s configuration screen.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+14"/>
-        <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening CCBC&apos;s configuration screen.</source>
+        <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Ccbc&apos;s configuration screen.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+14"/>
-        <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening CCBC&apos;s configuration screen.</source>
+        <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Ccbc&apos;s configuration screen.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2081,7 +2081,7 @@ Please check the address and try again.</source>
     </message>
     <message>
         <location line="+33"/>
-        <source>Automatically open the CCBC client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <source>Automatically open the Ccbc client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2106,12 +2106,12 @@ Please check the address and try again.</source>
     </message>
     <message>
         <location line="-176"/>
-        <source>Automatically start CCBC after logging in to the system.</source>
+        <source>Automatically start Ccbc after logging in to the system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start CCBC on system login</source>
+        <source>&amp;Start Ccbc on system login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2146,7 +2146,7 @@ Please check the address and try again.</source>
     </message>
     <message>
         <location line="+192"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting CCBC.</source>
+        <source>The user interface language can be set here. This setting will take effect after restarting Ccbc.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2183,7 +2183,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</source>
     </message>
     <message>
         <location line="+114"/>
-        <source>Connect to the CCBC network through a SOCKS5 proxy.</source>
+        <source>Connect to the Ccbc network through a SOCKS5 proxy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2387,7 +2387,7 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</source>
     <message>
         <location line="-153"/>
         <location line="+1393"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the CCBC network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Ccbc network after a connection is established, but this process has not completed yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2613,7 +2613,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+114"/>
-        <source>URI cannot be parsed! This can be caused by an invalid CCBC address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Ccbc address or malformed URI parameters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2731,7 +2731,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+10"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the CCBC network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Ccbc network after a connection is established, but this process has not completed yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2890,7 +2890,7 @@ zCCBC are mature when they have more than 20 confirmations AND more than 3 mints
     </message>
     <message>
         <location line="+27"/>
-        <source>The CCBC address to send the payment to. Creates local payment to yourself when empty.</source>
+        <source>The Ccbc address to send the payment to. Creates local payment to yourself when empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3167,7 +3167,7 @@ Immature: confirmed, but less than 3 mints of the same denomination after it was
     <message>
         <location line="+88"/>
         <location line="+111"/>
-        <source>Zerocoin functionality is not enabled on the CCBC network yet.</source>
+        <source>Zerocoin functionality is not enabled on the Ccbc network yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3234,7 +3234,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+4"/>
-        <source>Invalid CCBC Address</source>
+        <source>Invalid Ccbc Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3362,7 +3362,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location filename="../guiutil.cpp" line="+113"/>
-        <source>Enter a CCBC address (e.g. %1)</source>
+        <source>Enter a Ccbc address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3557,7 +3557,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+79"/>
-        <source>Open the CCBC debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <source>Open the Ccbc debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3784,7 +3784,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="-36"/>
-        <source>Welcome to the CCBC RPC console.</source>
+        <source>Welcome to the Ccbc RPC console.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3900,12 +3900,12 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="-37"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the CCBC network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Ccbc network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+23"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the CCBC network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Ccbc network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4264,7 +4264,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <message>
         <location line="+33"/>
         <location line="+13"/>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for CCBC transactions than the network can process.</source>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Ccbc transactions than the network can process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4400,7 +4400,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+622"/>
-        <source>Warning: Invalid CCBC address</source>
+        <source>Warning: Invalid Ccbc address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4539,7 +4539,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+18"/>
-        <source>The CCBC address to send the payment to</source>
+        <source>The Ccbc address to send the payment to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4593,7 +4593,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+10"/>
-        <source>A message that was attached to the CCBC: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the CCBC network.</source>
+        <source>A message that was attached to the Ccbc: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Ccbc network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4628,7 +4628,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <name>ShutdownWindow</name>
     <message>
         <location filename="../utilitydialog.cpp" line="+75"/>
-        <source>CCBC Core is shutting down...</source>
+        <source>Ccbc Core is shutting down...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4656,7 +4656,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+18"/>
-        <source>The CCBC address to sign the message with</source>
+        <source>The Ccbc address to sign the message with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4698,17 +4698,17 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this CCBC address</source>
+        <source>Sign the message to prove you own this Ccbc address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+106"/>
-        <source>The CCBC address the message was signed with</source>
+        <source>The Ccbc address the message was signed with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+37"/>
-        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
+        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4823,7 +4823,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+36"/>
-        <source>CCBC Core</source>
+        <source>Ccbc Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4843,7 +4843,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>The CCBC Core developers</source>
+        <source>The Ccbc Core developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5736,7 +5736,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+2"/>
-        <source>Cannot obtain a lock on data directory %s. CCBC Core is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s. Ccbc Core is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5761,7 +5761,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+3"/>
-        <source>Disable all CCBC specific functionality (Masternodes, Obfuscation, SwiftTX, Budgeting) (0-1, default: %u)</source>
+        <source>Disable all Ccbc specific functionality (Masternodes, Obfuscation, SwiftTX, Budgeting) (0-1, default: %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5950,13 +5950,13 @@ rpcpassword=%s
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;CCBC Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Ccbc Alert&quot; admin@foo.com
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>Unable to bind to %s on this computer. CCBC Core is probably already running.</source>
+        <source>Unable to bind to %s on this computer. Ccbc Core is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5991,7 +5991,7 @@ for example: alertnotify=echo %%s | mail -s &quot;CCBC Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong CCBC Core will not work properly.</source>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Ccbc Core will not work properly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6031,8 +6031,8 @@ for example: alertnotify=echo %%s | mail -s &quot;CCBC Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+3"/>
-        <source>(5500 could be used only on mainnet)</source>
-        <translation type="unfinished">(5500 could be used only on mainnet)</translation>
+        <source>(5520 could be used only on mainnet)</source>
+        <translation type="unfinished">(5520 could be used only on mainnet)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6046,7 +6046,7 @@ for example: alertnotify=echo %%s | mail -s &quot;CCBC Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>(must be 5500 for mainnet)</source>
+        <source>(must be 5520 for mainnet)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6186,7 +6186,7 @@ for example: alertnotify=echo %%s | mail -s &quot;CCBC Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) 2015-%i The CCBC Core Developers</source>
+        <source>Copyright (C) 2015-%i The Ccbc Core Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6286,7 +6286,7 @@ for example: alertnotify=echo %%s | mail -s &quot;CCBC Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of CCBC Core</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of Ccbc Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6426,7 +6426,7 @@ for example: alertnotify=echo %%s | mail -s &quot;CCBC Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Initialization sanity check failed. CCBC Core is shutting down.</source>
+        <source>Initialization sanity check failed. Ccbc Core is shutting down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7318,7 +7318,7 @@ for example: alertnotify=echo %%s | mail -s &quot;CCBC Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart CCBC Core to complete</source>
+        <source>Wallet needed to be rewritten: restart Ccbc Core to complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -1,5 +1,5 @@
 ---
-name: "ccbc-rpi2-1.0.0.5"
+name: "ccbc-rpi2-1.1.0.1"
 enable_cache: true
 suites:
 - "trusty"
@@ -20,10 +20,10 @@ packages:
 - "python"
 reference_datetime: "2015-06-01 00:00:00"
 remotes:
-- "url": "https://github.com/Poseidon-CCBC/ccbc"
+- "url": "https://github.com/CryptoCashBack-Hub/ccbc"
   "dir": "ccbc"
 files:
-- "raspberrypi-tools.tar.gz"
+- "tools-master.tar.gz"
 script: |
   WRAP_DIR=$HOME/wrapped
   HOSTS="arm-linux-gnueabihf"
@@ -31,8 +31,8 @@ script: |
   FAKETIME_HOST_PROGS=""
   FAKETIME_PROGS="date ar ranlib nm strip"
   
-  tar --warning=no-timestamp -xzf raspberrypi-tools.tar.gz
-  export TOOLCHAIN_BIN=$(pwd)/raspberrypi-tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin
+  tar --warning=no-timestamp -xzf tools-master.tar.gz
+  export TOOLCHAIN_BIN=$(pwd)/tools-master/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin
   export PATH=$PATH:$TOOLCHAIN_BIN
 
   export QT_RCC_TEST=1

@@ -62,12 +62,12 @@
         <translation>Endereços de recebimento</translation>
     </message>
     <message>
-        <source>These are your CCBC addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Esses são seus endereços CCBC para envio de pagamentos. Sempre verifique a quantia e os endereços de recebimento antes de enviar moedas.</translation>
+        <source>These are your Ccbc addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Esses são seus endereços Ccbc para envio de pagamentos. Sempre verifique a quantia e os endereços de recebimento antes de enviar moedas.</translation>
     </message>
     <message>
-        <source>These are your CCBC addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Esses são seus endereços CCBC para recebimento de pagamentos. É recomendado usar um novo endereço para cada transação.</translation>
+        <source>These are your Ccbc addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Esses são seus endereços Ccbc para recebimento de pagamentos. É recomendado usar um novo endereço para cada transação.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -172,8 +172,8 @@
         <translation>Confirmar criptografia de carteira</translation>
     </message>
     <message>
-        <source>CCBC will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
-        <translation>CCBC vai fechar agora para finalizar o processo de criptografia. Lembre-se que encriptar sua carteira não pode proteger totalmente suas CCBCs de serem roubadas por malwares infectando seu computador.</translation>
+        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
+        <translation>Ccbc vai fechar agora para finalizar o processo de criptografia. Lembre-se que encriptar sua carteira não pode proteger totalmente suas CCBCs de serem roubadas por malwares infectando seu computador.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -235,7 +235,7 @@
         <translation>&amp;Encriptação BIP 38</translation>
     </message>
     <message>
-        <source>Enter a CCBC Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <source>Enter a Ccbc Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
         <translation>Insira um endereço que você deseja criptografar usando a BIP 38. Insira a palavra-chave na caixa do meio. Pressione criptografar para computar a chave privada criptografada.</translation>
     </message>
     <message>
@@ -243,8 +243,8 @@
         <translation>Endereço:</translation>
     </message>
     <message>
-        <source>The CCBC address to sign the message with</source>
-        <translation>O endereço CCBC para assinar a mensagem</translation>
+        <source>The Ccbc address to sign the message with</source>
+        <translation>O endereço Ccbc para assinar a mensagem</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -275,8 +275,8 @@
         <translation>Copia a assinatura atual do sistema de transferência</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this CCBC address</source>
-        <translation>Assine a mensagem para provar que você possui este endereço CCBC</translation>
+        <source>Sign the message to prove you own this Ccbc address</source>
+        <translation>Assine a mensagem para provar que você possui este endereço Ccbc</translation>
     </message>
     <message>
         <source>Encrypt &amp;Key</source>
@@ -291,12 +291,12 @@
         <translation>Limpar &amp;Tudo</translation>
     </message>
     <message>
-        <source>The CCBC address the message was signed with</source>
-        <translation>O endereço CCBC que assinou a mensagem</translation>
+        <source>The Ccbc address the message was signed with</source>
+        <translation>O endereço Ccbc que assinou a mensagem</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
-        <translation>Verifique a mensagem para ter certeza que foi assinada com o endereço CCBC especificado.</translation>
+        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
+        <translation>Verifique a mensagem para ter certeza que foi assinada com o endereço Ccbc especificado.</translation>
     </message>
     <message>
         <source>Decrypt &amp;Key</source>
@@ -586,12 +586,12 @@
         <translation>Ferramentas de abas</translation>
     </message>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     <message>
-        <source>Send coins to a CCBC address</source>
-        <translation>Enviar moedas para um endereço CCBC</translation>
+        <source>Send coins to a Ccbc address</source>
+        <translation>Enviar moedas para um endereço Ccbc</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and ccbc: URIs)</source>
@@ -606,24 +606,24 @@
         <translation>Procurar masternodes</translation>
     </message>
     <message>
-        <source>&amp;About CCBC Core</source>
-        <translation>&amp;Sobre o CCBC Core</translation>
+        <source>&amp;About Ccbc Core</source>
+        <translation>&amp;Sobre o Ccbc Core</translation>
     </message>
     <message>
-        <source>Show information about CCBC Core</source>
-        <translation>Mostra informação sobre o CCBC Core</translation>
+        <source>Show information about Ccbc Core</source>
+        <translation>Mostra informação sobre o Ccbc Core</translation>
     </message>
     <message>
-        <source>Modify configuration options for CCBC</source>
-        <translation>Modificar opções de configuração para CCBC</translation>
+        <source>Modify configuration options for Ccbc</source>
+        <translation>Modificar opções de configuração para Ccbc</translation>
     </message>
     <message>
-        <source>Sign messages with your CCBC addresses to prove you own them</source>
-        <translation>Assine mensagens com seus endereços CCBC para provar que você os detém</translation>
+        <source>Sign messages with your Ccbc addresses to prove you own them</source>
+        <translation>Assine mensagens com seus endereços Ccbc para provar que você os detém</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified CCBC addresses</source>
-        <translation>Verifique as mensagens para ter certeza que estão assinadas com os endereços CCBC especificados</translation>
+        <source>Verify messages to ensure they were signed with specified Ccbc addresses</source>
+        <translation>Verifique as mensagens para ter certeza que estão assinadas com os endereços Ccbc especificados</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -654,8 +654,8 @@
         <translation>Abrir arquivo de configuração de Masternode</translation>
     </message>
     <message>
-        <source>Open a CCBC: URI or payment request</source>
-        <translation>Abrir um CCBC: URI ou requisição de pagamento</translation>
+        <source>Open a Ccbc: URI or payment request</source>
+        <translation>Abrir um Ccbc: URI ou requisição de pagamento</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -666,12 +666,12 @@
         <translation>Janela de exploração de blocos</translation>
     </message>
     <message>
-        <source>Show the CCBC Core help message to get a list with possible CCBC command-line options</source>
-        <translation>Mostra a ajuda da CCBC Core para receber uma lista com possíveis opções de linha de comando CCBC</translation>
+        <source>Show the Ccbc Core help message to get a list with possible Ccbc command-line options</source>
+        <translation>Mostra a ajuda da Ccbc Core para receber uma lista com possíveis opções de linha de comando Ccbc</translation>
     </message>
     <message>
-        <source>CCBC Core client</source>
-        <translation>Cliente Core CCBC</translation>
+        <source>Ccbc Core client</source>
+        <translation>Cliente Core Ccbc</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -1083,8 +1083,8 @@ MultiSend: %1</translation>
         <translation>Editar endereço remetente</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid CCBC address.</source>
-        <translation>O endereço que você selecionou, "%1" , não é um endereço válido de CCBC</translation>
+        <source>The entered address "%1" is not a valid Ccbc address.</source>
+        <translation>O endereço que você selecionou, "%1" , não é um endereço válido de Ccbc</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1129,16 +1129,16 @@ MultiSend: %1</translation>
         <translation>versão</translation>
     </message>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About CCBC Core</source>
-        <translation>Sobre o CCBC Core</translation>
+        <source>About Ccbc Core</source>
+        <translation>Sobre o Ccbc Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1172,16 +1172,16 @@ MultiSend: %1</translation>
         <translation>Bem-vindo</translation>
     </message>
     <message>
-        <source>Welcome to CCBC Core.</source>
-        <translation>Bem-vindo ao CCBC Core.</translation>
+        <source>Welcome to Ccbc Core.</source>
+        <translation>Bem-vindo ao Ccbc Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where CCBC Core will store its data.</source>
-        <translation>Como essa é a primeira vez que o programa é utilizado, você pode escolher onde CCBC Core vai armazenar os seus dados.</translation>
+        <source>As this is the first time the program is launched, you can choose where Ccbc Core will store its data.</source>
+        <translation>Como essa é a primeira vez que o programa é utilizado, você pode escolher onde Ccbc Core vai armazenar os seus dados.</translation>
     </message>
     <message>
-        <source>CCBC Core will download and store a copy of the CCBC block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>CCBC Core vai baixar e armazenar uma cópia da blockchain CCBC. Pelo menos %1GB de informação será armazenado neste diretório e irá aumentar com o tempo. A carteira também será armazenada neste diretório.</translation>
+        <source>Ccbc Core will download and store a copy of the Ccbc block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Ccbc Core vai baixar e armazenar uma cópia da blockchain Ccbc. Pelo menos %1GB de informação será armazenado neste diretório e irá aumentar com o tempo. A carteira também será armazenada neste diretório.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1192,8 +1192,8 @@ MultiSend: %1</translation>
         <translation>Usar um diretório personalizado de dados:</translation>
     </message>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1480,16 +1480,16 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>Configuração de ofuscação</translation>
     </message>
     <message>
-        <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening CCBC's configuration screen.</source>
-        <translation>Ofuscação foi definida com sucesso para o básico (%1 e 2 rodadas) Você pode mudar isto a qualquer tempo ao abrir a configuração de tela CCBC's.</translation>
+        <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Ccbc's configuration screen.</source>
+        <translation>Ofuscação foi definida com sucesso para o básico (%1 e 2 rodadas) Você pode mudar isto a qualquer tempo ao abrir a configuração de tela Ccbc's.</translation>
     </message>
     <message>
-        <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening CCBC's configuration screen.</source>
-        <translation>Ofuscação foi definida com sucesso para alto (%1 e 8 rodadas). Você pode mudar isto a qualquer tempo ao abrir a configuração de tela CCBC's.</translation>
+        <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Ccbc's configuration screen.</source>
+        <translation>Ofuscação foi definida com sucesso para alto (%1 e 8 rodadas). Você pode mudar isto a qualquer tempo ao abrir a configuração de tela Ccbc's.</translation>
     </message>
     <message>
-        <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening CCBC's configuration screen.</source>
-        <translation>Ofuscação foi definida com sucesso para máxima (%1 e 16 rodadas). Você pode mudar isto a qualquer tempo ao abrir a configuração de tela CCBC's.</translation>
+        <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Ccbc's configuration screen.</source>
+        <translation>Ofuscação foi definida com sucesso para máxima (%1 e 16 rodadas). Você pode mudar isto a qualquer tempo ao abrir a configuração de tela Ccbc's.</translation>
     </message>
 </context>
 <context>
@@ -1542,8 +1542,8 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>C&amp;arteira</translation>
     </message>
     <message>
-        <source>Automatically open the CCBC client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Abrir automaticamente a porta do cliente CCBC no roteador. Isto somente funciona quando seu roteador suporta UPnP e este esteja habilitado.</translation>
+        <source>Automatically open the Ccbc client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Abrir automaticamente a porta do cliente Ccbc no roteador. Isto somente funciona quando seu roteador suporta UPnP e este esteja habilitado.</translation>
     </message>
     <message>
         <source>Accept connections from outside</source>
@@ -1562,12 +1562,12 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>Expert</translation>
     </message>
     <message>
-        <source>Automatically start CCBC after logging in to the system.</source>
-        <translation>Iniciar automaticamente CCBC depois de logar no sistema.</translation>
+        <source>Automatically start Ccbc after logging in to the system.</source>
+        <translation>Iniciar automaticamente Ccbc depois de logar no sistema.</translation>
     </message>
     <message>
-        <source>&amp;Start CCBC on system login</source>
-        <translation>&amp;Iniciar CCBC ao logar no sistema</translation>
+        <source>&amp;Start Ccbc on system login</source>
+        <translation>&amp;Iniciar Ccbc ao logar no sistema</translation>
     </message>
     <message>
         <source>Enable coin &amp;control features</source>
@@ -1582,8 +1582,8 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>&amp;Rede</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting CCBC.</source>
-        <translation>A linguagem da interface pode ser definida aqui. Está configuração terá efeito após reinício do CCBC.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Ccbc.</source>
+        <translation>A linguagem da interface pode ser definida aqui. Está configuração terá efeito após reinício do Ccbc.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
@@ -1592,8 +1592,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</source>
 https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
     </message>
     <message>
-        <source>Connect to the CCBC network through a SOCKS5 proxy.</source>
-        <translation>Conectar à rede CCBC através de um proxy SOCKS5</translation>
+        <source>Connect to the Ccbc network through a SOCKS5 proxy.</source>
+        <translation>Conectar à rede Ccbc através de um proxy SOCKS5</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1727,8 +1727,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Imaturo:</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the CCBC network after a connection is established, but this process has not completed yet.</source>
-        <translation>A informação mostrada pode estar desatualizada. A sua carteira se sincroniza automaticamente com a rede CCBC após estabelecer uma conexão, mas esse processo ainda não foi concluído.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Ccbc network after a connection is established, but this process has not completed yet.</source>
+        <translation>A informação mostrada pode estar desatualizada. A sua carteira se sincroniza automaticamente com a rede Ccbc após estabelecer uma conexão, mas esse processo ainda não foi concluído.</translation>
     </message>
     <message>
         <source>Unconfirmed transactions to watch-only addresses</source>
@@ -1816,8 +1816,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
 <context>
     <name>PrivacyDialog</name>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the CCBC network after a connection is established, but this process has not completed yet.</source>
-        <translation>A informação mostrada pode estar desatualizada. A sua carteira se sincroniza automaticamente com a rede CCBC após estabelecer uma conexão, mas esse processo ainda não foi concluído.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Ccbc network after a connection is established, but this process has not completed yet.</source>
+        <translation>A informação mostrada pode estar desatualizada. A sua carteira se sincroniza automaticamente com a rede Ccbc após estabelecer uma conexão, mas esse processo ainda não foi concluído.</translation>
     </message>
     <message>
         <source>0</source>
@@ -1923,8 +1923,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Quantidade</translation>
     </message>
     <message>
-        <source>Enter a CCBC address (e.g. %1)</source>
-        <translation>Insira um endereço CCBC (e.g. %1)</translation>
+        <source>Enter a Ccbc address (e.g. %1)</source>
+        <translation>Insira um endereço Ccbc (e.g. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -2173,8 +2173,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>saída:</translation>
     </message>
     <message>
-        <source>Welcome to the CCBC RPC console.</source>
-        <translation>Bem-vindo ao console da CCBC RPC</translation>
+        <source>Welcome to the Ccbc RPC console.</source>
+        <translation>Bem-vindo ao console da Ccbc RPC</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -2469,8 +2469,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Se a taxa padrão estiver definida para 1000 uCCBCs e a transação for somente de 250 bytes, então "por kilobyte" pagará somente 250 uCCBCs em taxa,&lt;br /&gt; pagará pelo menos 1000 uCCBCs. Para transações maiores que um kilobyte ambas pagam por kilobyte.</translation>
     </message>
     <message>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for CCBC transactions than the network can process.</source>
-        <translation>Pagar a taxa mínima é aceitável desde que existe menos volume de transações que espaço nos blocos. &lt;br/&gt; Mas fique atento que isso pode acabar em uma transação que nunca será confirmada caso haja mais demanda por transações de CCBC do que a rede pode processar.</translation>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Ccbc transactions than the network can process.</source>
+        <translation>Pagar a taxa mínima é aceitável desde que existe menos volume de transações que espaço nos blocos. &lt;br/&gt; Mas fique atento que isso pode acabar em uma transação que nunca será confirmada caso haja mais demanda por transações de Ccbc do que a rede pode processar.</translation>
     </message>
     <message>
         <source>normal</source>
@@ -2557,8 +2557,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>fundos anônimos</translation>
     </message>
     <message>
-        <source>Warning: Invalid CCBC address</source>
-        <translation>Aviso: endereço CCBC inválido</translation>
+        <source>Warning: Invalid Ccbc address</source>
+        <translation>Aviso: endereço Ccbc inválido</translation>
     </message>
     <message>
         <source>any available funds (not recommended)</source>
@@ -2652,8 +2652,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Pagar &amp;Para:</translation>
     </message>
     <message>
-        <source>The CCBC address to send the payment to</source>
-        <translation>O endereço CCBC para enviar o pagamento</translation>
+        <source>The Ccbc address to send the payment to</source>
+        <translation>O endereço Ccbc para enviar o pagamento</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2715,8 +2715,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>CCBC Core is shutting down...</source>
-        <translation>CCBC Core está desligando...</translation>
+        <source>Ccbc Core is shutting down...</source>
+        <translation>Ccbc Core está desligando...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -2734,8 +2734,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>&amp;Assinar mensagem</translation>
     </message>
     <message>
-        <source>The CCBC address to sign the message with</source>
-        <translation>O endereço CCBC para assinar a mensagem</translation>
+        <source>The Ccbc address to sign the message with</source>
+        <translation>O endereço Ccbc para assinar a mensagem</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2766,16 +2766,16 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Copia a assinatura atual do sistema de transferência</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this CCBC address</source>
-        <translation>Assine a mensagem para provar que você possui este endereço CCBC</translation>
+        <source>Sign the message to prove you own this Ccbc address</source>
+        <translation>Assine a mensagem para provar que você possui este endereço Ccbc</translation>
     </message>
     <message>
-        <source>The CCBC address the message was signed with</source>
-        <translation>O endereço CCBC que assinou a mensagem</translation>
+        <source>The Ccbc address the message was signed with</source>
+        <translation>O endereço Ccbc que assinou a mensagem</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
-        <translation>Verifique a mensagem para ter certeza que foi assinada com o endereço CCBC especificado.</translation>
+        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
+        <translation>Verifique a mensagem para ter certeza que foi assinada com o endereço Ccbc especificado.</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2857,8 +2857,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -2873,8 +2873,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Os desenvolvedores do Dash Core</translation>
     </message>
     <message>
-        <source>The CCBC Core developers</source>
-        <translation>Os desenvolvedores do CCBC Core</translation>
+        <source>The Ccbc Core developers</source>
+        <translation>Os desenvolvedores do Ccbc Core</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -3414,8 +3414,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Deletar todas as transações da carteira e somente recuperar aquelas partes da blockchain através de -rescan na inicialização</translation>
     </message>
     <message>
-        <source>Disable all CCBC specific functionality (Masternodes, Obfuscation, SwiftTX, Budgeting) (0-1, default: %u)</source>
-        <translation>Desabilitar todas as funcionalidades específicas CCBC (Masternodes, Ofuscação, SwiftTX, Budgeting) (0-1, padrão: %u)</translation>
+        <source>Disable all Ccbc specific functionality (Masternodes, Obfuscation, SwiftTX, Budgeting) (0-1, default: %u)</source>
+        <translation>Desabilitar todas as funcionalidades específicas Ccbc (Masternodes, Ofuscação, SwiftTX, Budgeting) (0-1, padrão: %u)</translation>
     </message>
     <message>
         <source>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
@@ -3474,8 +3474,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Aviso: -paytxfee está definido como muito alto! Está e a taxa de transação que você irá pagar se enviar uma transação.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong CCBC Core will not work properly.</source>
-        <translation>Aviso: Favor verificar se o horário e data de seu computador estão corretos! Se o seu relógio estiver errado o Core CCBC não vai funcionar corretamente.</translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Ccbc Core will not work properly.</source>
+        <translation>Aviso: Favor verificar se o horário e data de seu computador estão corretos! Se o seu relógio estiver errado o Core Ccbc não vai funcionar corretamente.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -3490,8 +3490,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Você deve especificar uma masternodeprivkey na configuração. Favor verificar o manual para obter ajuda.</translation>
     </message>
     <message>
-        <source>(5500 could be used only on mainnet)</source>
-        <translation>(5500 could be used only on mainnet)</translation>
+        <source>(5520 could be used only on mainnet)</source>
+        <translation>(5520 could be used only on mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -3502,8 +3502,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>(padrão: 1)</translation>
     </message>
     <message>
-        <source>(must be 5500 for mainnet)</source>
-        <translation>(deve ser 5500 para mainnet)</translation>
+        <source>(must be 5520 for mainnet)</source>
+        <translation>(deve ser 5520 para mainnet)</translation>
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
@@ -3554,8 +3554,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Todos os direitos reservados (C) 2014-%i aos Desenvolvedores do Dash Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The CCBC Core Developers</source>
-        <translation>Todos os direitos reservados (C) 2015-%i aos Desenvolvedores do CCBC Core</translation>
+        <source>Copyright (C) 2015-%i The Ccbc Core Developers</source>
+        <translation>Todos os direitos reservados (C) 2015-%i aos Desenvolvedores do Ccbc Core</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -3606,8 +3606,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Erro no carregamento da wallet.dat: Carteira corrompida</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of CCBC Core</source>
-        <translation>Erro ao carregar wallet.dat: A Carteira requer uma nova versão da CCBC Core</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Ccbc Core</source>
+        <translation>Erro ao carregar wallet.dat: A Carteira requer uma nova versão da Ccbc Core</translation>
     </message>
     <message>
         <source>Error opening block database</source>
@@ -4078,8 +4078,8 @@ https://www.transifex.com/ccbc-project/ccbc-project-translations</translation>
         <translation>Carteira está travada.</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart CCBC Core to complete</source>
-        <translation>A carteira precisa ser reescrita: reinicia o CCBC Core para completar</translation>
+        <source>Wallet needed to be rewritten: restart Ccbc Core to complete</source>
+        <translation>A carteira precisa ser reescrita: reinicia o Ccbc Core para completar</translation>
     </message>
     <message>
         <source>Wallet options:</source>

@@ -62,12 +62,12 @@
         <translation>Adresy pro přijetí peněz</translation>
     </message>
     <message>
-        <source>These are your CCBC addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Toto jsou Vaše CCBC adresy pro poslání platby. Vždy si překontrolujte množství peněz a cílovou adresu než platbu odešlete.</translation>
+        <source>These are your Ccbc addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Toto jsou Vaše Ccbc adresy pro poslání platby. Vždy si překontrolujte množství peněz a cílovou adresu než platbu odešlete.</translation>
     </message>
     <message>
-        <source>These are your CCBC addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Toto jsou Vaše CCBC adresy pro přijetí plateb. Je doporučeno použít novou adresu pro každou novou transakci.</translation>
+        <source>These are your Ccbc addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Toto jsou Vaše Ccbc adresy pro přijetí plateb. Je doporučeno použít novou adresu pro každou novou transakci.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -176,8 +176,8 @@
         <translation>Potvrdit zašifrování peněženky</translation>
     </message>
     <message>
-        <source>CCBC will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
-        <translation>CCBC se teď zavře pro dokončení šifrovacího procesu. Prosím, vemte na vědomí, že zašifrování Vaší peněženky plně neochrání Vaše CCBCy před krádží, pokud je Váš počítač infikován malwarem.</translation>
+        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
+        <translation>Ccbc se teď zavře pro dokončení šifrovacího procesu. Prosím, vemte na vědomí, že zašifrování Vaší peněženky plně neochrání Vaše CCBCy před krádží, pokud je Váš počítač infikován malwarem.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -239,16 +239,16 @@
         <translation>&amp;BIP 38 Šifrovat</translation>
     </message>
     <message>
-        <source>Enter a CCBC Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Zadejte CCBC adresu, kterou si přejete zašifrovat pomocí BIP38. Frázové heslo zadejte do prostředního boxu. Stiskněte šifrovat pro výpočet šifrovaného privátního klíče.</translation>
+        <source>Enter a Ccbc Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <translation>Zadejte Ccbc adresu, kterou si přejete zašifrovat pomocí BIP38. Frázové heslo zadejte do prostředního boxu. Stiskněte šifrovat pro výpočet šifrovaného privátního klíče.</translation>
     </message>
     <message>
         <source>Address:</source>
         <translation>Adresa:</translation>
     </message>
     <message>
-        <source>The CCBC address to sign the message with</source>
-        <translation>CCBC adresa pro podepsání zprávy</translation>
+        <source>The Ccbc address to sign the message with</source>
+        <translation>Ccbc adresa pro podepsání zprávy</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -279,8 +279,8 @@
         <translation>Kopírovat aktuální podpis do systémové mezipaměti</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this CCBC address</source>
-        <translation>Podepsat zprávu k prokázání, že vlastníte tuto CCBC adresu</translation>
+        <source>Sign the message to prove you own this Ccbc address</source>
+        <translation>Podepsat zprávu k prokázání, že vlastníte tuto Ccbc adresu</translation>
     </message>
     <message>
         <source>Encrypt &amp;Key</source>
@@ -303,12 +303,12 @@
         <translation>Vložte BIP 38 šifrovaný privítní klíc. Frázové heslo vložte do prostředního boxu. Kliknětě na Dešifrovat Klíč pro výpočet privátního klíče. Poté co bude klíč dešifrován, kliknutím na 'Importovat Adresu' přidáte privátní klíč do Vaší peněženky.</translation>
     </message>
     <message>
-        <source>The CCBC address the message was signed with</source>
-        <translation>CCBC adresa zprávy byla podpsána</translation>
+        <source>The Ccbc address the message was signed with</source>
+        <translation>Ccbc adresa zprávy byla podpsána</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
-        <translation>Verifikujte zprávu pro ujištění, že byla podepsána zmíněnou CCBC adresou</translation>
+        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
+        <translation>Verifikujte zprávu pro ujištění, že byla podepsána zmíněnou Ccbc adresou</translation>
     </message>
     <message>
         <source>Decrypt &amp;Key</source>
@@ -598,12 +598,12 @@
         <translation>Nástrojová lišta záložek</translation>
     </message>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     <message>
-        <source>Send coins to a CCBC address</source>
-        <translation>Odeslat platbuna CCBC adresu</translation>
+        <source>Send coins to a Ccbc address</source>
+        <translation>Odeslat platbuna Ccbc adresu</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and ccbc: URIs)</source>
@@ -618,24 +618,24 @@
         <translation>Procházet masternody</translation>
     </message>
     <message>
-        <source>&amp;About CCBC Core</source>
-        <translation>&amp;O CCBC Core</translation>
+        <source>&amp;About Ccbc Core</source>
+        <translation>&amp;O Ccbc Core</translation>
     </message>
     <message>
-        <source>Show information about CCBC Core</source>
-        <translation>Zobraz informace o CCBC Core</translation>
+        <source>Show information about Ccbc Core</source>
+        <translation>Zobraz informace o Ccbc Core</translation>
     </message>
     <message>
-        <source>Modify configuration options for CCBC</source>
-        <translation>Upravit možnosti konfigurace pro CCBC</translation>
+        <source>Modify configuration options for Ccbc</source>
+        <translation>Upravit možnosti konfigurace pro Ccbc</translation>
     </message>
     <message>
-        <source>Sign messages with your CCBC addresses to prove you own them</source>
-        <translation>Podepsat zprávy Vaší CCBC adresou pro prokázaní, že jste jejich vlastníkem</translation>
+        <source>Sign messages with your Ccbc addresses to prove you own them</source>
+        <translation>Podepsat zprávy Vaší Ccbc adresou pro prokázaní, že jste jejich vlastníkem</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified CCBC addresses</source>
-        <translation>Ověřit zprávy k zajištění, že bylypodepsány vybranými CCBC adresami</translation>
+        <source>Verify messages to ensure they were signed with specified Ccbc addresses</source>
+        <translation>Ověřit zprávy k zajištění, že bylypodepsány vybranými Ccbc adresami</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -666,8 +666,8 @@
         <translation>Otevřít Masternodový konfigurační soubor</translation>
     </message>
     <message>
-        <source>Open a CCBC: URI or payment request</source>
-        <translation>Otevřít CCBC: URI nebo platební žádost</translation>
+        <source>Open a Ccbc: URI or payment request</source>
+        <translation>Otevřít Ccbc: URI nebo platební žádost</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -678,12 +678,12 @@
         <translation>Okno blokového průzkumníka</translation>
     </message>
     <message>
-        <source>Show the CCBC Core help message to get a list with possible CCBC command-line options</source>
-        <translation>Zobrazit CCBC Core pomocnou zpráv pro získání seznamu možných parametrů CCBC pro příkazy do příkazové řádky</translation>
+        <source>Show the Ccbc Core help message to get a list with possible Ccbc command-line options</source>
+        <translation>Zobrazit Ccbc Core pomocnou zpráv pro získání seznamu možných parametrů Ccbc pro příkazy do příkazové řádky</translation>
     </message>
     <message>
-        <source>CCBC Core client</source>
-        <translation>CCBC Core klient</translation>
+        <source>Ccbc Core client</source>
+        <translation>Ccbc Core klient</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -1066,8 +1066,8 @@ MultiSend: %1</translation>
         <translation>Upravit adresu k odeslání platby</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid CCBC address.</source>
-        <translation>Zadaná adresa "%1" není validní CCBC adresa.</translation>
+        <source>The entered address "%1" is not a valid Ccbc address.</source>
+        <translation>Zadaná adresa "%1" není validní Ccbc adresa.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1112,12 +1112,12 @@ MultiSend: %1</translation>
         <translation>verze</translation>
     </message>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     <message>
-        <source>About CCBC Core</source>
-        <translation>O CCBC Core</translation>
+        <source>About Ccbc Core</source>
+        <translation>O Ccbc Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1151,16 +1151,16 @@ MultiSend: %1</translation>
         <translation>Vítejte</translation>
     </message>
     <message>
-        <source>Welcome to CCBC Core.</source>
-        <translation>Vítejte v CCBC Core.</translation>
+        <source>Welcome to Ccbc Core.</source>
+        <translation>Vítejte v Ccbc Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where CCBC Core will store its data.</source>
-        <translation>Při prvním spuštění programu si můžete vybrat, kam bude CCBC Core ukládat svá data.</translation>
+        <source>As this is the first time the program is launched, you can choose where Ccbc Core will store its data.</source>
+        <translation>Při prvním spuštění programu si můžete vybrat, kam bude Ccbc Core ukládat svá data.</translation>
     </message>
     <message>
-        <source>CCBC Core will download and store a copy of the CCBC block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>CCBC Core stáhne a uloží kopii CCBC blockchainu. Nejméně %1GB dat bude do této složky uloženo a v průběhu času bude ukládat další data. Peněženka bude v této složce uložena také.</translation>
+        <source>Ccbc Core will download and store a copy of the Ccbc block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Ccbc Core stáhne a uloží kopii Ccbc blockchainu. Nejméně %1GB dat bude do této složky uloženo a v průběhu času bude ukládat další data. Peněženka bude v této složce uložena také.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1171,8 +1171,8 @@ MultiSend: %1</translation>
         <translation>Použít vlastní složku pro data</translation>
     </message>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1520,12 +1520,12 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
         <translation>Expert</translation>
     </message>
     <message>
-        <source>Automatically start CCBC after logging in to the system.</source>
-        <translation>Automaticky spustit CCBC po přihlášení do systému</translation>
+        <source>Automatically start Ccbc after logging in to the system.</source>
+        <translation>Automaticky spustit Ccbc po přihlášení do systému</translation>
     </message>
     <message>
-        <source>&amp;Start CCBC on system login</source>
-        <translation>&amp;Spusti CCBC při přihlášení do systému</translation>
+        <source>&amp;Start Ccbc on system login</source>
+        <translation>&amp;Spusti Ccbc při přihlášení do systému</translation>
     </message>
     <message>
         <source>Show Masternodes Tab</source>
@@ -2186,8 +2186,8 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <source>The CCBC address to sign the message with</source>
-        <translation>CCBC adresa pro podepsání zprávy</translation>
+        <source>The Ccbc address to sign the message with</source>
+        <translation>Ccbc adresa pro podepsání zprávy</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2214,16 +2214,16 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
         <translation>Kopírovat aktuální podpis do systémové mezipaměti</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this CCBC address</source>
-        <translation>Podepsat zprávu k prokázání, že vlastníte tuto CCBC adresu</translation>
+        <source>Sign the message to prove you own this Ccbc address</source>
+        <translation>Podepsat zprávu k prokázání, že vlastníte tuto Ccbc adresu</translation>
     </message>
     <message>
-        <source>The CCBC address the message was signed with</source>
-        <translation>CCBC adresa zprávy byla podpsána</translation>
+        <source>The Ccbc address the message was signed with</source>
+        <translation>Ccbc adresa zprávy byla podpsána</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
-        <translation>Verifikujte zprávu pro ujištění, že byla podepsána zmíněnou CCBC adresou</translation>
+        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
+        <translation>Verifikujte zprávu pro ujištění, že byla podepsána zmíněnou Ccbc adresou</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2265,8 +2265,8 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     </context>
 <context>

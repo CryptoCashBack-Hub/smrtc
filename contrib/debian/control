@@ -24,13 +24,13 @@ Build-Depends: debhelper,
 Standards-Version: 3.9.2
 Homepage: http://www.ccbc.org
 Vcs-Git: git://github.com/SMRT2/ccbc.git
-Vcs-Browser: http://github.com/Poseidon-CCBC/ccbc
+Vcs-Browser: http://github.com/CryptoCashBack-Hub/ccbc
 
 Package: ccbcd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- CCBC is a free open source peer-to-peer electronic cash system that
+ Ccbc is a free open source peer-to-peer electronic cash system that
  is completely decentralized, without the need for a central server or
  trusted parties.  Users hold the crypto keys to their own money and
  transact directly with each other, with the help of a P2P network to
@@ -46,7 +46,7 @@ Package: ccbc-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- CCBC is a free open source peer-to-peer electronic cash system that
+ Ccbc is a free open source peer-to-peer electronic cash system that
  is completely decentralized, without the need for a central server or
  trusted parties.  Users hold the crypto keys to their own money and
  transact directly with each other, with the help of a P2P network to
@@ -55,4 +55,4 @@ Description: peer-to-peer network based digital currency - Qt GUI
  Full transaction history is stored locally at each client.  This
  requires 1+ GB of space, slowly growing.
  .
- This package provides CCBC-Qt, a GUI for CCBC based on Qt.
+ This package provides Ccbc-Qt, a GUI for Ccbc based on Qt.

@@ -1,7 +1,8 @@
-// Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The CCBC developers
+// Copyright (c) 2017 The CCBC developers
+// Copyright (c) 2017-2018 The Ccbc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef ZCCBCCONTROLDIALOG_H
 #define ZCCBCCONTROLDIALOG_H
 
@@ -14,16 +15,16 @@ class CZerocoinMint;
 class WalletModel;
 
 namespace Ui {
-class ZCCBCControlDialog;
+class ZCcbcControlDialog;
 }
 
-class ZCCBCControlDialog : public QDialog
+class ZCcbcControlDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit ZCCBCControlDialog(QWidget *parent);
-    ~ZCCBCControlDialog();
+    explicit ZCcbcControlDialog(QWidget *parent);
+    ~ZCcbcControlDialog();
 
     void setModel(WalletModel* model);
 
@@ -32,7 +33,7 @@ public:
     static std::vector<CZerocoinMint> GetSelectedMints();
 
 private:
-    Ui::ZCCBCControlDialog *ui;
+    Ui::ZCcbcControlDialog *ui;
     WalletModel* model;
     PrivacyDialog* privacyDialog;
 

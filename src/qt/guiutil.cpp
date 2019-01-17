@@ -1,7 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The CCBC developers
+// Copyright (c) 2015-2017 The PIVX developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -111,7 +110,7 @@ void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a CCBC address (e.g. %1)").arg("QcR7QdUfWnxvycuG9eHDP2BUjPVsVRfDCJ"));
+    widget->setPlaceholderText(QObject::tr("Enter a Ccbc address (e.g. %1)").arg("PCYiHgGJJ6xGHqivmdZrYjRnhaYf6AJ2Mp"));
 #endif
     widget->setValidator(new BitcoinAddressEntryValidator(parent));
     widget->setCheckValidator(new BitcoinAddressCheckValidator(parent));
@@ -128,7 +127,7 @@ void setupAmountWidget(QLineEdit* widget, QWidget* parent)
 
 bool parseBitcoinURI(const QUrl& uri, SendCoinsRecipient* out)
 {
-    // return if URI is not valid or is no CCBC: URI
+    // return if URI is not valid or is no Ccbc: URI
     if (!uri.isValid() || uri.scheme() != QString(URI_SCHEME))
         return false;
 
@@ -254,20 +253,6 @@ void copyEntryData(QAbstractItemView* view, int column, int role)
         setClipboard(selection.at(0).data(role).toString());
     }
 }
-
- QString getEntryData(QAbstractItemView *view, int column, int role)
- {
-     if(!view || !view->selectionModel())
-         return QString();
-     QModelIndexList selection = view->selectionModel()->selectedRows(column);
- 
-      if(!selection.isEmpty()) {
-         // Return first item
-         return (selection.at(0).data(role).toString());
-     }
-     return QString();
- }
- 
 
 QString getSaveFileName(QWidget* parent, const QString& caption, const QString& dir, const QString& filter, QString* selectedSuffixOut)
 {
@@ -596,12 +581,12 @@ bool DHMSTableWidgetItem::operator<(QTableWidgetItem const& item) const
 #ifdef WIN32
 boost::filesystem::path static StartupShortcutPath()
 {
-    return GetSpecialFolderPath(CSIDL_STARTUP) / "CCBC.lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / "Ccbc.lnk";
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for CCBC.lnk
+    // check for Ccbc.lnk
     return boost::filesystem::exists(StartupShortcutPath());
 }
 
@@ -714,7 +699,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         // Write a ccbc.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
-        optionFile << "Name=CCBC\n";
+        optionFile << "Name=Ccbc\n";
         optionFile << "Exec=" << pszExePath << " -min\n";
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
@@ -944,11 +929,5 @@ QString formatPingTime(double dPingTime)
 {
     return dPingTime == 0 ? QObject::tr("N/A") : QString(QObject::tr("%1 ms")).arg(QString::number((int)(dPingTime * 1000), 10));
 }
-
- QString formatTimeOffset(int64_t nTimeOffset)
- {
-   return QString(QObject::tr("%1 s")).arg(QString::number((int)nTimeOffset, 10));
- }
- 
 
 } // namespace GUIUtil

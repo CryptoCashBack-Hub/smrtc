@@ -1,5 +1,5 @@
 ---
-name: "ccbc-win-1.0.0.5"
+name: "ccbc-win-1.1.0.1"
 enable_cache: true
 suites:
 - "trusty"
@@ -22,7 +22,7 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/Poseidon-CCBC/ccbc"
+- "url": "https://github.com/CryptoCashBack-Hub/ccbc"
   "dir": "ccbc"
 files: []
 script: |

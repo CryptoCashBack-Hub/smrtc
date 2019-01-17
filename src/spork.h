@@ -1,6 +1,5 @@
-// Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The CCBC developers
+// Copyright (c) 2014-2016 The Dash developers
+// Copyright (c) 2016-2017 The CCBC developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -46,7 +45,6 @@ Sporks 11,12, and 16 to be removed with 1st zerocoin release
 #define SPORK_17_TREASURY_PAYMENT_ENFORCEMENT 10016
 #define SPORK_18_REVIVE_PAYMENT_ENFORCEMENT 10017
 #define SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3 10018
-#define SPORK_20_DGW_ENFORCEMENT 10019
 
 #define SPORK_2_SWIFTTX_DEFAULT 978307200                         //ON 01/01/2001 @ 12:00am (UTC)
 #define SPORK_3_SWIFTTX_BLOCK_FILTERING_DEFAULT 1424217600        //ON 02/18/2015 @ 12:00am (UTC)
@@ -58,12 +56,11 @@ Sporks 11,12, and 16 to be removed with 1st zerocoin release
 #define SPORK_11_LOCK_INVALID_UTXO_DEFAULT 4070908800             //OFF 01/01/2099 @ 12:00am (UTC)
 #define SPORK_13_ENABLE_SUPERBLOCKS_DEFAULT 4070908800            //OFF 01/01/2099 @ 12:00am (UTC)
 #define SPORK_14_NEW_PROTOCOL_ENFORCEMENT_DEFAULT 4070908800      //OFF 01/01/2099 @ 12:00am (UTC)
-#define SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2_DEFAULT 0			  //This was turned on by TFinch
+#define SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2_DEFAULT 4070908800    //This was turned on by TFinch
 #define SPORK_16_ZEROCOIN_MAINTENANCE_MODE_DEFAULT 4070908800     //OFF 01/01/2099 @ 12:00am (UTC)
 #define SPORK_17_TREASURY_PAYMENT_ENFORCEMENT_DEFAULT 4070908800  //OFF 01/01/2099 @ 12:00am (UTC)
 #define SPORK_18_REVIVE_PAYMENT_ENFORCEMENT_DEFAULT 4070908800    //OFF This will be turned on if Admin in AQX is not active on 1/1/2019
-#define SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3_DEFAULT 0             //Turned on during version 1.1.0.1
-#define SPORK_20_DGW_ENFORCEMENT_DEFAULT 4070908800               //Will only be used to enforce DGW fork and thats it.
+#define SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3_DEFAULT 4070908800    //OFF 01/01/2099 @ 12:00am (UTC)
 
 class CSporkMessage;
 class CSporkManager;

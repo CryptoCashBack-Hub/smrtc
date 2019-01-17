@@ -62,12 +62,12 @@
         <translation>Prijímacia adresa</translation>
     </message>
     <message>
-        <source>These are your CCBC addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Toto sú vaše CCBC adresy na odosielanie platieb. Pred odoslaním vždy skontrolujte výšku a adresu prijemcu.</translation>
+        <source>These are your Ccbc addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Toto sú vaše Ccbc adresy na odosielanie platieb. Pred odoslaním vždy skontrolujte výšku a adresu prijemcu.</translation>
     </message>
     <message>
-        <source>These are your CCBC addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Toto sú vaše CCBC adresy na prijímanie platieb. Pre každú transakciu sa odporúča použiť novú prijímaciu adresu.</translation>
+        <source>These are your Ccbc addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Toto sú vaše Ccbc adresy na prijímanie platieb. Pre každú transakciu sa odporúča použiť novú prijímaciu adresu.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -176,8 +176,8 @@
         <translation>Potvrďte šifrovanie peňaženky</translation>
     </message>
     <message>
-        <source>CCBC will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
-        <translation>CCBC sa teraz ukončí, aby dokončil proces šifrovania. Nezabudnite, že šifrovanie peňaženky nemôže úplne ochrániť vaše CCBC pred odcudzením škodlivým softvérom, ktorý infikuje váš počítač.</translation>
+        <source>Ccbc will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CCBCs from being stolen by malware infecting your computer.</source>
+        <translation>Ccbc sa teraz ukončí, aby dokončil proces šifrovania. Nezabudnite, že šifrovanie peňaženky nemôže úplne ochrániť vaše CCBC pred odcudzením škodlivým softvérom, ktorý infikuje váš počítač.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -239,16 +239,16 @@
         <translation>BIP 38 Šifrovanie</translation>
     </message>
     <message>
-        <source>Enter a CCBC Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Zadajte adresu CCBC, ktorú chcete zašifrovať pomocou BIP 38. Zadajte prístupovú frázu do stredného poľa. Stlačte šifrovanie na výpočet šifrovaného privátneho kľúča.</translation>
+        <source>Enter a Ccbc Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <translation>Zadajte adresu Ccbc, ktorú chcete zašifrovať pomocou BIP 38. Zadajte prístupovú frázu do stredného poľa. Stlačte šifrovanie na výpočet šifrovaného privátneho kľúča.</translation>
     </message>
     <message>
         <source>Address:</source>
         <translation>Adresa:</translation>
     </message>
     <message>
-        <source>The CCBC address to sign the message with</source>
-        <translation>Adresa CCBC, ktorou chcete správu podpísať</translation>
+        <source>The Ccbc address to sign the message with</source>
+        <translation>Adresa Ccbc, ktorou chcete správu podpísať</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -279,8 +279,8 @@
         <translation>Skopírujte aktuálny podpis do schránky</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this CCBC address</source>
-        <translation>Podpíšte správu, aby ste preukázali, že ste vlastníkom tejto CCBC adresy</translation>
+        <source>Sign the message to prove you own this Ccbc address</source>
+        <translation>Podpíšte správu, aby ste preukázali, že ste vlastníkom tejto Ccbc adresy</translation>
     </message>
     <message>
         <source>Encrypt &amp;Key</source>
@@ -303,12 +303,12 @@
         <translation>Zadajte súkromný kľúč zašifrovaný BIP 38. Zadajte prístupovú frázu do stredného poľa. Kliknite na Dešifrovať kľúč, ak chcete vypočítať privátny kľúč. Po dešifrovaní kľúča pridáte do peňaženky tento súkromný kľúč kliknutím na položku 'Importovať adresu'.</translation>
     </message>
     <message>
-        <source>The CCBC address the message was signed with</source>
-        <translation>CCBC adresa, ktorou bola správa podpísaná</translation>
+        <source>The Ccbc address the message was signed with</source>
+        <translation>Ccbc adresa, ktorou bola správa podpísaná</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
-        <translation>Skontrolujte správu, aby ste sa uistili, že bola podpísaná zadanou CCBC adresou</translation>
+        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
+        <translation>Skontrolujte správu, aby ste sa uistili, že bola podpísaná zadanou Ccbc adresou</translation>
     </message>
     <message>
         <source>Decrypt &amp;Key</source>
@@ -598,12 +598,12 @@
         <translation>Panel nástrojov Záložky</translation>
     </message>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     <message>
-        <source>Send coins to a CCBC address</source>
-        <translation>Odoslať mince na adresu CCBC</translation>
+        <source>Send coins to a Ccbc address</source>
+        <translation>Odoslať mince na adresu Ccbc</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and ccbc: URIs)</source>
@@ -618,24 +618,24 @@
         <translation>Prezrieť masternody</translation>
     </message>
     <message>
-        <source>&amp;About CCBC Core</source>
-        <translation>O CCBC Core</translation>
+        <source>&amp;About Ccbc Core</source>
+        <translation>O Ccbc Core</translation>
     </message>
     <message>
-        <source>Show information about CCBC Core</source>
-        <translation>Zobraziť informácie o CCBC Core</translation>
+        <source>Show information about Ccbc Core</source>
+        <translation>Zobraziť informácie o Ccbc Core</translation>
     </message>
     <message>
-        <source>Modify configuration options for CCBC</source>
-        <translation>Zmeňte možnosti konfigurácie pre CCBC</translation>
+        <source>Modify configuration options for Ccbc</source>
+        <translation>Zmeňte možnosti konfigurácie pre Ccbc</translation>
     </message>
     <message>
-        <source>Sign messages with your CCBC addresses to prove you own them</source>
-        <translation>Podpíšte správy pomocou adresy CCBC, aby ste preukázali, že ich vlastníte</translation>
+        <source>Sign messages with your Ccbc addresses to prove you own them</source>
+        <translation>Podpíšte správy pomocou adresy Ccbc, aby ste preukázali, že ich vlastníte</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified CCBC addresses</source>
-        <translation>Overte správy, aby sa zabezpečilo, že boli podpísané zadanými CCBC adresami</translation>
+        <source>Verify messages to ensure they were signed with specified Ccbc addresses</source>
+        <translation>Overte správy, aby sa zabezpečilo, že boli podpísané zadanými Ccbc adresami</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>
@@ -666,8 +666,8 @@
         <translation>Otvoriť konfiguračný súbor masternodu</translation>
     </message>
     <message>
-        <source>Open a CCBC: URI or payment request</source>
-        <translation>Otvorte CCBC: URI alebo žiadosť o platbu</translation>
+        <source>Open a Ccbc: URI or payment request</source>
+        <translation>Otvorte Ccbc: URI alebo žiadosť o platbu</translation>
     </message>
     <message>
         <source>&amp;Blockchain explorer</source>
@@ -678,12 +678,12 @@
         <translation>Okno blockchain prehliadača</translation>
     </message>
     <message>
-        <source>Show the CCBC Core help message to get a list with possible CCBC command-line options</source>
-        <translation>Zobraziť pomocnú správu programu CCBC Core a získajte zoznam možností príkazového riadka CCBC</translation>
+        <source>Show the Ccbc Core help message to get a list with possible Ccbc command-line options</source>
+        <translation>Zobraziť pomocnú správu programu Ccbc Core a získajte zoznam možností príkazového riadka Ccbc</translation>
     </message>
     <message>
-        <source>CCBC Core client</source>
-        <translation>CCBC Core klient</translation>
+        <source>Ccbc Core client</source>
+        <translation>Ccbc Core klient</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -904,15 +904,15 @@ MultiSend: %1</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     </context>
 <context>
     <name>Intro</name>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1136,8 +1136,8 @@ MultiSend: %1</translation>
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
-        <source>The CCBC address to sign the message with</source>
-        <translation>Adresa CCBC, ktorou chcete správu podpísať</translation>
+        <source>The Ccbc address to sign the message with</source>
+        <translation>Adresa Ccbc, ktorou chcete správu podpísať</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1160,16 +1160,16 @@ MultiSend: %1</translation>
         <translation>Skopírujte aktuálny podpis do schránky</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this CCBC address</source>
-        <translation>Podpíšte správu, aby ste preukázali, že ste vlastníkom tejto CCBC adresy</translation>
+        <source>Sign the message to prove you own this Ccbc address</source>
+        <translation>Podpíšte správu, aby ste preukázali, že ste vlastníkom tejto Ccbc adresy</translation>
     </message>
     <message>
-        <source>The CCBC address the message was signed with</source>
-        <translation>CCBC adresa, ktorou bola správa podpísaná</translation>
+        <source>The Ccbc address the message was signed with</source>
+        <translation>Ccbc adresa, ktorou bola správa podpísaná</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified CCBC address</source>
-        <translation>Skontrolujte správu, aby ste sa uistili, že bola podpísaná zadanou CCBC adresou</translation>
+        <source>Verify the message to ensure it was signed with the specified Ccbc address</source>
+        <translation>Skontrolujte správu, aby ste sa uistili, že bola podpísaná zadanou Ccbc adresou</translation>
     </message>
     <message>
         <source>Reset all sign message fields</source>
@@ -1207,8 +1207,8 @@ MultiSend: %1</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>CCBC Core</source>
-        <translation>CCBC Core</translation>
+        <source>Ccbc Core</source>
+        <translation>Ccbc Core</translation>
     </message>
     </context>
 <context>

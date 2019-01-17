@@ -1,7 +1,8 @@
-// Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The CCBC developers
+// Copyright (c) 2017 The CCBC developers
+// Copyright (c) 2017-2018 The Ccbc developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "zccbccontroldialog.h"
 #include "ui_zccbccontroldialog.h"
 
@@ -10,12 +11,12 @@
 
 using namespace std;
 
-std::list<std::string> ZCCBCControlDialog::listSelectedMints;
-std::list<CZerocoinMint> ZCCBCControlDialog::listMints;
+std::list<std::string> ZCcbcControlDialog::listSelectedMints;
+std::list<CZerocoinMint> ZCcbcControlDialog::listMints;
 
-ZCCBCControlDialog::ZCCBCControlDialog(QWidget *parent) :
+ZCcbcControlDialog::ZCcbcControlDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::ZCCBCControlDialog),
+    ui(new Ui::ZCcbcControlDialog),
     model(0)
 {
     ui->setupUi(this);
@@ -29,19 +30,19 @@ ZCCBCControlDialog::ZCCBCControlDialog(QWidget *parent) :
     connect(ui->pushButtonAll, SIGNAL(clicked()), this, SLOT(ButtonAllClicked()));
 }
 
-ZCCBCControlDialog::~ZCCBCControlDialog()
+ZCcbcControlDialog::~ZCcbcControlDialog()
 {
     delete ui;
 }
 
-void ZCCBCControlDialog::setModel(WalletModel *model)
+void ZCcbcControlDialog::setModel(WalletModel *model)
 {
     this->model = model;
     updateList();
 }
 
 //Update the tree widget
-void ZCCBCControlDialog::updateList()
+void ZCcbcControlDialog::updateList()
 {
     // need to prevent the slot from being called each time something is changed
     ui->treeWidget->blockSignals(true);
@@ -69,7 +70,7 @@ void ZCCBCControlDialog::updateList()
     //populate rows with mint info
     int nBestHeight = chainActive.Height();
     for(const CZerocoinMint mint : listMints) {
-        // assign this mint to the correct denomination in the tree view.
+        // assign this mint to the correct denomination in the tree view
         libzerocoin::CoinDenomination denom = mint.GetDenomination();
         QTreeWidgetItem *itemMint = new QTreeWidgetItem(ui->treeWidget->topLevelItem(mapDenomPosition.at(denom)));
 
@@ -133,7 +134,7 @@ void ZCCBCControlDialog::updateList()
 }
 
 // Update the list when a checkbox is clicked
-void ZCCBCControlDialog::updateSelection(QTreeWidgetItem* item, int column)
+void ZCcbcControlDialog::updateSelection(QTreeWidgetItem* item, int column)
 {
     // only want updates from non top level items that are available to spend
     if (item->parent() && column == COLUMN_CHECKBOX && !item->isDisabled()){
@@ -156,7 +157,7 @@ void ZCCBCControlDialog::updateSelection(QTreeWidgetItem* item, int column)
 }
 
 // Update the Quantity and Amount display
-void ZCCBCControlDialog::updateLabels()
+void ZCcbcControlDialog::updateLabels()
 {
     int64_t nAmount = 0;
     for (const CZerocoinMint mint : listMints) {
@@ -166,14 +167,14 @@ void ZCCBCControlDialog::updateLabels()
     }
 
     //update this dialog's labels
-    ui->labelZCCBC_int->setText(QString::number(nAmount));
+    ui->labelZCcbc_int->setText(QString::number(nAmount));
     ui->labelQuantity_int->setText(QString::number(listSelectedMints.size()));
 
     //update PrivacyDialog labels
-    privacyDialog->setZCCBCControlLabels(nAmount, listSelectedMints.size());
+    privacyDialog->setZCcbcControlLabels(nAmount, listSelectedMints.size());
 }
 
-std::vector<CZerocoinMint> ZCCBCControlDialog::GetSelectedMints()
+std::vector<CZerocoinMint> ZCcbcControlDialog::GetSelectedMints()
 {
     std::vector<CZerocoinMint> listReturn;
     for (const CZerocoinMint mint : listMints) {
@@ -186,7 +187,7 @@ std::vector<CZerocoinMint> ZCCBCControlDialog::GetSelectedMints()
 }
 
 // select or deselect all of the mints
-void ZCCBCControlDialog::ButtonAllClicked()
+void ZCcbcControlDialog::ButtonAllClicked()
 {
     ui->treeWidget->blockSignals(true);
     Qt::CheckState state = Qt::Checked;
