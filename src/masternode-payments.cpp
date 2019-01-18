@@ -191,9 +191,10 @@ bool IsBlockValueValid(const CBlock& block, CAmount nExpectedValue, CAmount nMin
 	if (IsTreasuryBlock(nHeight)) {
         return true;
 	}
-        if (IsReviveBlock(nHeight)) {
-            return true;
-		}
+
+	if (IsReviveBlock(nHeight)) {
+        return true;
+	}
 
     if (nHeight == 0) {
         LogPrint("masternode", "IsBlockValueValid() : WARNING: Couldn't find previous block\n");
