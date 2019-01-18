@@ -2150,7 +2150,7 @@ int64_t GetBlockValue(int nHeight)
             nSubsidy = 25 * COIN;
         } else if (nHeight <= 556800 && nHeight > 297600) { //180 days            2,592,000 coins
             nSubsidy = 10 * COIN;
-        } else if (nHeight <= 556800) { //Till max supply           Total coins used 17,882,000
+        } else if (nHeight >= 556800) { //Till max supply           Total coins used 17,882,000
             nSubsidy = 5 * COIN;        //57,026.38 days will max supply is reached
         }
 
@@ -2487,7 +2487,7 @@ int64_t GetTreasuryAward(int nHeight)
             return 1800 * COIN; //1,800 aday at 5% 12.5 coins per block
         } else if (nHeight < 556800 && nHeight > 297600) {
             return 720 * COIN; //720 aday at 5% 5 coins per block
-        } else if (nHeight < 556800) {
+        } else if (nHeight >= 556800) {
             return 360 * COIN; //720 aday at 5% 2.5 coins per block
         } else {
             return 3600;
@@ -2540,7 +2540,7 @@ int64_t GetReviveAward(int nHeight)
             return 1800 * COIN; //1,800 aday at 5% 12.5 coins per block
         } else if (nHeight < 556800 && nHeight > 297600) {
             return 720 * COIN; //720 aday at 5% 5 coins per block
-        } else if (nHeight < 556800) {
+        } else if (nHeight >= 556800) {
             return 360 * COIN; //720 aday at 5% 2.5 coins per block
         } else {
             return 3600;
@@ -4660,7 +4660,7 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
         }
     }
     if (nMints || nSpends)
-        LogPrintf("%s : block contains %d zCCBC mints and %d zCCCBC spends\n", __func__, nMints, nSpends);
+        LogPrintf("%s : block contains %d zCCBC mints and %d zCCBC spends\n", __func__, nMints, nSpends);
 
     // ppcoin: check proof-of-stake
     // Limited duplicity on stake: prevents block flood attack

@@ -1,5 +1,6 @@
-// Copyright (c) 2014-2016 The Dash developers
-// Copyright (c) 2016-2017 The CCBC developers
+// Copyright (c) 2014-2015 The Dash developers
+// Copyright (c) 2015-2018 The PIVX developers
+// Copyright (c) 2018-2019 The CCBC developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -26,7 +27,7 @@ CSporkManager sporkManager;
 std::map<uint256, CSporkMessage> mapSporks;
 std::map<int, CSporkMessage> mapSporksActive;
 
-// Ccbc: on startup load spork values from previous session if they exist in the sporkDB
+// CCBC: on startup load spork values from previous session if they exist in the sporkDB
 void LoadSporksFromDB()
 {
 	for (int i = SPORK_START; i <= SPORK_END; ++i) {
@@ -105,7 +106,7 @@ void ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 		mapSporksActive[spork.nSporkID] = spork;
 		sporkManager.Relay(spork);
 
-		// Ccbc: add to spork database.
+		// CCBC: add to spork database.
 		pSporkDB->WriteSpork(spork.nSporkID, spork);
 	}
 	if (strCommand == "getsporks") {
@@ -143,6 +144,8 @@ int64_t GetSporkValue(int nSporkID)
 		if (nSporkID == SPORK_17_TREASURY_PAYMENT_ENFORCEMENT) r = SPORK_17_TREASURY_PAYMENT_ENFORCEMENT_DEFAULT;
 		if (nSporkID == SPORK_18_REVIVE_PAYMENT_ENFORCEMENT) r = SPORK_18_REVIVE_PAYMENT_ENFORCEMENT_DEFAULT;
 		if (nSporkID == SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3) r = SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3_DEFAULT;
+        if (nSporkID == SPORK_20_DGW_ENFORCEMENT) r = SPORK_20_DGW_ENFORCEMENT_DEFAULT;
+                
 
 		if (r == -1) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
 	}
@@ -299,6 +302,7 @@ int CSporkManager::GetSporkIDByName(std::string strName)
 	if (strName == "SPORK_17_TREASURY_PAYMENT_ENFORCEMENT") return SPORK_17_TREASURY_PAYMENT_ENFORCEMENT;
 	if (strName == "SPORK_18_REVIVE_PAYMENT_ENFORCEMENT") return SPORK_18_REVIVE_PAYMENT_ENFORCEMENT;
 	if (strName == "SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3") return SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3;
+    if (strName == "SPORK_20_DGW_ENFORCEMENT") return SPORK_20_DGW_ENFORCEMENT;
 
 	return -1;
 }
@@ -319,7 +323,8 @@ std::string CSporkManager::GetSporkNameByID(int id)
 	if (id == SPORK_16_ZEROCOIN_MAINTENANCE_MODE) return "SPORK_16_ZEROCOIN_MAINTENANCE_MODE";
 	if (id == SPORK_17_TREASURY_PAYMENT_ENFORCEMENT) return "SPORK_17_TREASURY_PAYMENT_ENFORCEMENT";
 	if (id == SPORK_18_REVIVE_PAYMENT_ENFORCEMENT) return "SPORK_18_REVIVE_PAYMENT_ENFORCEMENT";
-	if (id == SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3) return "SPORK_16_NEW_PROTOCOL_ENFORCEMENT_3";
+	if (id == SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3) return "SPORK_19_NEW_PROTOCOL_ENFORCEMENT_3";
+    if (id == SPORK_20_DGW_ENFORCEMENT) return "SPORK_20_DGW_ENFORCEMENT";
 
 	return "Unknown";
 }

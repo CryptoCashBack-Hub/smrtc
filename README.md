@@ -6,7 +6,7 @@
 
 [![Build Status](https://travis-ci.org/SubiPlatform/subi.svg?branch=master)](https://travis-ci.org/CryptoCashBack-Hub/CCBC) <a href="https://discord.gg/7z4wmzp"><img src="https://discordapp.com/api/guilds/454464504290476033/embed.png" alt="Discord server" /><a href="https://twitter.com/CCBcoin"><img src="https://img.shields.io/twitter/follow/CCBcoin.svg?style=social&logo=twitter" alt="follow on Twitter"></a>
 
-[Website](https://ccbcoin.club/) â€” [Wallet](https://github.com/CryptoCashBack-Hub/CCBC/releases/) â€” [Block Explorer](https://explorer.ccbcoin.club/) â€” [Discord](https://discord.gg/7z4wmzp) â€” [Forum](https://bitcointalk.org/index.php?topic=5089897.0) â€” [Telegram](https://t.me/CCBCofficial) â€” [Twitter](https://twitter.com/CCBcoin)
+[Website](https://ccbcoin.club/) — [Wallet](https://github.com/CryptoCashBack-Hub/CCBC/releases/) — [Block Explorer](https://explorer.ccbcoin.club/) — [Discord](https://discord.gg/7z4wmzp) — [Forum](https://bitcointalk.org/index.php?topic=5089897.0) — [Telegram](https://t.me/CCBCofficial) — [Twitter](https://twitter.com/CCBcoin)
 
 
 ### CCBC is a fork of [PIVX](https://github.com/PIVX-Project/PIVX) that forked [Dash](https://github.com/dashpay/dash) that forked [Bitcoin](https://github.com/bitcoin/bitcoinp)

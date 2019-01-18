@@ -3,10 +3,10 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "masternode-payments.h"
 #include "addrman.h"
 #include "chainparams.h"
 #include "masternode-budget.h"
-#include "masternode-payments.h"
 #include "masternode-sync.h"
 #include "masternodeman.h"
 #include "obfuscation.h"
@@ -258,7 +258,7 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
                 break;
             }
         }
-			if (!bFound) {
+        if (!bFound) {
             LogPrint("masternode", "Invalid treasury payment detected %s\n", txNew.ToString().c_str());
             if (IsSporkActive(SPORK_17_TREASURY_PAYMENT_ENFORCEMENT))
                 return false;
@@ -267,55 +267,51 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
                 return true;
             }
 
-			} else {
+        } else {
             LogPrint("masternode", "Valid treasury payment detected %s\n", txNew.ToString().c_str());
             return true;
-			}
-	} else {
-    
-					if (IsReviveBlock(nBlockHeight)) {
-						CScript revivePayee = Params().GetReviveRewardScriptAtHeight(nBlockHeight);
-						CAmount reviveAmount = GetReviveAward(nBlockHeight);
+        }
+    } else {
+        if (IsReviveBlock(nBlockHeight)) {
+            CScript revivePayee = Params().GetReviveRewardScriptAtHeight(nBlockHeight);
+            CAmount reviveAmount = GetReviveAward(nBlockHeight);
 
-						bool bFound = false;
+            bool bFound = false;
 
-						BOOST_FOREACH (CTxOut out, txNew.vout)  {
-							if (out.nValue == reviveAmount) {
-							bFound = true; //correct revive payment has been found
-							break;
-							}
-																}
+            BOOST_FOREACH (CTxOut out, txNew.vout) {
+                if (out.nValue == reviveAmount) {
+                    bFound = true; //correct revive payment has been found
+                    break;
+                }
+            }
 
-							if (!bFound) {
-								LogPrint("masternode", "Invalid revive payment detected %s\n", txNew.ToString().c_str());
-									if (IsSporkActive(SPORK_18_REVIVE_PAYMENT_ENFORCEMENT))
-									return false;
-								else {
-										LogPrint("masternode", "SPORK_18_REVIVE_PAYMENT_ENFORCEMENT is not enabled, accept anyway\n");
-											return true;
-								}
-							} else {
-											LogPrint("masternode", "Valid revive payment detected %s\n", txNew.ToString().c_str());
-											return true;
-							}
-							
-
-					} else {
-													//check for masternode payee
-													if (masternodePayments.IsTransactionValid(txNew, nBlockHeight))
-														return true;
-														LogPrint("masternode", "Invalid mn payment detected %s\n", txNew.ToString().c_str());
-															if (IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT))
-																return false;
-																LogPrint("masternode", "Masternode payment enforcement is disabled, accepting block\n");
-				    }
-
-		return true;
-					
-	}
-}	
+            if (!bFound) {
+                LogPrint("masternode", "Invalid revive payment detected %s\n", txNew.ToString().c_str());
+                if (IsSporkActive(SPORK_18_REVIVE_PAYMENT_ENFORCEMENT))
+                    return false;
+                else {
+                    LogPrint("masternode", "SPORK_18_REVIVE_PAYMENT_ENFORCEMENT is not enabled, accept anyway\n");
+                    return true;
+                }
+            } else {
+                LogPrint("masternode", "Valid revive payment detected %s\n", txNew.ToString().c_str());
+                return true;
+            }
 
 
+        } else {
+            //check for masternode payee
+            if (masternodePayments.IsTransactionValid(txNew, nBlockHeight))
+                return true;
+            LogPrint("masternode", "Invalid mn payment detected %s\n", txNew.ToString().c_str());
+            if (IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT))
+                return false;
+            LogPrint("masternode", "Masternode payment enforcement is disabled, accepting block\n");
+        }
+
+        return true;
+    }
+}
 
 
 void FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool fProofOfStake)

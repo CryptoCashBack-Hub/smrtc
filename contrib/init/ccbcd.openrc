@@ -16,8 +16,8 @@ BITCOIND_USER=${BITCOIND_USER:-ccbc}
 BITCOIND_GROUP=${BITCOIND_GROUP:-ccbc}
 BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/ccbcd}
 
-name="Ccbc Core Daemon"
-description="Ccbc crypto-currency p2p network daemon"
+name="CCBC Core Daemon"
+description="CCBC crypto-currency p2p network daemon"
 
 command="/usr/bin/ccbcd"
 command_args="-pid=\"${BITCOIND_PIDFILE}\" \
@@ -78,7 +78,7 @@ checkconfig()
 		eerror "It is also recommended that you also set alertnotify so you are "
 		eerror "notified of problems:"
 		eerror ""
-		eerror "ie: alertnotify=echo %%s | mail -s \"Ccbc Alert\"" \
+		eerror "ie: alertnotify=echo %%s | mail -s \"CCBC Alert\"" \
 			"admin@foo.com"
 		eerror ""
 		return 1
