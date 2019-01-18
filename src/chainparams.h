@@ -125,9 +125,9 @@ public:
     int ModifierUpgradeBlock() const { return nModifierUpdateBlock; }
     int LAST_POW_BLOCK() const { return nLastPOWBlock; }
 
-    //int DGW_POS_FORK_BLOCK() const { return nPOSDGWForkBlock; }
-    //int64_t getPOSTargetSpacing() const { return nPOSTargetSpacing; }
-    //const uint256& getPOSWorkLimit() const { return bnPOSWorkLimit; }
+    int DGW_POS_FORK_BLOCK() const { return nPOSDGWForkBlock; }
+    int64_t getPOSTargetSpacing() const { return nPOSTargetSpacing; }
+    const uint256& getPOSWorkLimit() const { return bnPOSWorkLimit; }
 
 	//Central Collateral Amount
 	int MasternodeCollateralAmt() const { return nMasternodeCollateralAmt; }
@@ -160,8 +160,8 @@ protected:
     int nToCheckBlockUpgradeMajority;
     int64_t nTargetTimespan;
     int64_t nTargetSpacing;
-    //int64_t nPOSTargetSpacing;
-    //int nPOSDGWForkBlock;
+    int64_t nPOSTargetSpacing;
+    int nPOSDGWForkBlock;
     int nEndOfReviveFailSafe;
     int nLastPOWBlock;
     int nMasternodeCountDrift;
