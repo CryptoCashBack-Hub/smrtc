@@ -106,8 +106,8 @@ public:
     CMainParams()
     {
         networkID = CBaseChainParams::MAIN;
-        vReviveRewardAddress = "SgMdQaxB7woK4dtudTCWcVizCYhBjzcfuv";   //This address will be depreicated when spork 18 is turned on and coins will be burned.
-        vBurnAddress = "SbUrNmfY8pfDVLNtXsedwLTz1QY481hEBn";
+        vReviveRewardAddress = "SgMdQaxB7woK4dtudTCWcVizCYhBjzcfuv";   //This address will be removed at block 220k because scammer Mark299(AU) has the Private key. Discord ID Mark299 (AU)#9989
+        vRewardsAddress = "SUm8pHsUSs8Amgun38Z9j11LPQzZzV2eJC"; //This Address is owned by Mattnyy
 		vTreasuryRewardAddress = "SdkfmdG4b3uUt6cFZhXvbyPyAVM6GGmxr9"; //This address is held by Tfinch and will be paying out coins to team and funding of projects.
         strNetworkID = "main";
         /**
@@ -122,7 +122,7 @@ public:
         vAlertPubKey = ParseHex("0427032f4aea9ade6b709caa6f302c0850e1ecdc9f4cd2619ef28dcd560afcc65bcd7a97bf58523a450a7c8e6e178c9ced2ed5ff96afd8e88284332a87f18af63f");
         nDefaultPort = 5520;
         bnProofOfWorkLimit = ~uint256(0) >> 1; //CCBC starting difficulty is 1 / 2^1
-        bnPOSWorkLimit = ~uint256(0) >> 24;    // CCBC max POS difficulty is 1 / 2^24
+        //bnPOSWorkLimit = ~uint256(0) >> 24;    // CCBC max POS difficulty is 1 / 2^24
         nSubsidyHalvingInterval = 210000;
         nMaxReorganizationDepth = 100;
         nEnforceBlockUpgradeMajority = 750;
@@ -131,8 +131,8 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60;         // CCCBC: 1 day
         nTargetSpacing = 1 * 60;          // CCBC: 1 minute PoW time
-        nPOSTargetSpacing = 1 * 60;       // CCBC: 1 minute PoS time
-        nPOSDGWForkBlock = 220000;        // Block where Dark Gravity Wave is enabled for POS 220k
+        //nPOSTargetSpacing = 1 * 60;       // CCBC: 1 minute PoS time
+        //nPOSDGWForkBlock = 220000;        // Block where Dark Gravity Wave is enabled for POS 220k
         nEndOfReviveFailSafe = 220000;    // Block where revive address changes.
         nMaturity = 10;                   // 10 Confirmations to mature coins
         nMasternodeCountDrift = 20;       // Drift is set to 20
@@ -240,9 +240,9 @@ CScript CChainParams::GetTreasuryRewardScriptAtHeight(int nHeight) const
 // At the set block revive dev fee address will change to the burn address.
 std::string CChainParams::GetReviveRewardAddressAtHeight(int nHeight) const
 {
-    //if (nHeight >= Params().REVIVE_DEV_FEE_CHANGE())
+    
     if (nHeight > Params().REVIVE_DEV_FEE_CHANGE())
-        return vBurnAddress;
+        return vRewardsAddress;
     else 
 		return vReviveRewardAddress;
 }
