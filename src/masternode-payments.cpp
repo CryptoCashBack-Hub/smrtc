@@ -188,6 +188,13 @@ bool IsBlockValueValid(const CBlock& block, CAmount nExpectedValue, CAmount nMin
             nHeight = (*mi).second->nHeight + 1;
     }
 
+	if (IsTreasuryBlock(nHeight)) {
+        return true;
+	}
+        if (IsReviveBlock(nHeight)) {
+            return true;
+		}
+
     if (nHeight == 0) {
         LogPrint("masternode", "IsBlockValueValid() : WARNING: Couldn't find previous block\n");
     }
@@ -250,7 +257,7 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
     //check if it's valid treasury block
     if (IsTreasuryBlock(nBlockHeight)) {
         CScript treasuryPayee = Params().GetTreasuryRewardScriptAtHeight(nBlockHeight);
-        CAmount treasuryAmount = GetTreasuryAward(nBlockHeight);
+        CAmount treasuryAmount = GetTreasuryAward(nBlockHeight) - 10 * COIN;
         bool bFound = false;
         BOOST_FOREACH (CTxOut out, txNew.vout) {
             if (out.nValue == treasuryAmount) {
@@ -274,7 +281,7 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
     } else {
         if (IsReviveBlock(nBlockHeight)) {
             CScript revivePayee = Params().GetReviveRewardScriptAtHeight(nBlockHeight);
-            CAmount reviveAmount = GetReviveAward(nBlockHeight);
+            CAmount reviveAmount = GetReviveAward(nBlockHeight) - 10 * COIN;
 
             bool bFound = false;
 
