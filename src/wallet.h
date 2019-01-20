@@ -311,7 +311,8 @@ public:
 
     bool isZeromintEnabled()
     {
-        return fEnableZeromint;
+        return false;
+        //return fEnableZeromint;
     }
 
     void setZCCBCAutoBackups(bool fEnabled)
