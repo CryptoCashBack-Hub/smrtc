@@ -227,17 +227,17 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelzCCBCPercent->setText(szPercentage);
 
     // Adjust bubble-help according to AutoMint settings
-    //QString automintHelp = tr("Current percentage of zCCBC.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
+    QString automintHelp = tr("Current percentage of zCCBC.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
     QString automintHelp = tr("Current percentage of zCCBC.\nIf AutoMint has been disabled by TFinch, AutoMint percentage (default = 0%).\n");
-    //bool fEnableZeromint = GetBoolArg("-enablezeromint", false);
-    //int nZeromintPercentage = GetArg("-zeromintpercentage", 1); //1
-    //if (fEnableZeromint) {
-        //automintHelp += tr("AutoMint is currently disbaled by TFinch and set to ") + QString::number(nZeromintPercentage) + "%.\n";
-        //automintHelp += tr("To disable AutoMint delete set 'enablezeromint=1' to 'enablezeromint=0' in ccbc.conf.");
-    //}
-    //else {
-    //    automintHelp += tr("AutoMint is currently disabled.\nTo enable AutoMint add 'enablezeromint=1' in ccbc.conf");
-    //}
+    bool fEnableZeromint = GetBoolArg("-enablezeromint", false);
+    int nZeromintPercentage = GetArg("-zeromintpercentage", 1); //1
+    if (fEnableZeromint) {
+        automintHelp += tr("AutoMint is currently disbaled by TFinch and set to ") + QString::number(nZeromintPercentage) + "%.\n";
+        automintHelp += tr("To disable AutoMint delete set 'enablezeromint=1' to 'enablezeromint=0' in ccbc.conf.");
+    }
+    else {
+        automintHelp += tr("AutoMint is currently disabled.\nTo enable AutoMint add 'enablezeromint=1' in ccbc.conf");
+    }
     ui->labelzCCBCPercent->setToolTip(automintHelp);
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
