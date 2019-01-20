@@ -825,7 +825,7 @@ color:#000000;
 }
 
 QDialog#RPCConsole QTableView#peerWidget::item { /* Peers Table Items */
-color:#333;
+    color: #FFFFFF;
 }
 
 QDialog#RPCConsole QPushButton#openDebugLogfileButton {
@@ -833,9 +833,9 @@ max-width:60px;
 }
 
 QDialog#RPCConsole QTextEdit#messagesWidget { /* Console Messages Window */
-border:0;
-background-color:#fcfcfc;
-color:#333;
+    border: 0;
+    background-color: #fcfcfc;
+    color: #FFFFFF;
 }
 
 QDialog#RPCConsole QLineEdit#lineEdit { /* Console Input */
