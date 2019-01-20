@@ -1283,7 +1283,7 @@ margin-left:0px; /* CSS Voodoo - set to -66px to hide default transaction icons 
 /**************************** SEND DIALOG ***********************************************/
 
 QDialog#SendCoinsDialog {
-    background-color: #000000;
+    background-color: #ffffff;
     color: #333;
 }
 
@@ -1319,16 +1319,16 @@ QDialog#SendCoinsDialog .QFrame#frameCoinControl { /* Coin Control Section */
         color: #ffffff;
     }
 
-QDialog#SendCoinsDialog .QFrame#frameCoinControl .QLabel#labelCoinControlFeatures { /* Coin Control Header */
-qproperty-alignment: 'AlignVCenter | AlignLeft';
-min-width:160px;
-background-color:transparent;
-color:#000000;
-font-weight:bold;
-font-size:14px;
-margin-right:5px;
-padding-right:5px;
-}
+    QDialog#SendCoinsDialog .QFrame#frameCoinControl .QLabel#labelCoinControlFeatures { /* Coin Control Header */
+        qproperty-alignment: 'AlignVCenter | AlignLeft';
+        min-width: 160px;
+        background-color: transparent;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 14px;
+        margin-right: 5px;
+        padding-right: 5px;
+    }
 
     QDialog#SendCoinsDialog .QFrame#frameCoinControl .QWidget#widgetCoinControl { /* Coin Control Inputs */
         color: #000000;
