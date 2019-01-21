@@ -3,7 +3,9 @@ Ccbc Core
 
 Setup
 ---------------------
-[Ccbc Core](http://ccbccoin.com) is the original Ccbc client and it builds the backbone of the network. However, it downloads and stores the entire history of Ccbc transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[Ccbc Wallet](https://github.com/CryptoCashBack-Hub/CCBC/releases) is the original Ccbc client and it builds the backbone of the network. 
+However, it downloads and stores the entire history of Ccbc transactions.
+Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a couple of minutes to a few hours.
 
 Running
 ---------------------
@@ -26,10 +28,9 @@ Drag Ccbc-Qt to your applications folder, and then run Ccbc-Qt.
 
 ### Need Help?
 
-* See the documentation at the [Ccbc Wiki]() ***TODO***
 for help and more information.
-* Ask for help on [BitcoinTalk]() or on the [Ccbc Forum]().
-* Join one of our Discord groups [Ccbc Discord Groups]().
+* Join our forum on [BitcoinTalk](https://bitcointalk.org/index.php?topic=5089897.0).
+* Join our Discord groups [Ccbc Discord Groups](https://discord.gg/mM8mS9V).
 
 Building
 ---------------------
@@ -41,13 +42,13 @@ The following are developer notes on how to build Ccbc on your native platform. 
 
 Development
 ---------------------
-The Ccbc repo's [root README](https://github.com/eastcoastcrypto/Ccbc/blob/master/README.md) contains relevant information on the development process and automated testing.
+The Ccbc repo's [README](https://github.com/CryptoCashBack-Hub/CCBC/blob/master/doc/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://dev.visucore.com/bitcoin/doxygen/) ***TODO***
+- [Source Code Documentation (Bitcoin)](https://dev.visucore.com/bitcoin/doxygen/)
 - [Translation Process](translation_process.md)
 - [Unit Tests](unit-tests.md)
 - [Unauthenticated REST Interface](REST-interface.md)
@@ -55,8 +56,8 @@ The Ccbc repo's [root README](https://github.com/eastcoastcrypto/Ccbc/blob/maste
 
 ### Resources
 
-* Discuss on the [BitcoinTalk]() .
-* Join the [Ccbc-Dev] Discord groups [Ccbc Discord Groups]().
+* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=5089897.0).
+* Join the Discord groups [Ccbc Discord Groups](https://discord.gg/mM8mS9V).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
