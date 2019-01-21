@@ -228,7 +228,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
 
     // Adjust bubble-help according to AutoMint settings
     QString automintHelp = tr("Current percentage of zCCBC.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
-    QString automintHelp = tr("Current percentage of zCCBC.\nIf AutoMint has been disabled by TFinch, AutoMint percentage (default = 0%).\n");
+    //QString automintHelp = tr("Current percentage of zCCBC.\nIf AutoMint has been disabled by TFinch, AutoMint percentage (default = 0%).\n");
     bool fEnableZeromint = GetBoolArg("-enablezeromint", 0);
     int nZeromintPercentage = GetArg("-zeromintpercentage", 0);
     if (fEnableZeromint) {
