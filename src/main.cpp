@@ -1000,9 +1000,9 @@ int GetZerocoinStartHeight()
     return Params().Zerocoin_StartHeight();
 }
 
-libzerocoin::ZerocoinParams* GetZerocoinParams(int nHeight) {
-	return nHeight > Params().Zerocoin_LastOldParams() ? Params().Zerocoin_Params() : Params().OldZerocoin_Params();
-}
+//libzerocoin::ZerocoinParams* GetZerocoinParams(int nHeight) {
+	//return nHeight > Params().Zerocoin_LastOldParams() ? Params().Zerocoin_Params() : Params().OldZerocoin_Params();
+//}
 
 void FindMints(vector<CZerocoinMint> vMintsToFind, vector<CZerocoinMint>& vMintsToUpdate, vector<CZerocoinMint>& vMissingMints, bool fExtendedSearch)
 {
