@@ -1283,7 +1283,10 @@ margin-left:0px; /* CSS Voodoo - set to -66px to hide default transaction icons 
 /**************************** SEND DIALOG ***********************************************/
 
 QDialog#SendCoinsDialog {
-    background-image: url(':/images/walletFrame_bg') 0 0 0 0 stretch stretch;
+    border-image: url(':/images/walletFrame_bg') 0 0 0 0 stretch stretch;
+    border-top: 0px solid #000;
+    margin: 0;
+    padding: 0;
 }
 
     QDialog#SendCoinsDialog .QFrame#frameCoinControl { /* Coin Control Section */
@@ -1292,8 +1295,8 @@ QDialog#SendCoinsDialog {
     }
 
     QDialog#SendCoinsDialog .QFrame#frameFee { /* Coin Control Section */
-        color: #000000;
-        background-color: #ffffff;
+        color: #ffffff;
+        background-color: #000000;
     }
 
     QDialog#SendCoinsDialog .QFrame#frame_Send { /* Coin Control Section */
