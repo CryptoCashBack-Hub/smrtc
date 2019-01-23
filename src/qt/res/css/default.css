@@ -209,7 +209,7 @@ background-color:#f2f2f2;
 /***************************** Global Qt Objects ***********************************************************/
 
 QPushButton { /* Global Button Style */
-background-color: #000000; 
+background:#000000;
 border-width: 1px;
 border-style: outset;
 border-color: #000000;
@@ -1283,44 +1283,44 @@ margin-left:0px; /* CSS Voodoo - set to -66px to hide default transaction icons 
 /**************************** SEND DIALOG ***********************************************/
 
 QDialog#SendCoinsDialog {
-    color: #000000;
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color: #000000;
 }
 
     QDialog#SendCoinsDialog .QFrame#frameCoinControl { /* Coin Control Section */
-        color: #000000;
-        background-color: #ffffff;
+        color: #ffffff;
+        background-color: #000000;
     }
 
     QDialog#SendCoinsDialog .QFrame#frameFee { /* Coin Control Section */
-        color: #000000;
-        background-color: #ffffff;
+        color: #ffffff;
+        background-color: #000000;
     }
 
     QDialog#SendCoinsDialog .QFrame#frame_Send { /* Coin Control Section */
-        color: #000000;
-        background-color: #ffffff;
+        color: #ffffff;
+        background-color: #000000;
         margin-bottom: 6px;
     }
 
     QDialog#SendCoinsDialog .QFrame#frameCoinControl { /* Coin Control Section */
         /* background-color:#ffff00; */
-        color: #000000;
-        background-color: #ffffff;
+        color: #ffffff;
+        background-color: #000000;
     }
 
         QDialog#SendCoinsDialog .QFrame#frameCoinControl > .QLabel { /* Default Font Color and  Size */
             font-weight: normal;
-            color: #000000;
-            background-color: #ffffff;
+            color: #ffffff;
+            background-color: #000000;
         }
 
         QDialog#SendCoinsDialog .QFrame#frameCoinControl .QPushButton#pushButtonCoinControl { /* Coin Control Inputs Button */
             padding-left: 10px;
             padding-right: 10px;
             min-height: 25px;
-            color: #000000;
-            background-color: #ffffff;
+            color: #ffffff;
+            background-color: #000000;
         }
 
     QDialog#SendCoinsDialog .QFrame#frameCoinControl .QLabel#labelCoinControlFeatures { /* Coin Control Header */
@@ -1335,13 +1335,13 @@ QDialog#SendCoinsDialog {
     }
 
         QDialog#SendCoinsDialog .QFrame#frameCoinControl .QWidget#widgetCoinControl { /* Coin Control Inputs */
-            color: #000000;
-            background-color: #ffffff;
+            color: #ffffff;
+            background-color: #000000;
         }
 
             QDialog#SendCoinsDialog .QFrame#frameCoinControl .QWidget#widgetCoinControl > .QLabel { /* Coin Control Inputs Labels */
-                color: #000000;
-                background-color: #ffffff;
+                color: #ffffff;
+                background-color: #000000;
                 padding: 2px;
             }
 
@@ -1352,21 +1352,21 @@ QDialog#SendCoinsDialog {
 /* QDialog#SendCoinsDialog .QFrame#frameCoinControl .QLineEdit#splitBlockLineEdit:!focus { /* TX Splitter */
 
         QDialog#SendCoinsDialog .QFrame#frameCoinControl .QLabel#labelCoinControlChangeLabel { /* Custom Change Address Validation Label */
-            color: #000000;
-            background-color: #ffffff;
+            color: #ffffff;
+            background-color: #000000;
             font-weight: normal;
         }
 
     QDialog#SendCoinsDialog .QScrollArea#scrollArea .QWidget#scrollAreaWidgetContents { /* Send To Widget */
-        color: #000000;
-        background-color: #ffffff;
+        color: #ffffff;
+        background-color: #000000;
     }
 
 
 
     QDialog#SendCoinsDialog .QCheckBox#checkUseObfuscation { /* Obfuscation Checkbox */
-        color: #000000;
-        background-color: #ffffff;
+        color: #ffffff;
+        background-color: #000000;
         font-weight: bold;
         /*background: qradialgradient(cx:0.5, cy:0.5, radius: 0.5, fx:0.5, fy:0.5, stop:0 rgba(248, 246, 246, 128), stop: 1 rgba(0, 0, 0, 0));*/
         border-radius: 5px;
@@ -1389,16 +1389,16 @@ margin-right:20px;
 /* To maximize backwards compatibility this formatting has been removed */
 
     QDialog#SendCoinsDialog QLabel#label {
-        color: #000000;
-        background-color: #ffffff;
+        color: #ffffff;
+        background-color: #000000;
         min-height: 27px;
     }
 
     QDialog#SendCoinsDialog QLabel#labelBalance {
         margin-left: 0px;
         padding-left: 0px;
-        color: #000000;
-        background-color: #ffffff;
+        color: #ffffff;
+        background-color: #000000;
         min-height: 27px;
     }
 
