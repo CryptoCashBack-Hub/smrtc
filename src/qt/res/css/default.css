@@ -1283,8 +1283,8 @@ margin-left:0px; /* CSS Voodoo - set to -66px to hide default transaction icons 
 /**************************** SEND DIALOG ***********************************************/
 
 QDialog#SendCoinsDialog {
-    color: #ffffff;
-    background-color: #000000;
+    color: #AAAAAA;
+    background-color: #ffffff;
 }
 
     QDialog#SendCoinsDialog .QFrame#frameCoinControl { /* Coin Control Section */
