@@ -1481,7 +1481,7 @@ bool CheckTransaction(const CTransaction& tx, bool fZerocoinActive, bool fReject
 
         // get previous transaction
         //GetTransaction(txin.prevout.hash, txPrev, Params().GetConsensus(), hash, true);
-        GetTransaction(txin.prevout.hash, txPrev, hash, true)
+        GetTransaction(txin.prevout.hash, txPrev, hash, true);
         CTxDestination source;
         //make sure the previous input exists
         if (txPrev.vout.size() > txin.prevout.n) {
