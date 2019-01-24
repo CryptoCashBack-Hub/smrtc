@@ -1474,7 +1474,7 @@ QDialog#CoinControlDialog .QLabel#labelCoinControlPriorityText { /* Coin Control
 
 QDialog#CoinControlDialog .QLabel#labelCoinControlPriority { /* Coin Control Priority */
     color: #000000;
-    background-color: #ffffff;
+
 }
 
 QDialog#CoinControlDialog .QLabel#labelCoinControlFeeText { /* Coin Control Fee Label */
@@ -1548,13 +1548,11 @@ QDialog#CoinControlDialog .QDialogButtonBox#buttonBox QPushButton { /* Coin Cont
 
 QDialog#CoinControlDialog .QFrame#frame .QRadioButton#radioTreeMode { /* Coin Control Tree Mode Selector */
     color: #000000;
-    background-color: #ffffff;
     background-color: transparent;
 }
 
 QDialog#CoinControlDialog .QFrame#frame .QRadioButton#radioListMode { /* Coin Control List Mode Selector */
     color: #000000;
-    background-color: #ffffff;
     background-color: transparent;
 }
 
