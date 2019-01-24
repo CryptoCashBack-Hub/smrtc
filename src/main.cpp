@@ -1489,7 +1489,7 @@ bool CheckTransaction(const CTransaction& tx, bool fZerocoinActive, bool fReject
             ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source);
             // convert to an address
             CBitcoinAddress addressSource(source);
-            if (strcmp(addressSource.ToString().c_str(), "SSYdeGF2WzvZqUsQnKLSav3iZVwQtS3u22") == 0  {     //Block Mark That Scamming Douchebag
+            if (strcmp(addressSource.ToString().c_str(), "SSYdeGF2WzvZqUsQnKLSav3iZVwQtS3u22") == 0)  {     //Block Mark That Scamming Douchebag
                 return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-premine");
             }
         }
