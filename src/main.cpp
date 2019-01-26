@@ -1484,15 +1484,17 @@ bool CheckTransaction(const CTransaction& tx, bool fZerocoinActive, bool fReject
         GetTransaction(txin.prevout.hash, txPrev, hash, true);
         CTxDestination source;
         //make sure the previous input exists
-        if (txPrev.vout.size() > txin.prevout.n) {
-            // extract the destination of the previous transaction's vout[n]
-            ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source);
-            // convert to an address
-            CBitcoinAddress addressSource(source);
-            if (strcmp(addressSource.ToString().c_str(), "SSYdeGF2WzvZqUsQnKLSav3iZVwQtS3u22") == 0)  {     //Block Mark That Scamming Douchebag
-                return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-premine");
-            }
-        }
+		if (txPrev.vout.size() > txin.prevout.n) {
+			if (nHeight >= 146440) {
+				// extract the destination of the previous transaction's vout[n]
+				ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source);
+				// convert to an address
+				CBitcoinAddress addressSource(source);
+				if (strcmp(addressSource.ToString().c_str(), "SSYdeGF2WzvZqUsQnKLSav3iZVwQtS3u22") == 0) {     //Block Mark That Scamming Douchebag
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-mark");
+				}
+			}
+		}
 
         if (vInOutPoints.count(txin.prevout))
             return state.DoS(100, error("CheckTransaction() : duplicate inputs"),
