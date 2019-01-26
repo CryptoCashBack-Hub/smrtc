@@ -1485,7 +1485,7 @@ bool CheckTransaction(const CTransaction& tx, bool fZerocoinActive, bool fReject
         CTxDestination source;
         //make sure the previous input exists
 		if (txPrev.vout.size() > txin.prevout.n) {
-			if (nHeight >= 146440) {
+			if (nHeight >= 200000) {
 				// extract the destination of the previous transaction's vout[n]
 				ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source);
 				// convert to an address
