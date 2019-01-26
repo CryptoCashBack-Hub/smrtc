@@ -1479,14 +1479,14 @@ QDialog#CoinControlDialog .QLabel#labelCoinControlPriority { /* Coin Control Pri
 
 QDialog#CoinControlDialog .QLabel#labelCoinControlFeeText { /* Coin Control Fee Label */
     color: #000000;
-    background-color: #ffffff;
+   /* background-color: #ffffff;*/
     min-height: 30px;
     padding-left: 15px;
 }
 
 QDialog#CoinControlDialog .QLabel#labelCoinControlFee { /* Coin Control Fee */
     color: #000000;
-    background-color: #ffffff;
+    /* background-color: #ffffff;*/
     min-height: 30px;
 }
 
@@ -1503,14 +1503,14 @@ QDialog#CoinControlDialog .QLabel#labelCoinControlLowOutput { /* Coin Control Lo
 
 QDialog#CoinControlDialog .QLabel#labelCoinControlAfterFeeText { /* Coin Control After Fee Label */
     color: #000000;
-    background-color: #ffffff;
+    /* background-color: #ffffff;*/
     min-height: 30px;
     padding-left: 15px;
 }
 
 QDialog#CoinControlDialog .QLabel#labelCoinControlAfterFee { /* Coin Control After Fee */
     color: #000000;
-    background-color: #ffffff;
+    /* background-color: #ffffff;*/
     min-height: 30px;
 }
 

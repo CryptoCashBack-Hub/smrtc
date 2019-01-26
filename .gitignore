@@ -156,3 +156,5 @@ config.status
 .vs/CCBC/v15/ipch/AutoPCH/78d5b3ed1536249e/BITCOINGUI.ipch
 .vs/CCBC/v15/ipch/AutoPCH/7af4be6023f44dd6/MASTERNODEMAN.ipch
 .vs/CCBC/v15/ipch/AutoPCH/77d567438d4ebca2/POW.ipch
+.vs/CCBC/v15/ipch/AutoPCH/6a677560f076cf6a/ECCRYPTOVERIFY.ipch
+.vs/CCBC/v15/ipch/AutoPCH/e042c7e57ec7e763/SPORKDB.ipch
