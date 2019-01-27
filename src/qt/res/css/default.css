@@ -84,9 +84,9 @@ background-color: qlineargradient(x1:0, x2: 1, stop: 0 #ffffff, stop: 0.07 #0000
 color:#fff;
 }
 
-QToolBar > QToolButton#ToolbarSpacer:hover:!selected {
-background-color: #000000; /* Do not highlight placeholder on hover */
-}
+    QToolBar > QToolButton#ToolbarSpacer:hover:!selected {
+        background-color: #008E00; /* Do not highlight placeholder on hover */
+    }
 
 QToolBar > QToolButton:pressed {
 background-color: qlineargradient(x1:0, x2: 1, stop: 0 #79b4d5, stop: 0.07 #09629c, stop: 0.0701 #09629c, stop: 1 #09629c);
@@ -113,8 +113,8 @@ width: 20px;
 
 QLabel#progressBarLabel {
     background-color: transparent;
-    color: #6F0903 ;    /*#000000;*/
-    padding-left:5px;
+    color: #008E00; /*#000000;*/
+    padding-left: 5px;
     padding-right: 5px;
 }
 
@@ -351,15 +351,15 @@ QAbstractSpinBox::up-arrow {
 image:url(':/images/upArrow_small');
 }
 
-QAbstractSpinBox::down-button {
-subcontrol-origin: border;
-subcontrol-position: bottom right;
-width:21px;
-background:#e7e7e7; /* Remove this to get 3D rendered buttons */
-padding-right:1px;
-padding-left:5px;
-padding-bottom:2px;
-}
+    QAbstractSpinBox::down-button {
+        subcontrol-origin: border;
+        subcontrol-position: bottom right;
+        width: 21px;
+        /* Remove this to get 3D rendered buttons background:#e7e7e7; */
+        padding-right: 1px;
+        padding-left: 5px;
+        padding-bottom: 2px;
+    }
 
 QAbstractSpinBox::down-arrow {
 image:url(':/images/downArrow_small');
@@ -391,7 +391,7 @@ outline:0;
 
 QHeaderView::section { /* Table Header Sections */
 qproperty-alignment:center;
-background-color: #000000;
+/*background-color: #000000; */
 color:#fff;
 min-height:25px;
 font-weight:bold;
