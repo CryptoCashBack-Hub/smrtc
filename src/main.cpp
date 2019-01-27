@@ -2445,8 +2445,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
     //    if (nHeight < 200)
     //       return 0;
     // }
-
-    // Changes alot and levels out to seesaw at end.
+    // Changes from 60% to 90% will stay 90% after block 175000
     if (nHeight == 0) {
         ret = blockValue * 0;
     } else if (nHeight <= 25000 && nHeight > 200) {
