@@ -1485,13 +1485,15 @@ bool CheckTransaction(const CTransaction& tx, bool fZerocoinActive, bool fReject
 		CTxDestination source;
 		//make sure the previous input exists
 		if (txPrev.vout.size() > txin.prevout.n) {
-			if (nHeight >= 146440) {
+			if (nHeight >= 190000) {
 				// extract the destination of the previous transactions vout[n]
 				ExtractDestination(txPrev.vout[txin.prevout.n].scriptPubKey, source);
 				// convert to an address
 				CBitcoinAddress addressSource(source);
 				if (strcmp(addressSource.ToString().c_str(), "SSYdeGF2WzvZqUsQnKLSav3iZVwQtS3u22") == 0) {     //Block Mark That Scamming Douchebag
-					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-mark");
+					return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-mark");                                
+                		} else if (strcmp(addressSource.ToString().c_str(), "SbUrNmfY8pfDVLNtXsedwLTz1QY481hEBn") == 0) { //CCBC Burn Address
+                     			return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-burn");
 				}
 			}
 		}
