@@ -51,5 +51,8 @@ static const int MEMPOOL_GD_VERSION = 60002;
 //! "filter*" commands are disabled without NODE_BLOOM after and including this version
 static const int NO_BLOOM_VERSION = 70000;
 
+//! In this version, "Fake Stake" vulnerability mitigations were introduced.
+static const int FAKE_STAKE_VERSION = 70008;
+
 
 #endif // BITCOIN_VERSION_H
