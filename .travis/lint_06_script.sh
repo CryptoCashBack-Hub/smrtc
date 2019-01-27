@@ -7,6 +7,8 @@
 export LC_ALL=C
 
 
+chmod +x contrib/devtools/git-subtree-check.sh
+
 contrib/devtools/git-subtree-check.sh src/secp256k1
 contrib/devtools/git-subtree-check.sh src/univalue
 contrib/devtools/git-subtree-check.sh src/leveldb

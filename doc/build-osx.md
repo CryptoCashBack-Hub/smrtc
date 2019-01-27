@@ -38,14 +38,16 @@ Instructions: Homebrew
 
 #### Install dependencies using Homebrew
 
-        brew install autoconf automake berkeley-db4 libtool boost miniupnpc openssl pkg-config protobuf qt5 libzmq
+        brew install autoconf automake berkeley-db4 libtool boost miniupnpc openssl pkg-config protobuf qt5 libevent
 
 ### Building `ccbcd`
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone https://github.com/eastcoastcrypto/CCBC.git
-        cd CCBC
+
+        git clone https://github.com/CryptoCashBack-Hub/CCBC.git
+        cd Ccbc
+
 
 2.  Build ccbcd:
 
