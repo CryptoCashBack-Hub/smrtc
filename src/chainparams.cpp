@@ -132,8 +132,8 @@ public:
         nTargetTimespan = 1 * 60;         // CCCBC: 1 day
         nTargetSpacing = 1 * 60;          // CCBC: 1 minute PoW time
         nPOSTargetSpacing = 1 * 60;       // CCBC: 1 minute PoS time
-        nPOSDGWForkBlock = 200000;        // Block where Dark Gravity Wave is enabled for POS 220k
-        nEndOfReviveFailSafe = 200000;    // Block where revive address changes.
+        nPOSDGWForkBlock = 190000;        // Block where Dark Gravity Wave is enabled for POS 190k
+        nEndOfReviveFailSafe = 190000;    // Block where revive address changes.
         nMaturity = 10;                   // 10 Confirmations to mature coins
         nMasternodeCountDrift = 20;       // Drift is set to 20
         nMasternodeCollateralAmt = 25000; // Masternode collateral 25K
