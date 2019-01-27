@@ -24,7 +24,7 @@ Build-Depends: debhelper,
 Standards-Version: 3.9.2
 Homepage: http://www.ccbc.org
 Vcs-Git: git://github.com/SMRT2/ccbc.git
-Vcs-Browser: http://github.com/Poseidon-CCBC/ccbc
+Vcs-Browser: http://github.com/CryptoCashBack-Hub/ccbc
 
 Package: ccbcd
 Architecture: any

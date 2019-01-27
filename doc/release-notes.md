@@ -2,11 +2,11 @@
 
 CCBC Core version *version* is now available from:
 
-  <https://github.com/Poseidon-CCBC/CCBC/releases>
+  <https://github.com/CryptoCashBack-Hub/CCBC/releases>
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/Poseidon-CCBC/CCBC/issues>
+  <https://github.com/CryptoCashBack-Hub/CCBC/issues>
 
 Mandatory Update
 ==============

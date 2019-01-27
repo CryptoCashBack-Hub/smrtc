@@ -12,7 +12,7 @@
 static const int MODEL_UPDATE_DELAY = 250;
 
 /* AskPassphraseDialog -- Maximum passphrase length */
-static const int MAX_PASSCCBCASE_SIZE = 1024;
+static const int MAX_PASSPHRASE_SIZE = 1024;
 
 /* CCBC GUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;

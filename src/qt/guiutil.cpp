@@ -111,7 +111,7 @@ void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a CCBC address (e.g. %1)").arg("QcR7QdUfWnxvycuG9eHDP2BUjPVsVRfDCJ"));
+    widget->setPlaceholderText(QObject::tr("Enter a CCBC address (e.g. %1)").arg("SbUrNmfY8pfDVLNtXsedwLTz1QY481hEBn"));
 #endif
     widget->setValidator(new BitcoinAddressEntryValidator(parent));
     widget->setCheckValidator(new BitcoinAddressCheckValidator(parent));

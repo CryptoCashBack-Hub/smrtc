@@ -7,7 +7,7 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://github.com/SMRT2/smrt-detached-sigs.git"
+- "url": "https://github.com/CryptoCashBack-Hub/CCBC-detached-sigs.git"
   "dir": "signature"
 files:
 - "ccbc-osx-unsigned.tar.gz"
